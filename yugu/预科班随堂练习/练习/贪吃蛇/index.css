@@ -1,0 +1,37 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gt{
+    border: solid 1px black;
+}
+
+#gt td{
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+
+td[state=normal]{
+
+}
+
+td[state=head]{
+    background-color: red;
+}
+
+td[state=body]{
+    background-color: pink;
+}
+
+td[state=food]{
+    background-color: green;
+}

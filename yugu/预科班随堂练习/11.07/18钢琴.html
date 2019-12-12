@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钢琴</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+            background-color: #111111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #box{
+            /* 视窗的宽度80%, */
+            width: 80vw;
+            height: 80vh;
+            background-color: rgb(26, 25, 25);
+            border-radius: 50px;
+            box-shadow: 0 0 10px white;
+        }
+        #keybox{
+            width: 90%;
+            height: 80%;
+            background-image: url(keys.png);
+            background-size: 100% 100%;
+            margin: 5% auto; 
+            /* 设置弹性布局,让子元素左右排列 */
+            display: flex;
+        }
+        .key{
+            width: 11.11%;
+            height: 100%;
+            background-color:red;
+            /* 透明度 0透明 1不透明 */
+            opacity: 0;
+            /* transition:all 1s linear; */
+        }
+        /* .key:hover{
+            background-color: red;
+            
+        } */
+
+        @keyframes back {
+            0%{
+                opacity: 1;
+                height: 80%;
+            }
+            100%{
+                opacity: 0;
+                height: 100%;
+            }
+        }
+        .back{
+            animation: back 400ms linear;
+        }
+        .change{
+            opacity: 1;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <!-- audio 音频 src音频路径 -->
+    <audio src="notes/1.oga"></audio>
+    <audio src="notes/2.oga"></audio>
+    <audio src="notes/3.oga"></audio>
+    <audio src="notes/4.oga"></audio>
+    <audio src="notes/5.oga"></audio>
+    <audio src="notes/6.oga"></audio>
+    <audio src="notes/7.oga"></audio>
+    <audio src="notes/8.oga"></audio>
+    <audio src="notes/9.oga"></audio>
+    <div id="box">
+        <div id="keybox">
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+        </div>
+    </div>
+    <script>
+        // 从9个钢琴键中找到每一个 对齐添加动画效果 播放音频
+        // 数组 一个容器 变量 但是可以存放多个值 index从0开始
+        // 通过key 找到多个元素 存放在keys 数组中
+        // 数组中的元素索引值(下标)从0 开始 0代表第一个对象 以此类推
+        var keys = document.getElementsByClassName('key');
+        var audios = document.getElementsByTagName('audio');
+        console.log(audios[0]);
+        // 遍历 使用for循环
+        for(var i = 0;i < keys.length;i++){
+            // 从数组中找到每一个class为key的div元素
+            var key = keys[i];
+            // 自定义一个key的属性tap
+            // tap值得存在是为了控制播放哪一个音频
+            key.tap = i;
+            // 添加对遍历后得到的key添加鼠标进入和离开的监听事件
+            key.onmouseenter = function (e) {
+                // e光标所指向位置信息以及所指向的元素
+                // e.target 光标所指向的元素
+                // console.log(e.target);
+                // console.log(e.target.tap);
+                // tap 0-8
+                // 调用方法    传参
+                start(e.target.tap);
+                changeColor(e.target)
+              }
+            key.onmouseleave = function (e) {
+                backColor(e.target)
+              }
+            
+        }
+        // param 参数
+        // 开始播放以及处理css样式
+        // num 形参,形式参数
+        function start(num) {
+            // 处理播放哪个音频1-9
+            // 根据num来从audios数组中取出所对应的标签对象
+            var audio = audios[num];
+            // 加载音频文件
+            audio.load();
+            // 播放音频文件
+            audio.play();           
+        }
+
+        document.body.onkeydown = function (e) {
+            start(e.key*1-1);
+            changeColor(keys[e.key*1-1]);
+        }
+        document.body.onkeyup = function (e) {
+            backColor(keys[e.key*1-1]);
+        }
+        
+        // 改变颜色高度 颜色通过不透明度调节
+
+        function changeColor(n) {
+            n.classList.add('change');
+        }
+        // function backColor(n) { 
+        //     n.target.style.opacity = '0';
+        //     n.target.style.height = '100%';
+
+        // }
+        // 变回颜色高度并添加动画
+        function backColor(n){
+            n.classList.remove('change');
+            n.classList.add('back');          
+            setTimeout(() => {
+                n.classList.remove('back'); 
+            }, 400);
+        }
+
+    </script>
+</body>
+</html>

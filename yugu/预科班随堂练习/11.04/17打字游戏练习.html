@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打字</title>
+</head>
+<style>
+    html,body{
+        height: 100%;
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #yi{
+        width: 600px;
+        height: 600px;
+        border: brown 3px solid;
+        border-radius: 50%;
+        text-align: center;
+/* 旋转动画 */
+    }
+    @keyframes DongHua {
+        0%{
+            transform: rotate(0deg);
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572880027894&di=71fe83d4684962b7dda8644027b22562&imgtype=0&src=http%3A%2F%2Fwww.cuimianxinli.com%2Fupload%2F2016-08%2F16080418118035.gif);
+            /* background-color: rgb(255, 0, 0); */
+            border-radius: 50%;
+        }
+
+        100%{
+            transform: rotate(360deg);
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572880027894&di=71fe83d4684962b7dda8644027b22562&imgtype=0&src=http%3A%2F%2Fwww.cuimianxinli.com%2Fupload%2F2016-08%2F16080418118035.gif);
+            /* background-color: rgb(209, 4, 245); */
+            border-radius: 50%;
+        }
+        
+    }
+    #er{
+        text-align: center;
+        font-size: 300px; 
+        color: brown;
+        line-height: 600px; 
+        animation: DongHua 4s infinite linear; 
+    }
+    #san,#si,#wu{
+        display: inline;
+        font-size: 20px;
+    }
+
+
+</style>
+<body>
+
+    <main id="yi">
+        <div id="er">
+            
+        </div>
+        <div id="san">正确0</div>
+        <div id="si">错误0</div>
+        <div id="wu">正确率0%</div>
+
+        
+    </main>
+
+    <script>
+        var zhengque = 0;
+        var cuowu = 0; 
+        var zhengquelv = 0; 
+
+        // 循环获取一个字母
+        for(var n =0;n<1;n++){
+            createWord();
+        }
+         
+        // 生成一个随机字母
+        function createWord(){  
+            // 数组  
+            var arr = ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
+            // a = arr[0];
+            // console.log(a);
+            var m = Math.floor(Math.random()*26);    
+            var arrvalue = arr[m];
+            document.getElementById("er").innerHTML = arrvalue;
+            console.log(arrvalue);
+        // 获取键盘敲下字母
+        function zimu(){
+        var a = event.keyCode;       
+        var Z = String.fromCharCode(a);
+        // console.log(Z);
+        
+        // 数值的计算与填写
+        if (Z === arrvalue){
+            // alert('正确');
+            createWord();
+            zhengque+=1;
+            cuowu= cuowu;
+            zhengquelv=zhengque/(cuowu+zhengque) * 100;
+            document.getElementById("san").innerHTML = "正确"+zhengque;
+            document.getElementById("si").innerHTML = "错误"+cuowu;
+            document.getElementById("wu").innerHTML = "正确率"+zhengquelv.toFixed(2)+"%"; 
+            }
+            else{
+                // alert('错误');
+                zhengque=zhengque;
+                cuowu+=1;
+                zhengquelv=zhengque/(cuowu+zhengque)*100;
+                document.getElementById("san").innerHTML = "正确"+zhengque;
+                document.getElementById("si").innerHTML = "错误"+cuowu;
+                document.getElementById("wu").innerHTML = "正确率"+zhengquelv.toFixed(2)+"%"; 
+                }
+                        
+            }
+        document.onkeypress=zimu;           
+        }         
+    </script>
+</body>
+</html>

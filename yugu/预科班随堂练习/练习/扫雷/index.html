@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="ctrl">
+        <label>行数：</label>
+        <input type="text" id="row" value="10">
+        <br>
+        <label>列数：</label>
+        <input type="text" id="col" value="10">
+        <br>
+        <label>雷数：</label>
+        <input type="text" id="bomb" value="10">
+        <br>
+        <button onclick="btnClick()">开始游戏</button>
+    </div>
+    <main>
+        <table id="g-table"></table>
+    </main>
+</body>
+
+<script src="index.js"></script>
+
+</html>

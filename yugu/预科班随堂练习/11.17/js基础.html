@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- js 基础语法   JavaScript   面向对象的编程语言  狗吃屎
+                                   面向过程的编程语言 c 吃狗屎
+    -->
+    <!-- script 脚本 控制业务逻辑用户交互 -->
+    <script>
+        // js python  java php html js c# c c++
+        // 1.输出语句  打印语句
+        // console 控制台  log 日志
+        // 调试  一种非常重要的调试技巧
+        // 输出语句的作用1. 检查脚本是否执行
+        //              2. 验证变量的值
+        console.log(111111111);
+        // "" 字符串
+        console.log("11111111");
+        // 运算
+        console.log(1 + 2);
+        // 拼接     "12"
+        console.log(1 + "2");
+        // "35"
+        console.log(1 + 2 + "5");
+        // "458"
+        console.log("4" + (5 + 8))
+
+        // 2.变量 
+        // variable  作用:存值
+        // x = 5 y = 10
+        // num 变量名   变量应遵循1.帕斯卡命名则2.匈牙利命名规则3.驼峰命名规则
+        // = 赋值运算符 从右向左 
+        //  5 值 
+        // 常见的三种数据类型 1.number  2.string (字符串) 3.boolean (布尔值)
+        // number 包含了 正负数 整数和小数 
+        // 1.number
+        var num = 5;
+        // 。。。。。
+        num = 15 * 32 - 19 + 27;
+        console.log(num);
+        console.log("num=" + num);
+        var a = 10.5;
+        var b = -100.9776;
+
+        // 2.string  ""  ''
+        var name = "独孤求败";
+        name = "西门吹雪";
+
+        // 3.boolean (布尔值)  只表示两个值  true (正确 真)  false(错误 假)
+        //  is  has 
+        var isOpen = true;
+        isOpen = false;
+        // js中6大数据类型
+        // https://www.cnblogs.com/xuniannian/p/7452086.html
+        // js教程
+        // https://www.w3school.com.cn/js/index.asp
+
+        // 运算符
+        //  + - * /  %   ++ -- += -= *= /=
+        var a = 10;
+        var b = 10;
+        var c = a + b;
+        var a1 = 10;
+        var b1 = "10";
+        var c1 = a1 + b1;
+        var a2 = "10";
+        var b2 = "10";
+        var c2 = a2 + b2;
+        console.log("c2 = " + c2);
+
+        var a3 = 10;
+        var b3 = 1;
+        var c3 = a3 - b3
+        // 除了+  是拼接 剩余- * / 任何一方为字符串都能运算 会自动转换成数字
+        // 运算后的结果依然为数字
+        var a4 = "10";
+        var b4 = "1";
+        var c4 = a4 - b4;
+        console.log(c4);
+
+
+        // %  取余  对一个数取余 得到的数的范围 [0 n)
+        var m = 1 % 3;
+
+        //  /  js 除以
+        // 用到取整
+        var n = 5.5;
+        // floor 地板  向下取整 
+        // Math 数学  对象
+        n = Math.floor(n);
+
+        var o = 5.5;
+        // ceil 天花板 向上取整
+        o = Math.ceil(o)
+
+        // 50 - 180
+        var q = 131%131 + 50;  // 150
+        // 130 - 180
+        var w = 5%51  + 130; // 179
+
+
+        var e = 10;
+        // 自增1
+        // 等价于  e = e +1;
+        e++;
+        // 等价于 e = e -1;
+        e--;
+
+        // e = e + 10
+        e+=10;
+        e-=10;
+        e*=10;
+        e/=10;
+        
+        
+
+
+        
+
+        // 作业1. 5687 得到个十百千位的值分别是 
+        // 作业2  自行百度 ++ 在前在后的区别
+        var r = 3;
+        var t = r++;
+        var y = (++t);
+        var u =  y--;
+        var i = (y++) + (--y) + (u++) + (r--);
+        console.log(i)
+    </script>
+</body>
+
+</html>
+<!-- shift + 1  -->

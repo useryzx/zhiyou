@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color:green;
+            /* padding 填充    */
+            padding: 50px;
+            /* padding-top: ; */
+            /* padding-left: */
+            /* padding-right： */
+            /* padding-bottom: */
+            /* padding和margin 用法一至 */
+
+            border: 10px solid red;
+            /* 元素默认的box-sizing: content-box; */
+            /* 盒子由外往里的组成 */
+            /* 盒模型  =  border + padding + content */
+            /* 一个元素设置了padding值后，盒子的大小会发生变化,原因是因为box-sizing:content-box; 设置的宽高 = 内容的宽高 
+            
+            如果设置为border-box(边框盒)  设置宽高 = 盒子的大小 
+            内容 = 盒子的大小 - border - padding
+             */
+            box-sizing: border-box;
+        }
+        main{
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            border: dotted 10px blue;
+            padding: 20px;
+
+            /* clip 剪切 剪裁 */
+            /* 背景颜色剪裁  显示的位置 */
+            /* content-box 内容盒 */
+            /* padding-box 内容盒 + 内边距盒 */
+            /* border-box  内容盒 + 边距盒 + 边框盒 */
+            background-clip: border-box;
+
+            /* margin 有 外边距合并   float 布局方式 */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- margin  调整标签与标签之间的距离-->
+    <!-- padding  调整标签与内容之间的距离 -->
+    <div>拉科技是伐啦时代峻峰拉设计费</div>
+
+    <main></main>
+</body>
+</html>

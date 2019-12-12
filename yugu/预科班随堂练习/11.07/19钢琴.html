@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钢琴</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #box{
+            /* vw 相当于1%   视窗宽度的 80% */
+            width: 80vw;
+            height: 80vh;
+            background-color: rgb(26, 25, 25);
+            border-radius: 20px;
+            box-shadow: 0 0 10px white;
+        }
+        #keybox{
+            width: 90%;
+            height: 80%;
+            background-image: url(keys.png);
+            background-size: 100% 100%;
+            margin: 4.6% auto;
+            /* 设置子元素排列方式为 左右排列 */
+            display: flex;
+        }
+        .key{
+            width: 11.11%;
+            height: 100%;
+            background: red;
+            /* opacity 透明度  0 完全透明  1完全不透明 */
+            opacity: 0;
+        }
+        .downOrEnter{
+            opacity: 1;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+    <!-- audio音频  src 音频的路径 -->
+    <audio src="notes/1.oga"></audio>
+    <audio src="notes/2.oga"></audio>
+    <audio src="notes/3.oga"></audio>
+    <audio src="notes/4.oga"></audio>
+    <audio src="notes/5.oga"></audio>
+    <audio src="notes/6.oga"></audio>
+    <audio src="notes/7.oga"></audio>
+    <audio src="notes/8.oga"></audio>
+    <audio src="notes/9.oga"></audio>
+    <div id="box">
+        <div id="keybox">
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+        </div>
+    </div>
+
+    <script>
+        // 从9个钢琴键中找到每一个 对齐添加动画效果 播放音频
+        // 数组 一个容器  变量  但是可以存多个值
+        // 通过key 找到多个元素  存放在keys 数组中
+        // 数组中的元素索引值(下标)从0 开始  0 代表第一个对象  以此类推
+        var keys = document.getElementsByClassName("key");
+        // 找到9个音频标签   Tag  标签  通过标签名找到所有的标签
+        var audios = document.getElementsByTagName("audio");
+        
+        // 遍历
+        // var key1 = keys[0]
+        // var key2 = keys[1]
+        // for循环
+        for(var i = 0; i < keys.length;i++){
+            // 从数组中 找到每一个class为key的div元素
+            var key = keys[i];
+            // tap 自定义的
+            // tap 的存在 目的是为了控制播放哪个音频
+            key.tap = i;
+            // 对遍历后得到的key 添加鼠标进入 和离开的监听事件
+            key.onmouseenter = function (e) {
+                // e 光标所指向的位置信息以及所指向的元素
+                // e.target 光标所指向的元素
+                // console.log(e.target)
+                // console.log(e.target.tap)
+                // tap  0- 8
+                start(e.target.tap);
+            }
+            key.onmouseleave = function (e){
+                upOrLeave(e.target.tap)
+            }
+        } 
+        // params 参数
+        // 开始播放 以及处理css 样式
+        function start(num) {
+            // 处理播放哪个音频 
+            // 1 - 9
+            // 根据num 来从audios 数组中取出所对应的标签对象 
+            var audio = audios[num];
+            console.log(audio)
+            // 加载音频文件
+            audio.load();
+            // 播放音频文件
+            audio.play();
+            // 通过光标所指向的div 通过方法的参数
+            var key =  keys[num];
+            // 去掉过渡动画
+            // 因为一圈后,每个对象具有了opOrLeave赋予的transition属性,所以清空
+            key.style.transition = 'none';
+            key.classList.add('downOrEnter');
+        }
+        function upOrLeave(num) {
+            var key =  keys[num];
+            key.classList.remove('downOrEnter');
+            // 设置过渡动画
+            key.style.transition = 'all 1s linear';
+          }
+        //   点击键盘
+        document.body.onkeydown = function(e){
+            // 只点击数字时有效
+            // console.log(e.key-1);
+            if(e.key*1 >= 1 && e.key <= 9){
+                start(e.key-1);
+            }
+            else{
+                alert('按错了');
+            }
+
+        }
+        document.body.onkeyup = function(e){
+            console.log(e.key-1);
+            upOrLeave(e.key-1);
+        }
+        
+
+      
+    </script>
+
+</body>
+</html>

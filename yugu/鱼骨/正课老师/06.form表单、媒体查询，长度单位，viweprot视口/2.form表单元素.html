@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- form表单，用于向服务器提交数据的，action属性表示元素
+    数据提交的位置(服务器地址) #刷新当前网页-->
+    <form action="#">
+        <!-- label标签 用于展示一段文字并且关联一个其他的元素
+        for属性就是用来关联的，属性值一般都是要关联的元素id
+    当关联成功之后点击label字体可以激活关联的元素 -->
+       <label for="username">账号:</label>
+       <!-- input表单项 type代表当前表单的类型 text代表输入框
+    表单项的name属性代表服务器将来需要的字段，服务器通过name
+    属性的值可以捕获到当前用户输入的内容 placeholder提示 value代表表单项的默认内容主要也是服务器获取的
+      style="display: none;" 行内样式-->
+       <input type="text" id="username" name="" placeholder="请输入账号" 
+       value="123">
+       <!-- button按钮 会自动提交数据-->
+       <button>按钮</button>
+       <hr>
+       <p>请选择你的工作城市</p>
+       <label for="bj">北京</label>
+       <!-- radio代表单选 处在同一组的单选只能选择一个通过name来控制 
+    name值相同的时候会自动放入到一个组 一个组内的radio每次只能选择
+一个-->
+       <input type="radio" name="city">
+       <label for="sh">上海</label>
+       <input type="radio" name="city">
+       <label for="zz">郑州</label>
+       <input type="radio" name="city">
+       <hr>
+       <!-- 多选 -->
+       <label for="">萝卜</label>
+       <!-- checkbox复选框   -->
+       <input type="checkbox">
+       <label for="">土豆</label>
+       <input type="checkbox">
+       <label for="">西蓝花</label>
+       <input type="checkbox">
+       <!-- 下拉列表 -->
+       <hr>
+       <label for="nvyou">请选择你的女朋友</label>
+       <select  id="nvyou">
+           <option value="">迪丽热巴</option>
+           <option value="">古力娜扎</option>
+           <option value="">马尔扎哈</option>
+       </select>
+    </form>
+</body>
+</html>

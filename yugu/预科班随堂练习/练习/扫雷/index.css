@@ -1,0 +1,92 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    
+    border: solid 1px black;
+}
+
+
+#g-table{
+    /* border: solid 1px red; */
+}
+
+#g-table td{
+    width: 30px;
+    height: 30px;
+    /* border: solid 1px red; */
+    background-color: #eeeeee;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    background-size: 100% 100%;
+}
+
+td[state=normal]{
+    background-image: url(img/blank.png);
+}
+
+td[state=open]{
+    background-color: #eeeeee;
+}
+
+td[state=explode]{
+    background-image: url(img/boom_ex.png);
+}
+
+td[state=bomb]{
+    background-image: url(img/boom_plain.png);
+}
+
+td[state=flag]{
+    background-image: url(img/flag.png);
+}
+
+td[state='1']:before{
+    content: "1";
+    color: blue;
+}
+
+td[state='2']:before{
+    content: "2";
+    color: green;
+}
+
+td[state='3']:before{
+    content: "3";
+    color: yellow;
+}
+
+td[state='4']:before{
+    content: "4";
+    color: orange;
+}
+
+td[state='5']:before{
+    content: "5";
+    color: skyblue;
+}
+
+td[state='6']:before{
+    content: "6";
+    color: pink;
+}
+
+td[state='7']:before{
+    content: "7";
+    color: brown;
+}
+
+td[state='8']:before{
+    content: "8";
+    color: purple;
+}
+
+
+#ctrl{
+    
+}

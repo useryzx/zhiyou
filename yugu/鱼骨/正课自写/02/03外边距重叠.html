@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外边距重叠</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #out{
+            height: 100px;
+            background-color: red;
+            margin: 20px;
+            /* border: 1px solid transparent; */
+        }
+        #in{
+            height: 50px;
+            background-color: green;
+            margin: 10px;
+            border: solid 10px red;
+        }
+        .box{
+            height: 50px;
+            background-color: pink;
+            border: 2px red solid;
+        }
+        .c1{
+            margin: 30px 0;
+        }
+        .c2{
+            margin: 10px 0;
+            border: 10px solid transparent;
+        }
+        .c3{
+            margin: 50px 0;
+        }
+        .s1{
+            display: inline-block;
+            width: 800px;
+            background-color: black;
+        }
+        .ss1{
+            margin: 10px 20px;
+        }
+        .ss2{
+            margin: 20px 30px;
+        }
+        .ss3{
+            width: 500px;
+            height: 500px;
+            background-color:black;
+            margin: 20px 20px;
+        }
+        .ss4{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(248, 26, 26);
+            margin: 100px 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="out">
+        <div id="in"></div>
+    </div>
+    <div class="box c1"></div>
+    <div class="box c2"></div>
+    <div class="box c3"></div>
+    <span class="s1 ss1">11111</span>
+    <span class="s1 ss2">22222</span>
+    <div class="s2 ss3">
+            <div class="s2 ss4"></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>费用报销单练习</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width: 1000px;
+            height: 600px;
+            box-shadow: 0 0 10px black;
+        }
+        .big{
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        h1{
+            margin-bottom: 0;
+        }
+        hr{
+            width: 60%;
+        }
+        span:nth-of-type(2){
+            float: right;
+        }
+        td{
+            border: black solid 1px;
+            height: 30px;
+            text-align: center;
+        }
+        .big td:nth-child(1){
+            width: 30%;
+        }
+        .big td:nth-child(2),.big td:nth-child(3){
+            width: 15%;
+        }
+        .big td:nth-child(4),.big td:nth-child(5){
+            width: 20%;
+        }
+        #small{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #small td{
+            width: 16.6%;
+            border: none;
+            border-right: solid 1px black;
+        }
+        #LastTD{
+            padding: 0;
+            border-right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <table class="big">
+            <thead><caption>
+                <h1>&emsp;费&emsp;用&emsp;报&emsp;销&emsp;单&emsp;</h1>
+                <hr>
+                <span>报销日期xxxxxx</span>
+                <span>附件xx</span>
+            </caption></thead>
+            <tbody>
+            <tr>
+                <td>费用项目</td>
+                <td>类别</td>
+                <td>金额</td>
+                <td rowspan="2">负责人(签章)</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">审查意见</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td rowspan="2">报销人(签章)</td>
+                <td rowspan="2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>¥</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="5">随便写吧</td>
+
+            </tr>
+            <tr>
+                <td colspan="5" id="LastTD">
+                    <table id="small">
+                        <tbody>
+                            <tr>
+                                <td>111</td>
+                                <td></td>
+                                <td>222</td>
+                                <td></td>
+                                <td>333</td>
+                                <td></td>
+                            </tr>
+
+                        </tbody>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </table>
+                </td>
+
+            </tr>
+        </tbody>
+        </table>
+    </main>
+</body>
+</html>

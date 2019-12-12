@@ -1,0 +1,41 @@
+html,body{
+    height: 100%;
+}
+.ling{
+    width: 100px;
+    height: 100px;
+    background-color: #464646;
+    border-radius: 10px;
+}
+.yi1,.yi2{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+} 
+
+/* 左上和中间 */
+/* .ling{
+    display: flex;
+}
+.yi2{
+    align-self: center;
+} */
+
+/* 左上和右下 */
+.ling{
+    display: flex;
+    justify-content: space-between;
+}
+.yi2{
+    align-self: flex-end;
+}
+
+/* 左上和右中 */
+/* .ling{
+    display: flex;
+    justify-content: space-between;
+}
+.yi2{
+    align-self: center;
+} */

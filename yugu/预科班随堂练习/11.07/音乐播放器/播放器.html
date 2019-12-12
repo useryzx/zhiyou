@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>音乐播放器</title>
+    <style>
+        /* 弹性布局 */
+        html,body{
+            height: 100%;
+        }
+        /* 边框弹性布局居中 */
+        body{
+            background-color: rgb(124, 102, 102);
+            display: flex;
+            align-items: center;
+            justify-content: center;    
+            flex-direction: column;      
+        }
+        
+        main{
+        
+            width: 400px;
+            height: 400px;
+            /* 背景图尺寸 */
+            background-size: 100% 100%;
+            /* 边框圆角 */
+            border-radius: 20px;
+            /* 文本居中 */
+            text-align: center;
+        }
+        /* 上半部分 */
+        #top{
+            height: 90px;
+            /* position: relative; */
+            
+            background-color: rgb(71, 216, 90);
+            /* 不透明度 0透明 1不透明 */
+            opacity: 0.2;
+            /* 上左圆角 */
+            border-top-left-radius: 20px;
+            /* 上右圆角 */
+            border-top-right-radius: 20px;
+            /* line-height: 45px; */
+        }
+        h1,h2{
+            /* 字体的上面margin外边距 */
+            margin-top: 0;
+            margin-bottom: 0;
+           
+        }
+        progress{
+            /* 浮动在左侧 */
+           float: left; 
+        }
+        p{
+            /* 居中 */
+            text-align: center;
+            /* 字体大小 */
+            font-size: 30px;
+        }
+        #bottom{
+            /* ID选择器 */
+            width: 400px;
+            height: 300px;
+            /* 透明度  */
+            opacity: 0.5;   
+        }                          
+        .up,.next{
+            /* class选择器 ','表示或者 */
+            font-size: 10px; 
+        }
+        
+              
+        .pause{
+            font-size: 20px;           
+        }
+        span {
+            /* 垂直对齐 middle 中间的 */
+            vertical-align: middle;
+        }
+        /* 鼠标经过span标签的动作 伪类*/
+        span:hover{
+            /* 盒子阴影 :hover*/
+            box-shadow: 0 0 10px green;
+        }
+    </style>
+</head>
+<body>
+    <audio src=""></audio>
+    <!-- main整体 第一个div上半部分半透明  第二个div下半部分 -->
+    <main>
+        <div id="top">
+            <h1>传奇</h1>
+            <h2>王菲</h2>
+        </div>
+        <progress value="0"></progress>
+        <div id="bottom">
+            <p>时间</p>
+            <div id="anniu">
+                <section>
+                        <span class="up" onclick="up()">上一曲</span>
+                        <span class="pause" onclick="stop()">暂停</span>
+                        <span class="next" onclick="next()">下一曲</span>
+                </section>
+                
+            </div>
+        </div>
+        
+    </main>
+    <script>   
+        // 脚本程序 
+        // 获取每一个标签
+        // var a = document.getElementsByTagName('audio');
+        var h1 = document.querySelector("h1");
+        var h2 = document.querySelector("h2");
+        var main = document.querySelector("main");
+        // console.log(main)
+        var audio = document.querySelector("audio");
+        // 数组,用于存放信息 第一项为0
+        var songList = [{ name: "传奇", singer: "王菲", src: "传奇.mp3", pic: "wf.png" },{ name: "知道不知道", singer: "刘若英", src: "知道不知道.mp3", pic: "lry.jpg" }];  
+        
+        // console.log(songList.length);
+
+        // 更改信息并播放音乐 function方法
+        function xinxi(num) { 
+            var song = songList[num];
+            console.log(song);
+            var name = song.name;
+            var singer = song.singer;
+            var src = song.src;
+            var pic = song.pic;
+            // audio.volum = 0.5;           
+            audio.src = src;
+            // 播放音乐
+            audio.play();
+            h1.textContent = name;
+            h2.textContent = singer;
+            main.style.backgroundImage = "url(" + pic + ")";
+        }  
+
+        // 开始歌曲方法
+        // 定义第几首歌曲
+        var n = 0;
+        function start() {
+            if (songList.length<=0) return; 
+            // length长度         
+            if (n >= songList.length) {
+                // alert('没有歌曲');
+                n = 0;   
+            }
+            if (n < 0) {
+                // alert('第一首了啊')
+                n = 0;
+            }
+            // 调用更改信息的方法
+            xinxi(n);
+        }
+        // 调用开始播放
+        start();
+        
+        //    上一曲
+        function up() {
+            n--;
+            console.log(n);
+            start();         
+          }
+        //   下一曲
+        function next() {
+            n++;
+            console.log(n);
+            start();
+        }
+        // 暂停
+        function stop() {  
+            if (audio.paused == true) {
+                audio.play();
+            }
+            else {
+                audio.pause();
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(../../../壁纸/wallhaven-r2e391.png);
+            background-size: 100% 100%;
+        }
+
+        main {
+            width: 800px;
+            height: 800px;
+            background-color: rgba(102, 102, 102, 0.5);
+            border-radius: 30px;
+
+        }
+
+        #title {
+            text-align: center;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 1), rgba(255, 92, 92, 0.5));
+            /* 渐变色 */
+            /* background-image: radial-gradient(red,green); */
+            height: 100px;
+            line-height: 100px;
+            margin: 0;
+            border-radius: 30px 30px 30% 30%;
+        }
+
+        #box {
+            height: 700px;
+            display: flex;
+        }
+
+        .days {
+            width: 50%;
+            height: 100%;
+            /* border: 1px solid red; */
+        }
+
+        #two,
+        #three {
+            height: 50%;
+            /* border: green solid 1px; */
+        }
+
+        #today {
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        img,
+        span {
+            vertical-align: middle;
+        }
+
+        span {
+            font-size: 50px;
+            margin-left: 30px;
+        }
+
+        #other {
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        section {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="title">天气预报</h1>
+        <div id="box">
+            <div id="today" class="days">
+                <h1 id="city">上海</h1>
+                <h2 id="pyCity">ShangHai</h2>
+                <section>
+                    <img src="days/cloudy1.png" alt="">
+                    <span class="date">今日</span>
+                </section>
+                <!-- 行内样式 -->
+                <div style="text-align: right; font-size: 30px;font-weight: 900;" class="weather">多云</div>
+                <div style="font-size: 30px;font-weight: 900;">气温</div>
+                <div style="text-align: right;font-size: 30px;font-weight: 900;" class="temperature">26-19℃</div>
+            </div>
+            <div id="other" class="days">
+                <div id="two">
+                    <h2 class="date">星期5 10月11日</h2>
+                    <section>
+                        <img src="days/duoyun.png" alt="">
+                        <span class="weather">晴天</span>
+                    </section>
+                    <h2 class="temperature">气温:25-13℃</h2>
+                </div>
+                <div id="three">
+                    <h2 class="date">星期5 10月11日</h2>
+                    <section>
+                        <img src="days/duoyun.png" alt="">
+                        <span class="weather">晴天</span>
+                    </section>
+                    <h2 class="temperature">气温:25-13℃</h2>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="jquery.js"></script>
+    <script src="Convert_Pinyin.js"></script>
+    <script>
+        // JSON 服务器返回客户的一种数据格式   
+        // 接口 获取数据的地址
+        // url 地址
+        $.getJSON("http://wthrcdn.etouch.cn/weather_mini?", { city: "郑州" },
+            function (data, textStatus, jqXHR) {
+                // 先获取city的名字
+                var city = data.data.city;
+                $("#city").text(city);
+                // 显示拼音
+                var pyCity = pinyin.getFullChars(city);
+                $("#pyCity").text(pyCity);
+                console.log(data);
+                // arr 存的是5天的天气信息的对象
+                var arr = data.data.forecast;
+                console.log(arr)
+                // 遍历  一遍一遍的去执行 执行到数组的索引值 为array.length - 1
+                // collection 数据源
+                // index 索引
+                $.each(arr, function (indexInArray, valueOfElement) {
+                    // 索引值 
+                    console.log(indexInArray)
+                    //  valueOfElement 每一天的天气对象
+                    console.log(valueOfElement)
+                    //  eq()根据索引值取出某一个元素
+                    if (indexInArray == 0) {
+                        $(".date").eq(indexInArray).text("Today");
+
+                    } else {
+                        $(".date").eq(indexInArray).text(valueOfElement.date);
+                    }
+                    $(".weather").eq(indexInArray).text(valueOfElement.type);
+                    // 获取高温的字符串
+                    // 高温 16℃
+                    var high = valueOfElement.high;
+                    high = high.substring(3, 6);
+                    var low = valueOfElement.low;
+                    low = low.substring(3, 6);
+                    if (indexInArray == 0) {
+                        $(".temperature").eq(indexInArray).text(low + "-" + high);
+                    }
+                    else {
+                        $(".temperature").eq(indexInArray).text("气温:" + low + "-" + high);
+                    }
+                    if (valueOfElement.type.indexOf("晴") > -1) {
+                        qing(indexInArray);
+                    }
+                    if (valueOfElement.type.indexOf("阴") > -1) {
+                        yin(indexInArray);
+                    }
+                    if (valueOfElement.type.indexOf("云") > -1) {
+                        yun(indexInArray);
+                    }
+                    if (valueOfElement.type.indexOf("雨") > -1) {
+                        yu(indexInArray);
+                    }
+                    if (valueOfElement.type.indexOf("雪") > -1) {
+                        xue(indexInArray);
+                    }
+
+
+                    function qing(num) {
+                        $("img")[num].src = "days/qing.png";
+                    }
+                    function yin(num) {
+                        $("img")[num].src = "days/yin.png";
+                    }
+                    function yun(num) {
+                        $("img")[num].src = "days/cloudy1.png";
+                    }
+                    function yu(num) {
+                        $("img")[num].src = "days/xiaoyu.png";
+                    }
+                    function xue(num) {
+                        $("img")[num].src = "days/xue.png";
+                    }
+
+
+
+                });
+            }
+        );
+    </script>
+</body>
+
+</html>

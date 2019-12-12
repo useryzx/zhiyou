@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+
+        body {
+            background-image: url(../../壁纸/xl6m1o.jpg);
+            background-size: 100% 100%;
+        }
+
+        .box {
+            margin: 40px auto;
+            height: 80%;
+            width: 60%;
+
+            border-radius: 10px;
+            margin-bottom: 0;
+        }
+
+        .head2 {
+            width: 100%;
+            height: 10%;
+            background-color: rgba(37, 37, 37, 0.3);
+        }
+
+        .head {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 45%;
+            border-bottom-right-radius: 45%;
+            box-shadow: 0 2px 15px black;
+            /* background-color: rgba(255, 255, 255, 0.35); */
+            background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+            ;
+            /*FireFox*/
+            display: flex;
+            justify-content: center;
+        }
+
+        .body {
+            width: 100%;
+            height: 80%;
+            display: flex;
+        }
+
+        .left,
+        .right {
+            color: white;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(37, 37, 37, 0.3);
+            
+        }
+        .left{
+            border-bottom-left-radius: 10px;
+        }
+        .right{
+            border-bottom-right-radius: 10px;
+
+        }
+
+        .bottumDiv,
+        .topDiv {
+            width: 100%;
+            height: 50%;
+        }
+
+        .city {
+            font-size: 40px;
+        }
+
+        img {
+            height: 70%;
+        }
+
+        section {
+            height: 33.33%;
+            display: flex;
+            align-items: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <p class="time">10:35</p>
+    <div class="box">
+        <div class="head2">
+            <div class="head">
+                <h2>天气预报</h2>
+            </div>
+        </div>
+        <div class="body">
+            <div class="left">
+                <section>
+                    <span class="city">
+                        <h4>上海</h4>
+                    </span>
+                        <h6>shanghai</h6>
+
+                    
+                </section>
+                <section>
+                    <img src="img\days\cloudy1.png" alt="">
+                    <span class="today">
+                        <h2>今日</h2><br><br>
+                        <span class="todayWeather">多云</span>
+                    </span>
+
+                </section>
+                <section>
+                    <span class="todayTem">
+                        <h2>气温</h2><br><br>
+                        <span class="todayTemNum">26°C~19°C</span>
+                    </span>
+
+                </section>
+            </div>
+
+
+            <div class="right">
+
+
+                <div class="topDiv">
+                    <section>
+                        <span class="zhouwu">星期五</span>
+                        <span class="zhouwu">星期五</span>
+
+                    </section>
+                    <section>
+                        <img src="img\days\cloudy1.png" alt="">
+                        <span class="tomorrowWeather">多云</span>
+
+                    </section>
+                    <section>
+                        <span class="tomorrowTem">气温</span>
+                        <span class="tomorrowTemNum">26°C~19°C</span>
+                    </section>
+                </div>
+
+
+                <div class="bottumDiv">
+                    <section>
+                        <span class="zhouliu">星期六</span>
+                        <span class="zhouliu">星期六</span>
+                    </section>
+                    <section>
+                        <img src="img\days\cloudy1.png" alt="">
+                        <span class="nextWeather">多云</span>
+                    </section>
+                    <section>
+                        <span class="nextTem">气温</span>
+                        <span class="nextTemNum">26°C~19°C</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

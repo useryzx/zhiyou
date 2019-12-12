@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天气预报</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(../../../壁纸/wallhaven-r2e391.png);
+            background-size: 100% 100%;
+        }
+
+        main {
+            width: 800px;
+            height: 800px;
+            background-color: rgba(21, 251, 0, 0.2);
+            border-radius: 30px;
+        }
+
+        #title {
+            text-align: center;
+            background-image: radial-gradient(circle,rgba(255, 255, 255, 0),rgba(0,0,0,0.5));
+            /* background-color: rgb(133, 255, 144); */
+            height: 100px;
+            line-height: 100px;
+            margin: 0;
+            /* border-top-right-radius: 30px; */
+            /* border-top-left-radius: 30px; */
+            border-radius: 30px 30px 30% 30%;
+        }
+
+        #box {
+            height: 700px;
+            display: flex;
+        }
+
+        .days {
+            /* border: 1px solid red; */
+            width: 50%;
+            height: 100%;
+        }
+
+        #tomorrow,
+        #threeDay {
+            height: 50%;
+            border: solid 1px green;
+        }
+
+        #today {
+            padding: 50px;
+            box-sizing: border-box;
+        }
+
+        img,
+        span {
+            vertical-align: middle;
+        }
+
+        span {
+            font-size: 50px;
+            margin-left: 30px;
+        }
+
+        #todayWeather,
+        #todayTemperature {
+            text-align: right;
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        #other {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        section {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="title">天气预报</h1>
+        <div id="box">
+            <div id="today" class="days">
+                <h1 id="city">上海</h1>
+                <h2 class="cityPy">shanghai</h2>
+                <section><img src="img/days/cloudy1.png" alt="">
+                    <span class="date">今日</span>
+                </section>
+                <div id="todayWeather" class="weather">多云</div>
+                <div style="font-size: 30px;font-weight: 500">气温</div>
+                <div id="todayTemperature" class="temperature">26-19°C</div>
+            </div>
+            <div id="other" class="days">
+                <div id="tomorrow">
+                    <h2 class="tomorrowDate" style="text-align: center;">星期五 10月11日</h2>
+                    <section>
+                        <img src="img/days/cloudy1.png" alt="">
+                        <span class="tomorrowWeather">晴天</span>
+                    </section>
+                    <h2 class="tomorrowTemperature" style="text-align: center;">气温：&nbsp;&nbsp;&nbsp;26-19°C</h2>
+
+                </div>
+                <div id="threeDay">
+                    <h2 class="nextDate" style="text-align: center;">星期五 10月11日</h2>
+                    <section>
+                        <img src="img/days/cloudy1.png" alt="">
+                        <span class="nextWeather">晴天</span>
+                    </section>
+                    <h2 class="nextTemperature" style="text-align: center;">气温：&nbsp;&nbsp;&nbsp;26-19°C</h2>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="jquery.js"></script>
+    <script src="Convert_Pinyin.js"></script>
+    <script>
+        //添加脚本
+        // json服务器返回客户端的一种数据格式     xml可扩展标记语言
+        // 接口api    http://wthrcdn.etouch.cn/weather_mini?
+
+        
+        
+
+
+        $.getJSON("http://wthrcdn.etouch.cn/weather_mini?", { city: "长沙市" },
+            function (data, textStatus, jqXHR) {
+                console.log(data);
+                // 城市
+                $("#city").text(data.data.city);
+                $(".cityPy").text(pinyin.getFullChars(data.data.city));
+                var todayWeather = data.data.forecast[0].type;
+                console.log(todayWeather)
+                $("#todayWeather").text(todayWeather);
+                var low = data.data.forecast[0].low.substring(3, 5);
+                var high = data.data.forecast[0].high.substring(3, 5);
+                $("#todayTemperature").text(low + "~" + high);
+
+                var tomorrowDate = data.data.forecast[1].date.substring(3, 6) + data.data.forecast[1].date.substring(0, 3);
+                $(".tomorrowDate").text(tomorrowDate);
+                var tomorrowWeather = data.data.forecast[1].type;
+                console.log(tomorrowWeather)
+                $(".tomorrowWeather").text(tomorrowWeather);
+                $(".tomorrowTemperature").text("气温：" + data.data.forecast[1].low.substring(3, 5) + "~" + data.data.forecast[1].high.substring(3, 5));
+
+
+                var nextDate = data.data.forecast[2].date.substring(3, 6) + data.data.forecast[2].date.substring(0, 3);
+                $(".nextDate").text(nextDate);
+                var nextWeather = data.data.forecast[2].type;
+                console.log(nextWeather)
+                $(".nextWeather").text(nextWeather);
+                $(".nextTemperature").text("气温：" + data.data.forecast[2].low.substring(3, 5) + "~" + data.data.forecast[2].high.substring(3, 5));
+            
+
+
+
+
+
+                function weatherImgSrc(num) {
+                    $("img")[0].src = "img/days/" + num + ".png";
+                }
+                function tomorrowImgSrc(num) {
+                    $("img")[1].src = "img/days/" + num + ".png";
+                }
+                function nextImgSrc(num) {
+                    $("img")[2].src = "img/days/" + num + ".png";
+                }
+                
+
+                if (todayWeather.indexOf("晴") > -1) {
+                    var num = "qing";
+                    console.log(num)
+                    weatherImgSrc(num);
+                }
+                else if (todayWeather.indexOf("云") > -1) {
+                    var num = "cloudy1";
+                    weatherImgSrc(num);
+                }
+                else if (todayWeather.indexOf("雪") > -1) {
+                    var num = "xue";
+                    weatherImgSrc(num);
+                }
+                else if (todayWeather.indexOf("雨") > -1) {
+                    var num = "xiaoyu";
+                    weatherImgSrc(num);
+                }
+                else if (todayWeather.indexOf("阴") > -1) {
+                    var num = "yin";
+                    weatherImgSrc(num);
+                }
+
+
+
+
+                if (tomorrowWeather.indexOf("晴") > -1) {
+                    var num = "qing";
+                    tomorrowImgSrc(num);
+                }
+                else if (tomorrowWeather.indexOf("云") > -1) {
+                    var num = "cloudy1";
+                    tomorrowImgSrc(num);
+                }
+                else if (tomorrowWeather.indexOf("雨") > -1) {
+                    var num = "xiaoyu";
+                    tomorrowImgSrc(num);
+                }
+                else if (tomorrowWeather.indexOf("雪") > -1) {
+                    var num = "xue";
+                    tomorrowImgSrc(num);
+                }
+                else if (tomorrowWeather.indexOf("阴") > -1) {
+                    var num = "yin";
+                    tomorrowImgSrc(num);
+                }
+
+
+
+
+                if (nextWeather.indexOf("晴") > -1) {
+                    var num = "qing";
+                    nextImgSrc(num);
+                }
+                else if (nextWeather.indexOf("云") > -1) {
+                    var num = "cloudy1";
+                    nextImgSrc(num);
+                }
+                else if (nextWeather.indexOf("雨") > -1) {
+                    var num = "xiaoyu";
+                    nextImgSrc(num);
+                }
+                else if (nextWeather.indexOf("雪") > -1) {
+                    var num = "xue";
+                    nextImgSrc(num);
+                }
+                else if (nextWeather.indexOf("阴") > -1) {
+                    var num = "yin";
+                    nextImgSrc(num);
+                }
+                
+            }   
+            ); 
+    </script>
+</body>
+
+</html>
+<!-- 天气接口http://wthrcdn.etouch.cn/weather_mini? -->

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+
+        body {
+            background-image: url(../../壁纸/xl6m1o.jpg);
+            background-size: 100% 100%;
+        }
+
+        .box {
+            margin: 40px auto;
+            height: 80%;
+            width: 60%;
+
+            border-radius: 10px;
+            margin-bottom: 0;
+        }
+
+        .head2 {
+            width: 100%;
+            height: 10%;
+            background-color: rgba(37, 37, 37, 0.3);
+        }
+
+        .head {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 45%;
+            border-bottom-right-radius: 45%;
+            box-shadow: 0 2px 15px black;
+            /* background-color: rgba(255, 255, 255, 0.35); */
+            background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+            /*FireFox*/
+            display: flex;
+            justify-content: center;
+        }
+
+        .body {
+            width: 100%;
+            height: 80%;
+            display: flex;
+        }
+
+        .left,
+        .right {
+            color: white;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(37, 37, 37, 0.3);
+
+        }
+
+        .left {
+            border-bottom-left-radius: 10px;
+            border-right: rgba(255, 255, 255, 0.2) solid 1px;
+            
+        }
+
+        .right {
+            border-bottom-right-radius: 10px;
+
+        }
+
+        .bottumDiv,
+        .topDiv {
+            width: 100%;
+            height: 50%;
+            border-bottom: rgba(255, 255, 255, 0.2) solid 1px;
+        }
+
+        .city {
+            font-size: 40px;
+        }
+
+        img {
+            height: 80%;
+        }
+
+        section {
+            height: 33.33%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .city{
+           justify-content: flex-start;
+        }.cityPinyin{
+            margin-bottom: 46px;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <p class="time">10:35</p>
+    <div class="box">
+        <div class="head2">
+            <div class="head">
+                <h2>天气预报</h2>
+            </div>
+        </div>
+        <div class="body">
+            <div class="left">
+                <section class="city">
+                    <h3>上海</h3>
+                    <h6 class="cityPinyin">shanghai</h6>
+                </section>
+                <section>
+                    <img src="img\days\tstorm2.png" alt="">
+                    <span>
+                        <h4>今日</h4>
+                        <h5>多云</h5>
+                    </span>
+                </section>
+                <section>
+                    <h5>气温</h5>
+                    <h4>XXXXXXXXX</h4>
+                </section>
+            </div>
+
+
+            <div class="right">
+
+
+                <div class="topDiv">
+                    <section>
+                        <h5>星期五是个多云天</h5>
+                    </section>
+                    <section>
+                        <img src="img\days\tstorm2.png" alt="">
+                        <h5>晴天</h5>
+                    </section>
+                    <section>
+                        <h5>气温</h5>
+                        <h5>XXXXXXXXX</h5>
+                    </section>
+                </div>
+
+
+                <div class="bottumDiv">
+                    <section>
+                        <h5>星期五是个多云天</h5>
+                    </section>
+                    <section>
+                        <img src="img\days\tstorm2.png" alt="">
+                        <h5>晴天</h5>
+                    </section>
+                    <section>
+                        <h5>气温</h5>
+                        <h5>XXXXXXXXX</h5>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

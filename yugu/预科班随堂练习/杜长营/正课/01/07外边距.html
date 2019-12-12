@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>定宽居中</title>
+        <style>
+            div{
+                /* margin 外边距  作用:调整相邻标签之间的距离 */
+                width: 500px;
+                height: 200px;
+                background-color: red;
+                /* margin : 0  上 右下左 */
+                /* margin: 0上下   10左右   */
+                /* margin: 0上   10 左右  20 下 */
+                /* margin: 0  1  2 3  上右下左 */
+                /* margin: 100px 200px 10px 10px; */
+                /* 定宽居中 */
+                /* margin: 0 auto; */
+
+                /* 单独控制某一个边 */
+                margin-top: 100px;
+                margin-right: 100px;
+                margin-bottom: 100px;
+                margin-left: 100px;
+            }
+            span{
+                /* 对于行内元素来讲: 设置上下外边距 是无效的   左右是可以设置的*/
+                /* 怎么判断一个元素的类型 : display：inline; */
+                margin-top: 1000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <span>11111</span>
+    </body>
+</html>
+<!-- 作业: 找个新闻界面写一写 -->

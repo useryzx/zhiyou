@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<style type="text/css">
+*{
+margin: 0px;
+padding: 0px;
+}
+body{
+  background:url(img/dz2.jpg) ;
+  background-size:cover; 
+}
+#bottom{
+width: 100%;
+height: 70px;
+position: absolute;
+bottom: 0px;
+}
+.botton{
+margin-left: 50px;
+width: 200px;
+height: 70px;
+background-image: url(img/stop.png);
+background-size: 200px 70px;
+float: left;
+text-align: center;
+line-height:70px;
+cursor: pointer;
+}
+#score{
+width: 200px;
+height: 300px;
+position: absolute;
+bottom: 0px;
+right: 0px;
+background-image: url(img/fs.png);
+background-size: 200px 300px;
+text-align: center;
+line-height: 230px;
+font-size:40px ;
+}
+#time{
+width: 100px;
+height: 100px;
+position: absolute;
+right: 0px;
+top: 0px;
+text-align: center;
+line-height: 100px;
+font-size: 30px;
+}
+#lose{
+width: 500px;
+height: 300px;
+position: absolute;
+left: 450px;
+top: -60%;
+background-image: url(img/sp1.png);
+background-size: 500px 300px;
+cursor: pointer;
+text-align: center;
+line-height: 200px;
+color: blue;
+font-size: 40PX;
+}
+@keyframes drop{
+from{top: -60%;}
+to{top: 0px;}
+}
+</style>
+<script>
+var arr=[];
+var T=0;
+var score=0;
+var sid=0;
+var did=0;
+var tid=0;
+var time;
+var downspeed;
+var createspeed;
+var change;
+function start(){
+//已经点击过了就不能再次点击,暂停以后才可以再次点击
+if(T==0){
+T++;
+time=0;
+downspeed=200;
+createspeed=1000;
+tid=setInterval("time0()",1000);
+sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+var lose=document.getElementById("lose");
+lose.style.top="-60%";
+}
+
+}
+function create(){
+//创建一个图片对象
+var img=document.createElement("img");
+//生成A-Z的字母的随机数，也就是ASC码的65-90
+var rnum=Math.ceil(65+Math.random()*25);    //上取整
+//unicode转化为字符
+   var letter=String.fromCharCode(rnum);
+   //生成图片
+   img.src="img/"+letter+".png";
+   img.name=letter;
+   img.style.position="absolute";
+   //生成一个随机数，是为了让图片出现的水平位置不同 大概1300个随机数
+   var left=Math.floor(Math.random()*1300);    //下取整
+   img.style.left=left+"px";
+   img.style.top="0px";
+   //将图片放到数组里
+   arr.push(img);
+   document.body.appendChild(img);
+}
+function down(){
+
+
+for(var i=0;i<arr.length;i++){
+var letter=arr[i];
+var top=top1(letter.style.top);
+var grade=document.getElementById("score");
+if(top>520){
+//让图片从页面中消失
+score--;
+letter.parentNode.removeChild(letter);
+//清除自己在数组的存储
+arr.splice(i,1);
+if(score<0){
+gameover();
+}
+grade.innerHTML=score;
+}
+letter.style.top=top+20+"px";
+
+}
+}
+function top1(top){
+//substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+//将字符串转换为数值
+var num=top.substring(0,top.indexOf("p"));
+return new Number(num);
+}
+function pause(){
+clearInterval(sid);
+clearInterval(did);
+clearInterval(tid);
+var pause=document.getElementById("pau");
+if(pause.innerHTML=="继续游戏"){
+sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+tid=setInterval("time0()",1000);
+pause.innerHTML="暂停游戏";
+}else{
+pause.innerHTML="继续游戏";
+}
+
+}
+//当敲击键盘时触发该函数
+window.οnkeypress=function(e){
+//获得按下的键的code
+var code=e.keyCode;
+var grade=document.getElementById("score");
+var letter=String.fromCharCode(code);
+
+for(var i=0;i<arr.length;i++){
+if(arr[i].name==letter){
+score++;
+change=score;
+lv();
+grade.innerHTML=score;
+arr[i].parentNode.removeChild(arr[i]);
+arr.splice(i,1);
+break;
+}
+}
+}
+function gameover(){
+T--;
+for (var i=0;i<arr.length;i++) {
+arr[i].parentNode.removeChild(arr[i]);
+}
+arr.splice(0,arr.length);
+score=0;
+clearInterval(sid);
+clearInterval(did);
+clearInterval(tid);
+var lose=document.getElementById("lose");
+lose.style.animation="drop 2s linear";
+lose.style.top="0px";
+lose.innerHTML=time+"秒"
+}
+function time0(){
+time++;
+var time0=document.getElementById("time");
+time0.innerHTML=time+"秒";
+}
+function lv(){
+if(change>=5&&change<10){
+downspeed=150;
+createspeed=800;
+clearInterval(sid);
+   clearInterval(did);
+   sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+}
+else if(change>=10&&change<20){
+downspeed=100;
+createspeed=600;
+clearInterval(sid);
+   clearInterval(did);
+   sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+}
+else if(change>=20&&change<40){
+downspeed=50;
+createspeed=400;
+clearInterval(sid);
+   clearInterval(did);
+   sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+}
+else if(change>=40&&change<70){
+downspeed=50;
+createspeed=300;
+clearInterval(sid);
+   clearInterval(did);
+   sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+}
+else if(change>=70){
+downspeed=50;
+createspeed=200;
+clearInterval(sid);
+   clearInterval(did);
+   sid=setInterval("create()",createspeed);
+did=setInterval("down()",downspeed);
+}
+
+}
+</script>
+</head>
+<body>
+<div id="bottom">
+<div id="pau" class="botton" οnclick="pause()">暂停游戏</div>
+<div id="sta" class="botton" οnclick="start()">开始游戏</div>
+</div>
+<div id="score">
+0
+</div>
+<div id="time">
+0秒
+</div>
+<div id="lose" οnclick="start()">
+
+</div>
+
+</body>
+</html>
+————————————————
+版权声明：本文为CSDN博主「全场梦游c」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_39404258/article/details/79628776

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        main {
+            width: 80%;
+            height: 100%;
+            border: solid 1px red;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-left: 200px;
+            margin-bottom: 0;
+        }
+
+        hr {
+            width: 80%;
+            margin: 2px auto;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .big {
+            font-size: 30px;
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        .small {
+            font-size: 20px;
+            color: green;
+        }
+
+        #dotted {
+            border: none;
+            border-top: 10px dotted red;
+            width: 50%;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th {
+            background-color: green;
+            width: 150px;
+            height: 50px;
+        }
+
+        tr td:nth-child(1) {
+            background-color: yellow;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>BMI身体健康指数计算</h1>
+            <hr>
+            <hr>
+            <p class="big">BMI值計算公式: BMI = 體重(公斤) / 身高<sup>2</sup>(公尺2)</p>
+            <p class="big">例如：一個52公斤的人，身高是155公分，則BMI為 :</p>
+            <p class="small">52(公斤)/1.552 ( 公尺2 )= 21.6</p>
+            <p class="small">體重正常範圍為 BMI=18.5～24</p>
+            <hr id="dotted">
+
+        </div>
+        <div style="text-align: center;">
+            <p id="haha" style="color: pink;font-size:30px ;">快看看你的BMI是否在合理范围</p>
+            <label for="height">身高：</label>
+            <input type="text" id="height" placeholder="请输入身高">cm
+            <input type="button" value="开始计算" class="jisuan"><br>
+            <label for="weight">体重：</label>
+            <input type="text" id="weight" placeholder="请输入体重">kg
+            <input type="button" value="清除内容" class="qingchu">
+            <p>您的BMI值为：</p>
+            <input type="text" id="result">
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>身体指数kg/m2</th>
+                        <th>腰围</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>体重过轻</td>
+                        <td><span id="s1">BMI &lt; 18.5</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>正常</td>
+                        <td><span id="s2">18.5&lt;= BMI &lt;24</span></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>异常范围</td>
+                        <td><span id="s3">24≦BMI＜27</span><br>
+                            <span id="s4">27≦BMI＜30</span><br>
+                            <span id="s5">30≦BMI＜35</span><br>
+                            <span id="s6">BMI≧35</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="jquery.js"></script>
+    <script>
+        var hInput = document.querySelector("#height");
+        var wInput = document.querySelector("#weight");
+        var rInput = document.querySelector("#result");
+        var idName = '';
+        $(document).ready(function () {
+            $(".jisuan").click(function () {
+                var height = hInput.value;
+                var weight = wInput.value;
+                if (idName) {
+                    var oldName = document.getElementById(idName);
+                    if (oldName) {
+                        oldName.style.backgroundColor = '';
+                    }
+                }
+
+                if (height == '') {
+                    alert('请输入身高');
+                    return;
+                }
+                if (weight == '') {
+                    alert('请输入体重');
+                    return;
+                }
+                height /= 100;
+                var BMI = (weight / (height * height)).toFixed(2);
+                rInput.value = BMI;
+                if (BMI < 18.5) {
+                    idName = "s1";
+                }
+                else if (BMI < 24) {
+                    idName = "s2"
+                }
+                else {
+                    if (BMI < 27) {
+                        idName = "s3";
+                    }
+                    else if (BMI < 30) {
+                        idName = "s4";
+                    }
+                    else if (BMI < 35) {
+                        idName = "s5";
+
+                    }
+                    else {
+                        idName = "s6";
+                    }
+                }
+                document.getElementById(idName).style.backgroundColor = 'red';
+            })
+            $(".qingchu").click(function () {
+                hInput.value = '';
+                wInput.value = '';
+                rInput.value = '';
+                document.getElementById(idName).style.backgroundColor = '';
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            width: 10000px;
+            height: 10000px;
+            /* line-height: 800px; */
+        }
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+        main{
+            /* align对齐 */
+            text-align: center;
+        }
+        a{
+            /* display: inline-block; */
+            display: block;
+            /* display: inline; */
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- 元素的分类 三种
+    1.行元素  inline  常见元素: span  a    b   s  i  
+                      特点 :   1.根据内容占据宽高 (不独占一行)
+                               2.不可以设置宽高
+                      页面布局时: 从左往右 (当右侧空间不够用时会自动换行)
+                        F12 -> 布局 -> 盒模型属性 -> display:xxx;
+    2.块元素  block   常见的元素: div p  h1  header main hr  footer 
+                      特点:    1.独占一行
+                               2.可以设置宽高
+                               在不设置宽高时宽度会继承自父元素的宽 高根据内容堆砌而成
+                      页面布局:  从上往下
+    3.行内块元素 inline-block 常见元素: img input button
+                              特点:  1.根据内容占据宽度 (不独占一行)
+                                     2.可以设置宽高的
+                            img默认时会按照图片的原始尺寸进行展示，可以根据给定的宽高值等比缩放
+                             页面布局时: 从左往右
+    -->
+    <span>111111111111111111</span>
+    <a href="">百度一下</a>
+    <div>1</div>
+    <div>2</div>
+    <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1574733813&di=4b1fa96bbe6a950a3acac2908f0d5b0c&src=http://img01.taopic.com/180513/318763-1P51301114485.jpg" alt="">
+    <span>111111111</span>
+    <!-- 在父元素中 子元素为行元素或者行内块元素，想使子元素居中 可以对父元素设置text-align:center; -->
+    <main>
+        <span>今天好开心因为要还钱了，但是还没钱呢</span>
+    </main>
+    <!-- 元素的类型可以通过display 属性来修改
+    display:block;
+    
+    -->
+    <a href="">行元素更改类型</a>
+    <hr style="height: 1px;">
+</body>
+</html>

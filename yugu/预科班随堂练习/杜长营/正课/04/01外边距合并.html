@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外边距合并</title>
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 50px;
+        }
+        #d2{
+            margin-top: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        main{
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            /* transparent 透明 */
+            /* 11111111 */
+            /* border: 1px solid transparent; */
+            /* 333333 */
+            /* position: absolute; */
+            /* 444444 */
+            /* float 浮动   left 左 */
+            /* float: left; */
+
+            /* 5555 */
+            /* padding: 1px; */
+            /* 6666 */
+            /* overflow: hidden; */
+        }
+        #d3{
+            /* 222222222 */
+            /* position: absolute; */
+            /* 777777 */
+            /* display 显示 */
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 100px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- 外边距合并  -->
+    <!-- 1.兄弟关系合并   取大值 -->
+    <div id="d1"></div>
+    <div id="d2"></div>
+    <!-- 2.父子关系的合并 -->
+    <!-- 解决父子关系合并的方式如下
+    1.设置父元素的border
+    2.设置子元素的定位信息为absolute 
+    3.设置父元素的定位信息为absolute (会让父元素 脱离标准文档流，不参与流式布局)
+    4.设置父元素 float值
+    5.设置父元素padding值
+    6.设置父元素的overflow属性
+    7.设置子元素display属性为inline-block
+    -->
+    <main>
+        <div id="d3"></div>
+    </main>
+    <div style="clear: both;"></div>
+    <div style="height: 100px;background-color: yellow;"></div>
+</body>
+</html>

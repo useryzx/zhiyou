@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex对齐方式</title>
+    <style>
+        section {
+            font-size: 30px;
+            display: flex;
+            height: 400px;
+            border: solid 2px black;
+            /* flex-direction: 属性决定主轴的方向（即项目的排列方向）。 */
+            /* 项目在主轴的对齐方式 
+            flex-start（默认值）：左对齐
+            flex-end：右对齐
+            center： 居中
+            space-between：两端对齐，项目之间的间隔都相等。
+space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比
+项目与边框的间隔大一倍*/
+            justify-content: space-around;
+            /* 交叉轴的对齐方式 
+        flex-start：交叉轴的起点对齐。
+        flex-end：交叉轴的终点对齐。
+        center：交叉轴的中点对齐。
+        baseline: 项目的第一行文字的基线对齐。
+        stretch（默认值）：如果项目未设置高度或设为auto，
+        将占满整个容器的高度。
+*/
+            align-items: stretch;
+        }
+
+        div {
+            border: solid 2px red;
+        }
+
+        div:nth-of-type(1) {
+            height: 100px;
+            flex-basis: 100px;
+        }
+
+        div:nth-of-type(2) {
+            height: 150px;
+            flex-basis: 100px;
+            /* 设置项目本身在交叉轴的对齐方式会覆盖alignitems */
+            align-self: flex-end;
+            /*
+            项目的样式
+               order:项目的排列顺序，数字越大，越靠后
+               flex-grow:容器有富余空间的情况下，项目所占的富余空间比例(小屏向大屏过渡)
+               flex-shrink:容器空间不足的情况下，压缩每个项目的比例项目
+               flex-basis:项目在容器主轴的尺寸,
+               align-self:设置项目本身在交叉轴的对齐方式会覆盖align-items
+               flex:复合属性
+            */
+        }
+
+        div:nth-of-type(3) {
+            height: 300px;
+            flex-basis: 200px;
+        }
+
+        div:nth-of-type(4) {
+            height: 200px;
+            flex-basis: 150px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </section>
+</body>
+
+</html>

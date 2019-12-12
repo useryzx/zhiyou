@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随堂打字练习</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            /* border: 1px solid red; */
+        }
+        #timeReduce{
+            text-align: center;
+            font-size: 30px;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* 设置父元素弹性布局 */
+            display: flex;
+            /* 同行居中排列 */
+            align-items: center;
+            /* 沿主轴居中 */
+            justify-content: center;
+        }
+
+        #word {
+            font-size: 300px;
+            text-align: center;
+            border: green 10px dotted;
+            border-radius: 50%;
+            line-height: 500px;
+        }
+
+        #result {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .fadeIn {
+            /* 名字随便起fadeIn,动画 */
+            animation-name: fadeIn;
+            /* 动画持续时间 */
+            animation-duration: 300ms;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                transform: scale(.2, .2);
+            }
+
+            100% {
+                transform: scale(1, 1);
+            }
+        }
+
+        .shake {
+            color: red;
+            animation-name: shake;
+            /* 动画持续时间 */
+            animation-duration: 300ms;
+        }
+        /* 添加抖动动画 */
+        /* 输入错误时， 带shake 动画(平移)  颜色变红  */
+        @keyframes shake {
+            0% {
+                transform: translate(0px);
+            }
+            25% {
+                transform: translate(10px);
+            }
+            50% {
+                transform: translate(0px);
+            }
+            75% {
+                transform: translate(-10px);
+            }
+            100% {
+                transform: translate(0px);
+            }
+        }       
+    </style>
+</head>
+
+<body>
+    <div id="box">      
+        <div id ='timeReduce'>&nbsp;剩余时间:&nbsp;60&nbsp;S</div>
+        <div id="word" class="fadeIn"></div>
+        <div id="result">正确0,错误0,正确率0.00%</div>
+    </div>
+    <!-- 添加脚本文件 -->
+    <script>
+        // Dom操作
+        var wordDiv = document.getElementById('word');
+        // 刷新页面时  带fadeIn动画  再次点击时  依然有动画效果
+        setTimeout(() => {
+                    wordDiv.classList.remove('fadeIn');
+                }, 300);
+        var rightCount = 0;
+        var wrongCount = 0;
+        var rightPercent = rightCount / (wrongCount + rightCount);
+        // 倒计时60s 并显示倒计时       
+        var time = 60;
+        // 随机26个英文字母 ASCII码 65-90之间的数字
+        // math数学   random随机获取0-1之间的数字
+        // 定义一个方法 function功能方法
+        function changeLetter() {  
+            var num = Math.floor(Math.random() * 26) + 65;
+            // 通过数值转换成ascii所对应的字母
+            var letter = String.fromCharCode(num);
+            // console.log(letter);
+            // 把随机字母显示到找到的div中
+            wordDiv.textContent = letter;           
+        }
+       
+        // 定时器,倒计时,每1s,time参数-1
+        setInterval(function() {
+                if(time>0) {
+                    time--;
+                    document.getElementById('timeReduce').innerHTML = '剩余时间 ' + time + ' S';
+                    }
+                    else{
+                        // alert('GAME  OVER');   
+                    }
+                    }, 1000);
+        // 调用方法并开始计时
+        changeLetter();
+
+        // 键盘的输入
+        document.body.onkeydown = function (e) {
+            console.log(e.keyCode);
+            // 通过键盘输入的keyCode值和显示 的文本的keyCode值进行对比
+            // 如果相同 证明输入正确
+            // 获取wordDiv中显示的内容的keyCode
+            var displayLetter = wordDiv.textContent.charCodeAt();
+            // ==逻辑运算符 =赋值
+
+
+            // 引入判断字母正确与否,并且引入time参数判断,时间结束停止调用changeLetter方法
+            if (e.keyCode == displayLetter&time>0) {
+                // 1.切换字母
+                changeLetter();
+                // 2.切换动画
+                //  class类  list列表
+                wordDiv.classList.add('fadeIn');
+                setTimeout(() => {
+                    wordDiv.classList.remove('fadeIn');
+                }, 300);
+                // 3.统计正确次数
+                rightCount++;
+                // wrongCount = wrongCount;
+                rightPercent = (rightCount / (wrongCount + rightCount))*100;
+                // .toFixed(小数点后几位)
+                document.getElementById('result').innerText = '正确' + rightCount + ',错误' + wrongCount + ',正确率' + rightPercent.toFixed(2)+'%';
+            }
+                else if(time>0){
+                    wordDiv.classList.add('shake');
+                    setTimeout(() => {
+                    wordDiv.classList.remove('shake');
+                }, 300);
+                wrongCount++;
+                // rightCount = rightCount;
+                rightPercent = (rightCount / (wrongCount + rightCount))*100;
+                document.getElementById('result').innerText = '正确' + rightCount + ',错误' + wrongCount + ',正确率' + rightPercent.toFixed(2)+'%';
+                }
+                else{
+                    document.getElementById('word').innerHTML = 'GAME OVER';
+                    document.getElementById('word').style.fontSize = '60px';
+                }
+        }
+    </script>
+</body>
+</html>

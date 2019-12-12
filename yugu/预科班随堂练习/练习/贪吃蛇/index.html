@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="ctrl">
+        <p id="score">得分：</p>
+        <label>游戏速度：</label>
+        <br>
+        <select id="speed">
+            <option value="500">最慢</option>
+            <option value="250">慢</option>
+            <option value="100" selected>普通</option>
+            <option value="50">快</option>
+            <option value="25">最快</option>
+        </select>
+        <br>
+        <label>改变速度后重新<br>开始游戏生效</label>
+        <br>
+        <button onclick="btnClick()">重新开始</button>
+    </div> 
+    <table id="gt">
+        
+    </table>
+</body>
+
+<script src="index.js"></script>
+
+</html>

@@ -1,0 +1,50 @@
+html,body{
+    height: 100%;
+}
+.ling,.LING,.Ling{
+    width: 100px;
+    height: 100px;
+    background-color: #464646;
+    border-radius: 10px;
+    display: flex;
+}
+.er,.ER,.Er,.Er1{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+/* 第一个六点 */
+.ling{
+    justify-content: space-between;
+}
+.yi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* 第二个六点 */
+.LING{
+    justify-content: space-between;
+}
+.YI{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* 第三个六点 */
+.Ling{
+    flex-wrap: wrap;
+    
+}
+.Yi,.Yi1{
+    flex-basis: 100%;
+    display: flex;
+}
+.Yi{
+    justify-content: space-between;
+}
+.Yi1{
+    align-self: center;
+    justify-content: center;
+}

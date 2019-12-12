@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定宽居中</title>
+    <style>
+        div{
+            /* margin外边距  调整相邻元素之间的距离 */
+            width: 500px;
+            height: 200px;
+            background-color: brown;
+            margin:100px;          /*上下左右*/
+            margin:100px 200px;     /*上下     左右*/ 
+            margin:100px 200px 300px;/*上  左右   下*/
+            /* 单独控制某一边 */
+            /* margin-top: 100px;
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-bottom: 100px; */
+        }
+        span{
+            /* 对于行内元素来讲，设置上下边距无效  左右可以设置 */
+            margin-top: 20000px;
+        }
+    </style>
+
+</head>
+<body>
+    <div></div>
+    <span>111111</span>
+</body>
+</html>

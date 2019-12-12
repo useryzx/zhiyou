@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex布局基础</title>
+    <style>
+        #flex-container{
+            width: 100%;
+            height: 400px;
+            border: 2px black solid;
+            display: flex;
+            /* flex-direction: column-reverse; */
+            /* flex-direction: column; */
+            /* flex-direction: row; */
+            /* flex-direction: row-reverse; */
+
+        }
+        .flexItem{
+            border: solid 2px red;
+            flex-basis: 25%;
+        }
+        section div:nth-of-type(1){
+            order: 3;
+        }
+        section div:nth-of-type(2){
+            order: 2;
+        }
+        section div:nth-of-type(3){
+            order: 1;
+        }
+        section div:nth-of-type(4){
+            order: 4;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="flex-container">
+        <div class="flexItem">1</div>
+        <div class="flexItem">2</div>
+        <div class="flexItem">3</div>
+        <div class="flexItem">4</div>
+    </section>
+</body>
+</html>

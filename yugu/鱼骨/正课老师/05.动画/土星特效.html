@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>土星特效</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            perspective: 1000px;
+        }
+        /* 星球星环定位依据 */
+        main{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+        }
+        div{
+            /* 渐变星球，中间填充背景色球形成环 */
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(red, orange, yellow, green, blue, indigo, purple);
+            /* background: radial-gradient(red, orange, yellow, green, blue, indigo, purple); */
+            /* 放射形渐变 */
+            /* background: conic-gradient(red, orange, yellow, green, blue, indigo, purple); */
+            /* 锥形渐变 */
+            border-radius: 50%;   
+            transform: rotateX(75deg) rotateY(10deg);
+            animation: rotate 3s linear infinite;
+        }
+        @keyframes rotate {
+            to{
+                transform: rotateX(75deg) rotateY(10deg) rotateZ(360deg);
+            }
+        }
+        /* 中间背景色球 */
+        div::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background-color: black;
+            transform: translate(25px,25px);
+            border-radius: 50%;    
+        }
+        section{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ddaa80;
+            box-shadow: 0 0 40px 3px inset #ddaa80;
+            border-radius: 50%;   
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div></div>
+        <section></section>
+    </main>
+</body>
+</html>

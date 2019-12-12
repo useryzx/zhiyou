@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1 {
+            /* position 位置  relative相对的 */
+            position: relative;
+            top: 100px;
+            left: 50px;
+        }
+
+        #d2 {
+            /* absolute 绝对   abs */
+            position: absolute;
+
+            top: 1px;
+            left: 1px;
+        }
+
+        nav {
+            height: 100px;
+            background-color: green;
+            position: fixed;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 定位方式 positon: absolute relative fixed -->
+    <!-- 作用: 布局页面    
+    默认的定位方式: static 静态的-->
+    <!-- 1.当元素的定位方式为 relative 相对  
+           特点: 1.相对于自身的位置而言
+                 2.原本的位置被保留 
+                 3.没有脱离文档流的
+                对元素的微调 -->
+    <!-- 2.当元素的定位方式为 absolute 时
+            特点:1.相对于谁？ 相对于距离他最近的父元素postion为非static的元素 如果父元素的定位信息都为static 则相对html标签  浏览器
+                 2.原本的位置会被占用
+                 3.脱离了文档流 
+                当调整子元素的位置时 可以设置为absolte 但父元素一般都是设置relative
+
+                块元素如果脱离了文档流，那么就不能参照父元素宽度定宽，所以脱离了文档流的块元素如果没有内容，则必须设置宽高。如果有内容，宽高都取决于内容。
+                -->
+
+    <!-- 3.当元素的定位方式为fixed时
+            特点:  1.根absolute一样
+                  2.会脱离文档流 
+                  3.原本的位置会被占用   一般用于导航条 和  广告窗口 -->
+    <div id="d1">11111111</div>
+    <div id="d2">22222222</div>
+    <div>33333333</div>
+
+
+    <nav></nav>
+    <main style="height: 2000px;">
+
+    </main>
+
+
+
+
+
+</body>
+
+</html>

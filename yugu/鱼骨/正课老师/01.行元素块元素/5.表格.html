@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tal {
+            border: 1px solid black;
+            /* 把重叠关闭 */
+            border-collapse: collapse;
+        }
+
+        th {
+            border: 1px solid black;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 130px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 表 用于显示一个表格，块元素-->
+    <table id="tal">
+        <!-- 表头 用于显示表的头部部分信息 -->
+        <thead>
+            <!-- 表示一行 -->
+            <tr>
+                <!-- 代表一个单元格 -->
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <!-- 表的主体 -->
+        <tbody>
+            <!-- 使用行合并或者是列合并的窍门就是确保你的参照
+            有准确的参照物 -->
+            <tr>
+                <!-- rowspan 代表行合并 当前td所占的行高
+                应该是两行的高度 rowspan="2"-->
+                <td rowspan="2">张三</td>
+                <td>25</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <!-- colspan列合并  表示当前单元格要占用两列的
+                宽度 -->
+                <td colspan="2">25</td>
+                <td>男</td>
+            </tr>
+            <tr>
+                <td>张三</td>
+                <td>25</td>
+                <td>男</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>css选择器</title>
+    <style>
+        div {
+            color: red
+        }
+
+        #blue {
+            color: blue;
+        }
+
+        .green {
+            color: green;
+        }
+
+        /* 选中class和small的元素 */
+        .green.small {
+            font-size: 50px;
+            font-style:oblique;
+            /* text-decoration: blink;blink已经被废弃 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- id  identify标识符 一般标识符都是唯一的 -->
+    <div id="blue">111111</div>
+    <!-- class类 类：具有相同属性和行为的集合 -->
+    <div class="green small">222222</div>
+    <div class="green big">333333</div>
+    <div>444444</div>
+    <div class="small"></div>
+
+</body>
+
+</html>

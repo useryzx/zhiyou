@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>样式的优先级</title>
+    <style>
+        h1{
+            color: green;
+        }
+        #title{
+            color: red;
+        }
+        .color{
+            color: blue;
+        }
+        .second{
+            color: yellowgreen !important;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title" class="color second">css样式优先级</h1>
+</body>
+</html>

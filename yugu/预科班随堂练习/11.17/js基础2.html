@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 逻辑运算符  >  <  >=  <=    !=  不等  == 等于
+        var a = 1 > 2;
+        var b = 1 < 2;
+        var c = 1 != 2;
+        // 比较内容是否相同
+        var d = 1 == "1";
+        // ===  比较时 内容和类型 同时相同才为真
+        var e = 1 === "1"
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(d);
+        console.log(e);
+
+        // 或 与  非
+        //    ||      shift + \   或   满足其一即可为真
+        //    &&      shift + 7   与   同时满足就为真
+        //     !                  非 
+
+        //   true || true    true
+        //  true  || false   true
+        //  false || false   false
+
+        // true  &&  true   true
+        // true  && false   false
+        // fasle && false   false
+
+        // !fasle  =  true   !true = false 
+
+
+        // 判断语句
+        // 如果 否则
+        // (条件)    条件为真时 执行if的逻辑  反之执行else
+        // 有且只能执行一个
+
+        if (1 > 2) {
+            console.log("哎.生活啊。是把刀，插了又拔 ，捅死我算了");
+        }
+        else {
+            console.log("啥法类 。。。。。");
+        }
+
+        // 如果逻辑只有一句
+        if (2 > 1) console.log(1111);
+        else console.log(22222);
+
+
+        var money = 100000;
+        var gf = 0;
+        if (money > 10000) {
+            gf = 1;
+            var baby = 1;
+            console.log("买个大房子")
+        } else {
+            gf = 0;
+        }
+        // 三目运算符的格式  条件 ? 值1 : 值2
+        // 如果满足条件 取值1
+        // 反之        取值2
+        // 一般用于简单的赋值操作
+        gf = money > 10000 ? 1 : 0;
+
+
+        // 只要一个条件满足  则剩余无论条件是否满足都不再执行
+        // 有且只能执行一个
+        if (2 > 1) {
+            console.log(111111)
+        }
+        else if (2 > 1) {
+            console.log(2222222)
+        }
+        else if (2 > 2) {
+            console.log(333333)
+
+        }
+        else {
+            console.log(444444)
+
+        }
+
+
+        // switch 开关转换
+        // key 键  value值  case 事件  break 打断
+        var num = 10;
+        switch (num) {
+            case 1:
+                console.log("aaaaaaa");
+
+                break;
+            case 2:
+                console.log("bbbbbbbb");
+
+                break;
+            // default 缺省   默认
+            default:
+                console.log("cccccccc");
+                break;
+        }
+
+
+        // boolean 布尔值  经常用于判断中
+        // var isOpen = true;
+        // 会执行
+        // if(isOpen == true){
+        //     console.log("sadjflasjflasdjflasdjf")
+        // }
+        // 请问会不会执行
+        // 因为isOpen的值为true
+        // if(isOpen){
+        //     console.log("sadjflasjflasdjflasdjf")
+        // }
+
+        var isOpen = false;
+        // !isOpen true
+        // 条件为true  
+        // 因为没有发生赋值的操作 改变的只是表达是的状态  所有结果输出时isOpen的false的
+        if(!isOpen){
+            console.log("mmmmmm");
+            isOpen = !isOpen;
+        }   
+        console.log(isOpen);
+        
+        // && 且  ||或
+        //  1<x<6  不对的
+        if(1>2 && 2>1){
+
+        }
+        if(1>2 || 2>1){
+
+        }
+        
+        // 1.BMI
+        // 2.个人所得税
+
+    </script>
+</body>
+
+</html>

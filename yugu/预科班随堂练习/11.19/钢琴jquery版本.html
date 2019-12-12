@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钢琴</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            height: 80%;
+            width: 80%;
+            /* background-image: url(piano/keys.png); */
+            /* background-size: 100%; */
+            box-shadow: 0 0 50px rgb(154, 230, 179);
+            border-radius: 50px;
+            background-color: rgb(27, 26, 26);
+
+
+        }
+
+        .box {
+            margin: 80px auto;          
+            width: 90%;
+            height: 80%;
+            background-image: url(piano/keys.png);
+            background-size: 100% 100%;
+            display: flex;
+        }
+
+        .key {
+            width: 11.11%;
+            height: 100%;
+            background-color: rgb(180, 86, 175);
+            /* border: solid 1px grey; */
+            opacity: 0;
+            transition: all 1s;
+        }
+
+        .long {
+            height: 80%;
+            opacity: 1;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="box">
+            <div class="key"><audio src="piano/notes/1.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/2.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/3.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/4.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/5.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/6.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/7.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/8.oga"></audio></div>
+            <div class="key"><audio src="piano/notes/9.oga"></audio></div>
+
+        </div>
+
+    </main>
+    <!-- 添加脚本，使用jquery -->
+    <script src="piano/jquery.js"></script>
+    <script>
+
+
+        // 鼠标指针进入事件
+        $(".key").mouseenter(function () {
+            $(this).css("transition", "none");
+            $(this).addClass("long");
+            var audio = $(this).context.firstChild;
+            // console.log(audio);
+            audio.load();
+            audio.play();
+        });
+
+
+
+        // 鼠标指针离开事件
+        $(".key").mouseleave(function () {
+            $(this).removeClass("long");
+            $(this).css("transition", "all 1s");
+// 分割线--------------------------------------------------------------------------------------
+            // 返回Object，返回对象
+            console.log($(this));
+            // 返回标签div
+            console.log(this);
+// 分割线--------------------------------------------------------------------------------------
+        });
+
+
+
+
+        // 键盘按键按下事件
+        $(document).keydown(function (e) {
+            console.log(e.key);
+            var a = e.key-1;
+            console.log(a);
+            // 判断否对应于相应的div
+            if (a >= 0 && a <= 8) {
+                $(".key").eq(a).css("transition", "none");
+                $(".key").eq(a).addClass("long");
+// 分割线--------------------------------------------------------------------------------------
+                // 返回Object，返回对象
+                console.log($(".key").eq(a));
+
+                // 返回标签div
+                console.log($(".key")[a]);
+// 分割线--------------------------------------------------------------------------------------
+                var audio = $(".key")[a].firstChild;
+                audio.load();
+                audio.play();
+            }
+            else {
+                alert("按错了");
+            }
+        });
+
+
+
+        // 键盘按键抬起事件
+        $(document).keyup(function (e) {
+            var a = e.key-1;
+            $(".key").eq(a).removeClass("long");
+            $(".key").eq(a).css("transition", "all 1s");
+
+        });
+    </script>
+
+</body>
+
+</html>

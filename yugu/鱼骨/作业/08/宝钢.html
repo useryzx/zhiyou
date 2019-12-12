@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="bs/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(image/nav-bg.png);
+            background-size: 100% 100%;
+        }
+
+        #nav-bg {
+            background-image: url(image/nav-bg.png);
+            background-size: 100% 100%;
+            border-top: 2px solid skyblue;
+            margin-bottom: 0;
+        }
+
+        #logo {
+            width: 181px;
+            background-image: url(image/logo.png);
+            background-position: 0 80%;
+        }
+
+        @media screen and (min-width: 800px) and (min-height:600px) and (min-aspect-ratio:1/1) {
+            #center-nav {
+                text-align: center;
+            }
+
+            #center-ul {
+                float: none;
+                display: inline-block;
+            }
+        }
+
+        #center-ul li {
+            border: 1px solid transparent;
+        }
+
+        #center-ul li:hover {
+            border-bottom: 1px solid forestgreen;
+        }
+
+        #banner {
+            height: 45vh;
+            background-image: url(image/banner.png);
+            background-size: cover;
+        }
+
+        #zfpic {
+            margin: 10px 0;
+            padding: 0;
+            background-image: url(image/news.png);
+            background-size: 100% 100%;
+        }
+
+        #zfword {
+            margin: 0;
+            padding: 0;
+        }
+
+        td {
+            font-size: 1vh;
+        }
+
+        #kefu {
+            background-image: url(image/news.png);
+            background-size: 100% 100%;
+        }
+
+        .row {
+            position: relative;
+        }
+
+        .col-lg-4.col-md-4.col-sm-4.col-xs-12 {
+            position: relative;
+            margin-top: -30px;
+            /* border: solid 1px red; */
+            /* box-shadow: 0 0 0 10px  #666 inset; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 导航条 -->
+    <div>
+        <div class="navbar navbar-default" role="navigation" id="nav-bg">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#center-nav">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="" class="navbar-brand" id="logo"><span></span></a>
+                </div>
+                <div id="center-nav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav" id="center-ul">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">媒体中心</a></li>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">业务板块</a></li>
+                        <li><a href="#">产品服务</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right  col-xs-3 col-lg-3">
+                        <form action="#" class="navbar-form">
+                            <input type="text" class="form-control" placeholder="search">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner图 -->
+    <div id="banner"></div>
+    <!-- 三框信息 -->
+    <div class="container">
+        <div class="row">
+            <!-- <div class="col-lg-10 col-lg-offset-1"> -->
+            <!-- 第一个框 -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="background-color: white;">
+                <div style="color: white;background-color: blue;height: 30px;line-height: 30px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: left;">
+                        公司动态
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+                        <a href="#">+MORE</a>
+                    </div>
+                </div>
+
+                <div style="height: 14vh;border-bottom: 1px dotted black;position: relative;">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" id="zfpic">
+                        图片
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" id="zfword">
+                        <h6><b>政府部门参观研发中心</b></h6>
+                        <p style="text-indent: 2em;">5月16日，沙发大是大非哈伦裤升级啊上课了教课老师会计傻傻的划分看见爱上都会死胡迪</p>
+                    </div>
+                    <p style="text-align: right;position: absolute;bottom: 5px;right: 5px;"><a href="#">READ&nbsp;MORE
+                            >></a></p>
+                </div>
+
+                <div class="panel panel-default" style="height: 12vh;">
+                    <table class="table">
+                        <tr>
+                            <td>兰新高铁新建段工程阀进口粉超七十万吨</td>
+                            <td>2012-12-09</td>
+                        </tr>
+                        <tr>
+                            <td>兰新高铁新建段工程阀进口粉超七十万吨</td>
+                            <td>2012-12-09</td>
+                        </tr>
+                        <tr>
+                            <td>兰新高铁新建段工程阀进口粉超七十万吨</td>
+                            <td>2012-12-09</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+
+            <!-- 第二个框 -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="background-color: white;">
+                <div style="color: white;background-color: grey;height: 30px;line-height: 30px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: left;">
+                        公司动态
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+                        <a href="#">+MORE</a>
+                    </div>
+                </div>
+
+                <div style="height: 13vh;border-bottom: 1px dotted #000;position: relative;">
+                    <h6><b>政府部门参观研发中心</b></h6>
+                    <p style="text-indent: 2em;">5月16日，阿斯顿发送到沙发大是大非哈伦裤升级啊上课了教课老师会计傻傻的划分看见爱上都会死胡迪阿斯顿福建快乐就暗示领导副经理</p>
+                    <p style="text-align: right;position: absolute;bottom: 5px;right: 5px;"><a href="#">READ&nbsp;MORE
+                            >></a></p>
+                </div>
+                <div style="height: 13vh;position: relative;">
+                    <h6><b>政府部门参观研发中心</b></h6>
+                    <p style="text-indent: 2em;">5月16日，阿斯顿发送到沙发大是大非哈伦裤升级啊上课了教课老师会计傻傻的划分看见爱上都会死胡迪阿斯顿福建快乐就暗示领导副经理</p>
+                    <p style="text-align: right;position: absolute;bottom: 7px;right: 7px;"><a href="#">READ&nbsp;MORE
+                            >></a></p>
+                </div>
+
+            </div>
+
+
+            <!-- 第三框 -->
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="background-color: white;">
+                <div style="color: white;background-color: blue;height: 30px;line-height: 30px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: left;">
+                        公司动态
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+                        <a href="#">+MORE</a>
+                    </div>
+                </div>
+
+                <div style="height: 14vh;" id="kefu">
+
+                </div>
+
+                <div class="panel panel-default" style="height: 12vh;">
+                    <div style="height: 50%;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div style="width:100%;background-color: grey;text-align: center;">
+                                <span class="glyphicon glyphicon-tag"></span>碳钢系列
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+
+                            <div style="width:100%;background-color: grey;text-align: center;">
+                                <span class="glyphicon glyphicon-tag"></span>碳钢系列
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 50%;">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <div style="width:100%;background-color: grey;text-align: center;">
+                                <span class="glyphicon glyphicon-tag"></span>碳钢系列
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                            <div style="width:100%;background-color: grey;text-align: center;">
+                                <span class="glyphicon glyphicon-tag"></span>碳钢系列
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+
+        <!-- 底部导航栏 -->
+        <div>
+            <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bottom-nav">
+                            <span class="sr-only">切换导航</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                    <div id="bottom-nav" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">Copyright@2004-2011,seethruCo.Ltd.All.Right.reserved</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">网站地图</a></li>
+                            <li><a href="#">关于创维</a></li>
+                            <li><a href="#">工作机会</a></li>
+                            <li><a href="#">法律声明</a></li>
+                            <li><a href="#">友情链接</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="bs/js/jquery.min.js"></script>
+        <script src="bs/js/bootstrap.min.js"></script>
+</body>
+<html>

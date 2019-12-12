@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       /* 伪类顺序问题 */
+        /* link：表示链接在正常情况下（即页面刚加载完成时）显示的颜色。 表示当前链接还未被访问过 */
+        /* a:link{
+            background-color:blue;
+        } */
+        /* 可以直接使用选择器 选择到a标签进行设置 */
+
+        a{
+            font-size:50px;
+        }
+        /* visited：表示链接被点击后显示的颜色。  一般只用于a标签上 */
+        a:visited{
+            color: red;
+        }
+        
+        /* hover：表示鼠标悬停时显示的颜色。 */
+        a:hover{
+            color: green;
+        }
+        /* focus：表示元素获得光标焦点时使用的颜色，主要用于文本框输入文字时使用（鼠标松开时显示的颜色）。只有可交互的元素才能获得焦点，同一页面中同一时间只有一个元素能获得焦点 */
+        /*  focus 聚焦 */
+        a:focus{
+            color: yellow;
+        }
+        /* active：表示当所指元素处于激活状态（鼠标在元素上按下还没有松开）时所显示的颜色 */
+        a:active{
+            color: blue;
+        }
+    /* 伪类的顺序应为link--visited--hover--focus--active。 */
+        /* 伪类选择器 */
+        /* : 都是伪类选择器 */
+        div:nth-child(1){
+
+        }
+        div:nth-of-type(1){
+
+        }
+
+        /* :: 伪元素选择器 */
+        div::first-letter{
+            color: red;
+            font-size: 50px;
+        }
+        /* 前缀 */
+        div::before{
+
+        }
+        div::after{
+            /* 后缀 */
+        }
+
+
+    </style>
+</head>
+<body>
+    <a href="http://www.zhiyou100.com">百度一下</a>
+    <div>abc</div>
+</body>
+</html>

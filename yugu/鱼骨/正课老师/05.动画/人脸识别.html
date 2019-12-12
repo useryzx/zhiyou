@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>人脸识别</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #d1 {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        #d1::before {
+            content: "";
+            display: block;
+            border: rgb(247, 154, 78) solid 4px;
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            /* background-color: red; */
+            animation: snake 3s linear infinite;
+        }
+
+        #d1::after {
+            content: "";
+            display: block;
+            border: rgb(167, 81, 248) solid 4px;
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            /* background-color: blue; */
+            animation: snake 3s linear infinite -1.5s;
+        }
+
+        @keyframes snake {
+
+            0%,
+            100% {
+                clip-path: inset(0 0px 404px 0px);
+            }
+
+            25% {
+                clip-path: inset(0 0px 0px 404px);
+            }
+
+            50% {
+                clip-path: inset(404px 0px 0px 0px);
+            }
+
+            75% {
+                clip-path: inset(0 404px 0 0);
+            }
+        }
+
+        #d2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 0;
+            left: 0;
+            /* background-color: red; */
+            background:
+                linear-gradient(#3bcaf5, #1adafc),
+                linear-gradient(#ffffff33 1px, transparent 0px, transparent 19px),
+                linear-gradient(90deg, #ffffff33 1px, transparent 0px, transparent 19px),
+                linear-gradient(transparent, rgba(78, 78, 241, 0.781));
+            background-size: 100% 1%, 100% 10%, 10% 100%, 100% 100%;
+            background-repeat: no-repeat, repeat, repeat, repeat;
+            background-position: 0 0, 0 0, 0 0, 0 0;
+            animation: move 3s linear infinite;
+        }
+
+        span {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background-image: url(../../作业/05/作业资源/1.jpg);
+            background-size: 100% 100%;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0, 0 0, 0 0, 0 0;
+                clip-path: inset(0 0 400px 0);
+            }
+
+            100% {
+                background-position: 0 100%, 0 0, 0 0, 0 0;
+                clip-path: inset(400px 0 400px 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">
+        <span></span>
+        <div id="d2">
+        </div>
+    </div>
+</body>
+
+</html>

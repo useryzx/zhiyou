@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元素的隐藏方式</title>
+    <style>
+        /* body{
+            background-color: greenyellow;
+        } */
+        .hide{
+            /* 颜色三基色 255 alpha透明度 默认是1 0透明 0.0~~1.0
+            F6A3F1 0~~1  5/2 2/2  1 0 1  a~~f*/
+            /* background-color: rgba(0, 255, 255, 0.5); */
+            /* none代表无，空 display代表不展示 不但会给元素隐藏
+            同时也会在文档流中去掉元素的位置*/
+            /* display: none; */
+            /* visibility设置隐藏元素 文档流中会保存元素的位置*/
+            /* visibility: hidden; */
+            /* opacity设置透明度 0.0完全透明~~1.0 */
+            opacity:0 ;
+        }
+    </style>
+</head>
+<body>
+   <p>第一行</p>
+   <div class="hide">第二行</div>
+   <p>第三行</p>
+</body>
+</html>

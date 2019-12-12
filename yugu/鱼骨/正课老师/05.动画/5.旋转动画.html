@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #earth{
+            position: absolute;
+            left: 400px;
+            top: 350px;
+            animation: round 5s linear infinite;
+            /* 指定旋转依据 */
+            transform-origin: -100px -100px;
+        }
+        #sun{
+            position: absolute;
+            left: 220px;
+            top: 200px;
+        }
+        @keyframes round {
+            form{transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <img src="imgs/earth.png" id="earth">
+    <img src="imgs/sun.png" id="sun">
+</body>
+</html>

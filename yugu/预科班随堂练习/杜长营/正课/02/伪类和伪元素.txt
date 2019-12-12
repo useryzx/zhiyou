@@ -1,0 +1,37 @@
+css伪类 
+
+css伪类用于向某些选择器添加特殊的效果。
+
+ 伪类存在的意义是为了通过选择器找到那些不存在与DOM树中的信息（例如<a>标签的:link、:visited等，这些信息不存在与DOM树结构中，只能通过CSS选择器来获取）以及不能被常规CSS选择器获取到的信息
+
+:link, :visited, :hover, :focus, :active, :first-child, :lang
+css3新增的伪类：
+:last-child, :only-child, :first-of-type, :last-of-type, :only-of-type, :nth-child(n), :nth-last-child(n), :nth-of-type(n), :nth-last-of-type(n), :root, :empty, :target, :enabled, :disabled, :checked, :not(selector)。
+
+css伪元素
+
+css伪元素用于向某些选择器设置特殊效果。
+
+伪元素在DOM树中创建了一些抽象元素，这些抽象元素是不存在于文档语言里的（可以理解为html源码）。比如：documen接口不提供访问元素内容的第一个字或者第一行的机制，而伪元素可以使开发者可以提取到这些信息。并且，一些伪元素可以使开发者获取到不存在于源文档中的内容（比如常见的::before,::after）。
+::first-letter, ::first-line, ::before, ::after
+css3新增的伪元素
+::selection
+
+
+
+
+
+伪类顺序问题
+link：表示链接在正常情况下（即页面刚加载完成时）显示的颜色。
+visited：表示链接被点击后显示的颜色。
+hover：表示鼠标悬停时显示的颜色。
+focus：表示元素获得光标焦点时使用的颜色，主要用于文本框输入文字时使用（鼠标松开时显示的颜色）。只有可交互的元素才能获得焦点，同一页面中同一时间只有一个元素能获得焦点
+active：表示当所指元素处于激活状态（鼠标在元素上按下还没有松开）时所显示的颜色
+
+伪类的顺序应为link--visited--hover--focus--active。
+
+伪类和选择器之间用一个冒号隔开，伪元素则是两个冒号隔.
+
+伪类与类优先级相同，伪元素与标签优先级相同
+
+优先级怎么判断，一般是 !important > 行内样式> ID选择器 > 类选择器 > 标签 > 通配符 > 继承 > 浏览器默认属性。还有一个简单的计算方法，内联样式表的权值为 1000，ID 选择器的权值为 100，Class 类选择器的权值为 10，HTML 标签选择器的权值为 1

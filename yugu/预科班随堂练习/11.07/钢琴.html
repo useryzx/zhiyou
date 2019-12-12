@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>钢琴Demo(例子)</title>
+    <style>
+        /* 指定html body的高度和当前浏览器高度一致   宽度会被继承 而高度不会  */
+        html,body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            background-color: black;
+            /* 设置父元素为弹性布局 */
+            display: flex;
+            /* 子元素在主轴(x)的对齐方式  居中 */
+            justify-content: center;
+            /* 子元素在交叉轴(y)的对齐方式  居中 */
+            align-items: center;
+        }
+        main{
+            /* vw 视窗单位 1vw  相当于 1% */
+            width: 80vw;
+            height: 80vh;
+            background-color: rgb(24, 21, 21);
+            /* shadow  阴影 */
+            box-shadow: 0 0 20px white;
+            /* 切角   radius 半径*/
+            border-radius: 30px;
+        }
+        .key-board{
+            width: 90%;
+            height: 85%;
+            background-image: url(keys.png);
+            background-size: 100% 100%;
+            margin: 5% auto;
+            /* 设置父元素为弹性布局，子元素在排列时  从左往右 */
+            display: flex;
+        }
+        .key{
+            width: 11.1111%;
+            height: 100%;
+            background-color: red;
+            /* opacity 透明度 */
+            opacity: 0;
+        }
+        /* 不加脚本之前 没有press-down的元素  所以无法呈现效果，可以通过在脚本中添加class 来完成透明度的改变 */
+        .press-down{
+            opacity: 1;
+            height: 80%;
+        }
+    </style> 
+<body>
+    <!-- audio 音频   src 指定的音频文件 -->
+    <audio src="notes/1.oga"></audio>
+    <audio src="notes/2.oga"></audio>
+    <audio src="notes/3.oga"></audio>
+    <audio src="notes/4.oga"></audio>
+    <audio src="notes/5.oga"></audio>
+    <audio src="notes/6.oga"></audio>
+    <audio src="notes/7.oga"></audio>
+    <audio src="notes/8.oga"></audio>
+    <audio src="notes/9.oga"></audio>
+    <main>
+        <div class="key-board">
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+        </div>
+    </main>
+
+    <!-- 添加脚本 -->
+    <script>
+        // 为所有的div元素 添加鼠标进入和离开的监听事件
+        // document 文档 
+        // get得到  Elements  元素标签  By 通过  Class 类  Name名字
+        // keys 变量  接收的找到的多个元素的数组对象
+        // 数组是 容器 存放多个值
+        // var arr = ["a","b","c"]
+        // 通过索引取值   索引值从0开始
+        // var x = arr[0]
+
+        var keys = document.getElementsByClassName("key")
+        // 通过标签名找到所有的标签
+        var audios = document.getElementsByTagName("audio")
+
+        // for循环  执行9次 
+        for(var i = 0;i <= 8;i++){
+            var divEle = keys[i]
+            // ind 自己定义的属性 
+            divEle.ind = i
+            // e 参数  存放的光标信息
+            // 鼠标进入的监听事件
+            divEle.onmouseenter = function (e) {
+                // 鼠标进入时  和  键盘点下时 的逻辑相同
+                // console 控制台 log 日志
+                // e.target  光标所指向的元素
+                // console.log(e.target)
+                //  0 1 2 。。 8
+                pressKeyDown(e.target.ind)
+            }
+            // 添加鼠标离开的监听事件
+            divEle.onmouseleave = function (e) {
+                // 鼠标离开时  和  键盘松开时 的逻辑相同
+                keyUp(e.target.ind)
+                
+            }
+
+        }
+
+        // 按下按键  索引 index
+        function pressKeyDown(num) {
+
+            // 找到光标所指向的对应的audio标签 使其播放音频
+            // 加载音频
+            audios[num].load()
+            audios[num].play()
+            // keys[num] 光标放在的div
+            // keys[num].classList  获取div的classList属性
+            // 把过渡动画取消  none没有
+            keys[num].style.transition = "none"
+
+            keys[num].classList.add("press-down")
+        }
+
+        // 光标移动离开时  键盘松开时
+        function keyUp(num) { 
+            
+            keys[num].classList.remove("press-down")
+            // 做过渡动画时  all 指的是改变所有的属性状态
+            // 过渡时只改变 opacity属性的状态
+            // keys[num].style.transition = "opacity" 1s"
+            // all 改变opacity height
+            keys[num].style.transition = "all 2s"
+        }
+
+        // 监听键盘的输入  按下去
+        document.body.onkeydown = function (e) {
+
+            // e.key 输入的内容
+            // 1 2 3.。。。。9     "1" "2", "4", "9"
+            // 把输入的值转变成一个数字 
+            var num = e.key * 1
+            if(num >=1 && num <= 9){
+                // 播放音频
+                pressKeyDown(num-1)
+            }
+
+        }
+        // 松开
+        document.body.onkeyup = function (e) {
+
+            var num = e.key * 1
+            if(num >=1 && num <= 9){
+                // 播放音频
+                keyUp(num-1)
+            }
+            
+        }
+
+
+        
+    
+    
+    </script>
+
+</body>
+</html>

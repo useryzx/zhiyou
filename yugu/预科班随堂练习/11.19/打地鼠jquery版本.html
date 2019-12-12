@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打地鼠</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* margin调整相邻元素的距离 */
+            margin: 0;
+            background-image: url(image/bg.jpg);
+            cursor: url(image/cursor.png), auto;
+            user-select: none;
+        }
+
+        body:active {
+            cursor: url(image/cursor-down.png), auto;
+        }
+
+        p {
+            line-height: 80px;
+            background-color: grey;
+            width: 200px;
+            margin: 0;
+            font-size: 30px;
+            text-align: center;
+            opacity: 0.5;
+            color: red;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        table {
+            margin: 0px auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 200px;
+            height: 200px;
+            background-image: url(image/hole.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: bottom center;
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        td img {
+            width: 100px;
+            margin-bottom: 20px;
+            height: 0;
+            transition: all 1s;
+        }
+
+        .show {
+            height: 100px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <audio src="audio/music.mp3" autoplay loop></audio>
+    <audio src="audio/dazhong.wav"></audio>
+    <p id="fenshu">分数是：0</p>
+    <table>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+    </table>
+    <!-- 添加脚本 -->
+    <script src="jquery.js"></script>
+    <script>
+
+        var score = 0;
+        // 定义方法显示老鼠
+        function showMouse() {
+            // 随机出现老鼠
+            // [0,16)向下取整以后0-15
+            var num = Math.floor(Math.random() * 16);
+            // console.log(num);
+            // 通过num值  从16个img元素中获取其中一个
+            // 通过标签名查找，返回数组
+            // document.getElementsByTagName("img")[num].classList.add("show");
+            // $("img")根据img元素找到16个标签   .eq（）找到某一个
+            $("img").eq(num).addClass("show");
+            $("img")[num].notHit = true;
+            // console.log($("img")[num].notHit)
+
+
+            setTimeout(() => {
+                $("img").eq(num).removeClass("show");
+            }, 2000);
+
+        }
+
+        // 生成多只老鼠
+        // interval间隔 定时器
+        setInterval(() => {
+            showMouse();
+            showMouse();
+        }, 2000);
+        $("img").on("click", function () {
+            console.log("zzzzzzz")
+            if (this.notHit == true) {
+                score++;
+                // console.log(score)
+
+                this.notHit = false;
+                $(this).removeClass("show");
+                $("#fenshu").text("分数是：" + score);
+                $("audio")[1].load();
+                $("audio")[1].play();
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

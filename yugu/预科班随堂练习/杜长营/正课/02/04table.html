@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        caption,
+        td,
+        th {
+            border: solid 1px red;
+        }
+
+        table {
+            /* border 边框 collapse 合并  */
+            /* 设置边框合并 */
+            border-collapse: collapse;
+        }
+
+        caption {
+            border-bottom: none;
+        }
+
+        th {
+            /* 只要第一行的单元格的宽度确定以后 .再修改是无效的 */
+            width: 100px;
+        }
+
+        td {
+            width: 200px;
+            text-align: center;
+        }
+
+        tr {
+            /* 设置tr时  需要设置table的  border-collapse属性才有效果*/
+            /* border: solid 1px red; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- table 表格 -->
+    <table>
+        <thead>
+            <!-- tr行 -->
+            <!-- caption 标题 -->
+            <caption>
+                <h1>课程表</h1>
+            </caption>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- td 单元格 -->
+                <!-- th 单元格  文本会加粗和居中 -->
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+                <th>周五</th>
+                <th>周六</th>
+                <th>周日</th>
+            </tr>
+            <tr>
+                <!-- column 列 纵队  列合并    指的是左右单元格的合并 -->
+                <td colspan="5">英语</td>
+               
+                <!-- row 行  span 跨越  范围  行合并  指的是上下合并 -->
+                
+                <td rowspan="2">放假</td>
+                <td rowspan="2">放假</td>
+            </tr>
+            <tr>
+                
+                <td colspan="5">数学</td>
+                
+              
+            </tr>
+        </tbody>
+
+
+    </table>
+</body>
+
+</html>

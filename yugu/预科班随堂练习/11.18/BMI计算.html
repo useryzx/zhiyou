@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- link 链接  链接外部的css文件 -->
+    <link rel="stylesheet" href="哈哈.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        main {
+            width: 80%;
+            height: 100%;
+            border: solid 1px red;
+            margin: 0 auto;
+        }
+
+        /* margin 调整相邻标签之间的距离 */
+        h1 {
+            margin-left: 200px;
+            margin-bottom: 0;
+        }
+
+        hr {
+            width: 80%;
+            margin: 2px auto;
+        }
+
+        p {
+            /* 文本居中 */
+            text-align: center;
+        }
+
+        .big {
+            font-size: 30px;
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        .little {
+            font-size: 20px;
+            color: green;
+        }
+
+        #dotted {
+            /* border 样式   dotted 点线 */
+            border: none;
+            border-top: 10px dotted red;
+            width: 50%;
+        }
+
+        table {
+            /* collapse 合并 */
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        /* th 默认的css样式    居中  加粗 */
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        th {
+            background-color: green;
+            width: 150px;
+            height: 50px;
+        }
+
+        tr td:nth-child(1) {
+            background-color: yellow;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <h1>BMI计算</h1>
+            <hr>
+            <hr>
+            <!-- p*4   -->
+            <!-- sup 上标  sub 下标 -->
+            <p class="big">BMI值計算公式: BMI = 體重(公斤) / 身高<sup>2</sup>(公尺2)</p>
+            <p class="big">例如：一個52公斤的人，身高是155公分，則BMI為 :</p>
+            <p class="little">52(公斤)/1.552 ( 公尺2 )= 21.6</p>
+            <p class="little">體重正常範圍為 BMI=18.5～24</p>
+            <!-- www. -->
+            <hr id="dotted">
+        </div>
+        <div style="text-align: center;">
+            <!-- css 样式  1. 内部  2.外部  3. 行内样式 -->
+            <!-- css 优先级    优先级针对选择器    css选择器   -->
+            <p id="haha" style="color: pink;font-size: 30px;">快来看看你的BMI是否在理想范围吧</p>
+            <!-- label 标签 -->
+            <!-- 当for的值 与input的id对应时 点击label 使光标进入激活状态 -->
+            <label for="height">身高:</label>
+            <!-- input 输入框 -->
+            <!-- placeholder 占位符 -->
+            <input type="text" id="height" placeholder="请输入身高">cm
+            <!-- button 按钮  value-->
+            <!-- onclick 添加点击事件 -->
+            <input type="button" value="开始计算" onclick="caculate()">
+            <br>
+            <label for="weight">体重:</label>
+            <!-- input 输入框 -->
+            <!-- placeholder 占位符 -->
+            <input type="text" id="weight" placeholder="请输入体重">kg
+            <!-- button 按钮  value-->
+            <input type="button" value="清除内容" onclick="clearAll()">
+            <p>您的BMI值为:</p>
+            <input type="text" id="result">
+        </div>
+        <div>
+            <!-- table 表 -->
+            <table>
+                <!-- thead 表头 -->
+                <thead>
+                    <!-- tr 行  th 单元格 -->
+                    <tr>
+                        <th></th>
+                        <th>身体指数kg/m2</th>
+                        <th>腰围</th>
+                    </tr>
+                </thead>
+                <!-- tbody 表主体 -->
+                <tbody>
+                    <!-- td 单元格 -->
+                    <tr>
+                        <td>体重过轻</td>
+                        <td>
+                            <!-- &lt;  <     &gt; >  转义字符-->
+                            <span id="s1">BMI &lt; 18.5</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>正常</td>
+                        <td>
+                            <span id="s2">18.5&lt;= BMI &lt;24</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>异常范围</td>
+                        <td>
+                            <span id="s3">24≦BMI＜27</span><br>
+                            <span id="s4">27≦BMI＜30</span><br>
+                            <span id="s5">30≦BMI＜35</span><br>
+                            <span id="s6">BMI≧35</span>
+                        </td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- 添加脚本 -->
+    <script>
+        // 获取两个输入框的内容
+        // document 文档  网页   querySelector   getElementById 在网页中找到某元素
+        var hInput = document.querySelector("#height");
+        var wInput = document.getElementById("weight");
+        var rInput = document.getElementById("result");
+        // 定义变量 idName
+        var idName = "";
+        //  点击开始计算
+        function caculate() {
+            // 通过idName 清除上一次所记录的颜色
+            if (idName) {
+                var oldSpan = document.getElementById(idName);
+                // 如果oldSpan存在 就改变颜色
+                if (oldSpan) {
+                    oldSpan.style.backgroundColor = "";
+                }
+            }
+
+            // 通过输入框的对象获取内容
+            var height = hInput.value;
+            var weight = wInput.value;
+            // 判断height weight的值是否为空
+            if (height == "") {
+                // alert 警告  在页面显示警告窗口
+                alert("请输入身高");
+                // 结束方法
+                return;
+            }
+            if (weight == "") {
+                alert("请输入体重");
+                // 结束方法
+                return;
+            }
+            // 把身高的整数转换成小数
+            height /= 100;
+
+            // 计算BMI的值
+            var BMI = weight / (height * height);
+            // 保留两位小数
+            BMI = BMI.toFixed(2);
+
+            rInput.value = BMI;
+            // typeof  查看一个变量的类型
+            // alert(typeof height);
+            if (BMI < 18.5) {
+                // 找到第一个span元素 修改背景色
+                idName = "s1";
+            }
+            else if (BMI < 24) {
+                // 找第二个span 元素
+                idName = "s2"
+            }
+            else {
+                if (BMI < 27) {
+                    idName = "s3";
+                }
+                else if (BMI < 30) {
+                    idName = "s4";
+                }
+                else if (BMI < 35) {
+                    idName = "s5";
+
+                }
+                else {
+                    idName = "s6";
+                }
+            }
+            // 通过idName 来获取对应的span 元素
+            var span = document.getElementById(idName);
+            span.style.backgroundColor = "red";
+        }
+        function clearAll() {
+            // 三个输入框的值为空
+            hInput.value = "";
+            wInput.value = "";
+            rInput.value = "";
+            // 修改背景颜色
+            // if (idName) {
+            //     var span = document.getElementById(idName);
+            //     if (span) {
+            //         span.style.backgroundColor = "";
+            //     }
+            // }
+            document.getElementById(idName).style.backgroundColor = '';
+
+
+        }
+    </script>
+</body>
+
+</html>
+<!-- 老生: BMI 完成上课师范的效果
+     新生: -->

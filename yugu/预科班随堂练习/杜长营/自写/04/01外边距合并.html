@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 100px;
+        }
+        #d2{
+            margin-top: 200px;
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        main{
+            width: 500px;
+            height: 500px;background-color: green;
+            /* border: 1px solid transparent; */
+            /* position: relative; */
+            /* float: left; */
+            /* padding: .1px; */
+            /* overflow: hidden; */
+        }
+        #d3{
+            margin-top: 100px;
+            width: 100px;
+            height: 100px;background-color: red;
+            /* position: absolute; */
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 外边距合并   -->
+    <!-- 1.兄弟关系 取大值-->
+    <div id="d1">1</div>
+    <div id="d2">2</div>
+    <!-- 2.父子关系 -->
+    <!-- 解决父子关系合并方式如下 -->
+    <main>
+        <div id="d3"></div>
+    </main>
+</body>
+
+</html>

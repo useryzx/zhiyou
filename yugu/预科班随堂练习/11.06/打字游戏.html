@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            width: 1900px;
+            height: 1900px;
+            position: fixed;
+            /* 江南烧酒 */
+            /* background-image: url(http://img.netbian.com/file/2018/0803/29a3e511df8aaf302af8a18624f2dd96.jpg); */
+            /* 小黄人 */
+            /* background-image: url(http://5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20180225/fd66f3ba2cb34826ad2f711abd6c9560.gif); */
+            /* 悖论 */
+            /* background-image: url(http://img.mp.itc.cn/q_70,c_zoom,w_640/upload/20160920/337de7568a4d4a01920a91df6c6ce4a7_th.jpg); */
+            /* background-image: url(http://hbimg.b0.upaiyun.com/c123f6ceea62af93c9b136aa9fde8726115ac49a218ae8-GVd2Hb_fw658); */
+            background-image: url(preloader.gif);
+            /* background-size: 100% 100%;  */
+            /* 爱上彩虹,吃定彩虹 */
+            border-radius: 50%;
+            box-shadow: 
+            0 0 0 30px inset red,
+            0 0 0 60px inset orange,
+            0 0 0 90px inset yellow,
+            0 0 0 120px inset green,
+            0 0 0 150px inset aqua,
+            0 0 0 180px inset blue,
+            0 0 0 210px inset magenta;
+            clip-path: polygon(0 0,100% 0,100% 50%,0 50%);
+            display : flex; 
+            align-items: center;
+            /* justify-content: center; */
+            flex-direction: column;
+        }
+        
+        div{
+            font-size: 100px;  
+            color: rgb(0, 255, 128); 
+        }
+        /* 自身居左 */
+        #fenshu{
+            align-self: flex-start;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="zimu">A</div>
+    <div id="fenshu">分数:0</div>
+    
+    <script>
+        // 定义:   声明全局变量
+        var letterDiv = document.getElementById('zimu');
+        var fenshu = document.getElementById('fenshu');
+        var h = 0 - letterDiv.style.top;
+        var count = 0;
+        
+        // 方法:  生成一个随机字母并放入div
+        function createLetter() { 
+            var num = Math.floor(Math.random() * 26) + 65;
+            var letter = String.fromCharCode(num);
+            letterDiv.textContent = letter; 
+            letterDiv.style.position = 'absolute';
+        }
+        // 调用:   函数生成字母并放入div
+        createLetter();
+        // 定时器: 字母向下移动
+
+            // 判断:
+                // 1.判断是否超出界面,超出界面重置字母
+                // 2.没超出界面判断是否和键盘的字母相同
+                    // 2.1相同重置字母并加分
+                    // 2.2不同则继续并扣分
+        setInterval(() => {
+            h = h + 10;           
+            // console.log(word)  
+            if (h>900) {
+                h = 0;
+                createLetter();
+                count -= 5;
+                fenshu.textContent = '分数: '+ count;
+                // alert('game over')
+            }
+            else if(h <= 900){              
+                document.body.onkeydown = function (e){
+                var word =e.keyCode;
+                console.log(e.keyCode);
+                console.log(letterDiv.textContent.charCodeAt());
+                if (word == letterDiv.textContent.charCodeAt()) {
+                    createLetter();
+                    h = 0;
+                    count += 2;
+                    fenshu.textContent = '分数: '+ count;
+                    }
+                    else{
+                        letterDiv.classList.add("animated");
+                        letterDiv.classList.add("shake")
+                        letterDiv.style.color = "red";
+                        count -= 1;
+                        fenshu.textContent = '分数: '+ count;
+                        setTimeout(() => {
+                            letterDiv.classList.remove("animated");
+                            letterDiv.classList.remove("shake")
+                            letterDiv.style.color = "";
+                        }, 300);
+                    }
+                }
+            }
+            letterDiv.style.top = h + 'px';
+            // console.log(h);
+            }
+        , 20);
+   
+    </script>
+</body>
+</html>

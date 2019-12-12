@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cell {
+            display: flex;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .cell-left {
+            width: 20%;
+        }
+
+        .cell-right {
+            width: 80%;
+            padding-left: 10px;
+        }
+
+        .logo {
+            width: 100%;
+        }
+
+        .title {
+            display: flex;
+            /* 项目在主轴上的对齐方式 左右贴边 */
+            justify-content: space-between;
+        }
+
+        .title-brand {
+            /* 255,227,57 */
+            background-color: rgba(255, 227, 57, 1);
+            border-radius: 2px;
+            color: black;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 4px;
+        }
+
+        .title-name {
+            font-weight: bold;
+            font-size: 15px;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .title-tip {
+            display: inline-block;
+            border: solid 1px gainsboro;
+            font-size: 10px;
+            color: #999999;
+        }
+
+        .score {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .star {
+            font-size: 16px;
+            color: gold;
+        }
+
+        .score-left {
+            font-size: 12px;
+            color: #666666;
+        }
+
+        .fengniao {
+            background-color: #009cff;
+            border-radius: 2px;
+            font-size: 10px;
+            color: white;
+            padding: 1px 2px;
+        }
+
+        /* 每一个div都是一个小容器 */
+        .price {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .text666 {
+            color: #999999;
+            font-size: 12px;
+        }
+
+        .price-left {
+            color: #bbbbbb;
+            font-size: 12px;
+        }
+
+        .koubei {
+            color: #e8470b;
+            font-size: 12px;
+        }
+
+        .koubei img {
+            width: 10px;
+            height: 10px;
+        }
+
+        /* 垂直外边距  */
+        .Vertical-margin {
+            margin: 4px 0;
+        }
+
+        /* 虚线 */
+        .dotted-hr {
+            border: none;
+            border-top: dotted 1px lightgray;
+        }
+        .active{
+            display: flex;
+            justify-content: space-between;
+        }
+        .active-first{
+            font-size: 10px;
+            background-color: #70bc46;
+            color: white;
+            margin: 2px;
+            border-radius: 2px;
+            padding: 2px;
+        }
+       .arrow-down{
+           display: inline-block;
+           width: 0;
+           height: 0;
+           /* 这是设置颜色之后透明 并不代表border消失 */
+           border: solid 4px rgba(0, 0, 0, 0);
+           border-top: solid 4px #999999;
+           position: relative;
+           top: 3px;
+       }
+       .preferential-minus{
+           font-size: 10px;
+           background-color: #f07373;
+           color: white;
+           padding: 2px;
+           border-radius: 2px;
+       }
+       .menu{
+           margin-top: 4px;
+           display: flex;
+       }
+      .menu h6{
+          margin: 0;
+          overflow: hidden;
+      }
+      .menu img{
+          /* vw是视口的宽度view with */
+          width: 22vw;
+          height: 22vw;
+      }
+      .menu-item
+      {
+          width: 30%;
+          margin: 0 1vw;
+      }
+      .menu-price{
+          color: red;
+      }
+      .menu-price::before{
+          content: "￥";
+      }
+    </style>
+</head>
+
+<body>
+    <div class="cell">
+        <div class="cell-left">
+            <img src="imgs/logo.png" class="logo">
+        </div>
+        <div class="cell-right">
+            <div class="title">
+                <!-- 左侧 -->
+                <div>
+                    <span class="title-brand">品牌</span>
+                    <h3 class="title-name">阿利茄汁面</h3>
+                </div>
+                <!-- 右侧 -->
+                <div>
+                    <span class="title-tip">保</span>
+                </div>
+            </div>
+
+            <!-- 评分 Vertical-margin该样式后面会频繁使用到-->
+            <div class="score Vertical-margin">
+                <div class="score-left">
+                    <span class="star">★★★★★</span>
+                    <span>12</span>
+                    <span>月销1w单</span>
+                </div>
+                <!-- 蜂鸟 -->
+                <div>
+                    <span class="fengniao">蜂鸟专送</span>
+                </div>
+            </div>
+            <!-- 价格price Vertical垂直-->
+            <div class="price Vertical-margin">
+                <div class="price-left">
+                    <span class="text666">￥20起送|</span>
+                    <span class="text666">配送费3.18</span>
+                </div>
+                <!-- 右 -->
+                <div class="price-left">
+                    <span class="text999">2.21KM|</span>
+                    <span class="text999">27分钟</span>
+                </div>
+            </div>
+            <!-- 口碑人气好店 -->
+            <div class="koubei Vertical-margin">
+                <img src="imgs/red.png" alt="">
+                <span>口碑人气好店</span>
+            </div>
+            <!-- 虚线 -->
+            <hr class="dotted-hr">
+            <!-- 活动 -->
+            <div class="active">
+                <div>
+                    <span class="active-first">首</span>
+                    <span class="text666">新用户下单立减1w</span>
+                </div>
+                <div>
+                    <span class="text999">8个活动</span>
+                    <span class="arrow-down"></span>
+                </div>
+            </div>
+            <!-- 优惠 -->
+            <div class="preferential">
+                <span class="preferential-minus">减</span>
+                <span class="text666 preferential-content">
+                    满25-20敢吃就敢减</span>
+            </div>
+            <!-- 菜品 -->
+            <div class="menu">
+               <div class="menu-item">
+                   <img src="imgs/ali.jpeg" alt="">
+                   <h6>阿利茄汁面</h6>
+                   <span class="menu-price">22</span>
+               </div>
+
+               <div class="menu-item">
+                    <img src="imgs/ali.jpeg" alt="">
+                    <h6>阿利茄汁面</h6>
+                    <span class="menu-price">22</span>
+                </div>
+
+                <div class="menu-item">
+                        <img src="imgs/ali.jpeg" alt="">
+                        <h6>阿利茄汁面</h6>
+                        <span class="menu-price">22</span>
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

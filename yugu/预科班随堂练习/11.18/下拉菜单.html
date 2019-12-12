@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box {
+            width: 330px;
+            height: 30px;
+            margin: 100px auto 0;
+            padding-left: 10px;
+            background-color: pink;
+        }
+        .box li{
+            background-color:greenyellow;
+
+        }
+        .box>ul>li{
+            float: left;
+            position: relative;
+            margin-right: 10px;
+        }
+        .box a{
+            display: block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+        }
+        .box li ul{
+            position: absolute;
+            top: 30px;
+            display: none;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 获取li标签
+            var li = $(".box>ul>li");
+            li.mouseenter(function () {
+                $(this).children("ul").show();
+              })
+            li.mouseleave(function () {
+                $(this).children("ul").hide();
+                // console.log($(this).children("ul"));
+              })
+          })
+    
+    </script>
+
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><a href="">一级标题</a>
+                <ul>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                </ul>
+
+            </li>
+            <li><a href="">一级标题</a>
+                <ul>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                </ul>
+
+            </li>
+            <li><a href="">一级标题</a>
+                <ul>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                    <li><a href="">二级标题</a></li>
+                </ul>
+
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            background-color: black;
+            /* 使用弹性布局   */
+            /* display 显示  flex 弯曲 */
+            display: flex;
+            /* justify 两端对齐 content 内容 */
+            /* 子元素 在主轴(x)的排列方式 */
+            justify-content: center;
+            /* 子元素 在交叉轴(y)的排列方式 */
+            align-items: center;
+            /* 当容器为弹性布局时  默认的排列方式 左右  */
+            /* direction 方向  column 列 */
+            flex-direction: column;
+        }
+        main{
+            width: 400px;
+            height: 400px;
+            border: solid red 1px;
+            /* radius 半径  作用切圆角 */
+            border-radius: 20px;
+            background-image: url(wf.png);
+            background-size: 100% 100%;
+        }
+        #author{
+            color: green;
+            font-size: 30px;
+        }
+        header{
+            /* 400 - 96 - 4 -300 */
+            height: 96px;
+            background-color: gray;
+            /* 修改左上 右上的圆角 */
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            opacity: 0.8;
+            /* 会出现外边距合并的问题   */
+            border: solid 1px transparent;
+            /* 让header中的box 居中展示 */
+            /* 1. */
+            /* 垂直和水平的居中  */
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+
+            position: relative;
+        }
+        h1,h2{
+            margin: 0;
+            text-align: center;
+        }
+        #box{
+            /* 设置定位信息为绝对定位 */
+            /* 如果设置为绝对定位后 参照谁  取决它的父元素是否设置过定位信息为非static  */
+            position: absolute;
+            /* % 指的是父元素的宽高 */
+            /* 第二种 垂直 和 水平 居中 */
+            /* top:50%; */
+            /* left: 50%; */
+            /* translate 平移*/
+            /* % 自身大小的50% */
+            /* transform: translate(-50%,-50%); */
+
+            /* 第三种 */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* 一般都会设置高度 */
+            height: 80px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div id="box">
+                <h1>传奇</h1>
+                <h2>王菲</h2>
+            </div>
+        </header>
+    </main>
+    <div id="author">By FPX</div>
+</body>
+</html>
+<!-- 
+1.弹性布局  https://www.cnblogs.com/qcloud1001/p/9848619.html
+2.外边距合并  百度
+3.垂直和左右居中 https://www.jianshu.com/p/ed16af2a411d
+-->

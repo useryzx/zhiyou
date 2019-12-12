@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            text-align: center;
+            margin-top: 50px;
+            
+        }
+
+
+        div div{
+           
+            display: inline-block;
+            border: solid 2px black;
+            padding: 64px;
+        }
+        table{
+            border-collapse: collapse;
+            position: relative;
+            
+        }
+        caption{
+            text-decoration: black underline;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        td{
+            border: black solid 1px;
+           
+            height: 30px;
+            
+            text-align: center;
+        }
+        td:nth-child(1){
+
+            width: 200px;
+        }
+        td:nth-child(2){
+            width: 100px;
+        }
+        td:nth-child(3){
+            width: 100px;
+        }
+        td:nth-child(4){
+            width: 130px;
+        }
+        td:nth-child(5){
+            width: 130px;
+        }
+        #riqi{
+            border: none;
+        }
+        #fujian{
+            border: none;
+            text-align: right;
+        }
+        #ks .kd{
+        
+          
+            border-top: 0px solid #000;
+            width: 109.5px;
+          
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <div> 
+            <table>
+                <caption>&nbsp;&#x3000;&nbsp;&#x3000;费&nbsp;&#x3000;&nbsp;&#x3000;用&nbsp;&#x3000;&nbsp;&#x3000;报&nbsp;&#x3000;&nbsp;&#x3000;销&nbsp;&#x3000;&nbsp;&#x3000;单&nbsp;&#x3000;&nbsp;&#x3000;</caption>
+                <tr>
+                    <!-- 报销日期 -->
+                    <td colspan="4" id="riqi">报销日期:xx年xx月xx日</td>
+                    <!-- 附件 -->
+                    <td colspan="2" id="fujian">附件:xx张</td>
+
+                </tr>
+                <tr>
+                    <!-- 表格中的文字,构造六列,最后合并 -->
+                    <td>费用项目</td>
+                    <td>类别</td>
+                    <td>金额</td>
+                    <td rowspan="2">负责人(签章)</td>
+                    <td colspan="2" rowspan="2"></td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">审查意见</td>
+                    <td colspan="2" rowspan="2"></td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">报销人(签章)</td>
+                    <td colspan="2" rowspan="2"></td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>¥</td>
+                    <td colspan="2"></td>
+
+                </tr>
+                <tr>
+                    <td colspan="6">随便写吧</td>
+                
+                </tr>
+            </table>
+            <table>
+                <!-- 第二个表格,用于最后一行的列不对齐 -->
+                <tr id="ks">
+                    <td class="kd">111</td>
+                    <td class="kd"></td>
+                    <td class="kd">111</td>
+                    <td class="kd"></td>
+                    <td class="kd">111</td>
+                    <td class="kd"></td>
+
+                </tr>
+            </table>
+        </div>
+</div>
+    
+</body>
+</html>

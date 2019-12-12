@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 100% */
+            height: 100vh;
+            margin: 0;
+        }
+
+        #headerImage {
+            border-radius: 50%;
+            /* 宽度 */
+            width: 20vh;
+            /* 高度(主轴垂直) */
+            flex-basis: 20vh;
+            margin: 8vh auto;
+            display: block;
+        }
+        .textFiled{
+            margin: 2vh auto;
+            border-bottom: solid 1px black;
+            color: #111111;
+            font-size: 3vh;
+        }
+        #username,#psw{
+            width: 50vw;
+            border: none;
+            padding: 5px 10px;
+            font-size: 3vh;
+        }
+        #login{
+            width: 75vw;
+            height: 7vh;
+            margin-top: 6vh;
+            background-color: greenyellow;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            text-shadow: 2px 2px 3px grey;
+            cursor: pointer;
+        }
+        #forget,#newUser{
+            text-decoration: none;
+            color: #555555;
+            margin-top: 5vh;
+            font-size: 3vh;
+            flex-grow: 1;
+        }
+        #userform{
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="imgs/icon196.png" id="headerImage">
+    <form action="#" id="userform">
+        <section class="textFiled">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" placeholder="请输入账号">
+        </section>
+        <section class="textFiled">
+            <label for="psw">密&emsp;码:</label>
+            <input type="text" id="psw" placeholder="请输入密码">
+        </section>
+        <input type="button" value="登录" id="login">
+    </form>
+    <a href="" id="forget">忘记密码</a>
+    <a href="" id="newUser">新用户注册</a>
+</body>
+</html>

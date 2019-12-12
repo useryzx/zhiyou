@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%
+        }
+        main{
+            width: 1000px;
+            height: 600px;
+            box-shadow: 0 0 10px black;
+
+        }
+        body{
+            display: flex;
+            /* 两端对齐 主轴的排列方式 */
+            justify-content: center;
+            align-items: center;
+        }
+        .big{
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td{
+            border: solid 1px black;
+            text-align: center;
+            height: 40px;
+        }
+        hr{
+            width: 60%;
+            margin-top: 0;
+        }
+        h1{
+            margin-bottom: 0;
+        }
+        .accesory{
+            float: right;
+        }
+        .big td:nth-child(1){
+            width: 30%;
+        }
+        .big td:nth-child(2),.big td:nth-child(3){
+            width: 15%;
+        }
+
+        .big td:nth-child(4),.big td:nth-child(5){
+            width: 20%;
+        }
+        #small{
+            width: 100%;        
+            border-collapse: collapse;
+            
+        }
+        #small td{
+            width: 16.6%;
+            border: none;
+            border-right: solid 1px black;
+           
+           
+        }
+        #lastTd{
+            padding: 0;    
+
+            
+        }
+        #small td:last-child{
+            border-right: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <table class="big">
+            <thead>
+                <caption>
+                    <h1>&emsp;费&emsp;用&emsp;报&emsp;销&emsp;单&emsp;</h1>
+                    <hr>
+                    <span>报销日期:xx年xx月xx日</span>
+                    <span class="accesory">附件:xx张</span>
+                </caption>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>费用项目</td>
+                    <td>类别</td>
+                    <td>金额</td>
+                    <td rowspan="2">负责人(签章)</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">审查意见</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">报销人(签章)</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>¥</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5" id="daoshuDier">随便写吧</td>
+                   
+                </tr>
+                <tr>
+                    <td colspan="5" id="lastTd">  
+                        <table id="small">
+                            <tbody>
+                                <tr>
+                                    <td>111</td>
+                                    <td></td>
+                                    <td>222</td>
+                                    <td></td>
+                                    <td>333</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                    
+                    
+ 
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    
+</body>
+</html>

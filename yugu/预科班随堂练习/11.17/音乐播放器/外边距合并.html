@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1{
+            width: 200px;
+            height: 300px;
+            background-color: red;
+            /* 1.外边距合并   兄弟关系的合并 */
+            /*               取大值 */
+            margin-bottom: 100px;
+        }
+        #m1{
+            margin-top: 200px;
+            width: 300px;
+            height: 200px;
+            background-color: blue;
+        }
+
+
+        #m2{
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            /* transparent 透明色 */
+            /* border: 1px solid transparent; */
+            /* position: absolute; */
+            /* float: left; */
+            /* overflow 溢出   hidden 隐藏 */
+            /* overflow: hidden; */
+            /* padding 内边距 */
+            /* padding  填充 内边距  作用: 调整内容与盒子之间的距离 */
+            /* 会使盒子变大    原因是: box-size 属性 默认为内容盒  设置的宽高即为内容的大小   盒子大小 =  设置的宽高 +  padding + border */
+            /* 当盒子尺寸设置为 border-box时  设置的大小 = 盒子的大小 如果此时设置padding值 会使内容区域变小 */
+            /* box-sizing: border-box; */
+            /* padding: 100px; */
+            /* margin 外边距 作用: 调整相邻标签之间的距离 */
+        }
+        #d2{
+            /* position: absolute; */
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin-top: 100px;
+            /* 子元素设置为行内块 */
+            display: inline-block;
+            /* 6种方式 */
+            /* 
+            1.border  为父元素添加的
+            2.position 为父子任意添加即可
+            3.float     同上
+            4.overflow: 为父元素添加
+            5.padding
+            6.display:inline-block;
+             */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 1.兄弟关系 -->
+    <div id="d1"></div>
+    <main id="m1"></main>
+    <!-- 2.父子关系 -->
+    <main id="m2">
+        <div id="d2"></div>
+    </main>
+
+
+</body>
+</html>

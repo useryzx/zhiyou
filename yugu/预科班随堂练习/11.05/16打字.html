@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* 设置父元素为弹性布局 */
+            /* display 显示  flex 弯曲  */
+            display: flex;
+            /* 子元素 在主轴（x）上的排列方式 */
+            /* justify 两端对齐  content 内容  center 中心 */
+            justify-content: center;
+            /* algin 对齐  item 项目
+            子元素 在交叉轴（y）上的排列方式 */
+            align-items: center;
+            /* direction 方向  排列的方式   默认是row  从左往右  
+            column  列   从上往下排列 */
+            flex-direction: column;
+        }
+
+        #word {
+            font-size: 300px;
+            text-align: center;
+            border: green 10px dotted;
+            /* 切圆  radius 半径 */
+            border-radius: 50%;
+            line-height: 400px;
+        }
+
+        #result {
+            font-size: 35px;
+            text-align: center;
+        }
+        .fadeIn{ 
+            /* 设置动画 */
+            /* animation 动画 name名字 */
+            /* 1.驼峰命名法  2.匈牙利命名法  3.帕斯卡命名规则 */
+            animation-name: fadeIn;
+            /* duration 持续   */
+            animation-duration: 300ms;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+        }
+        /* identifier 标识符 */
+        /* 设置帧动画 */
+        @keyframes fadeIn {
+            0%{
+                /* transform 变化  scale 比例 因子 */
+                transform: scale(.2,.2);
+            }
+            100%{
+                transform: scale(1,1);
+            }
+        }
+
+        .shake{
+            animation: shake 300ms;
+        }
+
+        @keyframes shake {
+            0%{
+                transform: translate(-100px,0);
+            }
+            25%{
+                transform: translate(0,0);
+            }
+            50%{
+                transform: translate(100px,0);
+            }
+            75%{
+                transform: translate(0,0);
+            }
+            100%{
+                transform: translate(-100,0);
+            }
+        }
+        #timer{
+            width: 50px;
+            height: 50px;
+            border: pink solid 2px;
+            font-size: 30px;
+            /* 实现文字的垂直居中  高度 == 行高 
+            左右居中
+            */
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body> 
+    
+    <div id="timer">5</div>
+    <div id="box">
+        <div id="word" class="fadeIn">A</div>
+        <div id="result">正确0个,错误0个,正确率0%</div>
+    </div>
+    <!-- 添加脚本 处理用户交互 -->
+    <script>
+        // window.onload = function() {
+            
+        // }
+        //   从26个字母中随机 得到一个  显示在word div的内容中
+        // Element 元素  标签
+        // dom操作  自行百度
+        var wordDiv = document.getElementById("word");
+        var resultDiv = document.getElementById("result");
+        var timerDiv = document.getElementById("timer");
+        // 记录正确率
+        var rightCount = 0;
+        var wrongCount = 0;
+        // 用来倒计时的
+        var timer = 5;
+       
+        
+
+        function changeLetter() {
+            // 随机26个英文字母  65 -90 之间的数字
+            // math 数学  random 随机
+            // 0 - 1之间的小数 0.123  0.3121    [0  1)
+            //  0 - 25.9999                    [0  26)
+            var num = Math.random() * 26;
+            // 对num 做向下取整的处理
+            // 1.5  = 1  1.9 = 1
+            // num = [0  25]
+            num = Math.floor(num);
+            // 65 - 90
+            num = num + 65;
+            // 通过数值 转换成ASCII所对应的字母
+            // letter 字母 
+            // string 字符串  from 来自  char 字符 code 代码
+            // A - Z 的随机字母
+            var letter = String.fromCharCode(num)
+
+            // 把随机字母现在找到的div中
+            // textContent 文本内容 
+            wordDiv.textContent = letter;
+        }
+
+        // 调用方法  执行方法体
+        changeLetter();
+
+
+        // 键盘的输入
+        // 当点击键盘时执行的操作 
+        // e 参数   包含的是输入键盘的信息
+        document.body.onkeydown = function (e){
+            // 先移除 后添加  展示了动画效果
+            wordDiv.classList.remove("fadeIn");
+           
+            // console 控制台  log 日志
+            // bug  debug
+            console.log(e);
+            console.log(e.keyCode);
+            // 通过键盘输入的keyCode值 和  显示的文本的keyCode值进行对比 
+            // 如果相同 证明输入正确
+            // 获取wordDiv中显示的内容的keyCode
+            // char 字符 code 编码   at 在
+            var displayLetter = wordDiv.textContent.charCodeAt();
+            // 输入正确
+            //  == 等于  = 赋值
+            // == 逻辑运算符
+            if(e.keyCode == displayLetter){
+                // 1. 切换下一个字母
+                changeLetter();
+                // 2. 做一个切换字母的动画
+                // class 类 list列表
+                // 添加类
+                wordDiv.classList.add("fadeIn");
+                // 使用了animate.css 第三方动画库   记得连接css文件
+                // wordDiv.classList.add("animated");
+                // wordDiv.classList.add("tada");
+                // 延迟执行
+                setTimeout(() => {
+                    // 移除类
+                    wordDiv.classList.remove("fadeIn");
+                    // wordDiv.classList.remove("animated");
+                    // wordDiv.classList.remove("tada");
+
+                }, 300);
+                // 3. 统计正确的次数
+                // ++ 自增1
+                rightCount++;
+            }
+            else{
+                wordDiv.classList.add("animated");
+                wordDiv.classList.add("shake");
+                wordDiv.style.color = "red";
+                setTimeout(() => {
+                    wordDiv.classList.remove("animated");
+                    wordDiv.classList.remove("shake")
+                    wordDiv.style.color = "";
+                }, 300);
+                // 错误的次数自增
+                wrongCount++;
+            }
+        //    17.1221321321321321
+            var result = rightCount / (rightCount+wrongCount)*100;
+            // 保留两位小数  Fixed 固定的
+            result = result.toFixed(2);
+            // 把结果显示出来
+            // "" 字符串
+            resultDiv.textContent = "正确"+rightCount +"个,错误"+wrongCount+"个.正确率是"+result + "%";
+            // 反之输入错误的
+            
+        }
+        // 作业1.刷新页面时  带fadeIn动画  再次点击时  依然有动画效果
+        // 2  输入错误时， 带shake 动画(平移)  颜色变红 
+        //  3  倒计时60s 并显示倒计时 （篮球24s计时器）
+
+        // 每隔多长时间执行一次 方法体
+        // 间隔
+        setInterval(() => {
+            // 自减 1  等价于  timer =  timer - 1;
+            timer--;
+            timerDiv.textContent = timer;
+            if(timer <= 0){
+                alert("结束啦，再见。。。");
+                timer = 5;
+            }
+        }, 1000);
+        
+
+
+
+
+
+
+
+
+        // 超级大连写
+        // document.getElementById("word").textContent = String.fromCharCode(Math.floor(Math.random()*26)+65);
+
+    </script>
+
+</body>
+
+</html>
+<!-- 
+    居中终极版
+    https://www.jianshu.com/p/ed16af2a411d
+ -->

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url(../../壁纸/wallhaven-r2e391.png);
+        }
+
+        main {
+            width: 80%;
+            height: 80%;
+            background-color: rgb(39, 38, 38);
+
+            border-radius: 30px;
+            box-shadow: 0 0 10px white;
+
+        }
+
+        #box {
+            width: 90%;
+            height: 90%;
+            background-image: url(keys.png);
+            background-size: 100% 100%;
+            margin: 40px auto;
+            display: flex;
+        }
+
+        .key {
+            width: 11.111%;
+            height: 100%;
+            /* border: solid 1px red; */
+            background-color: grey;
+            opacity: 0;
+            /* transition: all 1s; */
+        }
+
+        .press {
+            opacity: 1;
+            height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src=""></audio>
+    <main>
+        <div id="box">
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+            <div class="key"></div>
+        </div>
+
+    </main>
+    <script src="jquery.js"></script>
+    <script>
+        // 遍历每一个div元素  index指的元素索引 element元素本身
+        $(".key").each(function (index, element) {
+            // element == this
+            // console.log(index);
+            $(this).mouseenter(function () {
+                // 播放音频，显示div的背景颜色
+                enterOrDown(index);
+            });
+            $(this).mouseleave(function () {
+                // 去掉div的背景颜色
+                leaveOrUp(index);
+            });
+            // $(document).keydown(function (e) { 
+            //     console.log(e.key-1);
+            //     if (e.key > 0 && e.key< 10) {
+            //         enterOrDown(e.key-1);
+            //     }
+            //     else{
+            //         alert("按错了");
+            //     }
+            // });
+            // $(document).keyup(function (e) { 
+            //     leaveOrUp(e.key-1);
+            // });
+        });
+        // 定义鼠标进入和键盘down的事件  相同的逻辑只需要写一次
+        function enterOrDown(num) {
+            var audio = $("audio")[0];
+            audio.src = "notes/" + (num + 1) + ".oga";
+            audio.load();
+            audio.play();
+            // 通过num找到div并添加class
+            $(".key").eq(num).addClass("press");
+            $(".key").eq(num).css("transition", "none");
+
+        }
+        function leaveOrUp(num) {
+            $(".key").eq(num).removeClass("press");
+            $(".key").eq(num).css("transition", "all 1s");
+
+        }
+        $("body").keydown(function (e) {
+            console.log(e.key)
+            if (e.key >= 1 || e.key <= 9) {
+                enterOrDown(e.key - 1);
+            }
+            else {
+                alert("按错了");
+            }
+        });
+        $("body").keyup(function (e) {
+            leaveOrUp(e.key - 1);
+        });
+    </script>
+</body>
+
+</html>

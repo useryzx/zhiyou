@@ -1,0 +1,80 @@
+
+html,body{
+    height: 100%;
+}
+.ling{
+    width: 100px;
+    height: 100px;
+    background-color: #464646;
+    border-radius: 10px;
+}
+.er1{
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+/* 一点左上角 沿着交叉轴排列*/
+/* .yi{
+    display: flex;
+     
+    align-items: flex-start;
+}   */
+
+/* 一点上中 沿着主轴排列*/
+/* .yi{
+    display: flex;
+    
+    justify-content: center;
+} */
+
+/* 一点上右 */
+/* .yi{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+} */
+
+/* 一点左中 */
+/* .ling{
+    display: flex;
+    align-items: center;
+} */
+
+/* 一点正中间 沿着主轴交叉轴居中*/
+/* .ling{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* 一点右中 主轴横向反向 */
+/* .ling{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+} */
+
+/* 一点左下角 */
+/* .ling{
+    display: flex;
+    align-items: flex-end;
+} */
+
+/* 一点中下 */
+/* .ling{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+} */
+
+/* 一点右下 */
+.ling{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+
+

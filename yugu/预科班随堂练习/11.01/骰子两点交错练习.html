@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2交错</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+    
+   
+        main{
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            border-radius: 10px;
+            display: flex;
+            /* flex-direction: row; 左中*/
+            
+            
+            justify-content: space-between;
+        }  
+
+        div:nth-child(1){
+            background-color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            
+            
+        }
+        div:nth-child(2){
+            background-color:#fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            align-self: center; 左中
+
+        }
+        /* div:nth-child(2){
+            background-color:#fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            align-self: flex-end; 
+
+        } */
+        /* div:nth-child(2){
+            background-color:#fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50px;
+            align-self: flex-end; 
+
+        } */
+
+        
+        
+    
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+    
+</body>
+</html>

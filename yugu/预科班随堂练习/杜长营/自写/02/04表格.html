@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        caption,
+        th,
+        td {
+            border: brown 1px solid;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        caption {
+            border-bottom: none;
+        }
+
+        th {
+            width: 100px;
+        }
+
+        td {
+            /* 无效宽度 */
+            width: 200px;
+            text-align: center;
+        }
+        caption{
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <caption>课程表</caption>
+            <tr>
+                <th>周1</th>
+                <th>周2</th>
+                <th>周3</th>
+                <th>周4</th>
+                <th>周5</th>
+                <th>周6</th>
+                <th>周7</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>英语</td>
+                <td>英语</td>
+                <td>英语</td>
+                <td>英语</td>
+                <td>英语</td>
+                <td rowspan="2">休息</td>
+                <td rowspan="2">休息</td>
+            </tr>
+            <tr>
+                <td>数学</d>
+                <td>数学</d>
+                <td>数学</d>
+                <td>数学</d>
+                <td>数学</d>
+                
+                
+            </tr>
+
+        </tbody>
+
+
+
+    </table>
+</body>
+
+</html>

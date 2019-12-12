@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="fa/css/font-awesome.css">
+</head>
+<body>
+    <audio 
+        id="player"
+        src="music/give me some sunshine.mp3"
+        preload
+    ></audio>
+
+    <div id="cd"></div>
+
+    <main>
+        <div id="m-list">
+            <div id="play-mode">
+                <span class="fa fa-list"></span>
+                <span class="fa fa-random"></span>
+                <span class="fa fa-repeat"></span>
+            </div>
+            <ul id="m-ul">
+                
+            </ul>
+        </div>
+        <div id="player-box">
+            <div id="lyric-box"></div>
+            <div id="progress-bar">
+                <span id="ct"></span>    
+                <progress id="pro-bar" value="0.5"></progress>
+                <span id="tt"></span>
+            </div>
+            <div id="ctrl">
+                <span id="prev" class="fa fa-backward"></span>
+                <span id="play" class="fa fa-pause"></span>
+                <span id="next" class="fa fa-forward"></span>
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+<script src="index.js"></script>
+</html>

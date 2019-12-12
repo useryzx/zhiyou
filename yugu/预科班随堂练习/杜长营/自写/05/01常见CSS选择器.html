@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css选择器</title>
+    <style>
+        *{
+            /* 通配符选择器，选择所有标签 */
+            padding: 0;
+            margin: 0;
+        }
+        /* p{
+            color: green;
+        }
+        #first{
+            color: red;
+        }
+        .second{
+            color: hotpink;
+        }
+        
+        .big{
+            font-size: 50px;
+        }
+        div p{
+            color: indigo;
+        } */
+        /* div>p{
+            font-size: 50px;
+        } */
+        /* main+p{
+            color: indigo;
+        } */
+        /* p,span{
+            color: lightseagreen;
+        } */
+        [name='san']{
+            font-size: 80px;
+        }
+        [name]{
+            font-size: 50px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <!-- name自定义的属性 -->
+        <P id="first" name="san">1111111</P>
+        <P class="second">2222222</P>
+        <main>
+            <span class="second">aaaaaaaa</span>
+            <p class="second big">33333333</p>
+            <span class="second big">bbbbbbb</span>
+        </main>
+        <p>444444444</p>
+        <span>cccccccc</span>
+    </div>
+</body>
+</html>

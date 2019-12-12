@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+        
+        main{
+            position: relative;
+            width: 700px;
+            height: 700px;
+            /* transform: rotateX(180deg) rotateY(0deg); */
+            transform-style: preserve-3d;
+
+        }
+        div{
+            position: absolute;
+            border: black 1px solid;  
+            text-align: center;
+        }
+        .d7{
+            width: 100px;
+            height: 100px;
+            animation: move 5s linear infinite;
+            
+        }
+        .d6{
+            width: 200px;
+            height: 200px;
+            animation: move 7s linear infinite;
+            
+        }
+        .d5{
+            width: 300px;
+            height: 300px;
+            animation: move 10s linear infinite;
+            
+        }
+        .d4{
+            width: 400px;
+            height: 400px;
+            animation: move 13s linear infinite;
+            
+        }
+        .d3{
+            width: 500px;
+            height: 500px;
+            animation: move 18s linear infinite;
+            
+        }
+        .d2{
+            width: 600px;
+            height: 600px;
+            animation: move 25s linear infinite;
+            
+        }
+        .d1{
+            width: 700px;
+            height: 700px;
+            animation: move 40s linear infinite;
+
+        }
+        p{
+            display: inline-block;
+            width: 8%;
+            height: 8%;
+            box-shadow: 0 0 10px 3px skyblue inset;
+        }
+        @keyframes move {
+            from{
+                transform: rotateX(180deg) rotateY(0deg) rotateZ(0deg);
+
+            }
+            to{
+                transform: rotateX(180deg) rotateY(0deg) rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="d1"><p></p></div>
+        <div class="d2"><p></p></div>
+        <div class="d3"><p></p></div>
+        <div class="d4"><p></p></div>
+        <div class="d5"><p></p></div>
+        <div class="d6"><p></p></div>
+        <div class="d7"><p></p></div>
+    </main>
+
+</body>
+
+</html>

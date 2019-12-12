@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            /* background-color: red; */
+            /* margin: 0 -3px; */
+            font-size: 12px;
+            border: 1px solid red;
+        }
+
+        #d1 {
+            font-size: 0;
+        }
+
+        img {
+            border: 1px solid green;
+        }
+
+        #d2 {
+            font-size: 0;
+        }
+
+        .up {
+            width: 60%;
+            height: 200px;
+            border: solid 1px red;
+            /* 22222 */
+            /* display: block; */
+
+            /* 33333 */
+            vertical-align: baseline;
+        }
+
+        #d3{
+            /* 1111111 */
+            /* font-size: 0; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- https://www.cnblogs.com/diantao/p/6052355.html -->
+    <!-- 行元素左右的间距问题: 因为vscode中为了保证代码的简洁和规范 标签与标签之间存在换行符 浏览器在解析时 转换成了一个空格  所以产生了间距 -->
+    <!-- 解决行元素之间间距的办法 1.连写 <span></span><span></span> 所有的标签写成一行 
+                                2.修改margin值
+                                3.设置父元素的font-size:0-->
+    <div id="d1">
+        <span>123</span>
+        <span>456</span>
+        <span>789</span>
+        <span>101112</span>
+    </div>
+    <!-- 行内块左右的间隙问题
+        同上
+    -->
+    <div id="d2">
+        <img src="timg.jpg" alt="">
+        <img src="timg.jpg" alt="">
+    </div>
+
+    <!-- 行内块上下间距问题 -->
+    <!-- 产生的原因是: 基线对齐 vertical-align: baseline;
+    解决办法1:  设置父元素的font-size：0 
+            2：设置子元素的display:block
+            3: 设置子元素vertical-align: 只要不为baseline 都可以   top bottom middle -->
+    <div id="d3">
+        <img src="timg.jpg" alt="" class="up">
+        <img src="timg.jpg" alt="" class="up">
+    </div>
+
+
+
+
+</body>
+
+</html>

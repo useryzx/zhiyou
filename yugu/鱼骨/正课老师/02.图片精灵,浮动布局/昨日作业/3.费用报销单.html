@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        main {
+            width: 900px;
+            height: 600px;
+            margin: 100px auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        span {
+            line-height: 200%;
+        }
+
+        hr {
+            width: 360px;
+            margin: 0 auto;
+        }
+
+        span:nth-of-type(2) {
+            float: right;
+        }
+
+        td {
+            border: 2px solid black;
+            height: 40px;
+            text-align: center;
+            padding: 0;
+        }
+
+        td:nth-child(1) {
+            width: 240px;
+        }
+
+        /* nth-child:先查找父元素对应的子元素，找到之后匹配，
+        满足才会采用
+        nth-of-type:只找父元素中符合类型的子元素*/
+        td:nth-child(2),
+        td:nth-child(3) {
+            width: 100px;
+        }
+
+        td:nth-child(4) {
+            width: 140px;
+        }
+
+        td:nth-child(5) {
+            width: 140px;
+        }
+        tr:nth-child(7) td:nth-child(4){
+            text-align: left;
+        }
+        tr:nth-child(8) td{
+            text-align: left;
+        }
+        #smallTable td
+        {
+             border: none;
+             width: 125px;
+             border-right: solid 2px black;
+        }
+        #smallTable td:nth-child(6)
+        {
+            border-right: none;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <table>
+            <!-- &emsp;中文全角空格
+            &nbsp;英文空格
+            &#x3000;中文空格 -->
+            <caption>
+                <h1>费&#x3000;用&#x3000;报&#x3000;销&#x3000;单</h1>
+                <hr>
+                <span>&#x3000;报销日期&#x3000;&#x3000;年&#x3000;&#x3000;月&#x3000;&#x3000;日</span>
+                <span>附件&#x3000;&#x3000;&#x3000;张</span>
+            </caption>
+            <tbody>
+                <tr>
+                    <td>&#x3000;费&#x3000;用&#x3000;项&#x3000;目</td>
+                    <td>&#x3000;类&#x3000;别</td>
+                    <td>&#x3000;金&#x3000;额</td>
+                    <td rowspan="2">负责人(签章)</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">&#x3000;审&#x3000;查&#x3000;意&#x3000;见</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">报销人&#x3000;(签章)</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>&#x3000;￥</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5">核实金额</td>
+                </tr>
+                <tr>
+                    <!-- 因为单元格个数不同，但是整体的宽度相同
+                    所以在创建一个小表 -->
+                    <td colspan="5">
+                        <table id="smallTable">
+                            <tbody>
+                                <tr>
+                                    <td>&#x3000;借&#x3000;款&#x3000;额</td>
+                                    <td></td>
+                                    <td>应退金额</td>
+                                    <td></td>
+                                    <td>应补金额</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

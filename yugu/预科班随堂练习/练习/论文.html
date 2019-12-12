@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 默认的body的高度为0   设置100% 和浏览器高度一致
+        宽会继承自父元素 块元素 详情参阅 研发四群 文件 元素的分类
+         */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* padding: ; 调整内容与盒子之间的距离*/
+
+            /* 调整相邻标签之间的距离 */
+            margin: 0;
+            background-color: black;
+        }
+
+        main {
+            width: 60%;
+            background-color: white;
+            margin: 0 auto;
+            height: 2000px;
+        }
+
+        #www{
+            /* float  浮动  漂浮 */
+            /* float用来调整页面的布局 */
+            float: right;
+            line-height: 40px;
+            margin-right: 100px;
+            text-decoration: none;
+        }
+
+        hr {
+            margin: 0;
+        }
+
+        article {
+            /* margin: 0 100px; */
+            padding: 0 100px;
+        }
+
+        header {
+            /* transparent 透明 */
+            /* 解决外边距合并问题的方式之一 */
+            border: 1px solid transparent;
+        }
+
+        h1,
+        div {
+            text-align: center;
+        }
+        /* 找到header中的第一p元素 */
+        /* ::before 前缀 */
+        /* :   :: 区别 伪类和伪元素选择器 */
+        header[lang="en"]>p:nth-of-type(1)::before{
+            color: red;
+            /* content 内容 */
+            content: "zhaiyao:";
+        }
+        header[lang="en"]>p:nth-of-type(2)::before{
+            color: red;
+            /* content 内容 */
+            content: "关键字:";
+        }
+        header[lang="en"]>p:nth-of-type(3)::before{
+            color: red;
+            /* content 内容 */
+            content: "中图分类号:";
+        }
+        /* css 选择器的博客 */
+        /* https://www.html.cn/book/css/selectors/index.htm */
+        body{
+            counter-reset: first;
+        }
+        h2{
+            counter-increment: first;
+        }
+        h2::before{
+            content: counter(first) ".";
+            color: blue;
+        }
+
+        h2{
+            counter-reset: h3;
+        }
+        h3{
+            counter-increment: h3;
+        }
+        h3::before{
+            content: counter(first) "." counter(h3);
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- section 部分 区域 -->
+        <section>
+            <!-- 行内样式    -->
+            <!-- 行元素 span  a  b  s  可以设置 margin-left,right  但不可以设置margin-top,bottom -->
+            <span style="margin-left: 100px;line-height: 40px;"><span style="color: red;">中国</span>科技论文在线</span>
+            <!-- href  写个网址    hyper reference 超链接 html hyper text markup language  -->
+            <a href="" id="www">www.123.com</a>
+            <hr>
+        </section>
+        <!-- article 文章 -->
+        <article>
+            <header lang="zh-cn">
+                <h1>基于 HTML5 的移动阅读内容展示方式</h1>
+                <div>李青,王晨升</div>
+                <div>（北京邮电大学自动化学院，北京 100876）</div>
+                <!-- bold 粗体 -->
+                <p><b>摘要:</b>据2014 中国数字阅读白皮书的大数据显示，在 2014 年底，手机阅读用户接近 3 个亿，手机阅读明显已经成为手机网民在重拾碎片时间中的主要活动之一。目前的移动阅读平台由
+                    Native App 主导，Native App 生命周期短、占据用户设备内存资源、上架审核流程复杂、 版本更新慢的劣势日益显现。基于 HTML5 的移动阅读 Web
+                    App，采用自适应的网页布局方式，自动识别设备屏幕宽度，适配不同分辨率的设备填充文本内容，对内容资源进行版式与流式的排版展现。满足了用户打开移动设备浏览器就能进行阅读的需求，提升阅读体验。</p>
+                <p><b>关键字:</b>都是什么啊 不想写了。。。。。。</p>
+                <p><b>中图分类号:</b>这个里面的内容我也不想写了。。。。</p>
+            </header>
+            <header lang="en">
+                <h1>The Content Display Method of Mobile Reading Based on HTML5</h1>
+                <div>LI Qing, WANG Chensheng</div>
+                <div>（Automation School,Beijing University of Posts and Telecommunications, Beijing 100876</div>
+                <!-- bold 粗体 -->
+                <p>ccording to the "2014 China Digital Reading white paper", at the end of 2014, the mobile phone users to read nearly 3 hundred million, mobile phone reading has become one of the 20 main activities of mobile users in the time of repicking up the debris. The current mobile reading platform is dominated by App Native, the App Native has a short life cycle, which has the disadvantages of occupying user's device memory resource, the complexity of the audit process and the slow version of the update. The Mobile rea</p>
+                <p>Web; Native App; Web App; Reading</p>
+                <p>hello kitty ......</p>
+            </header>
+            <section>
+                <h2>引言</h2>
+                <!-- abbr 缩写 简写  title 全称 -->
+                <!-- sup 上标   sub 下标 -->
+                <!--  -->
+                <p>随着 Wifi、4G 等网络技术的不断发展，数据网络传输变得更加快捷与便利，带动了移30 动设备的智能化发展、智能移动设备应用的爆发性增长。在应用市场中，移动阅读相关应用 市场占有量突出。目前的移动阅读平台由都 Native app 主导。而 Native App 应用的劣势也日 益显现。对于开发者而言，Native App 应用需要针对各种手机操作系统开发多个版本，同时 Android 版本碎片化问题给开发带来了更大的阻力。随着 W3C 对 <abbr title="Hyper Text markup language5">HTML5</abbr> 规范的制定<sup><a href="">[1]</a></sup>，web app 使用的网页语言在大部分操作系统和浏览器中都兼容，有效节省了开发成本，跨平台性、版本迭代更新简单等巨大优势显现。基于 HTML5 的移动阅读应用使用户只需打开浏览器， 便能随时随地看书[2]</p>
+            </section>
+            <section>
+                <h2>用户触摸</h2>
+                <section>
+                    <h3>touch 事件机制</h3>
+                    <!-- code 代码  语义化标签 -->
+                    <!-- &lt; <  &gt; -->
+                    <!-- pre  pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体 -->
+                    <p>移动阅读要实现和纸质类书籍阅读类似的阅读体验，需要对用户触摸屏动作做出滑屏或 者翻页的效果处理。处理过程即设备屏幕受到用户滑动屏幕后，页面试图区域随手指的移动而移动，手指抬起时根据移动方向判断用户进行上页或是下页的操作，自动移动切换到目标页面。啊实打实的发生的路口附近暗示来得及福利卡三等奖发大水发啦山东矿机 <code>
+                        <pre>
+                            &lt;meta name="viewport" content="
+                            width=device-width, minimum-scale=1.0,
+                            maximum-scale=1.0user-scalable=no"/&gt;
+                        </pre></code></p>
+                    <section>
+                        <h3>click 事件机制</h3>
+                        <p>点击事件的处理较容易处理。只需判断用户触摸屏事件位置，根据设定的阈值，判断用 户想要实现的翻页效果，以切换页面前翻/后翻。本文将屏幕宽度的 1/3/、2/3 位置值作为阈 值，当点击事件发生在 1/3 位置左侧区域时，页面切换进入下一页，中间未知区域不做变化，当点击事件发生在 2/3 位置右侧区域时，页面切换至前一页。</p>
+                    </section>
+                </section>
+            </section>
+            <section>
+                <h2>页面切换效果实现方法的比对</h2>
+                <section>
+                    <h3>Touch 事件与 translate( )方法实现</h3>
+                    <p>触摸屏检测到用户 touch 操作时，首先初始化数据，记录当前页面的触摸位置等信息，继续监听用户 Touchmove 操作，如果 Touchmove 未发生，恢复初始状态，页面不做处理。若发生了，则继续监听用户 Touchend 事件，Touchend 时间的触发表示用户操作结束，判断 当前用户手势的相对位移，将该值与设定的阈值进行比较，超出阈值进行翻页处理，否则页面恢复到原始状态。Touchmove 与 Touchend 事件的触发过程中均有页面视图的平移效果，具体实现依赖于 translate()方法与相对位移的大小。</p>
+                    <!--  figure 图形
+                         <figure> 标签规定独立的流内容（图像、图表、照片、代码等等）。
+                         figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。 -->
+                    <figure>
+                        <img src="" alt="">
+                        <!-- figcaption   caption标题 -->
+                        <figcaption>图1:户触摸屏事件翻页效果处理</figcaption>
+                        <figcaption>图1:processing of page-flipping because of the touches event </figcaption>
+                    </figure>
+                    <section>
+                            <h3>Touch 事件与 translate( )方法实现</h3>
+                            <p>触摸屏检测到用户 touch 操作时，首先初始化数据，记录当前页面的触摸位置等信息，继续监听用户 Touchmove 操作，如果 Touchmove 未发生，恢复初始状态，页面不做处理。若发生了，则继续监听用户 Touchend 事件，Touchend 时间的触发表示用户操作结束，判断 当前用户手势的相对位移，将该值与设定的阈值进行比较，超出阈值进行翻页处理，否则页面恢复到原始状态。Touchmove 与 Touchend 事件的触发过程中均有页面视图的平移效果，具体实现依赖于 translate()方法与相对位移的大小。</p>
+                            <!--  figure 图形
+                                 <figure> 标签规定独立的流内容（图像、图表、照片、代码等等）。
+                                 figure 元素的内容应该与主内容相关，但如果被删除，则不应对文档流产生影响。 -->
+                            <figure>
+                                <img src="" alt="">
+                                <!-- figcaption   caption标题 -->
+                                <figcaption>图1:户触摸屏事件翻页效果处理</figcaption>
+                                <figcaption>图1:processing of page-flipping because of the touches event </figcaption>
+                            </figure>
+                    </section>
+                </section>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>

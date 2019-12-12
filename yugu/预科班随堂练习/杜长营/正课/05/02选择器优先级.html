@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 标签名选择器s */
+        /* 选择分为 四个等级 
+          a  > b > c  > d 
+          a 行内样式        可以理解为1000
+          b  id选择器       可以理解100
+          c  class选择器 伪类(:一个冒号的选择器 :nth-of-type()) 可以理解为10
+          d  标签选择器  伪元素(::   ::before)     可以理解1
+        */
+        /* 权重  */
+        /* 1 */
+        div {
+            color: red;
+        }
+
+        /* 10 */
+        .c1 {
+            color: blue;
+        }
+
+        /* 100 */
+        #d1 {
+            /* important 重要的 */
+            color: green !important;
+        }
+
+
+
+
+        /* 222222222222 */
+        /* 找的都是内容为33333的div元素 */
+        /* 其权重值为200   但所看到的效果 是权重值为200的效果   说明优先级的比较 不能完全依靠 权重的相加    原则上看selector specificity 的比较
+        
+        根据abc三个等级的值 从左往右依次比较  如果 A的a值大于 B元素的a值 则 A的优先级高于B
+        A元素   (2   0   0)
+
+        B元素   (1  12   0)
+        */   
+        #d3 #d4{
+            color: red;
+        }
+        /* 其权重为220 */
+        #d3 .box.box.box.box.box.box.box.box.box.box.box.box
+        {
+            color: blue;
+        }
+
+
+
+        /* 选择器的优先级  
+        !important > 行内样式 > id > class >标签名 */
+
+        /* 优先级可以通过权重值的累加来计算 */
+        /* 110 */
+        /* 211 */
+        /* 不能完全按照 权重值相加的和 */
+        /* 2 2 0 */
+        #d2 #box .three .c {
+            color: blue;
+        }
+
+        /* 2 1 1 */
+        #d2 #box .three p {
+            color: purple;
+            font-size: 50px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- emmet 插件的作用 -->
+    
+
+    <!-- css行内样式的写法 -->
+    <!-- 写在开始标签中   并且添加style属性 -->
+    <div id="d1" class="c1" style="color: hotpink;">11111111111111</div>
+
+
+<!-- 22222222 -->
+    <div id="d3">
+        <div class="box" id="d4">33333333</div>
+    </div>
+
+
+<!-- 333333333 -->
+
+    <div id="d2">
+        <div id="box" class="two">
+            <div class="three">
+                <p class="c">ccccccccccccccccccccccccc</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

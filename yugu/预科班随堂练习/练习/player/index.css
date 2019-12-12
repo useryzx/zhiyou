@@ -1,0 +1,135 @@
+*{
+    /* border: solid 1px black; */
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 600px;
+    height: 400px;
+    /* border: solid 1px black; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+#m-list{
+    width: 200px;
+    height: 400px;
+    border: solid 1px red;
+    border-radius: 20px;
+}
+
+#player-box{
+    width: 400px;
+    height: 400px;
+    border: solid 1px green;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+
+#lyric-box{
+    width: 400px;
+    height: 250px;
+    color: grey;
+    border-bottom: solid 1px ;
+    background: linear-gradient(white,skyblue);
+    
+}
+
+#progress-bar{
+    width: 400px;
+    height: 50px;
+    border-bottom: solid 1px grey;
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ctrl{
+    width: 400px;
+    height: 100px;
+    font-size: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(49, 175, 224);
+}
+
+
+#ctrl span:hover{
+    text-shadow: 0px 0px 30px white;
+    cursor: pointer;
+}
+
+
+#pro-bar{
+    width: 320px;
+    cursor: pointer;
+}
+
+#m-ul{
+    padding: 20px;
+}
+
+#m-list li{
+    list-style: none;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+#play-mode{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.playing:before{
+    content: "\f013";
+    font: normal normal normal 14px/1 FontAwesome;
+    display: inline-block;
+    animation: fa-spin 2s infinite linear;
+}
+
+
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+#cd{
+    width: 300px;
+    height: 300px;
+    border: solid 1px black;
+    position: absolute;
+    /* background-color: red; */
+    top: calc(50% - 150px);
+    left: 55%;
+    border-radius: 50%;
+    background-size: 100% 100%;
+    transition: all 0.7s;
+    animation: spin 20s linear infinite;
+}
+
+#cd:hover{
+    left: 65%;
+}

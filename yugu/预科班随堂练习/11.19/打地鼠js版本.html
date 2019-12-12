@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打地鼠</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            /* margin调整相邻元素的距离 */
+            margin: 0;
+            background-image: url(image/bg.jpg);
+            cursor: url(image/cursor.png), auto;
+            user-select: none;
+        }
+
+        body:active {
+            cursor: url(image/cursor-down.png), auto;
+        }
+
+        p {
+            line-height: 80px;
+            background-color: grey;
+            width: 200px;
+            margin: 0;
+            font-size: 30px;
+            text-align: center;
+            opacity: 0.5;
+            color: red;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        table {
+            margin: 0px auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 200px;
+            height: 200px;
+            background-image: url(image/hole.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: bottom center;
+            text-align: center;
+            vertical-align: bottom;
+        }
+
+        td img {
+            width: 100px;
+            margin-bottom: 20px;
+            height: 0;
+            transition: all 1s;
+        }
+
+        .show {
+            height: 100px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <audio src="audio/music.mp3" autoplay loop></audio>
+    <audio src="audio/dazhong.wav"></audio>
+    <p id="fenshu">分数是：0</p>
+    <table>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+        <tr>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+            <td><img src="image/mouse.png" alt=""></td>
+        </tr>
+    </table>
+    <!-- 添加脚本 -->
+    <script>
+        var imgArr = document.getElementsByTagName("img");
+        var audio = document.getElementsByTagName("audio")[1];
+        // 封装方法生成老鼠
+        function createMouse() {
+            var num = Math.floor(Math.random() * 16);
+            // console.log(num)
+            imgArr[num].classList.add("show");
+            imgArr[num].hha = true;
+             // 点击img只加一次分
+            imgArr[num].onclick = function (e) { 
+                    if(imgArr[num].hha == true) {
+                        getScore();
+                        audio.load();
+                        audio.play();
+                        e.target.classList.remove("show");
+                        imgArr[num].hha = false;
+                    }                
+                }
+            
+            setTimeout(() => {
+                imgArr[num].classList.remove("show");
+            }, 2000);
+        }
+        // 间隔一秒执行生成老鼠
+        setInterval(() => {
+            createMouse();
+        }, 1000);
+
+        // 得分
+        var score = 0;
+        function getScore() {
+            score++;
+            // console.log(document.getElementsByTagName("p"));
+            document.getElementsByTagName("p")[0].innerHTML = "分数是：" + score;
+        }
+       
+
+    </script>
+</body>
+
+</html>

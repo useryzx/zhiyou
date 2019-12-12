@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- css 选择器  找标签 -->
+    <style>
+        /* 111111 */
+        /* * 通配符  找到所有的标签 包含了html 和body标签 */
+        /* *{
+            color: blue;
+        } */
+        /* 22222 */
+        /* 元素选择器 标签名选择器   找到body中所有的某元素 */
+        /* p{
+            color: green;
+        } */
+        
+        /* 333333 */
+        /* id选择器     #+idName{} */
+        /* #first{
+            color: blue;
+        } */
+
+        /* 44444444 */
+        /* class选择器  .+className{} */
+        /* .letter{
+            color: green;
+        }
+        .small{
+            font-size: 30px;
+        } */
+        /* 同时满足两个class名的方式 */
+        /* .letter.big{
+            font-size:50px;
+        } */
+        /* 555555 */
+        /* 关系选择器   空格 表示找到子孙元素 */
+        /* div p{
+            color: green;
+        } */
+        /* > 关系选择器  > 找子元素 */
+        /* div>p{
+            font-size: 50px;
+        } */
+        /* 6666666 */
+        /*  +  找到与某元素紧邻的元素  隔一个都不行*/
+        /* main+p{
+            font-size: 50px;
+        } */
+        /* 7777 */
+        /* ,  找到某和某元素 */
+        /* p,span{
+            color: green;
+        }
+        #first,.small{
+            color: blue;
+        } */
+        /* 888888 */
+        /* 属性选择器  attribute 属性  property 属性*/
+        /* 找到包含name属性的元素 */
+        /* [name]{
+            font-size: 50px;
+        } */
+        /* 找到包含name属性=san的元素 */
+        /* [name="san"]{
+            font-size: 30px;
+        } */
+        /* 找到id为first 属性为name 值为san的元素 */
+        /* #first[name="san"]{
+            font-size: 100px;
+        } */
+
+        /* 9999 */
+        /* child 孩子  儿童 子元素 */
+        /* main p:nth-child(2){
+
+        }
+        main p:nth-of-type(1){
+
+        } */
+        ::first-letter
+        
+    </style>
+</head>
+<body>
+    <!-- css选择器   -->
+    <div>
+        <!-- identify 标识符   唯一的 -->
+        <!-- name 属于自定义的 -->
+        <p id="first" name="san">111111111</p>
+        <!-- class 类    具有相同属性和行为的集合   -->
+        <p class="letter big">2222222222</p>
+        <main>
+            <span class="letter big" name="si">aaaaaaaaa</span>
+            <p class="letter small">3333333333333</p>
+            <span class="letter small">bbbbbbbb</span>
+        </main>
+        <p class="big">4444444444444444444444444</p>
+        <span>cccccccccccccccccccccccccccccc</span>
+    </div>
+
+</body>
+</html>

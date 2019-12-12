@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>雪花</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            background-color: #b5ddbb;
+        }
+        img{
+            width: 100px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    
+    </style>
+</head>
+<body>
+    <img src="" alt="">
+    <script>
+    for(var i =0;i<12;i++){
+        createSnow();
+    }
+
+    function createSnow(){
+        var snow = document.createElement('img');
+        snow.src = 'flake.png';
+        var num = Math.random()*151+50;
+        num = Math.floor(num);
+        snow.width = num;
+        snow.height = num;
+    
+        var h = document.documentElement.clientHeight;
+        var w = document.documentElement.clientWidth;
+        snow.style.position = 'absolute';
+        var t = (h-num)*Math.random();
+        var l = (w-num)*Math.random();
+        console.log(t)
+        snow.style.top = t+'px';
+        snow.style.left = l+'px';
+        console.log(snow);
+        document.body.append(snow);
+        setInterval(()=>{
+            l += 10;
+            t += 10;
+            if(l>w){
+                l = 0;
+            }
+            if(t>h){
+                t=0
+            }
+            snow.style.top = t+'px';
+            snow.style.left = l+'px';
+        },200)
+    }
+
+    </script>
+    
+</body>
+</html>

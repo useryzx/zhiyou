@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* https://segmentfault.com/a/1190000006041960 */
+        .d1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        .d2{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            /* 1.float 发生浮动的元素会脱离文档流 */
+            /* 2.连续发生浮动的元素 从前往后排   浏览器的两侧是前*/
+            /* float: left;; */
+        }
+        .d3{
+            width: 500px;
+            height: 100px;
+            background-color: blue;
+            /* float: left; */
+        }
+        .d4{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            /* float: left; */
+        }
+        span{
+            /* float: left; */
+            /* 3.发生浮动的元素会转换成block */
+        }
+        
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            float: left;
+        }
+        main{
+            /* 111 */
+            /* height: 200px; */
+            /* 222 */
+            /* overflow: hidden; */
+        }
+        section{
+            clear: both;
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- float 浮动  用来改变页面中元素的布局 -->
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+    <span>111111111111111111111111</span>
+    <!-- 4.当子元素发生浮动后  父元素在没有设置高时，高度为0  为了不影响页面布局
+    可以通过以下方式来解决
+    1.设置父元素的高度
+    2.设置父元素 overflow:hidden;
+    3.添加空内容元素 设置清除浮动来完成
+    -->
+    <main>
+        <div class="box"></div>
+        <div class="box"></div>
+    </main>
+    <section></section>
+
+    
+</body>
+</html>

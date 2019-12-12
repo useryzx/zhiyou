@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阿里茄汁面</title>
+    <style>
+        body {
+            height: 100%;
+        }
+
+        #box {
+            width: 100%;
+            height: 650px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        #content{
+            padding: 20px;
+        }
+
+        .logo {
+            width: 20%;
+            height: 100%;
+            /* border: 1px solid black; */
+            background-image: url(imgs/logo.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            float: left;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .clear-fix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        p>img {
+            margin-top: 5px;
+            width: 12px;
+            height: 12px;
+        }
+
+        .txtRed {
+            color: red;
+            font-size: 12px;
+        }
+
+        .txtGrey {
+            color: grey;
+            font-size: 12px;
+        }
+
+        .fengNiao {
+            background-color: rgb(104, 104, 250);
+            font-size: 15px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #pinPai {
+            background-color: gold;
+            font-size: 15px;
+            color: white;
+            border-radius: 5px;
+        }
+
+        #bao {
+            border: 1px solid grey;
+        }
+
+        #star {
+            color: rgb(235, 235, 73);
+        }
+
+        hr {
+            opacity: 0.5;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: inline-block;
+            width: 26.6%;
+        }
+
+        li img {
+            width: 100%;
+        }
+
+        #jian {
+            background-color: rgb(243, 60, 60);
+            font-size: 15px;
+            border-radius: 2px;
+            color: white;
+        }
+
+        #shou {
+            background-color: rgb(96, 231, 141);
+            font-size: 15px;
+            border-radius: 2px;
+            color: white;
+
+        }
+
+        h4 {
+            color: grey;
+            margin-bottom: 0;
+        }
+
+        h4+span {
+            color: red;
+        }
+
+        p {
+            margin: 4px;
+        }
+
+        #sanJiao {
+            margin-top: 5px;
+            width: 0;
+            height: 0;
+            border-right: 8px solid transparent;
+            border-top: 8px solid grey;
+            border-left: 8px solid transparent;
+        }
+
+
+        /* 空心三角 */
+        .sanjiaos{
+            position: relative;
+        }
+        .sanjiao {
+            width: 0;
+            height: 0;
+            border-top: 100px solid #000;
+            border-right: 100px solid transparent;
+            border-left: 100px solid transparent;
+            position: absolute;
+        }
+        .sanjiao1 {
+            width: 0;
+            height: 0;
+            border-top: 98px solid rgb(255, 255, 255);
+            border-right: 98px solid transparent;
+            border-left: 98px solid transparent;
+            position: absolute;
+            left: 2px;
+            top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="logo">
+            <!-- <img src="imgs/logo.png" alt=""> -->
+        </div>
+        <div id="content">
+            <div id="topDea">
+                <p>
+                    <span id="pinPai">&nbsp;品牌&nbsp;</span>
+                    <span>阿利茄汁面（商英街店）</span>
+                    <span class="right clear-fix txtGrey" id="bao">保</span>
+                </p>
+                <p>
+                    <span class="left" id="star">★★★★★
+                    </span>
+                    <span class="txtGrey">5月售526单
+                    </span>
+                    <span class="right clear-fix fengNiao">&nbsp;蜂鸟专送&nbsp;</span>
+                </p>
+                <p>
+                    <span class="left txtGrey">￥20起送|配送费￥3.18</span>
+                    <span class="right clear-fix txtGrey">2.21km 27分钟</span>
+                </p>
+                <br>
+                <p>
+                    <img src="imgs/red.png" alt="" class="left clear-fix">
+                    <span class="txtRed">口碑人气好店</span>
+                </p>
+                <hr>
+                <p> <span id="shou" class="left">首</span>
+                    <span class="txtGrey">新用户下单立减17元</span>
+                    <span class="right txtGrey" id="sanJiao"></span>
+                    <span class="right clear-fix txtGrey">8个活动</span>
+                </p>
+                <br>
+                <span id="jian">减</span>
+                <span class="txtGrey"> 满25减5，满35减7，满45减8，满55减10，满80减25，满25减5，满35减7，满45减8，满55减10，满80减25，</span>
+            </div>
+            <div id="btDea">
+                <ul>
+                    <li><img src="imgs/ali.jpeg" alt="">
+                        <h4>茄汁酸菜面</h4><span>￥22</span>
+                    </li>
+                    <li><img src="imgs/ali.jpeg" alt="">
+                        <h4>茄汁酸菜面</h4><span>￥22</span>
+                    </li>
+                    <li><img src="imgs/ali.jpeg" alt="">
+                        <h4>茄汁酸菜面</h4><span>￥22</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="sanjiaos">
+            <div class="sanjiao"></div>
+            <div class="sanjiao1"></div>
+    </div>
+    
+</body>
+
+</html>
