@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宝钢</title>
+    <!--1 引入bootstrap框架-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jQuery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        /*2.1*/
+        .navbar{
+            background-image: url(image/nav-bg.png);
+            background-size: 100% 100%;
+            margin: 0;
+        }
+        /*5 修改a标签的内边距*/
+        .navbar-brand{
+            padding: 0;
+        }
+        /*5.1 防止图片出界*/
+        .navbar-brand img{
+            width: 100%;
+            height: 100%;
+        }
+        /*8 修改 ul的外边距*/
+        .navbar-nav{
+            margin-left: 50px;
+        }
+        /*9 修改被选中的菜单栏的样式  (菜单栏 指的是首页  个人中心 媒体中心)*/
+        /*选择器的写法  太长 不用记忆  只需要知道如何找到即可  查看元素--->选中a标签--->规则中 寻找*/
+        
+        .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover{
+            border-bottom: solid 2px blue;
+            color: blue;
+            background: none;
+            /*background-color: none;*/
+            /*颜色可以修改成 透明的或者为 none*/
+        }
+        /*10 因为 菜单栏的底线长度 以及位置不符合要求  可以通过修改内边距来搞定*/
+        .navbar-nav li a{
+            padding: 15px 5px 5px 5px;
+            /*调整每个选项中的外边距*/
+            margin-left: 20px;
+        }
+
+        /*11 修改右侧放大镜位置*/
+        .glyphicon{
+            position: relative;
+
+            left: -30px;
+            top: 2px;
+            background-color: blue;
+            border-radius: 50%;
+            color: white;
+            /*让放大镜放大一些 */
+            padding: 5px;
+
+        }
+        /*13 修改中间图header大小 以及要显示的内容*/
+        header{
+            background-image: url(image/banner.png);
+            height: 400px;
+            background-size: 100% 100%;
+        }
+        /*12  考虑在不同设备中 输入框的大小*/
+        /*通过媒体查询的方式 来对不同的设备修改一些不同的效果  比如 banner图的大小 以及 输入框大小*/
+        /*中型设备的适配*/
+
+        @media (min-width:992px){
+            #bigDiv{
+                margin-top: -30px;
+                margin-bottom: 100px;
+            }
+            footer{
+                background-color: gray;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                border-top: solid 2px yellow;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width:992px){
+            /*输入框的大小*/
+            .navbar-form .form-control{
+                width: 60px;
+            }
+            /*绿色钢铁图的大小*/
+            header{
+                height: 300px;
+            }
+            #bigDiv{
+                margin-top: 20px;
+            }
+            #news{
+                margin-bottom: 10px;
+            }
+            .footer-center{
+                text-align: center;
+            }
+        }
+        /*超小型设备的适配*/
+        @media (max-width:400px){
+            header{
+                height: 200px;
+            }
+           /*找到ul 修改外边距*/
+           .navbar-nav{
+               margin-left: 0;
+           }
+           /*找到input标签*/
+           .navbar-form .form-control{
+                width: 200px;
+                /*input 本身就是行内块*/
+                display: inline-block;
+                margin-left: 50px;
+            }
+        }
+
+        /*14 修改网格中内容样式*/
+        #news{
+            border: solid 2px blue;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        h3{
+            background-image: url(image/s-bg1.png);
+            background-size: 100% 100%;
+            margin: 0;
+            font-size: 20px;
+            color: white;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+        
+        #news img{
+            margin: 10px;
+        }
+        #detail{
+            float: right;
+            width: 60%;
+        }
+        #detail h4{
+            font-size: 15px;
+            margin: 0;
+        }
+        #detail p{
+            font-size: 13px;
+            text-indent: 2em;
+        }
+        #detail a{
+            float:right;
+            text-decoration: none;
+            color: black;
+        }
+        hr{
+            width: 90%;
+            border-top: dotted 2px red;
+            clear: both;
+            margin-bottom: 10px;
+        }
+        dl{
+            margin: 10px;
+        }
+        dt{
+            float: left;
+            font-weight: normal;
+            
+        }
+        dd{
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <!--2.创建一个导航-->
+    <!--默认的为白色  可以修成各种颜色  定制-->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!--3. 容器-->
+        <!--container  container-fluid区别
+        container 默认是有内边距的
+        container-fluid 无边距的  -->
+        <div class="container">
+            <!--4.创建header-->
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand"><img src="image/logo.png" alt="logo"></a>
+                <!--6.如果在小型设备和超小型设备中 展示菜单栏 (右上角菜单)-->
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> 
+            </div>
+            <!--7 顶部菜单 (首页  个人中心)-->
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <!--激活  被选中的状态-->
+                    <li class="active"><a href="#">首页</a></li>
+                    <li><a href="#">媒体中心</a></li>
+                    <li><a href="#">业务板块</a></li>
+                    <li><a href="#">产品服务</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+                <!--8 右侧的输入框-->
+                <div>
+                <form class="navbar-form navbar-right" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <!--行内元素-->
+                        <span class="glyphicon glyphicon-search"></span>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </nav>
+    <header></header>
+    <!--13 展示主体内容 三个小方格  采用网格系统-->
+    <div class="container" id='bigDiv'>
+        <div class="row">
+            <!--在超小型设备和小型设备中 同时只能展示一个块 -->
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div id="news">
+                    <h3>公司动态</h3>
+                    <img src="image/news.png" alt="">
+                    <!--detail 详细-->
+                    <div id='detail'>
+                        <h4>政府部门参观研发中心</h4>
+                        <p>5月18日，一场盛大的创维酷开手机品牌启动暨新品发布经销动暨布经销商大会在深圳手石岩隆重召开...</p>
+                        <a href="#">READ MORE >>></a>
+                    </div>
+                    <hr>
+                    <dl>
+                        <dt>兰州</dt>
+                        <dd>2020-10-1</dd>
+                        <div></div>
+                        <dt>新疆</dt>
+                        <dd>2019-10-1</dd>
+                        <div></div>
+                        <dt>河南</dt>
+                        <dd>2018-10-1</dd>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div id="news">
+                    <h3>公司动态</h3>
+                    <img src="image/news.png" alt="">
+                    <!--detail 详细-->
+                    <div id='detail'>
+                        <h4>政府部门参观研发中心</h4>
+                        <p>5月18日，一场盛大的创维酷开手机品牌启动暨新品发布经销动暨布经销商大会在深圳手石岩隆重召开...</p>
+                        <a href="#">READ MORE >>></a>
+                    </div>
+                    <hr>
+                    <dl>
+                        <dt>兰州</dt>
+                        <dd>2020-10-1</dd>
+                        <div></div>
+                        <dt>新疆</dt>
+                        <dd>2019-10-1</dd>
+                        <div></div>
+                        <dt>河南</dt>
+                        <dd>2018-10-1</dd>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <div id="news">
+                    <h3>公司动态</h3>
+                    <img src="image/news.png" alt="">
+                    <!--detail 详细-->
+                    <div id='detail'>
+                        <h4>政府部门参观研发中心</h4>
+                        <p>5月18日，一场盛大的创维酷开手机品牌启动暨新品发布经销动暨布经销商大会在深圳手石岩隆重召开...</p>
+                        <a href="#">READ MORE >>></a>
+                    </div>
+                    <hr>
+                    <dl>
+                        <dt>兰州</dt>
+                        <dd>2020-10-1</dd>
+                        <div></div>
+                        <dt>新疆</dt>
+                        <dd>2019-10-1</dd>
+                        <div></div>
+                        <dt>河南</dt>
+                        <dd>2018-10-1</dd>
+                    </dl>
+
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+    <footer>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-6 col-xs-12 col-sm-12'>
+                    <div class='footer-center'>Copyright 2004-2012 Seethru Co., Ltd. All right reserved </div>
+                </div>
+                 <div class='col-md-6 col-xs-12 col-sm-12'>
+                    <div class='footer-center'>
+                        <a href="#">网站地图</a>
+                        <a href="#">关于宝钢</a>
+                        <a href="#">工作机会</a>
+                        <a href="#">法律声明</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
