@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // console.log();控制台输出
+    // alert()弹出框
+    // prompt弹出框 可以输入内容  ()内可以填写弹出框的标题
+    // 当点击确定按钮的时候会捕获到当前输入的内容
+    // 返回一个字符串类型
+    // var value =prompt("请输入一个数字");
+    // console.log(typeof value);
+    // 1.请判断出当前输入的这个数是奇数还是偶数
+    // value =value*1;//数字
+    // if (value % 2 ==0) {
+    //     console.log("该数字是偶数");
+    // } else {
+    //     console.log("该数字是奇数");
+    // }
+
+    // 2.输入车轮的数量  如果车轮是1和2的时候是自行车
+    // 3~~6的时候是小汽车
+    //7~~20 坦克车
+    //~~~火车
+    var value =prompt("请输出车轮的数量")*1;
+    if (value==1 || value==2) {
+        console.log("自行车");
+    } else  if (value>=3 && value<=6) {
+        console.log("小汽车");
+    }
+    else  if (value>6 && value<=20) {
+        console.log("坦克车");
+    }
+    else
+    {
+        console.log("火车");
+    }
+    
+        
+    
+    
+</script>
+</html>

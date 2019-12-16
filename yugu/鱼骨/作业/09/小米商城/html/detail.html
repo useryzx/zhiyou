@@ -167,6 +167,7 @@
     <div class="container">
         
         <div class="row">
+            <!-- 轮播图 -->
             <div id="myCarousel" class="carousel slide col-xs-12" data-ride="carousel" data-interval="1500">
                 <!-- 轮播（Carousel）指标 -->
                 <ol class="carousel-indicators">
@@ -188,12 +189,12 @@
                     </div>
                 </div>
             </div>
-            <!-- 按钮 -->
-            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-share-alt"></span></a>
-            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-th-large"></span></a>
+            <!-- 按钮 绝对定位，放在轮播图片上方-->
+            <a href="小米商城.html" target="_blank" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="小米商城.html" target="_blank" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-share-alt"></span></a>
+            <a href="小米商城.html" target="_blank" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-th-large"></span></a>
 
-            <!-- 商品和商品详情 -->
+            <!-- 商品和商品详情 网格布局占用一行-->
             <div class="col-xs-12" id="details">
                 <span>小米 MIX Alpha</span>
                 <span class="glyphicon glyphicon-star-empty"></span>
@@ -201,7 +202,7 @@
                     钛合金+精密陶瓷+蓝宝石镜片前沿工艺</p>
                 <h5>19999</h5>
             </div>
-            <!-- 商品分类参数 设定宽度，超出宽度overflow：hidden-->
+            <!-- 商品分类参数 设定宽度，使用缩略图，超出宽度overflow：hidden-->
             <div class="col-xs-12" id="detail-group">
 
                 <div class="col-xs-3">
@@ -244,7 +245,7 @@
                 </div>
             </div>
             <div class="col-xs-12" id="list-group">
-            <!-- 付款方式等详情页 -->
+            <!-- 付款方式等详情页 使用列表组-->
             <ul class="list-group">
                 <li class="list-group-item">
                     <span id="span1">分期</span>
@@ -253,7 +254,7 @@
                 </li>
             </ul>
         </div>
-            <!-- 最下面的个性化标识牌，左侧右侧各分一半 -->
+            <!-- 最下面的个性化标识牌，左侧右侧各分一半 网格布局-->
             <div class="col-xs-12" id="bottom-tips">
                 <!-- 左侧客服喜欢收藏 -->
             <div class="col-xs-6">

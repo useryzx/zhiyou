@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类型转换</title>
+</head>
+<body>
+</body>
+<script>
+    var str ='字符串';
+    // alert弹出框 会在界面上弹出一个窗口 带有确定按钮
+    // typeof 检测当前变量的类型
+    /*
+    变量在存储容器中的数据时是可以进行改变的，数据类型也可以改变，
+    类型不固定，这些不固定的类型叫做弱类型
+    类似于java之类的属于强类型编程语言:变量在声明的时候是什么类型
+    赋值的时候也只能赋值对应的类型
+    */
+    alert(typeof str);//string字符串
+    str =15;
+    alert(typeof str);//number 数字类型
+    str =true;//boolean 布尔类型
+    // 显式类型转换:通过为变量重新赋值来改变变量的数据类型
+    alert(typeof str);
+
+    // 隐式类型转换:当运算的时候变量为了适应某种规则自动进行的类型转变
+    alert(1+'2'); //12 
+    alert(typeof ( true + 'aa'));//string
+    // null代表声明了变量但没有给变量赋值
+    alert(null + 'aa');
+    // 其他类型与字符串相加时，会被隐式转成字符串类型在相加
+    alert(typeof ( null + 'aa'));//string
+
+    alert(10 - false); // 当数字和布尔类型进行减
+    //法运算的时候 false变为0 true变为1  null也变为0
+</script>
+</html>

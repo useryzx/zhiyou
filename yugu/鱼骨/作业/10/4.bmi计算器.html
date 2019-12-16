@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var height = prompt("请输入身高/m") * 1;
+    var weight = prompt("请输入体重/kg") * 1;
+    var bmi = (weight / (height * height)).toFixed(1);
+    if (bmi <= 18.4 && bmi > 0) {
+        document.write("<pre>");
+        document.write("你的身高为：" + height + "\n");
+        document.write("你的体重为：" + weight + "\n");
+        document.write("你的BMI值为：" + bmi + "\n");
+        document.write("当前你的身体状况：偏瘦");
+        document.write("</pre>");
+    }
+    else if (bmi >= 18.5 && bmi <= 23.9) {
+        document.write("你的身高为：" + height + "\n");
+        document.write("你的体重为：" + weight + "\n");
+        document.write("你的BMI值为：" + bmi + "\n");
+        document.write("当前你的身体状况：正常");
+        document.write("</pre>");
+    }
+    else if (bmi >= 24.0 && bmi <= 27.9) {
+        document.write("你的身高为：" + height + "\n");
+        document.write("你的体重为：" + weight + "\n");
+        document.write("你的BMI值为：" + bmi + "\n");
+        document.write("当前你的身体状况：过重");
+        document.write("</pre>");
+    }
+    else if (bmi >= 28.0) {
+        document.write("你的身高为：" + height + "\n");
+        document.write("你的体重为：" + weight + "\n");
+        document.write("你的BMI值为：" + bmi + "\n");
+        document.write("当前你的身体状况：肥胖");
+        document.write("</pre>");
+    }
+    else {
+        document.write("请输入正确身高体重");
+    }
+
+
+</script>
+
+</html>
