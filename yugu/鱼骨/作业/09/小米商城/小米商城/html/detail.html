@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="../bs/css/bootstrap.min.css">
+    <title>小米MIX</title>
+    <style>
+        .container {
+            width: 540px;
+            height: 1000px;
+            /* border: 1px salmon solid; */
+            box-shadow: 0 0 0 2px #f5f5f5;
+        }
+
+        .glyphicon-glyphicon {
+            display: block;
+            font-size: 30px;
+            position: absolute;
+            color: white;
+            /* left: 50px; */
+        }
+
+        .glyphicon.glyphicon-chevron-left {
+            left: 30px;
+            top: 30px;
+        }
+
+        .glyphicon.glyphicon-share-alt {
+            left: 420px;
+            top: 30px;
+        }
+
+        .glyphicon.glyphicon-th-large {
+            left: 480px;
+            top: 30px;
+        }
+
+        #myCarousel {
+            padding: 0;
+        }
+
+        #details {
+            padding-top: 5px;
+
+        }
+
+        #details>span {
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        #details>span:nth-of-type(2) {
+            float: right;
+        }
+
+        #details>p {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        #details>h5 {
+            color: orangered;
+            font-size: 30px;
+            font-family: 黑体;
+        }
+
+        #details>h5::before {
+            content: "￥";
+            font-size: 18px;
+            font-family: "宋体";
+            position: relative;
+            top: -5px;
+        }
+
+
+
+        #detail-group .col-xs-3{
+            padding: 0;
+            margin: 0;
+            height: 100px;
+        }
+        #detail-group .col-xs-3 .thumbnail{
+            border-top: none;
+            margin: 0;
+            border-bottom: none;
+            text-align: center;
+        }
+        #detail-group .col-xs-3 .thumbnail img{
+            width: 25%;
+        }
+        #detail-group .col-xs-3 .thumbnail h3{
+            font-size: 15px;
+            margin: 0;
+            font-weight: bold;
+        }
+        #detail-group .col-xs-3 .thumbnail p{
+            font-size: 10px;
+            height: 18px;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #list-group{
+            height: 50px;
+            margin-top: 10px;
+            /* border: 1px salmon solid; */
+        }
+        #list-group .list-group-item{
+            padding: 0;
+            height: 50px;
+            line-height: 50px;
+            color: red;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+        #list-group .list-group-item span{
+            font-size: 15px;
+        }
+        #list-group .list-group-item #span1{
+            color: #a1a1a1;
+        }
+        #list-group .list-group-item #span2{
+            color: black;
+        }
+        #list-group .list-group-item #span3{
+            float: right;
+            color: black;
+            transform: rotate(180deg) translate(30px,12px);
+        }
+
+
+        #bottom-tips,#bottom-tips .col-xs-6,#bottom-tips .col-xs-6 .caption,#bottom-tips .col-xs-6 .col-xs-4{
+            padding: 0;
+            text-align: center;
+        }
+        #bottom-tips .col-xs-6{
+            height: 60px;
+            line-height: 60px;
+            /* border: brown 1px solid; */
+            position: relative;
+            bottom: 14px;
+        }
+        #bottom-tips .col-xs-6 .col-xs-4 .thumbnail{
+            margin: 0;
+            padding: 0;
+            border: none;
+            padding-top: 4px;
+        }
+        #bottom-tips .col-xs-6 .col-xs-4 img{
+            width: 30%;
+        }
+        #for-more{
+            color: white;
+            background-color: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="row">
+            <div id="myCarousel" class="carousel slide col-xs-12" data-ride="carousel" data-interval="1500">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+
+                </ol>
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="../mix/1.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="../mix/2.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="../mix/3.jpg" alt="Third slide">
+                    </div>
+                </div>
+            </div>
+            <!-- 按钮 -->
+            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-share-alt"></span></a>
+            <a href="小米商城.html" class="glyphicon-glyphicon"><span class="glyphicon glyphicon-th-large"></span></a>
+
+            <!-- 商品和商品详情 -->
+            <div class="col-xs-12" id="details">
+                <span>小米 MIX Alpha</span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                <p>创新环绕屏，极具未来感的智能交互体验 / 1亿像素超高清相机，超大感光元件 / 5G双卡全网通超高速网络 / 骁龙855Plus旗舰处理器 / 纳米硅基锂离子4050mAh电池，40W超级快充 /
+                    钛合金+精密陶瓷+蓝宝石镜片前沿工艺</p>
+                <h5>19999</h5>
+            </div>
+            <!-- 商品分类参数 设定宽度，超出宽度overflow：hidden-->
+            <div class="col-xs-12" id="detail-group">
+
+                <div class="col-xs-3">
+                    <div class="thumbnail">
+                        <img src="../mix/cpu.png" alt="">
+                        <div class="caption">
+                            <h3>CPU</h3>
+                            <p>骁龙855+</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="thumbnail">
+                        <img src="../mix/sxt.png" alt="">
+                        <div class="caption">
+                            <h3>三摄像头</h3>
+                            <p>10800万+1200万+2000万像素</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="thumbnail">
+
+                        <img src="../mix/pm.png" alt="">
+                        <div class="caption">
+                            <h3>超大屏</h3>
+                            <p>7.92英寸</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="thumbnail">
+                        <img src="../mix/fbl.png" alt="">
+                        <div class="caption">
+                            <h3>屏幕分辨率</h3>
+                            <p>2088x2250</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12" id="list-group">
+            <!-- 付款方式等详情页 -->
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span id="span1">分期</span>
+                    <span id="span2">&emsp;小米分期/花呗分期</span>
+                    <span id="span3" class="glyphicon glyphicon-chevron-left"></span>
+                </li>
+            </ul>
+        </div>
+            <!-- 最下面的个性化标识牌，左侧右侧各分一半 -->
+            <div class="col-xs-12" id="bottom-tips">
+                <!-- 左侧客服喜欢收藏 -->
+            <div class="col-xs-6">
+                <div class="col-xs-4">
+                    <div class="thumbnail">
+                        <img src="../mix/kf.png" alt="">
+                        <div class="caption">
+                            <span>客服</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="thumbnail">
+                        <img src="../mix/xh.png" alt="">
+                        <div class="caption">
+                            <span>喜欢</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="thumbnail">
+                        <img src="../mix/gwc.png" alt="">
+                        <div class="caption">
+                            <span>购物车</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧敬请期待，标识当前手机售货状态 -->
+            <div class="col-xs-6" id="for-more">
+                <span>敬请期待</span>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../bs/js/jquery.min.js"></script>
+    <script src="../bs/js/bootstrap.min.js"></script>
+</body>
+
+</html>
