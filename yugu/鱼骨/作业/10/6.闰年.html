@@ -37,16 +37,16 @@
     //     console.log("今年"+year+"是平年")
     // }
 
-    if (year % 4 == 0 && year % 100 !== 0 || year % 400 == 0) {
-        console.log("今年"+year+"是："+"闰年");
+    if ((year % 4 == 0 && year % 100 !== 0) || year % 400 == 0) {
+        console.log("今年" + year + "是：" + "闰年");
         document.write("<pre>");
-        document.write("今年"+year+"是："+"\n"+"闰年");
+        document.write("今年" + year + "是：" + "\n" + "闰年");
         document.write("</pre>");
 
     }
-    else{
+    else {
         document.write("<pre>");
-        document.write("今年"+year+"是："+"\n"+"平年");
+        document.write("今年" + year + "是：" + "\n" + "平年");
         document.write("</pre>");
     }
 

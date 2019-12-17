@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>循环退出</title>
+</head>
+<body>
+</body>
+<script>
+    // 循环体在执行指定的遍历次数之后一定要退出，
+    // 假如不退出，就会死循环
+    // for(var i=0;i<10;i++){
+    //     i--;
+    //     console.log(i);
+    // }
+    
+    // for(var i=0;i<100;i++)
+    // {
+    //     //  逢七过
+    //     if (i % 7 ==0 || i % 10 ==7 ||(i>69&&i<80)) {
+    //         //跳出
+    //         // 满足这个条件的时候结束此次循环
+    //         // 立刻结束循环体，执行循环体的变量(i)会改变让后
+    //         // 重新开始循环
+    //         continue;
+    //     }
+    //     console.log(i);  
+    // }
+
+    // 公约数:两个数之间都可以除尽的数
+    // 求最大公约数
+    // 两个变量如果类型一样可以声明一次
+    var n1 =18,n2=9;
+    // 比较出来大数
+    if (n2 >n1) {
+        var c =n1;
+        n1 =n2;
+        n2 =c;
+    }//始终是n1大 从大往小 出来的第一个肯定就是最大的
+    // for(var i =n2; i>1;i--){
+    //     if (n1 % i ==0 && n2 % i ==0) {
+    //         // 所有的公约数
+    //         console.log(i);
+    //         // break 用于退出当前的循环
+    //         break;
+    //     }
+    // }
+    /*
+       continue:是跳出本次循环(循环还会继续)，
+       break默认是跳出当前循环
+       while循环也可以使用,逻辑和for一样
+    */
+
+    // 嵌套的for循环 break一次跳不出来
+    out:
+    for(var i=0;i<10;i++){
+        for(var j=0;j<10;j++)
+        {
+            if (j>4) {
+                // 只能结束当前次的，对外层的无效
+                // 跳出外部的for循环，可以给外部的for循环
+                // 起个名字 告诉break要跳的循环叫什么就ok
+                break out;
+            }
+        }
+        console.log(i);
+    }
+   
+
+
+    // 打印出来23以内的质数：只有1和他本身能被整除的数叫做质数
+
+</script>
+</html>
