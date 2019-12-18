@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组</title>
+</head>
+<body>
+</body>
+<script>
+    // 数组:多个相同数据类型存储的集合
+    // new关键字:用途是开辟一块内存 因为数组是引用类型
+    // 不是基本数据类型，引用类型需要开辟内存才可以使用
+    // Array()代表的是数组的构造函数
+    // numbers就叫做对象(类型是数组)
+    var numbers =new Array();
+    // []代表数组的索引 从0开始,默认情况下索引不能为空
+    // 索引具有唯一性，通过访问索引能够获得数组中的数据
+    numbers[0] =1;
+    numbers[1] =2;
+    // 根据索引取值
+    console.log( numbers[0]);
+    // 借助for循环来批量的对数据存取会比较方便
+    var numbers2 =new Array();
+    // 快速的存入1~~~10
+    for(var i =0;i<10;i++){
+        numbers2[i]=i+1;
+    }
+    // 批量的取数组中的元素 numbers2.length代表数组中元素的数量
+    for(var i=0;i<numbers2.length;i++)
+    {
+         var number =numbers2[i];
+         console.log(number);  
+    }
+
+    // 第二种创建数组的方式>>字面量创建方法
+    // 可以直接指定元素的内容
+    var strs =["张三","李四","王二麻子"];
+    for(var i=0;i<strs.length;i++)
+    {
+         var str =strs[i];
+         console.log(str);  
+    }
+
+    // 第三种:可以在创建苏中的时候直接先初始化好数组长度
+    // 好处是效率更高,前八个元素内存空间会先初始化好，后续在
+    // // 进来的元素重新分配
+    // var arr =new Array();
+    // for(var i=0;i<20;i++){
+    //     var num = Math.floor(Math.random() * 10);
+    //     arr.push(num);//等价:arr[i] =num
+    // }
+    // console.log("去重之前:"+arr);
+    
+  
+//    去重
+    var temp =[];//临时数组
+    // var index =[];//记录索引
+    var arr =[1,2,2,4,9,6,7,5,2,3,5,6,5];
+    var count =arr.length;
+    for(var i=0;i<count;i++)
+    {
+       for (var j=i+1; j<count; j++)
+       {
+        console.log("i:"+i+",j:"+j);
+        //    下标不一样  所以代表取出来的数字也不是同一个
+           if (arr[i] == arr[j]) {
+               i++;//发现重复的直接结束掉
+               j =i;
+            //    相等  
+           }
+       }
+       temp.push(arr[i]);
+    //    index.push(i);
+    }
+    // console.log("去重之前index:"+index);
+    // console.log("去重之前:"+temp);
+   
+
+    // 随机生成20个数  范围50~~100 按从大到小的顺序排序
+
+    var newArray =new Array();
+    for(var i=0;i<20;i++){
+        var num = Math.floor(Math.random() * 50+50);
+        newArray.push(num);//等价:arr[i] =num
+    }
+    // 长度
+    var i =newArray.length;
+    // 准备临时变量
+    var tempValue;
+    while (i>0) {
+        // 数组最后一个数没必要遍历
+        // 
+        for(j =0;j<i-1;j++)
+        {
+            // 前面的数大
+            if (newArray[j] < newArray[j+1]) {
+                tempValue =newArray[j];//记录小的数
+                newArray[j] =newArray[j+1];//大的数往前调整位置
+                newArray[j+1] =tempValue;
+            }
+        }
+        i--;
+    }
+    console.log(newArray);
+    
+
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var numbers = new Array()
+    // numbers[0]=1;
+    // numbers[1]=2;
+    // console.log(numbers[0]);
+    // var numbers2 = new Array()
+    // for (var i =0;i<10;i++){
+    //     numbers2[i]=i+1;
+    // }
+    // for(var i =0;i<numbers2.length;i++){
+    //     var number =numbers2[i];
+    //     console.log(number);
+    // }
+
+
+
+
+    // var arr = new Array(20);
+    // for (var i = 0; i < 20; i++) {
+    //     var arcNumber = Math.floor(Math.random() * 20);
+    //     arr[i] = arcNumber;
+    // }
+    // console.log(arr);
+    // for (var i = 0; i < 20; i++) {
+    //     for (var j = i + 1; j < 20; j++) {
+    //         if (arr[i] == arr[j]) {
+    //             arr[i]="";
+    //         }
+    //     }
+    // }
+    // console.log(arr);
+    // for(var i =0;i<20;i++){
+    //     document.write(arr[i]);
+    // }
+
+
+
+
+    // var arr = new Array(20);
+    // for (var i = 0; i < 20; i++) {
+    //     var arcNumber = Math.floor(Math.random() * 20);
+    //     arr[i] = arcNumber;
+    // }
+    // for (var i = 0; i < 20; i++) {
+    //     for (var j = i + 1; j < 20; j++) {
+    //         if (arr[i] == arr[j]) {
+    //             i++;
+    //             j=i;
+    //         }
+    //     }
+    //     console.log(arr[i]);
+
+    // }
+
+
+
+    var t = 0;
+    var arr = new Array();
+    for (var i = 0; i < 5; i++) {
+        var arcNumber = Math.floor(Math.random() * 10 );
+        arr[i] = arcNumber;
+    }
+    document.write("初始状态："+arr + "<br><br>");
+
+    var len = arr.length;
+
+    for (var i = 0; i < len - 1; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] > arr[j+1]) {
+                t = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = t;
+                document.write("i为"+i+"&emsp;"+"j为"+j+"排序"+"&emsp;"+arr + "<br>"+ "<br>");
+            }
+            else{
+                document.write("i为"+i+"&emsp;"+"j为"+j+"排序"+"&emsp;"+arr + "<br>"+ "<br>");
+
+            }
+        }
+        // document.write(arr[i] + "&emsp;");
+    }
+
+
+
+</script>
+
+</html>
