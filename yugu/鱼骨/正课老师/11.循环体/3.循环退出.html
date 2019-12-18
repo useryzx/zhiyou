@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>循环退出</title>
 </head>
+
 <body>
 </body>
 <script>
@@ -15,7 +17,7 @@
     //     i--;
     //     console.log(i);
     // }
-    
+
     // for(var i=0;i<100;i++)
     // {
     //     //  逢七过
@@ -32,12 +34,12 @@
     // 公约数:两个数之间都可以除尽的数
     // 求最大公约数
     // 两个变量如果类型一样可以声明一次
-    var n1 =18,n2=9;
+    var n1 = 18, n2 = 9;
     // 比较出来大数
-    if (n2 >n1) {
-        var c =n1;
-        n1 =n2;
-        n2 =c;
+    if (n2 > n1) {
+        var c = n1;
+        n1 = n2;
+        n2 = c;
     }//始终是n1大 从大往小 出来的第一个肯定就是最大的
     // for(var i =n2; i>1;i--){
     //     if (n1 % i ==0 && n2 % i ==0) {
@@ -55,10 +57,9 @@
 
     // 嵌套的for循环 break一次跳不出来
     out:
-    for(var i=0;i<10;i++){
-        for(var j=0;j<10;j++)
-        {
-            if (j>4) {
+    for (var i = 0; i < 10; i++) {
+        for (var j = 0; j < 10; j++) {
+            if (j > 4) {
                 // 只能结束当前次的，对外层的无效
                 // 跳出外部的for循环，可以给外部的for循环
                 // 起个名字 告诉break要跳的循环叫什么就ok
@@ -67,10 +68,11 @@
         }
         console.log(i);
     }
-   
+
 
 
     // 打印出来23以内的质数：只有1和他本身能被整除的数叫做质数
 
 </script>
+
 </html>

@@ -19,9 +19,8 @@
         var psw = prompt("请输入密码") * 1;
         while (psw == 111111) {
             var amout = prompt("请输入取款金额") * 1;
-            amout /= 100;
-            if (amout >= 1 && amout <= 100) {
-                alert("您的取款额为" + amout * 100);
+            if (amout >= 100 && amout <= 1000&&amout%100==0) {
+                alert("您的取款额为" + amout);
                 alert("交易完成，请取卡");
                 break out;
             }
