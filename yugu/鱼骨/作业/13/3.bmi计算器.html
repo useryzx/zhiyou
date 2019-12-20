@@ -14,20 +14,20 @@
     // 要求有一个求BMI的方法，该方法是带参数的函数,如果bmi值为正常范围区间就bmi返回出来，根据返回的bmi计算出这个人
     // 的bmi值为多少，叫xx名字，有多高和多重，体型是个啥
     function BMI (name,height,weight){
-        var config = name+"，"+"您的身高是："+height+"M，您的体重是："+weight+"KG";
-        var status = [",体型：偏瘦",",体型：正常",",体型：过重",",体型：肥胖"]
         var bmi = (weight/(height*height)).toFixed(1);
+        var config = name+"，"+"您的身高是："+height+"M，您的体重是："+weight+"KG"+",bmi值为："+bmi;
+        var status = [",体型：偏瘦",",体型：正常",",体型：过重",",体型：肥胖"]
         if (bmi<=18.4){
-            return config+",bmi值为："+bmi+status[0];
+            return config+status[0];
         }
         else if (bmi<=23.9){
-            return config+",bmi值为："+bmi+status[1];
+            return config+status[1];
         }
         else if (bmi<=27.9){
-            return config+",bmi值为："+bmi+status[2];
+            return config+status[2];
         }
         else{
-            return config+",bmi值为："+bmi+status[3];
+            return config+status[3];
         }
     }
     var name = prompt("请输入你的姓名");

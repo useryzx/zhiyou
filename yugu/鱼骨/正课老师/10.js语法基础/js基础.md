@@ -18,11 +18,8 @@ javascript:脚本语言,轻量化,弱类型,基于原型的动态编程语言
 
 ​    1. ECMAScript:构建js的基本语法(逻辑，函数，事件..)
 
-​    2. DOM(Document Object Model)文档对象模型:负责在和html进行沟通的时候如何访问和处理标签以及样式 
-
-    3. BOM(Browser Object Model)浏览器对象模型:规定了js访问和处理浏览器对象的属性和方法
-
-
+    2. DOM(Document Object Model)文档对象模型:负责在和html进行沟通的时候如何访问和处理标签以及样式 
+       3. BOM(Browser Object Model)浏览器对象模型:规定了js访问和处理浏览器对象的属性和方法
 
 console对象 :浏览器的控制台对象
 

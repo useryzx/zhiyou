@@ -1,113 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 </body>
 <script>
     // 字符串是一个比较复杂的对象，提供了很多对字符串数据操作的方法
-    var str1 ="123张三";
+    var str1 = "123张三";
     // 本字符串字符的个数
     console.log(str1.length);
     // 检测字符串是不是以某个字符开头，返回一个布尔值
     console.log(str1.startsWith("1"));
     // 检测字符串是不是以某个字符结尾，返回一个布尔值
     console.log(str1.endsWith("1"));
-     /*
-      截取 两个参数  第一个代表从第几个字符开始截取
-      第二个代表截取的长度，如果第二个参数没有写则代表
-      截取到某位，截取的内容会返回
-     */
-    var str2 = str1.substr(0,1);
+    /*
+     截取 两个参数  第一个代表从第几个字符开始截取
+     第二个代表截取的长度，如果第二个参数没有写则代表
+     截取到某位，截取的内容会返回
+    */
+    var str2 = str1.substr(0, 1);
     console.log(str2);
 
-    var str3 ="qwerdf";
+    var str3 = "qwerdf";
     // 截取字符串 参数和subStr解释一样
-    var str4= str3.substring(1,4);
+    var str4 = str3.substring(1, 4);
     console.log(str4);
 
-//    分割字符串
-   var str5 ="1,2,3,4,5,6,7,8,9";
-//    把字符串转成一个数组 填入对应的分隔符号
-   var num =str5.split(",");
-   console.log(num);
+    //    分割字符串
+    var str5 = "1,2,3,4,5,6,7,8,9";
+    //    把字符串转成一个数组 填入对应的分隔符号
+    var num = str5.split(",");
+    console.log(num);
 
-   var str6 ="hello world";
-//    如果在分割的字符串中不写分隔符，则返回数组中原有的字符串
-// 如果分隔符是空字符串，则会将字符串两端分开
-   var num2 =str6.split("");
-   console.log(num2);
+    var str6 = "hello world";
+    //    如果在分割的字符串中不写分隔符，则返回数组中原有的字符串
+    // 如果分隔符是空字符串，则会将字符串两端分开
+    var num2 = str6.split("");
+    console.log(num2);
 
-   var str7 ="qwerdf";
-//    可以根究字符串的索引来获取字符串内容中的一部分
-console.log(str7[3]);
+    var str7 = "qwerdf";
+    //    可以根据字符串的索引来获取字符串内容中的一部分
+    console.log(str7[3]);
 
-   var a =10;
-   var b ="10";
-//    ==进行比较只比较变量的值是否相等，不会去比较类型
-// ===判断时，判断类型和值
-   if (a === b) {
-       console.log("????"); 
-   }
+    var a = 10;
+    var b = "10";
+    //    ==进行比较只比较变量的值是否相等，不会去比较类型
+    // ===判断时，判断类型和值
+    if (a === b) {
+        console.log("????");
+    }
 
     //弹出框输入数字的年份如2019，提示框打印出来贰零壹玖
-    var yearStr =prompt("请输入年份");
-    var allStr ="";
-    for(var i =0;i<yearStr.length;i++){
+    var yearStr = prompt("请输入年份");
+    var allStr = "";
+    for (var i = 0; i < yearStr.length; i++) {
         // console.log(typeof yearStr[i]);
         // 如果条件唯一，该条件会有多个结果的时候可以使用switch
         switch (yearStr[i]) {
             // 代表一个条件的结果
-                case "0":
-                allStr +="零"
+            case "0":
+                allStr += "零"
                 break;//一个case最好是配合一个break
-                case "1":
-                allStr +="壹"
+            case "1":
+                allStr += "壹"
                 break;
-                case "2":
-                allStr +="贰"
+            case "2":
+                allStr += "贰"
                 break;
-                case "3":
-                allStr +="叁"
+            case "3":
+                allStr += "叁"
                 break;
-                case "4":
-                allStr +="肆"
+            case "4":
+                allStr += "肆"
                 break;
-                case "5":
-                allStr +="伍"
+            case "5":
+                allStr += "伍"
                 break;
-                case "6":
-                allStr +="陆"
+            case "6":
+                allStr += "陆"
                 break;
-                case "7":
-                allStr +="柒"
+            case "7":
+                allStr += "柒"
                 break;
-                case "8":
-                allStr +="捌"
+            case "8":
+                allStr += "捌"
                 break;
-                case "9":
-                allStr +="玖"
+            case "9":
+                allStr += "玖"
                 break;
-                // 上述条件如果都不满足，那么会进入到default
+            // 上述条件如果都不满足，那么会进入到default
             default:
-            allStr ="年份不对"
+                allStr = "年份不对"
                 break;
         }
     }
     alert(allStr);
-    
 
 
 
-   
-   
 
-    
-    
-    
+
+
+
+
+
+
 </script>
+
 </html>

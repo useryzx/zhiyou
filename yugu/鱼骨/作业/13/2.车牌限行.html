@@ -27,6 +27,17 @@
     }
 
 
+    // out:
+    // for (var i = 1;i<licencePlate.length+1;i++){
+    //     for (var j = 0;j<10;j++){
+    //         if(licencePlate[-i]==j){
+    //             licencePlate=licencePlate[-i];
+    //             break out;
+    //         }
+    //     }
+    // }
+
+
     // 获取当前日期，类型为number
         var now = new Date();
         var weekday = now.getDay();
@@ -38,7 +49,7 @@
                 switch (licencePlate) {
                     case "1":
                     case "6":
-                        return "禁行";·
+                        return "禁行";
                     default:
                         return "正常通行";
                 }
@@ -67,7 +78,7 @@
                         return "正常通行";
                 }
             case 5:
-                switch (licencePlate[-1]) {
+                switch (licencePlate) {
                     case "5":
                     case "0":
                         return "禁行";

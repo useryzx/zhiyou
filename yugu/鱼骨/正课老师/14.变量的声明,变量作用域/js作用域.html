@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js作用域</title>
+</head>
+<body>
+</body>
+<script>
+    /*
+      在js的环境中，作用域分为两种:全局作用域和局部作用域
+      局部作用域又叫做函数作用域
+    */ 
+//    在全局中(script标签)声明的变量或者是函数，被称为全局变量
+// 或者是全局函数,好处是在script标签里面任意访问
+    var num =10;
+    function snow(){
+        console.log(num);
+        //str属于局部变量  作用域是当前的函数体，超出范围就会失效
+        var str ="字符串";
+        // 代码的顺序是从上往下的，一定要保证访问的变量已经创建出来
+        // 才可以继续使用
+        console.log(num2);//undefined
+    }
+    snow();
+    console.log(str);
+    var num2 =20;
+</script>
+</html>
