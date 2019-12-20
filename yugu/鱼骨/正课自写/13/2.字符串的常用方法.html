@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var str1 = "123张三";
+    // console.log(str1.length);
+
+
+    // var str2 = str1.substr(1, 3);
+    // // alert(str2);
+
+    // var str3 = "123张三";
+    // var str4 = str3.substring(1, 3);
+    // // alert(str4);
+
+    // var str5 = "qwerty"
+    // console.log(str5[3]);
+
+    // var a =1;
+    // var b="1";
+    // if (a===b) {
+    //     alert("1111111")
+    // }
+
+    // var year = prompt("请输入年份");
+    // year = year.split("");
+    // var len = year.length;
+    // // console.log(year);
+    // var arr= ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    // var yearBig = [];
+    // for (var i = 0; i < len; i++) {
+    //     if (year[i] == 0) {
+    //         console.log("零");
+    //         yearBig.push(arr[0]);
+    //     }
+    //     if (year[i] == 1) {
+    //         console.log("壹");
+    //         yearBig.push(arr[1]);
+    //     }
+    //     if (year[i] == 2) {
+    //         console.log("贰");
+    //         yearBig.push(arr[2]);
+    //     }
+    //     if (year[i] == 3) {
+    //         console.log("叁");
+    //         yearBig.push(arr[3]);
+    //     }
+    //     if (year[i] == 4) {
+    //         console.log("肆");
+    //         yearBig.push(arr[4]);
+    //     }
+    //     if (year[i] == 5) {
+    //         console.log("伍");
+    //         yearBig.push(arr[5]);
+    //     }
+    //     if (year[i] == 6) {
+    //         console.log("陆");
+    //         yearBig.push(arr[6]);
+    //     }
+    //     if (year[i] == 7) {
+    //         console.log("柒");
+    //         yearBig.push(arr[7]);
+    //     }
+    //     if (year[i] == 8) {
+    //         console.log("捌");
+    //         yearBig.push(arr[8]);
+    //     }
+    //     if (year[i] == 9) {
+    //         console.log("玖");
+    //         yearBig.push(arr[9]);
+    //     }
+    // }
+    // console.log(yearBig);
+
+
+    var year = prompt("请输入年份");//1
+    // year = year.split("");
+    // var len = year.length;
+    // console.log(year);
+    var arr= ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];//2
+    var yearBig = "";//3
+    for (var i = 0; i < year.length; i++) {//4
+        for(var j = 0; j < arr.length; j++)//5
+        if (year[i] == j) {//6
+            yearBig+=arr[j];//7
+            // console.log(arr[j]);
+            break;//8
+        }
+    }
+    alert(yearBig);//9
+
+
+
+
+
+
+    // //弹出框输入数字的年份如2019，提示框打印出来贰零壹玖
+    // var yearStr =prompt("请输入年份");
+    // var allStr ="";
+    // for(var i =0;i<yearStr.length;i++){
+    //     // console.log(typeof yearStr[i]);
+    //     // 如果条件唯一，该条件会有多个结果的时候可以使用switch
+    //     switch (yearStr[i]) {
+    //         // 代表一个条件的结果
+    //             case "0":
+    //             allStr +="零"
+    //             break;//一个case最好是配合一个break
+    //             case "1":
+    //             allStr +="壹"
+    //             break;
+    //             case "2":
+    //             allStr +="贰"
+    //             break;
+    //             case "3":
+    //             allStr +="叁"
+    //             break;
+    //             case "4":
+    //             allStr +="肆"
+    //             break;
+    //             case "5":
+    //             allStr +="伍"
+    //             break;
+    //             case "6":
+    //             allStr +="陆"
+    //             break;
+    //             case "7":
+    //             allStr +="柒"
+    //             break;
+    //             case "8":
+    //             allStr +="捌"
+    //             break;
+    //             case "9":
+    //             allStr +="玖"
+    //             break;
+    //             // 上述条件如果都不满足，那么会进入到default
+    //         default:
+    //         allStr ="年份不对"
+    //             break;
+    //     }
+    // }
+    // alert(allStr);
+
+
+    
+
+        // if (year[0]==2) {
+        //     console.log("贰");
+
+        // }
+        // if (year[1]==0) {
+        //     console.log("零");
+        // }
+        // if (year[2]==1) {
+        //     console.log("壹");
+        // }
+        // if (year[3]==9) {
+        //     console.log("玖");
+        // }
+
+</script>
+
+</html>

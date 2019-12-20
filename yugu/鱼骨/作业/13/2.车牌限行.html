@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 封装限行方法
+    function stopRide(licencePlate) {
+    // alert(stopRide(licencePlate));
+    // 获取车牌最后一位数字，遍历，字母扔掉
+    out:
+    for (var i = licencePlate.length-1;i>0;i--){
+        for (var j = 0;j<10;j++){
+            if(licencePlate[i]==j){
+                licencePlate=licencePlate[i];
+                break out;
+            }
+        }
+    }
+
+
+    // 获取当前日期，类型为number
+        var now = new Date();
+        var weekday = now.getDay();
+        console.log(weekday);
+        // 判断日期
+        switch (weekday) {
+            // 判断周一是否禁行，并用return返回并结束当前语句
+            case 1:
+                switch (licencePlate) {
+                    case "1":
+                    case "6":
+                        return "禁行";·
+                    default:
+                        return "正常通行";
+                }
+            case 2:
+                switch (licencePlate) {
+                    case "2":
+                    case "7":
+                        return "禁行";
+                    default:
+                        return "正常通行";
+                }
+            case 3:
+                switch (licencePlate) {
+                    case "3":
+                    case "8":
+                        return "禁行";
+                    default:
+                        return "正常通行";
+                }
+            case 4:
+                switch (licencePlate) {
+                    case "4":
+                    case "9":
+                        return "禁行";
+                    default:
+                        return "正常通行";
+                }
+            case 5:
+                switch (licencePlate[-1]) {
+                    case "5":
+                    case "0":
+                        return "禁行";
+                    default:
+                        return "正常通行";
+                }
+        }
+    }
+    var licencePlate = prompt("请输入车牌号");
+    alert(stopRide(licencePlate));
+
+
+</script>
+
+</html>
