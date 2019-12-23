@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // var a = 100;
+
+    // function test() {
+    //     alert(a);
+    //     a = 10;
+    //     alert(a);
+    // }
+    // test();
+    // alert(a);
+
+    var str = "yuan yuan yuan jiang jiang yong aaaaaaaaaaaaa aaaaaaaaaaaaa odpsospoaioaoaoaoaoao";
+    function searchMaxLength(s) {
+        // 转数组 把当前字符串根据分隔符分割成多个元素 装到数组中
+        var arr = s.split(" ");
+        var temp = arr[0];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].length > temp.length) {
+                // temp最后肯定是个最长的
+                temp = arr[i];
+            }
+        }
+        return temp;
+
+    }
+    console.log(searchMaxLength(str));
+
+</script>
+
+</html>

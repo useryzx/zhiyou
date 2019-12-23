@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本数据对象</title>
+</head>
+<body>
+</body>
+<script>
+    var str ="dadsadsad456pppp";
+    // 分割 字符串可以使用对应的方法来完成指定的操作
+    // 字符串也是一个复杂的类型
+    var arr =str.split("456");
+    // 检测当前内容是否被该对象所包含 
+    var ind =str.indexOf("abc");
+    // 检测当前字符串是否包含有目标字符串 返回bool值
+    // true代表包含
+    ind =str.includes("dad");
+    console.log(ind);
+
+    /*
+    基本数据类型 不是对象，而是具体的值，值是没有办法调用方法的
+    如果基本数据类型需要像对象一样进行数据处理(分割，截取...)
+    系统会为开发者提供能用的方法，数字类型，字符串类型，布尔类型
+    这三者其实对应的都是一个系统的对象，在该对象的帮助下开发者
+    才可以实现对应的基本类型对象也能调用方法
+    */
+    // String()构造函数  就是构造一个string的对象
+    var strObj =new String("123");
+    // valueOf是字符串的方法，作用是取出来传递进去的字符串值
+    var str2 =strObj.valueOf();
+    console.log(str2);
+    //  数字对象
+    var numberObj =new Number(4);
+    console.log(numberObj.valueOf());
+    // 布尔类型也是对应的对象
+    var boolObj =new Boolean(false);
+    console.log(boolObj.valueOf());
+
+    /*
+       当使用基本数据类型调用方法的时候，js执行器会根据这个类型
+       临时的创建一个对应的对象,用来封装这个基本数据类型,
+       当使用到这个基本数据类型的时候调用的方法是系统预先设置的
+       对象所提供的方法,用完之后会把这个对象自动给释放掉，变成最初
+       的值，这个过程叫做封箱(装箱)操作，目的是简化程序员的负担
+    */
+    var string ="123";
+    string.length;
+    
+</script>
+</html>

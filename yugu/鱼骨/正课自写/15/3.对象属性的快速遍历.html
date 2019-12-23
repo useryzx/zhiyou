@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var obj = {
+    //     a:3,
+    //     b:4,
+    //     c:5,
+    //     d:6
+    // }
+    // // for in 专门用来做对象属性的遍历
+    // for (var key in obj) {
+    //     console.log(key);
+    //     console.log(obj[key]);
+    // }
+
+    // 点名系统，随机点名，五个人名
+    // 五个人的年龄从大到小排列
+
+    // *****************************************************
+    // 工厂模式创建人物对象
+    // function person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // var per1 = new person("张三", 20);
+    // var per2 = new person("李四", 40);
+    // var per3 = new person("王二", 60);
+    // var per4 = new person("麻子", 19);
+    // var per5 = new person("小明", 52);
+    // var arr = [per1, per2, per3, per4, per5];
+
+    // var start = true;
+    // do {
+    //     var num = Math.floor(Math.random() * 5);
+    //     console.log(num);
+    //     console.log(arr[num]["name"]);
+    //     var start = confirm("是否开始点名");
+    // } while (start);
+
+
+    // for (var i = 0; i < arr.length - 1; i++) {
+    //     for (var j = 0; j < arr.length - i - 1; j++) {
+    //         if (arr[j]["age"] < arr[j + 1]["age"]) {
+    //             var t = arr[j];
+    //             arr[j] = arr[j + 1];
+    //             arr[j + 1] = t;
+    //         }
+    //     }
+    // }
+    // console.log(arr);
+
+    // ******************************************************
+    var person = {
+        "张三": 20,
+        "李四": 40,
+        "王二": 60,
+        "麻子": 19,
+        "小明": 52
+    }
+    var arr2 = [];
+
+    for (var i in person) {
+        // console.log(person[i]);
+        arr2.push(i + ":" + person[i]);
+    }
+
+    var start = true;
+    do {
+
+        var num = Math.floor(Math.random() * 5);
+        console.log(num);
+        console.log(arr2[num]);
+
+        var start = confirm("是否开始点名");
+    } while (start);
+
+    for (var i = 0; i < arr2.length - 1; i++) {
+        for (var j = 0; j < arr2.length - i - 1; j++) {
+            // console.log(typeof(arr2[j].split(":")[1]*1));
+            // console.log(arr2[j].split(":")[1] * 1);
+            if (arr2[j].split(":")[1] < arr2[j + 1].split(":")[1]) {
+                var t = arr2[j];
+                arr2[j] = arr2[j + 1];
+                arr2[j + 1] = t;
+            }
+        }
+    }
+    console.log(arr2);
+    for(var i =0;i<5;i++){
+        console.log(arr2[i]);
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = [1,5,3,6,4,8,6,7];
+    for(var i = 0;i<arr.length;i++){
+        var tempValue = arr[i];
+        arr.splice(i,1);
+        var flag = true;
+        for(var j=0;j<i;j++){
+            if(arr[j]>tempValue){
+                arr.splice(j,0,tempValue);
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            arr.splice(i,0,tempValue);
+        }
+    }
+    console.log(arr);
+    
+</script>
+</html>
