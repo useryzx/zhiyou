@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>非bool值当做bool值使用</title>
+</head>
+<body>
+</body>
+<script>
+    //false no 0     true yes 1
+    var a =0;
+    /*
+       if判断 判断的条件需要写布尔值或者是布尔表达式才可以
+       如果把非布尔值写入到if条件中，程序执行的时候这个值会强制
+       转换为布尔值来使用
+    */
+    // 如果把数字类型作为布尔值使用，那么0为false 其余都是true
+    // 如果把字符串作为布尔值来使用，空字符串代表false 非空为true
+    a ="str";
+    // 如果把对象当做判断条件来判断，只要是对象有内存结果就是true
+    a ={};
+    a =null;//代表false
+    // 代表当前要读取的内容读不到 也是false
+    var v2 =NaN;
+    if (a) {
+        console.log("进来??"); 
+    }
+    // 如果参数的值为NaN,或者是字符串，对象，undefined等非
+    // 数字值读不出来，则使用专门的函数进行判断
+
+    // isNaN函数来进行变量判断 满足返回true
+    // 用来检测变量是否是非数字值
+    if (Number.isNaN(v2)==true) {
+        console.log("读不出来");
+    }
+
+    var s1 ="qwer";
+    // 对非布尔值使用逻辑运算符,会把非布尔值先转成布尔值在计算
+    console.log(!!s1);
+    
+</script>
+</html>
