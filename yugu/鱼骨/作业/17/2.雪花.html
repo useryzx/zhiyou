@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 思路：随机生成10个img，并同时随机生成10个随机数作为img的宽高，对随机数字进行限定范围
+    // 获取到雪花的位置，并通过位置判断是否超出屏幕，超出屏幕后通过位置变为0重新出现，再通过
+    // 定时器移动雪花
+    document.documentElement.style.height = "100%";
+    document.body.style.backgroundColor = "black";
+    // document.body.style.position =  "relative";
+    document.body.style.height = "100%";
+
+    
+    // 生成雪花
+
+
+
+    setInterval(function () {
+        var randomSnow = Math.floor(Math.random() * 5);
+        for (var i = 0; i < randomSnow; i++) {
+            var randomLeft = Math.floor(Math.random() * window.innerWidth);
+            var img = document.createElement("img");
+            img.src = "flake.png";
+            var num = Math.floor(Math.random() * 80);
+            img.style.width = num + "px";
+            img.style.height = num + "px";
+            img.style.position = "absolute";
+            img.style.left = randomLeft + "px";
+            img.style.top = -num+ "px";
+            document.body.appendChild(img);
+        }
+        sum = 0;
+
+    // 雪花移动像素生成
+    // 获取生成的雪花
+    var snow = document.getElementsByTagName("img");
+    var portView = window.innerHeight;
+    console.log(portView);
+    console.log(937/10*30);
+    
+    for (var i = 0; i < snow.length; i++) {
+        animate(snow[i], portView); 
+    }
+    function animate(box, target) {
+        clearInterval(box.timer);
+        box.timer =null;
+        var speed = 10;
+        box.timer = setInterval(function () {
+            var value = target - box.offsetTop;
+            box.style.top = box.offsetTop + speed + "px";
+            if (value < speed) {
+                box.style.top = target + "px";
+                clearInterval(box.timer);
+                box.timer =null;
+                document.body.removeChild(box);
+            }
+            if(box.offsetLeft>window.innerWidth){
+                document.body.removeChild(box);
+            }
+        }, 100);
+    }
+}, 1000);
+
+
+</script>
+
+</html>

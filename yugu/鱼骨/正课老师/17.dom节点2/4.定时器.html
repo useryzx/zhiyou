@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+  <script>
+    //   1.延迟定时器  2.重复定时器
+
+    // 延迟加载  可以延迟某个时间之后在调用该函数
+    // 1.要调用的函数  第二个时间  以毫秒为单位 1m=1000mm
+    // 延迟加载器会返回一个创建的定时器编号
+   var timer = setTimeout(function(){
+        console.log("4秒时间到");
+    },4000);
+    // 定时器创建了之后一定要记着删除(会消耗内存)
+    function cancelTimer(){
+        // 系统提供的清除定时器的方法.,参数是定时器的编号
+        clearTimeout(timer);
+        // 定时器创建出来之后内存地址就回存在  所以取消并不能
+        // 清除掉内存
+        timer =null;
+        // 清空重复定时器的
+        clearInterval(timer2);
+        timer2 =null;
+    }
+    // 当定时器使用完毕之后清除就可以
+    // cancelTimer();
+
+    //2.重复定时器 会在填入的时间内按照时间间隔重复执行
+    // 也会返回一个定时器编号，
+    var timer2 =setInterval(function(){
+        console.log("我变帅了"); 
+    },1000);
+
+    // 读秒器  01~09  10~60 重新开始
+  </script>
+</html>

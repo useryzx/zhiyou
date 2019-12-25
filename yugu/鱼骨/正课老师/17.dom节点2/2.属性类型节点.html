@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性类型节点</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .kaiti{
+            font-family: "楷体";
+        }
+        .bgy{
+            background-color: yellow;
+        }
+        a{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com" target="_blank" class="red kaiti">百度一下</a>
+</body>
+<script>
+    var a =document.getElementsByTagName("a")[0];
+    // attributes表示某个元素节点上所有的属性，返回一个属性列表
+    var attList =a.attributes;//(每一个属性都可以理解为是一个小的数据)
+    // forin直接遍历对象更加高效
+    // for (var key in attList) {
+    //      console.log(attList[key].name);
+    // }
+
+    for(var i =0;i<attList.length;i++){
+        // for循环遍历对象
+        var att =attList[i];//取出来代
+        //表对象(一个属性代表一个对象)
+        // name代表的是属性名   value代表属性值
+        console.log(att.name+":"+att.value);
+    }
+
+    // 修改或者添加属性
+    a.setAttribute("target","_self");//属性有就代表修改
+    a.setAttribute("title","百度一下，你就知道");//属性无则代表添加
+    // 删除
+    a.removeAttribute("href");
+    // 对于class属性的修改不建议使用setAttribute
+    // 因为class有一个专门的样式表  表对象提供了增删改查的功能
+    a.classList.add("bgy");
+    // 删除
+    a.classList.remove("kaiti");
+    // 替换
+    a.classList.toggle("red");
+    // 对于style属性的修改  直接修改元素节点就可以
+    a.style.marginLeft ="100px";
+    // 获取元素节点计算之后的样式表
+    alert(getComputedStyle(a).backgroundColor);
+</script>
+</html>
