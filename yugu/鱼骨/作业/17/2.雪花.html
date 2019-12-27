@@ -27,6 +27,8 @@
 
     setInterval(function () {
         var randomSnow = Math.floor(Math.random() * 5);
+        // var randomSnow =1;
+
         for (var i = 0; i < randomSnow; i++) {
             var randomLeft = Math.floor(Math.random() * window.innerWidth);
             var img = document.createElement("img");
@@ -69,7 +71,7 @@
             }
         }, 100);
     }
-}, 1000);
+}, 800);
 
 
 </script>

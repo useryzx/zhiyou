@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,20 +28,20 @@
     var sum = 0;
     // 生成雪花
     setInterval(function () {
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 1; i++) {
             var img = document.createElement("img");
             img.src = "flake.png";
             var num = Math.floor(Math.random() * 60) + 10;
             img.style.width = num + "px";
             img.style.height = num + "px";
             img.style.position = "absolute";
-            img.style.left = sum * 3 + "px";
-            img.style.top = num * 2 + "px";
+            img.style.left = window.innerWidth*Math.random() + "px";
+            // img.style.top = num * 2 + "px";
             sum += num;
             document.body.appendChild(img);
         }
         sum = 0;
-    }, 500);
+    }, 100);
 
     // 雪花移动像素生成
     // 获取生成的雪花
@@ -55,7 +60,7 @@
                 document.body.removeChild(snow[i]);
             }
         }
-    }, 500);
+    }, 100);
 
 
 </script>

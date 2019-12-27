@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        #box {
+            width: 400px;
+            height: 400px;
+            border: 4px dotted black;
+            border-radius: 50%;
+            font-size: 200px;
+            line-height: 400px;
+        }
+
+        #score {
+            margin-top: 20px;
+            /* width: 50px; */
+            height: 50px;
+            font-size: 25px;
+        }
+
+        .right {
+            color: green;
+            animation: ani 300ms linear;
+        }
+
+        @keyframes ani {
+            from {
+                transform: scale(0, 0);
+            }
+
+            to {
+                transform: scale(1, 1);
+            }
+        }
+
+        .shake {
+            color: red;
+            animation: ani2 300ms linear;
+        }
+
+        @keyframes ani2 {
+
+            0%,
+            50%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(-10px, 0);
+            }
+
+            75% {
+                transform: translate(10px, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="box"></div>
+    </main>
+
+    <div id="score">
+        正确：0个，错误：0个，正确率：0.00%
+    </div>
+
+</body>
+<script>
+
+
+    // 生成随机字母
+    function letter() {
+        var num = Math.floor(Math.random() * 26) + 65;
+        var bigLetter = String.fromCharCode(num);
+        document.getElementById("box").textContent = bigLetter;
+        document.getElementById("box").classList.add("right");
+        setTimeout(function () {
+            document.getElementById("box").classList.remove("right");
+        }, 300);
+    }
+    // 页面刷新获取一个字母
+    letter();
+
+    // 记录成绩
+    var right = 0;
+    var wrong = 0;
+    var result = 0.00;
+
+    // 判断键盘输入字母是否和内容相同
+    document.body.onkeydown = function (e) {
+        // 相同改变字母
+        if (e.keyCode == document.getElementById("box").textContent.charCodeAt()) {
+            letter();
+            right++;
+        }
+        // 不同添加错误动画
+        else {
+            document.getElementById("box").classList.add("shake");
+            setTimeout(function () {
+                document.getElementById("box").classList.remove("shake");
+            }, 300);
+            wrong++;
+        }
+        result = "正确：" + right + "个，错误：" + wrong + "个，正确率：" + (right / (right + wrong) * 100).toFixed(2) + "%";
+        document.getElementById("score").innerHTML = result;
+    }
+</script>
+
+</html>
