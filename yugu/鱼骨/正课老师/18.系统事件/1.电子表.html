@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: gray;
+            color: yellow;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100%;
+        }
+
+        #time {
+            font-size: 150px;
+            font-family: "Digital Dismay";
+        }
+
+        #date {
+            font-size: 50px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="time">88:88:88</div>
+        <div id="date">2019年12月20日 星期四</div>
+    </main>
+</body>
+<script>
+    //  var age =10;
+
+    //  所有的赋值都是setter方法  所有的取值都是getter方法
+    // 准备一个更新时间的方法
+    function updateClock() {
+        var now = new Date();
+        // 小时
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var second = now.getSeconds();
+        // 0~~9单个的数字
+        // 三元运算符拼接一下
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        second = second < 10 ? "0" + second : second;
+
+        document.querySelector("#time").innerText = hours + ":" + minutes + ":" + second;
+
+
+        var year = now.getFullYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        // 星期  0~~6
+        var week = now.getDay();
+        switch (week) {
+            case 0:
+                week = "星期日";
+                break;
+            case 1:
+                week = "星期一";
+                break;
+            case 2:
+                week = "星期二";
+                break;
+            case 3:
+                week = "星期三";
+                break;
+            case 4:
+                week = "星期四";
+                break;
+            case 5:
+                week = "星期五";
+                break;
+            case 6:
+                week = "星期六";
+                break;
+
+            default:
+                break;
+        }
+        document.querySelector("#date").innerText =year+"年"+month+"月"+date+"日"+week;
+
+    }
+    updateClock();
+    // 调用方法的时候只需要告诉定时器方法的名称就可以了
+    setInterval(updateClock, 1000);
+</script>
+
+</html>

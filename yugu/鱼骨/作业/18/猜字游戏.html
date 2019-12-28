@@ -19,7 +19,7 @@
             align-items: center;
             text-align: center;
         }
-        
+
         #box {
             width: 400px;
             height: 400px;
@@ -86,7 +86,17 @@
 
 </body>
 <script>
-
+    // 记录成绩
+    var right = 0;
+    var wrong = 0;
+    var result = 0.00;
+    var timer = 0;
+    function autoChange() {
+        timer = setInterval(() => {
+            letter();
+        }, 5000);
+    }
+    autoChange();
 
     // 生成随机字母
     function letter() {
@@ -101,17 +111,16 @@
     // 页面刷新获取一个字母
     letter();
 
-    // 记录成绩
-    var right = 0;
-    var wrong = 0;
-    var result = 0.00;
+
 
     // 判断键盘输入字母是否和内容相同
     document.body.onkeydown = function (e) {
         // 相同改变字母
+        clearInterval(timer);
         if (e.keyCode == document.getElementById("box").textContent.charCodeAt()) {
             letter();
             right++;
+
         }
         // 不同添加错误动画
         else {
@@ -123,6 +132,7 @@
         }
         result = "正确：" + right + "个，错误：" + wrong + "个，正确率：" + (right / (right + wrong) * 100).toFixed(2) + "%";
         document.getElementById("score").innerHTML = result;
+        autoChange();
     }
 </script>
 

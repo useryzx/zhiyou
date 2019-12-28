@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单事件</title>
+</head>
+
+<body>
+    <form action="#">
+        <label for="name">用户名:</label>
+        <input type="text" name="name" id="name" value="">
+        <br>
+        <label for="psw">密码:</label>
+        <input type="text" name="psw" id="psw" value="">
+        <br>
+        <input type="submit" value="登录">
+        <input type="reset">
+    </form>
+</body>
+<script>
+    // var nameBox = document.getElementById("name");
+    // nameBox.onfocus = function () {
+    //     console.log("姓名输入框获得焦点");
+    // }
+    // nameBox.onblur = function () {
+    //     console.log("姓名输入框获失去焦点");
+    // }
+    // nameBox.oninput = function (e) {
+    //     console.log("姓名输入框正在输入:" + e.target.value);
+    // }
+    // var pswBox = document.getElementById("psw")
+    // //forms获得所有的form对象以列表的形式返回
+    // var form = document.forms[0];
+    // // onsubmit是开始提交的触发监听
+    // // onreset准备重置的监听
+    // form.onsubmit = function (e) {
+    //     if (nameBox.value.length <= 0 ||
+    //         pswBox.value.length <= 0) {
+    //         alert("请输入用户名或密码");
+    //         //  因为点击提交的时候表单的提交属于默认行为
+    //         // 所以当错误的时候需要阻止
+    //         e.preventDefault();
+    //     }
+
+    // }
+    function test() {
+var sum= 0;
+for (var i= 0; i< 10; i++) {
+sum+= i;
+}
+console.log(sum) ;
+console.log(i) ;
+}
+test() ;
+</script>
+
+</html>

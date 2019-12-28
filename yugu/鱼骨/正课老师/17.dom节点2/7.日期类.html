@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 <script>
     // 获取时间需要使用到系统提供的日期类 Date()
     // 
-    var now =new Date();
+    var now = new Date();
     // getTime()返回自1970年7月1日至今的毫秒数
     // 1h =60m  1m =60s 1s =1000ss
     console.log(now.getTime());//获取秘钥的时间数字+一年的时间数字得到就是
     // 返回自传入的时间到1970的毫秒数
     // console.log(now.setFullYear(2018,10,16));
-    var year =now.getFullYear();//拿到当前的年份
-    var month =now.getMonth();//拿到当前的月份  
-    var day =now.getDay();//拿到星期 0代表周日
-    var hour =now.getHours();//拿到小时 0(午夜) ~~23
-    var minute =now.getMinutes();//分钟 返回值是0~~59 
-    var second =now.getSeconds();//秒数 返回值是0~~59
-    var date =now.getDate();//日期
+    var year = now.getFullYear();//拿到当前的年份
+    var month = now.getMonth();//拿到当前的月份  
+    var day = now.getDay();//拿到星期 0代表周日
+    var hour = now.getHours();//拿到小时 0(午夜) ~~23
+    var minute = now.getMinutes();//分钟 返回值是0~~59 
+    var second = now.getSeconds();//秒数 返回值是0~~59
+    var date = now.getDate();//日期
     console.log(date);
 
     // 保质期
     // 
-   
+
     // console.log(now.setFullYear(31536000000));
     // var year =now.getFullYear();
-    console.log(year);   
-    
-    
+    console.log(year);
+
+
 </script>
+
 </html>

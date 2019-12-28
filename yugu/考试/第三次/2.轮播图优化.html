@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            margin: 0 auto;
+            /* display: flex; */
+            width: 590px;
+            height: 470px;
+            /* 超出盒子部分隐藏 */
+            /* overflow: hidden; */
+            /* border: 1px solid red; */
+            text-align: center;
+        }
+
+        img {
+            position: absolute;
+            display: inline-block;
+            /* border: 1px solid red; */
+            width: 590px;
+            height: 470px;
+            left: 0;
+            opacity: 0;
+        }
+
+        /* 设置按钮 */
+        p#index {
+            width: 590px;
+            position: absolute;
+            text-align: center;
+            bottom: 0;
+            /* left: 450px; */
+            z-index: 4;
+            cursor: default;
+        }
+
+        .index {
+            color: red;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .bgcred {
+            background-color: red;
+        }
+
+        #swith {
+            position: absolute;
+            width: 590px;
+            top: 200px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .left,
+        .right {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            opacity: 0.3;
+            z-index: 4;
+        }
+
+        .left {
+            left: 4px;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+            border-top-right-radius: 20%;
+            border-bottom-right-radius: 20%;
+        }
+
+        .right {
+            right: 4px;
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+            border-top-left-radius: 20%;
+            border-bottom-left-radius: 20%;
+        }
+
+        .left:hover,
+        .right:hover,
+        .index:hover {
+            cursor: pointer;
+        }
+
+        .show {
+            z-index: 2;
+            animation: show 1s linear both;
+        }
+
+        @keyframes show {
+            from {
+                opacity: 0.2;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <main>
+            <img src="images/photo1.jpg" alt="" class="show">
+            <img src="images/photo2.jpg" alt="">
+            <img src="images/photo3.jpg" alt="">
+            <img src="images/photo4.jpg" alt="">
+            <img src="images/photo5.jpg" alt="">
+            <img src="images/photo6.jpg" alt="">
+        </main>
+
+        <p id="swith">
+            <span class="left"></span>
+            <span class="right"></span>
+        </p>
+        <p id="index">
+            <span class="index bgcred"></span>&nbsp;&nbsp;
+            <span class="index"></span>&nbsp;&nbsp;
+            <span class="index"></span>&nbsp;&nbsp;
+            <span class="index"></span>&nbsp;&nbsp;
+            <span class="index"></span>&nbsp;&nbsp;
+            <span class="index"></span>&nbsp;&nbsp;
+        </p>
+    </div>
+</body>
+<script>
+    // 记录定时器
+    var timer = 0;
+
+
+    // 定时轮播
+    function imgChangeTime(spanIndex) {
+        timer = setInterval(function () {
+            if (spanIndex < 5) {
+                imgChange(imgList[spanIndex], imgList[spanIndex + 1]);
+                spanIndex = spanIndex + 1;
+            }
+            else {
+                imgChange(imgList[spanIndex], imgList[spanIndex - 5]);
+                spanIndex = spanIndex - 5;
+            }
+            spanChange(spanIndex);
+        }, 2000)
+    }
+    imgChangeTime(0);
+
+
+    // 通过鼠标经过的图片获取当前图片
+    // 当点击按钮的时候是改变当前图片的兄弟节点
+    var imgList = document.getElementsByTagName("img");
+    var indexList = document.getElementsByClassName("index");
+    var leftSpan = document.getElementsByClassName("left")[0];
+    var rightSpan = document.getElementsByClassName("right")[0];
+    var main = document.getElementsByTagName("main")[0];
+
+    // 封装一个图片切换的方法
+    function imgChange(thisImg, anotherImg) {
+        thisImg.classList.remove("show");
+        anotherImg.classList.add("show");
+    }
+
+
+    // 封装一个span变背景色的方法
+    function spanChange(a) {
+        for(var i =0;i<imgList.length;i++){
+            indexList[i].classList.remove("bgcred");
+        }
+        indexList[a].classList.add("bgcred");
+    }
+
+    // 给每个图片绑定鼠标进入事件，当鼠标进入是记录当前的图片
+    for (var i = 0; i < imgList.length; i++) {
+        // 给图片一个num
+        imgList[i].num = i;
+        // 鼠标进入当前显示图片
+        imgList[i].onmouseenter = function (e) {
+            console.log(e.target + "***");
+            // 记录当前的图片
+            var nowImg = e.target;
+            // 当点击左侧的上一页时，判断兄弟元素的兄元素是否存在
+            // 存在则当前图片去掉class，上一张图片显示，上一张图片改为nowImg
+            // 不存在的时候mian的最后一个img子元素添加class，此张图片消失，并将nowImg改为最后一个main的子img
+            leftSpan.onmousedown = function (e) {
+                clearInterval(timer);
+                var preImg = nowImg.previousElementSibling;
+                if (preImg) {
+                    imgChange(nowImg, preImg);
+                    nowImg = nowImg.previousElementSibling;
+                }
+                else {
+                    imgChange(nowImg, main.lastElementChild);
+                    nowImg = main.lastElementChild;
+                }
+                spanChange(nowImg.num);
+                imgChangeTime(nowImg.num);
+            }
+            // 右侧点击时同左侧
+            rightSpan.onmousedown = function (e) {
+                clearInterval(timer);
+                var nextImg = nowImg.nextElementSibling;
+                if (nextImg) {
+                    imgChange(nowImg, nextImg);
+                    nowImg = nowImg.nextElementSibling;
+                }
+                else {
+                    imgChange(nowImg, main.firstElementChild);
+                    nowImg = main.firstElementChild;
+                }
+                spanChange(nowImg.num);
+                imgChangeTime(nowImg.num);
+            }
+        }
+        // 给每个span绑定鼠标进入事件，鼠标进入哪一个就显示对应的图片,自定义一个num记录当前的span
+        indexList[i].num = i;
+        indexList[i].onmouseenter = function (e) {
+            clearInterval(timer);
+            for (var j = 0; j < indexList.length; j++) {
+                imgList[j].classList.remove("show");
+                indexList[j].classList.remove("bgcred");
+            }
+            imgList[e.target.num].classList.add("show");
+            indexList[e.target.num].classList.add("bgcred");
+            imgChangeTime(e.target.num);
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>

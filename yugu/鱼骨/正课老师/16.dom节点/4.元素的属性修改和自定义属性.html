@@ -1,101 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>元素的属性修改和自定义属性</title>
-    <style>
-        .green{
-            color: green;
-        }
-        .bold{
-            font-weight: bold;
-        }
-        div{
-            width: 200px;
-            height: 200px;
-            
-        }
-    </style>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>元素的属性修改和自定义属性</title>
+   <style>
+      .green {
+         color: green;
+      }
+
+      .bold {
+         font-weight: bold;
+      }
+
+      div {
+         width: 200px;
+         height: 200px;
+
+      }
+   </style>
 </head>
+
 <body>
-    <!-- html标签属性可以分为两种:
+   <!-- html标签属性可以分为两种:
          1.html标准属性:在html语法中能够直接被浏览器识别
         有专门用途
          2.自定义属性：标准属性之外的都叫做自定义属性，这些
         属性不会对元素产生影响 主要就是程序员为了满足个性化
     需求而定义的 -->
-    <h1 title="web-60" id="name">河南通信产业园110号</h1>
-    <p class="hold" id="first-line" xiabei="123">打起精神来</p>
+   <h1 title="web-60" id="name">河南通信产业园110号</h1>
+   <p class="hold" id="first-line" xiabei="123">打起精神来</p>
 
-    <div>
+   <div>
 
-    </div>
+   </div>
 </body>
-   <script>
-       var h1 =document.getElementById("name");
-    //    几乎所有的html属性都可以使用对象.属性的形式访问
-       console.log(h1.title);
-    //    属性也支持读和写
-       h1.title ="不要瞌睡!!!";
-    //    每一个元素对象都有一个完整的style层叠样式表
-    // 元素的style属性代表该元素的样式表
-    //当为元素的标签设置style属性之后，进行赋值到时候实际上
-    // 是把red字符串解析成了一个对象，然后在赋值
-    // h1.style="color:red"
-       h1.style.color ="red";
-       //边框
-       h1.style.border ="solid 2px black";
-    //    设置字号
-       h1.style.fontSize ="20px";
-    /* 
-       对于大部分的html标签来说，值都是字符串，但是style属性
-       比较特殊(层叠样式表),是一个对象,样式名是属性的第二属性
-       样式值就是属性，这样的目的是为了让开发者在访问style样式表
-       的时候更加的方便
-    */
+<script>
+   var h1 = document.getElementById("name");
+   //    几乎所有的html属性都可以使用对象.属性的形式访问
+   console.log(h1.title);
+   //    属性也支持读和写
+   h1.title = "不要瞌睡!!!";
+   //    每一个元素对象都有一个完整的style层叠样式表
+   // 元素的style属性代表该元素的样式表
+   //当为元素的标签设置style属性之后，进行赋值到时候实际上
+   // 是把red字符串解析成了一个对象，然后在赋值
+   // h1.style="color:red"
+   h1.style.color = "red";
+   //边框
+   h1.style.border = "solid 2px black";
+   //    设置字号
+   h1.style.fontSize = "20px";
+   /* 
+      对于大部分的html标签来说，值都是字符串，但是style属性
+      比较特殊(层叠样式表),是一个对象,样式名是属性的第二属性
+      样式值就是属性，这样的目的是为了让开发者在访问style样式表
+      的时候更加的方便
+   */
 
-    var p1 =document.getElementById("first-line");
-    /*
-       标准的class属性可以设置多个值，因为class本身就是一个
-       列表,设置样式值的时候如果有了，那么样式表会自动调用
-    */
-    p1.className ="green bold";
-    console.log( p1.classList);
-    //  删除   p1.classList列表
-    // 有则删除
-    p1.classList.remove("bold");
-    // 添加
-    // p1.classList.add("bold");
-    // 切换  有则删 无则添
-    p1.classList.toggle("bold");
-    // 判断某些样式是否存在 
-    console.log(p1.classList.contains("bold"));
-    
-    //自定义属性 如果是自定义属性使用上面的访问方式访问不到
-    // getArrtribute方法用来获取标签的自定义属性，参数是属性名
-    // 返回的是一个属性的值，该方法也可以用获取标准属性
-    var v1 =p1.getAttribute("xiabei");   
-    console.log(v1);
-    // setAttribute 添加属性或者是自定义属性 1.代表属性名 2.属性值
-    p1.setAttribute("state","ready");
-    // 判断是否有自定义属性
-    console.log(p1.hasAttribute("state"));
-    // 删除
-    p1.removeAttribute("state");
-    console.log(p1.hasAttribute("state"));
-    /*
-       对于标签对象，打开访问的对象属性，标准属性和对象属性的
-       访问方式一样(people.name  p1.title),如果是非标准属性，
-       访问的就是对象的属性而不是标签的属性了(xiabei),
-       没有办法直接用对象.非标准属性访问
-    */
+   var p1 = document.getElementById("first-line");
+   /*
+      标准的class属性可以设置多个值，因为class本身就是一个
+      列表,设置样式值的时候如果有了，那么样式表会自动调用
+   */
+   p1.className = "green bold";
+   console.log(p1.classList);
+   //  删除   p1.classList列表
+   // 有则删除
+   p1.classList.remove("bold");
+   // 添加
+   // p1.classList.add("bold");
+   // 切换  有则删 无则添
+   p1.classList.toggle("bold");
+   // 判断某些样式是否存在 
+   console.log(p1.classList.contains("bold"));
+
+   //自定义属性 如果是自定义属性使用上面的访问方式访问不到
+   // getArrtribute方法用来获取标签的自定义属性，参数是属性名
+   // 返回的是一个属性的值，该方法也可以用获取标准属性
+   var v1 = p1.getAttribute("xiabei");
+   console.log(v1);
+   // setAttribute 添加属性或者是自定义属性 1.代表属性名 2.属性值
+   p1.setAttribute("state", "ready");
+   // 判断是否有自定义属性
+   console.log(p1.hasAttribute("state"));
+   // 删除
+   p1.removeAttribute("state");
+   console.log(p1.hasAttribute("state"));
+   /*
+      对于标签对象，打开访问的对象属性，标准属性和对象属性的
+      访问方式一样(people.name  p1.title),如果是非标准属性，
+      访问的就是对象的属性而不是标签的属性了(xiabei),
+      没有办法直接用对象.非标准属性访问
+   */
 
 
-    var div =document.querySelector("div");
-    div.style.border ="solid 20px red";
-    div.style.borderRadius ="50%";
-    
-   </script>
+   var div = document.querySelector("div");
+   div.style.border = "solid 20px red";
+   div.style.borderRadius = "50%";
+
+</script>
+
 </html>
