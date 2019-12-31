@@ -35,8 +35,6 @@
     var allChecked = document.getElementById("all");
     var div = document.querySelector("div");
     var a = document.querySelector("a");
-    console.log("所有input：" + inputList);
-
     // 定义一个方法,添加删除checked属性
     function switchInput(inputItem) {
         if (inputItem.hasAttribute("checked")) {
@@ -94,12 +92,13 @@
         for (var i = 0; i < inputList.length; i++) {
             if (inputList[i].hasAttribute("checked")) {
                 inputList[i].removeAttribute("checked");
+                allInputChecked();
             }
             else {
                 inputList[i].setAttribute("checked", "checked");
+                allInputChecked();
             }
         }
-
     }
 </script>
 
