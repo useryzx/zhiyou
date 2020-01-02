@@ -18,7 +18,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: black;
         }
 
         main {
@@ -65,18 +64,23 @@
         }
 
         .blur {
-            opacity: 0.5;
+            color: rgba(0, 0, 0, 0.3);
         }
+
         .bsc {
             box-shadow: 0 0 5px 2px red inset;
+        }
+
+        .bor {
+            border: 4px solid red;
         }
     </style>
 </head>
 
 <body>
     <main>
-        <div id="timeNow"></div>
         <div id="dayNow"></div>
+        <div id="timeNow"></div>
         <div>
             <span id="lastMonth">上一月</span>
             <span id="nextMonth">下一月</span>
@@ -163,6 +167,11 @@
     var arr = ["日", "一", "二", "三", "四", "五", "六"];
     var arr2 = [7, 1, 2, 3, 4, 5, 6];
 
+
+
+
+    // 时间显示器
+
     var timer1 = setInterval(function () {
         // 获取到所需的时间进行拼接
         var now1 = new Date();
@@ -173,36 +182,49 @@
         var hour1 = now1.getHours();
         var minute1 = now1.getMinutes();
         var second1 = now1.getSeconds();
-
         weekday1 = arr[weekday1];
         dayBox.innerHTML = (year1 + "年" + month1 + "月" + day1 + "日" + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;" + "星期" + weekday1);
         timeBox.innerHTML = (hour1 < 10 ? ("0" + hour1) : hour1) + ":" + (minute1 < 10 ? ("0" + minute1) : minute1) + ":" + (second1 < 10 ? ("0" + second1) : second1);
     }, 1000)
+
+
+
+    // 定义时间全局变量
+
     var now;
     var year;
     var month;
-
+    var date;
+    // 定义时间定时器重复获取当前天，当点击下月或者上月的时候清除
     var timer2 = setInterval(function () {
         // 获取到所需的时间进行拼接
         now = new Date();
         year = now.getFullYear();
         month = now.getMonth() + 1;
+        date = now.getDate();
         yeMo.innerHTML = year + "." + month;
         dateShow();
     }, 1000)
-    // 点击事件
+
+
+    // 上个月的点击事件
+
     lastMonth.onclick = function () {
         console.log("***");
         clearInterval(timer2);
         last();
         dateShow();
     }
+
+    // 下个月的点击事件
+
     nextMonth.onclick = function () {
         clearInterval(timer2);
         next();
         dateShow();
     }
 
+    // 上个月的时候调用
     function last() {
         switch (month) {
             case 1:
@@ -215,6 +237,9 @@
         }
         yeMo.innerHTML = year + "." + month;
     }
+
+    // 下个月的时候调用
+
     function next() {
         switch (month) {
             case 12:
@@ -228,11 +253,16 @@
         yeMo.innerHTML = year + "." + month;
     }
 
+
+
+    // 当月内容的显示
     function dateShow() {
         for (var m = 0; m < td.length; m++) {
             td[m].textContent = "";
             td[m].classList.remove("blur");
+            td[m].classList.remove("bor");
         }
+
         var firstDay = new Date(year, month - 1, 1);
         firstDay = firstDay.getDay();
         firstDay = arr2[firstDay];
@@ -281,6 +311,9 @@
         }
     }
 
+
+
+    // 上月内容的显示
     function lastM(num) {
         switch (month) {
             case 1:
@@ -301,6 +334,13 @@
                 for (var i = 0; i < num - 1; i++) {
                     td[i].textContent = 31 - num + i + 2;
                     td[i].classList.add("blur");
+                    td[i].onclick = function () {
+                        if (this.classList.contains("blur")) {
+                            clearInterval(timer2);
+                            last();
+                            dateShow();
+                        }
+                    }
                 }
                 break;
             case 4:
@@ -310,6 +350,13 @@
                 for (var i = 0; i < num - 1; i++) {
                     td[i].textContent = 30 - num + i + 2;
                     td[i].classList.add("blur");
+                    td[i].onclick = function () {
+                        if (this.classList.contains("blur")) {
+                            clearInterval(timer2);
+                            last();
+                            dateShow();
+                        }
+                    }
                 }
                 break;
             default:
@@ -317,23 +364,44 @@
                     for (var i = 0; i < num - 1; i++) {
                         td[i].textContent = 29 - num + i + 2;
                         td[i].classList.add("blur");
+                        td[i].onclick = function () {
+                            if (this.classList.contains("blur")) {
+                                clearInterval(timer2);
+                                last();
+                                dateShow();
+                            }
+                        }
                     }
                 }
                 else {
                     for (var i = 0; i < num - 1; i++) {
                         td[i].textContent = 28 - num + i + 2;
                         td[i].classList.add("blur");
+                        td[i].onclick = function () {
+                            if (this.classList.contains("blur")) {
+                                clearInterval(timer2);
+                                last();
+                                dateShow();
+                            }
+                        }
                     }
                 }
                 break;
         }
     }
 
-
+    // 下月内容的显示
     function nextM(num, numDay) {
         for (var i = 0; i < 42 - (num - 1 + numDay); i++) {
             td[num - 1 + numDay + i].textContent = i + 1;
             td[num - 1 + numDay + i].classList.add("blur");
+            td[num - 1 + numDay + i].onclick = function () {
+                if (this.classList.contains("blur")) {
+                    clearInterval(timer2);
+                    next();
+                    dateShow();
+                }
+            }
         }
     }
     for (var i = 0; i < td.length; i++) {

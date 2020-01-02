@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimation</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* animation：keyframes
+           transition:过渡的一些基础样式 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        1.基础动画>>优先使用 (关键帧..)
+        2.关键帧动画(js提供的动画函数，比基础动画功能强大)
+        3.js动画,可拓展性最高,但是最不方便(可以自己写动画逻辑)
+     -->
+    <div id="box">
+
+    </div>
+</body>
+<script>
+   var box=document.getElementById("box");
+
+   var aniCode =null;
+//    角度
+   var angle =0;
+   function update(){
+       angle+=5;
+       box.style.transform ="rotate("+angle+"deg)";
+       aniCode= requestAnimationFrame(update);
+   }
+//    基础的js逻辑动画
+//    setInterval(update, 1000);
+    //   request请求 animation动画  frame帧 
+    // 一帧一次(常规的展示1s =60帧 好一点的: 1s=90  特好:1s=120)
+    // 从h5开始后引入的新动画api,原理就是利用浏览器每一帧的刷新
+    // 可以向定时器一样进行关闭
+    aniCode=requestAnimationFrame(update);
+
+    setTimeout(function() {
+        cancelAnimationFrame(aniCode);
+    }, 3000);
+</script>
+
+</html>

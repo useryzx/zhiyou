@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+<script>
+    var div = document.querySelector("div");
+    var xSpeed = 20;
+    var ySpeed = 5;
+    function ani() {
+        div.style.left = xSpeed + div.offsetLeft + "px";
+        div.style.top = ySpeed + div.offsetTop + "px";
+        if (div.offsetLeft + div.clientWidth >= window.innerWidth || div.offsetLeft <= 0) {
+            xSpeed = -xSpeed;
+            requestAnimationFrame(ani);
+        }
+        else {
+            requestAnimationFrame(ani);
+        }
+        if (div.offsetTop + div.clientHeight >= window.innerHeight || div.offsetTop  <= 0) {
+            ySpeed = -ySpeed;
+        }
+
+    }
+    requestAnimationFrame(ani);
+</script>
+
+</html>
