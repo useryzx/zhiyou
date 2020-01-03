@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box
+        {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    var div =document.getElementById("box");
+    // 添加长按的监听 
+    div.addEventListener("longPress",function()
+    {
+        alert("长按");
+    });
+    //监听需要等待一定的事件才会触发
+    var timeOut;
+    div.addEventListener("mousedown",function(){
+        timeOut =setTimeout(function(){
+            //派发事件
+            var longPress =new CustomEvent("longPress",{});
+            div.dispatchEvent(longPress);
+        },2000);
+    });
+    // 鼠标弹起的时候，取消该事件的派发
+    div.addEventListener("mouseup",function(){
+        clearTimeout(timeOut);
+    });
+    // 鼠标移动的时候，取消该事件的派发
+    div.addEventListener("mousemove",function(){
+        clearTimeout(timeOut);
+    });
+</script>
+</html>

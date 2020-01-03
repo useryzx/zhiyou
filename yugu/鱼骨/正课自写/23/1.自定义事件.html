@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义事件</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    var box = document.querySelector("#box");
+    // 自定义事件：除了系统提供的时间之外，用户自己起的事件名称
+    // box.addEventListener("来自yuguaa",function(e){
+    //     alert("自定义事件触发:"+e.detail);
+    // })
+    // // 创建电台
+    // var myEvent = document.createEvent("CustomEvent");
+    // myEvent.initCustomEvent("来自yuguaa",true,true,"哈哈哈哈");
+
+    // // 发射
+    // box.dispatchEvent(myEvent);
+
+    // var data = {};
+    // data.detail = "开始上课";
+    // data.bubbles = true;
+    // data.cancelable = true;
+    // var myEvent2  = new CustomEvent("88.1",data);
+    // box.dispatchEvent(myEvent2);
+
+    // var da = {};
+    // da.detail = "hello";
+    // da.bubbles = true;
+    // da.cancelable = true;
+    // var myEvent = new CustomEvent("hi", da);
+    // box.dispatchEvent(myEvent);
+
+    // var flag = false;
+    // document.body.onkeydown = function (e) {
+    //     if (e.key == "s") {
+    //         console.log("+++");
+    //         flag = true;
+    //     }
+    // }
+    // document.body.onkeyup = function (e) {
+    //     console.log("***");
+    //     flag = false;
+    // }
+    // box.onclick = function () {
+    //     if (flag) {
+    //         flag = false;
+    //         box.onmousedown = show;
+    //     }
+    // }
+
+    // function show() {
+    //     flag = false;
+    //     box.addEventListener("hi", function (e) {
+    //         alert(e.detail);
+    //     });
+    //     var myEvent = document.createEvent("CustomEvent");
+    //     myEvent.initCustomEvent("hi", true, true, "hello");
+    //     // 发射
+    //     box.dispatchEvent(myEvent);
+    // }
+    // 有bug
+
+    var flag = false;
+    document.onkeydown = function (e) {
+        console.log(e.key);
+        if (e.key == "s") {
+            flag = true;
+            console.log("按下了" + flag);
+        }
+    }
+    document.onkeyup = function (e) {
+        flag = false;
+        console.log("松开了" + flag);
+    }
+    box.onclick = function (e) {
+        if (flag) {
+            var data = {};
+            data.detail = "hello";
+            data.bubbles = true;
+            data.cancelable = true;
+            // data.target = e.target;
+            var myEvent = new CustomEvent("hi", data);
+            e.target.dispatchEvent(myEvent);
+        }
+    }
+    box.addEventListener("hi", function (e) {
+        alert(e.detail);
+        flag = false;
+    })
+</script>
+
+</html>
