@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .line{
+            color: red;
+        }
+        .item{
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <p class="line">第1行</p>
+    <p class="line">第2行</p>
+    <p class="line">第3行</p>
+    <input type="text" id="field">
+</body>
+<script src="jquery.js"></script>
+<script>
+    // var $box = $("#box");
+    // var $pArr = $(".line");
+    // console.log($box);
+    // console.log($(document.body));
+    $("#box").html("<b>hello jquery</b>")
+    console.log($("#box").html());
+    $(".line").addClass("item");
+    $(".line").css("font-size","28px");
+    $("#box").css({
+        border:"solid black 1px",
+        "background-color":"yellow",
+        padding:"10px"
+    })
+    $("#field").attr("placeholder","请输入名称");
+    $("#field").removeAttr("placeholder");
+
+</script>
+</html>

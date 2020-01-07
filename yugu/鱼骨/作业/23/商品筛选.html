@@ -151,13 +151,9 @@
     </main>
 </body>
 <script>
-    // 获取所有的ul
     var ulList = document.querySelectorAll("ul.content");
-    // 获取所有的a，选择的内容
     var liList = document.querySelectorAll("#selected li a");
-    // 获取所有的X
     var spanList = document.querySelectorAll("#selected li span");
-    // 获取选中的ul
     var selected = document.querySelector("#selected");
     var clearAll = document.querySelector("section");
     var allLiList = document.querySelectorAll("li.sign");
@@ -182,13 +178,11 @@
         spanList[i].index = i;
         spanList[i].onclick = function () {
             this.parentElement.classList.add("hide");
-            console.log(this.index);
             for (var j = 0; j < ulList[this.index].children.length; j++) {
                 ulList[this.index].children[j].style.color = "";
             }
             isShow--;
             spanShow(isShow);
-            console.log(isShow);
         }
     }
     function spanShow(num) {
@@ -199,7 +193,6 @@
             clearAll.classList.add("hide");
         }
     }
-
     clearAll.onclick = function () {
         isShow = 0;
         spanShow(isShow);
@@ -211,5 +204,4 @@
         }
     }
 </script>
-
 </html>

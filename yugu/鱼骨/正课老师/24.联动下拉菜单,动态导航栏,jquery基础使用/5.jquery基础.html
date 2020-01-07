@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- jquery:是一个经典的前端开发工具(标准js的""封装") 
+    提供了dom操作,事件监听,动画...使用jquery可以使开发者
+的代码更加的轻量化,简单化 使用jquery需要确保js文件里面导入了
+jquery官方的api（jquery文件 文件绝对路径相对路径都可以）-->
+  <div id="box"></div>
+  <p class="line">第1行</p>
+  <p class="line">第2行</p>
+  <p class="line">第3行</p>
+</body>
+<script src="jquery.js"></script>
+<script>
+    /*
+      导入jquery之后，全局作用域中会多出来两个变量,分别是$
+      和jQuery这两个变量指向的是同一个对象,为了尽可能少污染
+      js的全局变量作用域,jquery把所有的功能都封装到了一个对象中
+      ($),使用这两个变量中的其中一个就可以任意操作dom节点...
+      jquery的元素查找$代表一个函数对象，可以进行调用，可以传参
+      可以返回,当传递的参数是字符串的时候，返回一个jquery对象，
+      这个对象是个容器(类似于数组),容器中存放着当前符合条件的元素，
+      使用jquery进行dom操作，查找的jq对象一般不能直接通过
+      变量接受,如果要接收需要加上$，因为返回的是jquery对象
+    */
+//    样式选择器css里面怎么查找参数就怎么写
+   var $box =$("#box");//等价于getElementById
+   var $pArr =$(".line");
+   console.log($pArr.length);
+//  $函数中的参数如果是一个原生对象的话,返回一个jq对象
+// jq独享包含有这个原生对象的信息
+   console.log($(document.body));
+   
+   
+</script>
+</html>

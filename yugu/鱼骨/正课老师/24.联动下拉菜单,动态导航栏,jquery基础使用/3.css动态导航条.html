@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css动态导航条</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #nav-bar{
+            width: 1000px;
+            height: 80px;
+            margin: 0 auto;
+            background-color: gray;
+        }
+        #nav-list{
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .item{
+            cursor: pointer;
+            height: 80px;
+            background-color: hotpink;
+            width: 200px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .item-name{
+            height: 80px;
+            line-height: 80px;
+        }
+        .list-item{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: gold;
+        }
+        .list-item li{
+            height: 30px;
+            line-height: 30px;
+        }
+        /* 鼠标悬停的时候 */
+        .item:hover{
+            height: 230px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="nav-bar">
+            <ul id="nav-list">
+               <li class="item">
+                   <div class="item-name">网易应用</div>
+                   <!-- 默认没有高度 -->
+                   <ul class="list-item">
+                       <li>网易新闻1</li>
+                       <li>网易新闻2</li>
+                       <li>网易新闻3</li>
+                       <li>网易新闻4</li>
+                   </ul>
+               </li>
+
+               <li class="item">
+                <div class="item-name">小米商城</div>
+                <!-- 默认没有高度 -->
+                <ul class="list-item">
+                    <li>小米商城1</li>
+                    <li>小米商城2</li>
+                    <li>小米商城3</li>
+                    <li>小米商城4</li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <div class="item-name">华为商城</div>
+                <!-- 默认没有高度 -->
+                <ul class="list-item">
+                    <li>华为商城1</li>
+                    <li>华为商城2</li>
+                    <li>华为商城3</li>
+                    <li>华为商城4</li>
+                </ul>
+            </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

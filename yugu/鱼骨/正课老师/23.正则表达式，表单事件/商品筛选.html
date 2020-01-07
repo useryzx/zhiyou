@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .wrapper section {
+            border-bottom: dotted 1px gray;
+            overflow: hidden;
+            line-height: 50px;
+        }
+
+        section strong {
+            float: left;
+            width: 9%;
+            text-align: justify;
+        }
+
+        section ul {
+            width: 87%;
+            float: left;
+        }
+
+        section ul li {
+            display: inline-block;
+            padding: 0 10px;
+            color: blue;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .clear {
+            color: orangered;
+            margin-left: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        section ul li.selected {
+            color: red;
+        }
+
+        .choosed span {
+            display: none;
+            line-height: 35px;
+            padding: 0 15px;
+            border: solid 1px olivedrab;
+            font-size: 14px;
+        }
+
+        .choosed i {
+            font-style: normal;
+            background: darkorange;
+            line-height: 25px;
+            display: inline-block;
+            padding: 0 10px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <section>
+            <strong>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌:</strong>
+            <ul>
+                <li>苹果</li>
+                <li>华为</li>
+                <li>魅族</li>
+                <li>小米</li>
+                <li>锤子</li>
+                <li>OPPO</li>
+                <li>ViVo</li>
+                <li>联想</li>
+                <li>三星</li>
+                <li>诺基亚</li>
+                <li>一加</li>
+                <li>中兴</li>
+                <li>海信</li>
+                <li>8848</li>
+                <li>美图秀秀</li>
+                <li>HTC</li>
+                <li>酷派</li>
+                <li>乐视</li>
+            </ul>
+        </section>
+        <section>
+            <strong>价格范围</strong>
+            <ul>
+                <li>1-499</li>
+                <li>499-799</li>
+                <li>799-1799</li>
+                <li>1799-10000</li>
+            </ul>
+        </section>
+        <section>
+            <strong>操作系统</strong>
+            <ul>
+                <li>IOS</li>
+                <li>安卓</li>
+                <li>塞班</li>
+            </ul>
+        </section>
+        <section>
+            <strong>优惠活动</strong>
+            <ul>
+                <li>存话费送手机</li>
+                <li>买手机送话费</li>
+                <li>老用户优惠购机(支持合约到期提前续约)</li>
+                <li>只买手机</li>
+            </ul>
+        </section>
+        <section>
+            <strong>特&nbsp;&nbsp;&nbsp;&nbsp;点:</strong>
+            <ul>
+                <li>双卡双待</li>
+                <li>千元智能机</li>
+                <li>大屏</li>
+            </ul>
+        </section>
+        <section>
+            <strong>您已选择:</strong>
+            <div class="choosed">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <a class="clear" href="">一键清除选项</a>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    /*
+    1.鼠标点击选项时，当前选项样式要发生改变其他不变
+    2.将选中的内容添加到指定的位置
+    */
+    var sections = document.querySelectorAll('section');
+    // span
+    var spans = document.querySelectorAll('.choosed span');
+    // a
+    var aTag = document.querySelector('.choosed a');
+    for (var i = 0; i < sections.length - 1; i++) {
+        // 获取某个分类中的所有子标签
+        // children属性  获取标签中所有直系子元素的内容
+        // 样式，类名，追加子元素，获取子元素都可以使用该属性
+        var lis = sections[i].children[1].children;
+        // li绑定事件  
+        for (var j = 0; j < lis.length; j++) {
+            // 添加索引属性 index是当前li标签的索引值
+            lis[j].index = j;
+            // 当前li所对应的section的索引值
+            lis[j].secIndex = i;
+            // 事件绑定
+            lis[j].onclick = function () {
+                // 获取当前点击的li所处的li组
+                // parentNode 获取当前li对应的父元素
+                var lisNow = this.parentNode.children;
+                for (var m = 0; m < lisNow.length; m++) {
+                    // 全部清空样式
+                    lisNow[m].className = '';
+                    // 只给当前选中的绑定
+                    this.className = 'selected';
+                    // 根据区的索引拿到span
+                    spans[this.secIndex].innerHTML = this.innerHTML + "<i>X</i>";
+                    spans[this.secIndex].style.display = 'inline-block';
+                    // i>>>绑定事件
+                    for (var n = 0; n < spans.length; n++) {
+                        var iTag = spans[n].children[0];
+                        if (iTag) {
+                            // 将span的索引 绑定到i标签上
+                            iTag.spanIndex = n;
+                            iTag.onclick = function (e) {
+                                // 当前的span隐藏
+                                this.parentNode.style.display = 'none';
+                                this.parentNode.innerHTML = '';
+                                // 获得当前所删选项对应的分类中的li
+                                var secLis = sections[this.spanIndex].children[1].children;
+                                for (var k = 0; k < secLis.length; k++) {
+                                    secLis[k].className = '';
+                                }
+                                show();
+                            }
+                        }
+                    }
+                    // 展示一键清除
+                    function show() {
+                        var iLength = document.querySelectorAll(".choosed i").length;
+                        if (iLength >= 2) {
+                            aTag.style.display = 'inline-block';
+                        } else {
+                            aTag.style.display = 'none';
+                        }
+                    }
+                    show();
+                }
+            }
+        }
+    }
+    
+    // 一键清除
+    aTag.onclick =function(e){
+        e.preventDefault();
+        for(var i=0;i<spans.length;i++){
+            spans[i].style.display ='none';
+            spans[i].innerHTML ='';
+            var is =sections[i].children[1].children;
+            for(var j=0;j<is.length;j++)
+            {
+                is[j].className ='';
+            }
+        }
+        this.style.display ='none';
+    }
+</script>
+
+</html>
