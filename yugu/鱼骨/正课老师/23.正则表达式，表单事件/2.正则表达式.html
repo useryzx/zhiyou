@@ -1,78 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 </body>
 <script>
     /*
     正则表达式(regular expression)有规律的表达式
     作用:用来检索字符串中是否包含有表达实现条件的内容
-    */ 
-//    声明表达式  方法1:/检索条件/修饰符  常用
-// 常用的修饰符有三种 i,m,g
-// i:不分区大小写，默认是区分的
-// m:执行多行检索，默认是只执行一行
-// g:执行全局检索
-   var patten =/abc/i;
-//    第二种表达式的创建方法:使用构造函数进行创建
-   patten =new RegExp('abc','i');
-   var str ='aabbcc';
-   str ='Abcaabbcc';
-//    提供了test方法来检测字符串是否满足正则表达式,返回布尔值
-  console.log(patten.test(str));
+    */
+    //    声明表达式  方法1:/检索条件/修饰符  常用
+    // 常用的修饰符有三种 i,m,g
+    // i:不分区大小写，默认是区分的
+    // m:执行多行检索，默认是只执行一行
+    // g:执行全局检索
+    var patten = /abc/i;
+    //    第二种表达式的创建方法:使用构造函数进行创建
+    patten = new RegExp('abc', 'i');
+    var str = 'aabbcc';
+    str = 'Abcaabbcc';
+    //    提供了test方法来检测字符串是否满足正则表达式,返回布尔值
+    console.log(patten.test(str));
 
-//   检索字符串是否以字母a开头
-   patten =/^a/;//必须以a开头
-   patten =/^abc/;//以abc开头 ^代表以xx开头
-   patten =/^[abc]/;//[]代表以a/b/c任意开头均可 []代表字符集合 内部的数字只要出现就可以
-   console.log(patten.test("bac"));
-   
-//    检测字符串中是否包含有某个字母
-   patten =/a/;//是否包含a
-   patten =/[a-z]/;//是否包含小写字母
-   patten =/[A-Z]/;//是否包含大写字母
-   patten =/[0-9]/;//是否包含数字
-   console.log(patten.test("ABC123aaa"));
-   /*
-    [字符] 字符集合  包含内部的范围之内的内容
-    [a-zA-Z0-9] 包含大小写字母以及数字
-   */
-    // 检测字符串是否以字母开头
-    patten =/^[a-zA-Z]/;
+    //   检索字符串是否以字母a开头
+    patten = /^a/;//必须以a开头
+    patten = /^abc/;//以abc开头 ^代表以xx开头
+    patten = /^[abc]/;//[]代表以a/b/c任意开头均可 []代表字符集合 内部的数字只要出现就可以
+    console.log(patten.test("bac"));
+
+    //    检测字符串中是否包含有某个字母
+    patten = /a/;//是否包含a
+    patten = /[a-z]/;//是否包含小写字母
+    patten = /[A-Z]/;//是否包含大写字母
+    patten = /[0-9]/;//是否包含数字
     console.log(patten.test("ABC123aaa"));
- // 检测字符串是否以字母结尾
-    patten =/[a-zA-Z]$/;
+    /*
+     [字符] 字符集合  包含内部的范围之内的内容
+     [a-zA-Z0-9] 包含大小写字母以及数字
+    */
+    // 检测字符串是否以字母开头
+    patten = /^[a-zA-Z]/;
+    console.log(patten.test("ABC123aaa"));
+    // 检测字符串是否以字母结尾
+    patten = /[a-zA-Z]$/;
     console.log(patten.test("ABC123aaa"));
 
     // 检测字符出现的次数
-    patten =/aaaa/;
+    patten = /aaaa/;
     // 等价 {n} 检索字符串练习出现的次数  绝对次数 
-    patten =/a{4}/;
+    patten = /a{4}/;
     console.log(patten.test("ABCaa123aaa"));
     // 检测字符串是否是aaaa
-    patten =/^a{4}$/;
+    patten = /^a{4}$/;
     console.log(patten.test("aaaa"));
     // 检测字符串中a的次数出现在3-6之间
     //{n,m} n:最小  m:最大
-    patten =/^a{3,6}$/;
+    patten = /^a{3,6}$/;
     console.log(patten.test("aaaa"));
     // 手机号 长度是11位 以1开头 第二位34578的任意一个 纯数字
-    patten =/^1[34578][0-9]{9}$/;
+    patten = /^1[34578][0-9]{9}$/;
     // 以字母开头 第二三位是bb 之后至少连续出现4次d
-    patten =/^[a-zA-Z]bbd{4}/;
+    patten = /^[a-zA-Z]bbd{4}/;
     // 以小写字母开头，确定出现五次数字
-    patten =/^[a-z][0-9]{5}$/;
+    patten = /^[a-z][0-9]{5}$/;
     // console.log(patten.test("a123a45"));
     // 检测用户名 :以字母开头,内容：数字，
     // 字母,-,*,#构成,长度为6-16
-    patten =/^[a-zA-Z][a-zA-Z0-9_\-\*\#]{5,15}$/;
+    patten = /^[a-zA-Z][a-zA-Z0-9_\-\*\#]{5,15}$/;
     // 检测内容是否是中文
-    patten =/[\u4e00-\u9fa5]/;
+    patten = /[\u4e00-\u9fa5]/;
     // patten =/(abc)?/;//?要么有abc 要么没有
     // patten =/abc?/; //要么ab,要么abc
     // patten =/[abc]?/; //a?||b?||c?
@@ -80,6 +82,7 @@
     //gentXia@163.com
     // 邮箱:开头是字母数字@邮箱地址.com
     //身份证号:18位 最后一位可以是x
-    
+
 </script>
+
 </html>

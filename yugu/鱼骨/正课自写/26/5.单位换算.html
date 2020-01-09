@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="f1" value="">米<br>
+    <input type="text" id="f2" value="">厘米<br>
+    <input type="text" id="f3" value="">毫米
+</body>
+<script src="jquery.js"></script>
+<script>
+    function show() {
+        switch (this.id) {
+            case "f1":
+                $("#f2").val($(this).val() * 100);
+                $("#f3").val($(this).val() * 1000);
+                break;
+            case "f2":
+                $("#f1").val($(this).val() / 100);
+                $("#f3").val($(this).val() * 10);
+                break;
+            case "f3":
+                $("#f1").val($(this).val() / 1000);
+                $("#f2").val($(this).val() / 10);
+                break;
+            default:
+                break;
+        }
+    }
+    
+</script>
+
+</html>

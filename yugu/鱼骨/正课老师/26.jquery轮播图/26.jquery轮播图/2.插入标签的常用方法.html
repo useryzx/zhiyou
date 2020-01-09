@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>这是个普通的p标签</p>
+        <ul>
+            <li>这是普通的li标签</li>
+        </ul>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $("div").append('<span>这是普通的span标签</span>');
+    $("div").append('<i>这是普通的span标签</i>');
+    // prepend 在当前标签的开始位置添加子元素
+    $("div").prepend('<aside>这是普通的aside标签</aside>');
+    $("div").prepend('<section>这是普通的section标签</section>');
+    // prependTo()将前者标签添加到后者标签的开始位置
+    $('ul').prependTo('div');
+    // appendTo() 将前者标签添加到后者标签的结束位置
+    // before() 在当前标签的前面位置添加同级元素
+    $("div").before('<span>这是新的的span标签</span>');
+    $("div").before('<i>这是新的的i标签</i>');
+    // after() 在当前标签的下一个位置添加同级元素
+    $("div").after('<span>这是新的的span标签</span>');
+    $("div").after('<i>这是新的的i标签</i>');
+    //insertBefore 将前者标签添加到后者标签的前面位置
+    // insertAfter 将前者标签添加到后者标签的后面位置
+    $('ul').insertBefore('div');
+    // wrap(html标签对) 将符合条件的前者标签分别用后者标签包裹起来
+    $('span').wrap("<main><main>");
+</script>
+</html>

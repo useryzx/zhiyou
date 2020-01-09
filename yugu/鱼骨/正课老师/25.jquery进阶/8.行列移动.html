@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tb {
+            border: solid 1px black;
+        }
+
+        .grid {
+            width: 50px;
+            height: 50px;
+            border: solid 1px black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 要求td使用jq创建 -->
+    <table id="tb"></table>
+</body>
+<script src="jquery.js"></script>
+<script>
+    var rows = 10; //行
+    var cols = 8; //列
+    for (var i = 0; i < rows; i++) {
+        var $tr = $("<tr></tr>");
+        $("#tb").append($tr);
+        for (var j = 0; j < cols; j++) {
+            var $td = $("<td></td>").addClass("grid");
+            $tr.append($td);
+        }
+    }
+    $(".grid").eq(0).css("background-color", "red");
+    var currentIndex = 0;
+    $("body").on("keydown", function (e) {
+        $(".grid").eq(currentIndex).css("background-color", "white");
+        if (e.keyCode ==37) {
+            if (currentIndex %cols !=0) //左侧
+            {
+                currentIndex --;
+            }
+        }
+        else if (e.keyCode ==38)
+        {
+            if (currentIndex >= cols) //左侧
+            {
+                currentIndex -=cols;
+            }
+            console.log(currentIndex);
+        }
+        else if (e.keyCode ==39)
+        {
+            
+            
+            if (currentIndex % cols !=7) //左侧
+            {
+                currentIndex++;
+            }
+        }
+        else if (e.keyCode ==40)
+        {
+            if (currentIndex <  $(".grid").length -cols) //左侧
+            {
+                currentIndex+=cols;
+            }
+        }
+        $(".grid").eq(currentIndex).css("background-color","red");
+
+    });
+</script>
+
+</html>

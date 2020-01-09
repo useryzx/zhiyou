@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background-color: gray;
+        }
+        .banner{
+            width: 350px;
+            height: 450px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .imgBox{
+            overflow: hidden;
+            width: 3000px;
+            position: absolute;
+        }
+        .imgBox li{
+            float: left;
+            width: 350px;
+            height: 450px;
+        }
+        .iconBox{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 5px;
+            border-radius: 20px;
+            bottom: 30px;
+            left: calc(50% - 130px);
+        }
+        .iconBox li{
+            width: 20px;
+            height: 20px;
+            border: solid 1px #ffffff;
+            border-radius: 50%;
+            float: left;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .iconBox li:last-child{
+            margin-right: 0;
+        }
+        .iconBox li.on{
+            background: #ffffff;
+        }
+        .slider{
+            position: absolute;
+            width: 100%;
+            border-top: solid 1px #ffffff;
+            border-bottom: solid 1px #ffffff;
+            bottom: 0;
+        }
+        .slider span{
+            display: block;
+            height: 6px;
+            width: 100%;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul class="imgBox">
+            <li><img src="img/z1.jpg" alt=""></li>
+            <li><img src="img/z2.jpg" alt=""></li>
+            <li><img src="img/z3.jpg" alt=""></li>
+            <li><img src="img/z4.jpg" alt=""></li>
+            <li><img src="img/z5.jpg" alt=""></li>
+            <li><img src="img/z6.jpg" alt=""></li>
+            <li><img src="img/z7.jpg" alt=""></li>
+        </ul>
+        <ul class="iconBox">
+             <li class="on"></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+             <li></li>
+        </ul>
+        <div class="slider">
+             <span></span>
+        </div>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    /* 700 1050
+      使用css移动box的left
+      使用animate来做动画 
+      使用定时器来控制索引的++
+      平移
+    */ 
+    var liWidth =$('.imgBox li').width();
+    var length =$('.imgBox li').length;
+    // 重设ul的宽度
+    $('.imgBox').css({
+        width:liWidth *length
+    });
+    // 设置初始的索引
+    var showIndex =0;
+    function show(){
+        // siblings 找到和当前元素平级的相同元素
+        $(".iconBox li").eq(showIndex).addClass('on')
+        .siblings().removeClass('on');
+        $(".imgBox").animate({
+            left:-showIndex *liWidth
+        },500);
+        // 进度条
+        $(".slider span").css('width',0).animate({
+            width:"100%"
+        },500)
+    }
+    show();
+    setInterval(function(){
+        showIndex++;
+        if(showIndex >=length)showIndex=0;
+        show();
+    },1000);
+</script>
+</html>

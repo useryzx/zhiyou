@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .line{
+        .line {
             color: red;
         }
-        .item{
+
+        .item {
             font-size: 50px;
         }
     </style>
 </head>
+
 <body>
-  <div id="box"></div>
-  <p class="line">第1行</p>
-  <p class="line">第2行</p>
-  <p class="line">第3行</p>
-  <input type="text" id="field">
+    <div id="box"></div>
+    <p class="line">第1行</p>
+    <p class="line">第2行</p>
+    <p class="line">第3行</p>
+    <input type="text" id="field">
 </body>
 <script src="jquery.js"></script>
 <script>
@@ -29,7 +32,7 @@
      dom上操作,对象自身的dom操作进行调用其实就相当于对原始对象
      的dom操作  html函数可以代表元素的内容，一个参数都不写代表
      回去，写参数代表设置内容
-    */ 
+    */
     $("#box").html("<b>hello jquery</b>");
     console.log($("#box").html());
     // 为查找到的jq对象添加上新的样式
@@ -39,41 +42,42 @@
     // 替换
     $(".line").toggleClass("item");
     // 直接可以通过css函数设置样式 
-    $(".line").css("font-size","28px");
+    $(".line").css("font-size", "28px");
     // 如果设置一个参数  那么代表获取元素的最终样式
     console.log($(".line").css("color"));
     // 可以一次设置多个值 对象中键就是样式名 值就是样式值
     $("#box").css({
-        border:"solid 1px black",
-        "background-color":"yellow",
-        padding:"10px"
+        border: "solid 1px black",
+        "background-color": "yellow",
+        padding: "10px"
     });
     // 属性节点的操作
     // attr 方法用来设置或者获取元素的属性，一个参数代表获取
     // 两个参数代表设置 第一填属性名 第二个填属性值
-    $("#field").attr("placeholder","请输入名称");
+    $("#field").attr("placeholder", "请输入名称");
     console.log($("#field").attr("placeholder"));
     // 删除
     $("#field").removeAttr("placeholder");
     // prop属性是代表只有属性没有属性值的时候建议使用，
     // 更加的快速,传入两个值 第一个代表要查询的属性
     // 第二个是一个布尔值 true代表添加，false代表删除
-    $("#field").prop("heihei",true);
-    console.log( $("#field").prop("heihei"));
-    
+    $("#field").prop("heihei", true);
+    console.log($("#field").prop("heihei"));
+
     // val方法用来设置jq对象中的value值，一个参数表示设置 
     // 不写表示获取
     $("#field").val("初始内容");
     console.log($("#field").val());
     // 事件在jq中on去掉
-    $("#box").click(function(){
+    $("#box").click(function () {
         console.log("好使，就完事了!!!");
-        
+
     })
-    
 
 
-    
-    
+
+
+
 </script>
+
 </html>

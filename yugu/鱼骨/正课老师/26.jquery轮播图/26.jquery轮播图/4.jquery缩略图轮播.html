@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background-color: cccccc;
+        }
+
+        .banner {
+            width: 850px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .banner section {
+            width: 750px;
+            overflow: hidden;
+            border: solid 1px #cccccc;
+            height: 120px;
+            float: left;
+        }
+
+        .banner span {
+            float: left;
+            width: 50px;
+            height: 120px;
+            border: solid 1px black;
+            text-align: center;
+            padding-top: 15px;
+            cursor: pointer;
+        }
+
+        .lis {
+            width: 2000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lis li {
+            float: left;
+            width: 150px;
+        }
+
+        .lis li img {
+            height: 120px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .lis li.active img {
+            border: solid 3px red;
+        }
+
+        .banner-tab {
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        .tabs {
+            width: 100%;
+            position: relative;
+            height: 400px;
+        }
+
+        .tabs li {
+            float: left;
+            position: absolute;
+        }
+
+        .show {
+            z-index: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner-tab">
+        <ul class="tabs">
+            <li><img src="imgs/dsl-1.jpg" alt=""></li>
+            <li><img src="imgs/dsl-2.jpg" alt=""></li>
+            <li class="show"><img src="imgs/dsl-3.jpg" alt=""></li>
+            <li><img src="imgs/dsl-4.jpg" alt=""></li>
+            <li><img src="imgs/dsl-5.jpg" alt=""></li>
+            <li><img src="imgs/dsl-6.jpg" alt=""></li>
+            <li><img src="imgs/dsl-1.jpg" alt=""></li>
+            <li><img src="imgs/dsl-2.jpg" alt=""></li>
+            <li><img src="imgs/dsl-3.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="banner">
+        <span class="prev">上<br>一<br>张</span>
+        <section>
+            <ul class="lis">
+                <li><img src="imgs/sl-1.jpg" alt=""></li>
+                <li><img src="imgs/sl-2.jpg" alt=""></li>
+                <li class="active"><img src="imgs/sl-3.jpg" alt=""></li>
+                <li><img src="imgs/sl-4.jpg" alt=""></li>
+                <li><img src="imgs/sl-5.jpg" alt=""></li>
+                <li><img src="imgs/sl-6.jpg" alt=""></li>
+                <li><img src="imgs/sl-1.jpg" alt=""></li>
+                <li><img src="imgs/sl-2.jpg" alt=""></li>
+                <li><img src="imgs/sl-3.jpg" alt=""></li>
+            </ul>
+        </section>
+        <span class="next">下<br>一<br>张</span>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    var liWidth = $('.lis li').width();
+    var length = $('.lis li').length;
+    // 重设ul的宽度
+    $('.lis').css({
+        width: liWidth * length
+    });
+
+    var showIndex = 2;
+    // 上一张
+    $(".prev").click(function () {
+        if (showIndex <= 0) {
+            return;
+        }
+        showIndex--;
+        show();
+    })
+    // 上一张
+    $(".next").click(function () {
+        if (showIndex >= length -1) {
+            return;
+        }
+        showIndex++;
+        show();
+    })
+
+    function show() {
+        $(".lis li").eq(showIndex).addClass('active')
+            .siblings().removeClass('active');
+        if (showIndex >= 2 && showIndex < length - 2) {
+            // 始终是中间
+            $(".lis").animate({
+                left: -liWidth * (showIndex - 2)
+            }, 500);
+        }
+        $(".tabs li").removeClass('show');
+        $(".tabs li").eq(showIndex).addClass('show');        
+    }
+</script>
+
+</html>

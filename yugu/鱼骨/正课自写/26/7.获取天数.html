@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取天数</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入月份" id="month">
+</body>
+<script src="jquery.js"></script>
+<script>
+    var year = new Date().getFullYear();
+    $("#month").on("input", function () {
+        switch ($("#month").val()*1) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                console.log("每月31天");
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                console.log("每月30天");
+                break;
+            case 2:
+                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+                    console.log("每月29天");
+                }
+                else {
+                    console.log("每月28天");
+                }
+                break;
+            default:
+                break;
+        }
+    })
+</script>
+
+</html>

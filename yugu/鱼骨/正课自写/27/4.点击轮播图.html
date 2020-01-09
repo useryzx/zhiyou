@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(221, 241, 240);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            margin: 150px auto;
+            position: relative;
+        }
+
+        .banner {
+            width: 700px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .imgBox img {
+            width: 700px;
+            height: 400px;
+        }
+
+        .content {
+            /* width: 140px; */
+            width: 700px;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .contentBox img {
+            width: 140px;
+            height: 80px;
+        }
+
+        ul {
+            width: 30000px;
+            list-style: none;
+            position: absolute;
+        }
+
+        li {
+            float: left;
+        }
+
+        span {
+            cursor: pointer;
+            width: 20px;
+            font-size: 20px;
+            height: 80px;
+            display: block;
+            position: absolute;
+            background-color: rgb(161, 245, 203);
+            box-shadow: 0 0 2px 2px rgb(161, 245, 203);
+        }
+
+        .left {
+            left: -20px;
+        }
+
+        .right {
+            right: -20px;
+        }
+
+        .button {
+            width: 710px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul class="imgBox">
+
+            <li><img src="imgs/dsl-1.jpg" alt=""></li>
+            <li><img src="imgs/dsl-2.jpg" alt=""></li>
+            <li><img src="imgs/dsl-3.jpg" alt=""></li>
+            <li><img src="imgs/dsl-4.jpg" alt=""></li>
+            <li><img src="imgs/dsl-5.jpg" alt=""></li>
+            <li><img src="imgs/dsl-6.jpg" alt=""></li>
+            <li><img src="imgs/dsl-1.jpg" alt=""></li>
+            <li><img src="imgs/dsl-2.jpg" alt=""></li>
+            <li><img src="imgs/dsl-3.jpg" alt=""></li>
+            <li><img src="imgs/dsl-4.jpg" alt=""></li>
+            <li><img src="imgs/dsl-5.jpg" alt=""></li>
+            <li><img src="imgs/dsl-6.jpg" alt=""></li>
+        </ul>
+    </div>
+    <div class="button">
+        <span class="left">上一张</span>
+        <span class="right">下一张</span>
+    </div>
+    <div class="content">
+        <ul class="contentBox">
+            <li><img src="imgs/sl-1.jpg" alt=""></li>
+            <li><img src="imgs/sl-2.jpg" alt=""></li>
+            <li><img src="imgs/sl-3.jpg" alt=""></li>
+            <li><img src="imgs/sl-4.jpg" alt=""></li>
+            <li><img src="imgs/sl-5.jpg" alt=""></li>
+            <li><img src="imgs/sl-6.jpg" alt=""></li>
+            <li><img src="imgs/sl-1.jpg" alt=""></li>
+            <li><img src="imgs/sl-2.jpg" alt=""></li>
+            <li><img src="imgs/sl-3.jpg" alt=""></li>
+            <li><img src="imgs/sl-4.jpg" alt=""></li>
+            <li><img src="imgs/sl-5.jpg" alt=""></li>
+            <li><img src="imgs/sl-6.jpg" alt=""></li>
+        </ul>
+    </div>
+
+</body>
+<script src="jquery.js"></script>
+<script>
+    var timer;
+    // 获取li的宽度作为步长
+    var $step = $(".imgBox li").width();
+    var $smallStep = $(".contentBox li").width();
+    // 定义索引，通过索引更改图片位置
+    var $imgIndex = 2;
+    function time() {
+        timer = setInterval(function (e) {
+            $imgIndex++;
+            if($imgIndex>$(".imgBox li").length-1){
+                $imgIndex=2;
+            }
+            brShow();
+        },1500)
+    }
+    time();
+
+    // 大图变化 小图加边框
+    function showBig() {
+        $(".contentBox li").eq($imgIndex).css("border", "solid red 2px").siblings().css("border", "none");
+        $(".imgBox").animate({
+            left: -($imgIndex) * $step
+        }, 500)
+    }
+    // 小图变化
+    function showSmall() {
+        $(".contentBox").animate({
+            left: -($imgIndex - 2) * $smallStep
+        }, 500)
+    }
+
+    showBig();
+    showSmall();
+
+    // 点击上一页
+    $(".left").click(function (e) {
+        clearInterval(timer);
+        timer = null;
+        $imgIndex--;
+        if ($imgIndex < 0) {
+            $imgIndex = 0;
+        }
+        brShow();
+    })
+    // 点击下一张
+    $(".right").click(function (e) {
+        clearInterval(timer);
+        timer = null;
+        $imgIndex++;
+        if ($imgIndex >= $(".imgBox li").length) {
+            $imgIndex = $(".imgBox li").length - 1;
+        }
+        brShow();
+    })
+    // 点击图片
+    $(".contentBox li").click(function (e) {
+        clearInterval(timer);
+        timer = null;
+        $imgIndex = $(this).index();
+        brShow();
+    })
+    // 判断是不是第一第二张图 是就不变位置
+    function brShow() {
+        showBig();
+        switch ($imgIndex) {
+            case 0:
+            case 1:
+            case $(".imgBox li").length - 1:
+            case $(".imgBox li").length - 2:
+                break;
+            default:
+                showSmall();
+                break;
+        }
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="jquery.js"></script>
+<script>
+    var numberStr = "";
+    var charSet = ["+", "-", "*", "/", "c"];
+    for (var i = 0; i < 9; i++) {
+        numberStr += "<button>" + i + "</button>";
+    }
+    $("body").append(numberStr);
+    $("body").append("<br>");
+    numberStr = "";
+    for (var i = 0; i < charSet.length; i++) {
+        numberStr += "<button>" + charSet[i] + "</button>";
+    }
+    $("body").append(numberStr);
+    $("<p id='result'></p>").appendTo($("body"));
+    var str1 = "",
+        character = "",
+        str2 = "";
+    $("button").on("click", function (e) {
+        var reg = new RegExp("^[0-9]*$");
+        if (reg.exec($(this).text())) {
+            if (character != "") {
+                str2 += $(this).text();
+                $("#result").text(str2);
+            }
+            else {
+                str1 += $(this).text();
+                $("#result").text(str1);
+            }
+
+        }
+        else {
+            if (character == "") {
+                character = $(this).text();
+                $("#result").text(character);
+            }
+            else {
+                finalResult();
+                str1 = $("#result").text();
+                str2 = "";
+                character = $(this).text();
+            }
+        }
+        if ($(this).text()=="c") {
+            character = "";
+            str1 = "";
+            str2 = "";
+            $("#result").text("0");
+        }
+    })
+    // 创建等号
+    $("<div id='submit'>=</div>").appendTo($("body"));
+    $("#submit").css({
+        width: "500px",
+        height: "44px",
+        border: "solid red 2px",
+        margin: "10px auto",
+        cursor: "pointer",
+        "text-align": "center",
+        "font-size": "32px"
+    })
+    $("#submit").on("click", finalResult)
+    var resultStr = "";
+    function finalResult() {
+        switch (character) {
+            case "+":
+                resultStr = (str1 * 1) + (str2 * 1);
+                break;
+            case "-":
+                resultStr = (str1 * 1) - (str2 * 1);
+                break;
+            case "*":
+                resultStr = (str1 * 1) * (str2 * 1);
+                break;
+            case "/":
+                resultStr = (str1 * 1) / (str2 * 1);
+                break;
+            case "c":
+                str1 = "";
+                str2 = "";
+                resultStr = "";
+                character = "";
+                break;
+            default:
+                break;
+        }
+        $("#result").text(resultStr);
+
+    }
+</script>
+
+</html>

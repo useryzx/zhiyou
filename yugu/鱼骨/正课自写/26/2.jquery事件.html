@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <button class="num">1</button>
+    <button class="num">2</button>
+    <button class="num">3</button>
+    <button class="num">4</button>
+    <button class="num">5</button>
+    <hr>
+    <button id="btn2">一次性按钮</button>
+    <hr>
+    <button id="btn3">页面中不存在的按钮</button>
+</body>
+<script src="jquery.js"></script>
+<script>
+    function btnClick(e) {
+        console.log(e.originalEvent.target);
+        console.log(this);
+        
+    }
+    $("#btn").on("click",btnClick);
+    $("#btn").off("cilck",btnClick);
+    $(".num").on("click",function(e){
+        console.log($(this).text());
+    });
+    $("#btn2").one("click",function(){
+        console.log($(this).text());
+    })
+    $("body").delegate("#btn3","click",function(){
+        console.log("事件被btn3代理了");
+    })
+</script>
+
+</html>

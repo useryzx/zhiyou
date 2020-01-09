@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>这是个普通的p标签</p>
+        <ul>
+            <li>这是普通的li</li>
+        </ul>
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $("div").append("<span>这是append的span</span>");
+    $("div").append("<li>这是append的li</li>");
+    $("div").prepend("<aside>这是prepend的aside,在开头</aside>");
+    $("div").prepend("<section>这是prepend的section,在开头</section>");
+    $("div").before("<i>这是before的i,在当前标签前面插入</i>");
+    $("div").before("<b>这是before的b,在当前标签前面插入</b>");
+    $("div").after("<i>这是after的i,在当前标签后面插入</i>");
+    $("div").after("<b>这是after的b,在当前标签后面插入</b>");
+    $("ul").insertBefore("div");
+    $("span").wrap("<main></main>");
+
+</script>
+
+</html>

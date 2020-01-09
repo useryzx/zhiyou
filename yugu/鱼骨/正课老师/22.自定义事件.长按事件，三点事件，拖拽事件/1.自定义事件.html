@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>自定义事件</title>
     <style>
-        #box{
+        #box {
             width: 200px;
             height: 200px;
             background-color: red;
         }
     </style>
 </head>
+
 <body>
     <div id="box"></div>
     <!-- <button onclick=""></button> -->
@@ -26,13 +28,13 @@
        当事件派发的时候一定要确保派发的对象上面有
        关于事件的正确监听
     */
-    var box =document.querySelector("#box");
+    var box = document.querySelector("#box");
     // box.addEventListener("click");
     // 自定义事件:除了系统提供的事件之外，用户自己起的事件名称
     //收音机>>>myEvent(调频)
-    box.addEventListener("88.1",function(e){
+    box.addEventListener("88.1", function (e) {
         // e.detail是事件传递的数据
-        alert("自定义事件触发:"+e.detail);
+        alert("自定义事件触发:" + e.detail);
     });
     // 自定义事件需要自己创建事件并且派发出去才会生效
     // 创建自定义事件的第一种方法
@@ -48,8 +50,8 @@
     // myEvent.initCustomEvent("88.1",true,true,"这个讲完就下课!!!");
     // 派发 相当于div会接收到这个事件
     // box.dispatchEvent(myEvent);
-   
-//    第二种事件的创建方式
+
+    //    第二种事件的创建方式
     // var data ={};
     // data.detail ="开始上课";
     // // 是否支持冒泡
@@ -61,36 +63,37 @@
 
     // 点击div的时候(确保键盘的s键按下)派发
     // 出来一个自定义事件  事件的内容"hello"
-    var isKeyDown =false;
-    document.body.addEventListener("keydown",function(e){
-        if (e.key=="s") {
+    var isKeyDown = false;
+    document.body.addEventListener("keydown", function (e) {
+        if (e.key == "s") {
             console.log("点击了s键");
-            isKeyDown =true;
+            isKeyDown = true;
         }
     });
-    document.body.addEventListener("keyup",function(e){
-        if (e.key=="s") {
-            isKeyDown =false;
+    document.body.addEventListener("keyup", function (e) {
+        if (e.key == "s") {
+            isKeyDown = false;
         }
     });
-    box.addEventListener("click",function(e){
-        console.log("???"+isKeyDown);   
+    box.addEventListener("click", function (e) {
+        console.log("???" + isKeyDown);
         // 事件发送的时候数据会加锁
         if (isKeyDown) {
-            var data ={};
-            data.detail ="hello";
+            var data = {};
+            data.detail = "hello";
             // 捕获阶段触发false和冒泡阶段触发
-            data.bubbles =false;
+            data.bubbles = false;
             // 记录当前的事件触发对象
             // e.target  e代表此次事件的对象 target代表事件监听对象
-            data.target =e.target;
-            var sdj =new CustomEvent("触发了",data);
+            data.target = e.target;
+            var sdj = new CustomEvent("触发了", data);
             e.target.dispatchEvent(sdj);
         }
-    }); 
-    box.addEventListener("触发了",function(e){
-        alert("按下了s键并且点击了鼠标:"+e.detail);
-        isKeyDown =false;
+    });
+    box.addEventListener("触发了", function (e) {
+        alert("按下了s键并且点击了鼠标:" + e.detail);
+        isKeyDown = false;
     });      
 </script>
+
 </html>
