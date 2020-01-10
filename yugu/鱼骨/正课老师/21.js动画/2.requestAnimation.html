@@ -28,25 +28,25 @@
     </div>
 </body>
 <script>
-   var box=document.getElementById("box");
+    var box = document.getElementById("box");
 
-   var aniCode =null;
-//    角度
-   var angle =0;
-   function update(){
-       angle+=5;
-       box.style.transform ="rotate("+angle+"deg)";
-       aniCode= requestAnimationFrame(update);
-   }
-//    基础的js逻辑动画
-//    setInterval(update, 1000);
+    var aniCode = null;
+    //    角度
+    var angle = 0;
+    function update() {
+        angle += 5;
+        box.style.transform = "rotate(" + angle + "deg)";
+        aniCode = requestAnimationFrame(update);
+    }
+    //    基础的js逻辑动画
+    //    setInterval(update, 1000);
     //   request请求 animation动画  frame帧 
     // 一帧一次(常规的展示1s =60帧 好一点的: 1s=90  特好:1s=120)
     // 从h5开始后引入的新动画api,原理就是利用浏览器每一帧的刷新
     // 可以向定时器一样进行关闭
-    aniCode=requestAnimationFrame(update);
+    aniCode = requestAnimationFrame(update);
 
-    setTimeout(function() {
+    setTimeout(function () {
         cancelAnimationFrame(aniCode);
     }, 3000);
 </script>

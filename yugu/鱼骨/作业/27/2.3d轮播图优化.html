@@ -42,10 +42,11 @@
             display: block;
             position: absolute;
             width: 80px;
-            height: 80px;
+            text-align: center;
             color: wheat;
             z-index: 5;
             top: 400px;
+            box-shadow: 0 0 2px 2px white;
         }
 
         .prev {
@@ -53,7 +54,7 @@
         }
 
         .next {
-            right: 390px;
+            right: 420px;
         }
     </style>
 </head>
@@ -111,33 +112,18 @@
         bs: "0 0 8px 2px rgba(255, 255, 255, 0.3)"
     },
     ];
-
-    function show() {
-        $("li").each(function (i, element) {
-            $(this).animate({
-                width: arr[i].width,
-                "z-index": arr[i].zIndex,
-                opacity: arr[i].opacity,
-                left: arr[i].left,
-            }, 500).css("box-shadow", arr[i].bs)
-        });
-
-        // for (var i = 0; i < arr.length; i++) {
-        //     $("li").eq(i).animate({
-        //         width: arr[i].width,
-        //         "z-index": arr[i].zIndex,
-        //         opacity: arr[i].opacity,
-        //         left: arr[i].left,
-        //     }, 500).css("box-shadow", arr[i].bs)
-        // }
-    }
     show();
-    $(".prev").click(function () {
+    function show() {
+        arr.forEach(function(e,i){
+            $("li").eq(i).animate(e,500).children().css("box-shadow",e["bs"]);
+        })
+    }
+    $(".next").click(function () {
         $("li").eq(0).css("z-index", "-1");
         $("li").eq(0).appendTo("ul");
         show();
     })
-    $(".next").click(function () {
+    $(".prev").click(function () {
         $("li").eq($("li").length - 1).css("z-index", "-1");
         $("li").eq($("li").length - 1).prependTo("ul");
         show();

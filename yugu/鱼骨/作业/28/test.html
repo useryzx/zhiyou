@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    for(var i=0;i<10;i++){
+        setTimeout(function(){
+            console.log(i);
+        })
+    }
+
+    function show(num){
+        console.log(num);
+        var a=2;
+        function a(){}
+        console.log(a);
+    }
+    show(10)
+
+    var a=10,b=-10,c;
+    if (a&&c||b&&c) {
+        console.log(a);
+    }
+    else{
+        console.log(c);
+
+    }
+
+    var k;
+    for (var i = 0; i < 10; i++) {
+        if (i % 3 == 0) {
+            for (var j = 1; j <= 5; j++) {
+                k = i + j;
+            }
+        }
+    }
+    console.log(k);
+
+    var str = "abcdefg";
+    console.log(str.substring(4));
+    
+    
+</script>
+
+</html>
