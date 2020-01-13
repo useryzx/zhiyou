@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数参数对象arguments</title>
+</head>
+
+<body>
+    <script>
+        function show(name, age, isMale) {
+            // arguments对象，存储了该函数的所有的参数
+            // 获取函数执行时传递的数据
+            console.log(arguments);
+            // length属性，获取参数的数量
+            console.log(arguments.length);
+            for (var ins in arguments) {
+                console.log(arguments[ins]);
+            }
+
+            var obj = {};
+            obj.name = name;
+            obj.age = age;
+            obj.isMale = isMale;
+        }
+        show('张三', 18, true);
+
+
+    </script>
+</body>
+
+</html>

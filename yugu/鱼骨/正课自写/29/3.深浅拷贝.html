@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+</body>
+<script>
+    // 复制的过程中会面临引用类型的复制
+
+    // 如果浅复制，针对的栈内存，就近原则（如果有直接用，没有就创建）
+    var arr1 = [1, 2, 3, [4, 5], { name: "张三" }];
+    function lightCopy(copyVal, newVal) {
+        newVal = (copyVal instanceof Array) ? [] : {};
+        for (var ins in copyVal) {
+            newVal[ins] = copyVal[ins];
+        }
+        return newVal;
+    }
+    var arr2 = lightCopy(arr1);
+    console.log(arr2);
+    console.log(arr1);
+    
+    arr1[3].push(6);
+    console.log(arr2);
+    console.log(arr1);
+
+
+    // function deepCopy(copyVal, newVal) {
+    //     newVal = (copyVal instanceof Array) ? [] : {};
+    //     for (var ins in copyVal) {
+    //         if (typeof copyVal[ins] != "object") {
+    //             newVal[ins] = copyVal[ins];
+    //         }
+    //         else {
+    //             newVal[ins] = deepCopy(copyVal[ins]);
+    //         }
+    //     }
+    //     return newVal;
+    // }
+    // var arr5 = deepCopy(arr1);
+    
+    
+    
+    
+</script>
+
+</html>

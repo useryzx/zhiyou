@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浅拷贝与深拷贝</title>
+</head>
+
+<body>
+</body>
+<script>
+    /*
+    深浅拷贝 解决的是引用类型在复制过程中是复制指针还是地址的
+    问题，复制出来的变量仍然会受到原有变量的影响
+    */
+    // 值都是原始类型:浅复制
+    // var arr =[1,true,'zfu'];
+    // var obj ={};
+
+    //复制的过程中会面临引用类型的复制
+    //如果浅复制针对的是栈内存，就近原则(如果有直接用，没有就创建)
+    // 一个内存周期，释放掉一部分不用的内存
+    var arr1 = [1, 2, 3, [4, 5], {
+        name: '张三'
+    }];
+
+    // 带参数带返回类型的方法
+    function lightCopy(copyVal, newVal) {
+        newVal = (copyVal instanceof Array) ? [] : {};
+        for (var ins in copyVal) {
+            newVal[ins] = copyVal[ins];
+        }
+        // return +1
+        return newVal;
+    }
+    // var arr2 = lightCopy(arr1);
+    // console.log(arr2);
+    // arr1[3].push(6);
+    // console.log(arr1);
+
+    function deepCopy(copyVal, newVal) {
+        newVal = (copyVal instanceof Array) ? [] : {};
+        for (var ins in copyVal) {
+            
+            if (typeof copyVal[ins] != 'object') {
+                newVal[ins] = copyVal[ins];
+            } else {
+                 //值也是引用类型
+                 newVal[ins] =deepCopy(copyVal[ins]);
+            }
+        }
+        return newVal;
+    }
+    /*
+      newVal =[]
+      newVal[0] =1,newVal[1] =2,newVal[2] =3,
+      newVal[3] =deepCopy[4,5]...
+      newVal[4] =
+    */
+    var newObj =deepCopy(arr1);
+    newObj[3].push(6);
+    console.log(arr1);
+    
+</script>
+
+</html>

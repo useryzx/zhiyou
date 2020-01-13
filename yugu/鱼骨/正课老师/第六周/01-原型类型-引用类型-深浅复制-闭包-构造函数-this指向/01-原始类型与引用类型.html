@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原始类型和引用类型</title>
+</head>
+<body>
+
+<script>
+    // JS数据类型分两大类
+    // 基本数据类型(即，原始类型): number, string, boolean, null, undefined
+
+    // 复杂数据类型(即，引用类型): array, object
+
+    // 变量，存储数据的容器，在系统空间内存中需要分配空间来存储当前的值
+
+    // 变量赋值过程中，值的类型分两种
+    // 1.原始值: 原始类型的值，存储在变量中的是值本身，即存储在系统空间(栈空间)中的是当前的值，
+    // 2.引用值: 引用类型的值，存储在变量中的是一个地址(或，指针方向),即该变量存储在系统空间(栈空间)中的是个指针方向，指向的是存储在堆空间中的某个值
+
+
+    // 原始值与引用值的不同
+
+    // 1. 值的比较
+    // 原始值在比较过程中，实际上就是值与值的比较，可以得出结果
+    // 引用值在比较过程中，实际上是地址的比较，无法比较
+    // 如果引用值相等，只能通过变量复制传递数据(复制过程中，传递的是指针方向)
+    var str1 = 'abc';
+    var str2 = 'abc';
+
+    var num1 = 12;
+    var num2 = 12;
+
+    var bol1 = true;
+    var bol2 = true;
+
+    console.log( str1 == str2 );  // true
+    console.log( num1 == num2 );  // true
+    console.log( bol1 == bol2 ); // true
+
+
+    var obj1 = {};
+    var obj2 = {};
+
+    var arr1 = [1];
+    var arr2 = [1];
+    var arr3 = arr2;
+
+    console.log( obj1 == obj2 );  // false
+    console.log( arr1 = arr2 );  // false
+    console.log( arr2 == arr3 ); // true
+
+    // 2.值的改变
+    // 原始值调用属性或方法，都不会改变值本身，除非重新赋值
+    // 引用值可以通过调用属性或者方法，改变值
+    var str3 = str1.toUpperCase();
+    console.log( str3 );
+    console.log( str1 );  // 'abc'
+
+    console.log( num1.toFixed(3) );
+    console.log( num1 );
+
+    arr1.push(12);
+    console.log( arr1 );
+    obj1.name = '张三';
+    console.log( obj1 );
+
+</script>
+</body>
+</html>

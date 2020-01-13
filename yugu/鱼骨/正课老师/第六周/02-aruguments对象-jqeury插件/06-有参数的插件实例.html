@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title> 实例讲解--滚动轮播图 </title>
+    <script src="jquery.js"></script>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        body, ul{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+        }
+        img{
+            display:block;
+        }
+        .banner{
+            width:850px;
+            margin:20px auto;
+            overflow: hidden;
+        }
+        .banner section{
+            width:750px;
+            overflow: hidden;
+            border:solid 1px #ccc;
+            height:120px;
+            float:left;
+        }
+        .banner span{
+            float:left;
+            width:50px;
+            height:120px;
+            border:solid 1px #ccc;
+            font-size:20px;
+            text-align: center;
+            padding-top:15px;
+            cursor:pointer;
+        }
+        .list{
+            width:2000px;
+            position:relative;
+            overflow: hidden;
+        }
+        .list li{
+            float:left;
+            width:150px;
+        }
+        .list li img{
+            width:90%;
+            height:120px;
+            margin:0 auto
+        }
+        .list li.active img{
+            border:solid 3px red;
+        }
+        .banner .bg{
+            background:#aaa;
+            color:#fff;
+            cursor:pointer;
+        }
+        .banner-tab{
+            width:700px;
+            margin:30px auto;
+        }
+        .tabs{
+            position:relative;
+            width:100%;
+            height:400px;
+
+        }
+        .tabs li{
+            position:absolute;
+        }
+        .down{
+            width:135px;
+            height:780px;
+
+        }
+        .down span{
+            width:135px;
+            height:50px;
+        }
+        .down section{
+            height:680px;
+        }
+        .down ul{
+            width:135px;
+            height:3000px;
+        }
+        .down ul li{
+            float:none;
+            width:135px;
+            height:136px;   /* 680px; */
+            padding-top:8px;
+        }
+        .down ul li img{
+            width:135px;
+            height:120px;
+            margin-left:0;
+            margin-right:0;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="banner">
+    <span class="prev"> 上 <br/>一 <br/>张 </span>
+    <section>
+        <ul class="list">
+            <li><img src="imgs/sl-1.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-2.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-3.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-4.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-5.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-6.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-1.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-2.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-3.jpg" alt=""/> </li>
+        </ul>
+    </section>
+    <span class="next"> 下 <br/>一 <br/>张 </span>
+</div>
+
+<div class="banner down">
+    <span class="prev"> 上一张 </span>
+    <section>
+        <ul class="list">
+            <li><img src="imgs/sl-1.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-2.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-3.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-4.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-5.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-6.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-1.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-2.jpg" alt=""/> </li>
+            <li><img src="imgs/sl-3.jpg" alt=""/> </li>
+        </ul>
+    </section>
+    <span class="next"> 下一张 </span>
+</div>
+
+
+</body>
+<script src="newSlide.js"></script>
+<script>
+//    $('.banner').slide();
+    $('.down').slide( {direction:'top'} );
+</script>
+</html>

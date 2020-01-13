@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 面向过程
+    // var table = document.createElement("table");
+    // document.body.appendChild(table);
+    // table.style.border = "solid 2px black";
+    // for (var i = 0; i < 7; i++) {
+    //     var tr = table.insertRow();
+    // for (var j = 0; j < 10; j++) {
+    //     var td = tr.insertCell();
+    //     td.textContent = "第" + (i * 1 + 1) + "行第" + (j * 1 + 1) + "列";
+    //     td.style.border = "solid 2px black";
+    // }
+    // }
+
+
+    // 面向对象
+    // 1.准备对象
+    // 2.封装对象的构造函数
+    function MyTable(rows, cols) {
+        // this当前调用对象的函数
+        this.table = document.createElement("table");
+        for (var i = 0; i < rows; i++) {
+            var tr = this.table.insertRow();
+            for (var j = 0; j < cols; j++) {
+                var td = tr.insertCell();
+                td.textContent = "第" + (i * 1 + 1) + "行第" + (j * 1 + 1) + "列";
+                td.style.border = "solid 2px black";
+            }
+        }
+        // 3.封装方法
+        this.showInELement = function (ele) {
+            ele.appendChild(this.table);
+        }
+    }
+
+    var table = new MyTable(7, 10);
+    table.showInELement(document.body);
+</script>
+
+</html>

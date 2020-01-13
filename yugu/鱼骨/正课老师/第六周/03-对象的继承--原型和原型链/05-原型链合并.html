@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链合并</title>
+</head>
+<body>
+<script>
+
+
+    function Person(name, age, isMale, minzu){
+        // this 指向的Person
+        this.name = name;
+        this.age = age;
+        this.isMale = isMale;
+        this.minzu = minzu;
+    }
+    // 共享的属性和方法，需要挂载在原型上
+    Person.prototype = {
+        guoji:'中国',
+        run:function(){
+            console.log( this.name + '会长跑' );
+        }
+    }
+
+    function Man(name, age, minzu){
+        Person.call(this, name, age, true, minzu);
+    }
+
+    console.log( Person.__proto__ );  // function对象
+    console.log( Man.__proto__ );  // function对象
+
+    // 使用空函数作为载体，建立原型链的合并
+    var Func = function(){};   // 构造函数
+    console.log( Func.__proto__ );   // function对象
+    Func.prototype = Person.prototype;
+    Man.prototype = new Func();   // 函数对象
+
+    var m2 = new Man('二白', 18, '汉族');
+    m2.run();
+
+
+</script>
+</body>
+</html>

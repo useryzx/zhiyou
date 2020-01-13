@@ -79,7 +79,7 @@
         $("audio")[0].src = "notes/" + ($(this).index() * 1 + 1) + ".oga";
         $("audio")[0].play();
     })
-    $("div").on("mouseup", function () {
+    $("div").on("mouseleave", function () {
         $("div").eq($(this).index()).removeClass("bgc");
     })
     setInterval(() => {

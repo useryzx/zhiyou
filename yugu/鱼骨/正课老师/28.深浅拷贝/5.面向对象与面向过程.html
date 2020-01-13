@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象与面向过程</title>
+</head>
+
+<body>
+</body>
+<script>
+    // 面向过程:以什么正在发生为主要目标进行编程
+    // var table =document.createElement("table");
+    // table.style.border ="solid 2px black";
+    // // 制作一个7行10列的单元格 显示出来 内容是xx行xx列
+    // for(var i=0;i<7;i++){
+    //     // var tr =document.createElement("tr");
+    //     // table.appendChild(tr);
+    //     var tr =table.insertRow();
+    // for(var j=0;j<10;j++)
+    // {
+    //     var td =tr.insertCell();
+    //     td.innerHTML ="第:"+(i+1)+"行,第:"+(j+1)+"列";
+    //     td.style.border="solid 2px black";
+    // }
+    // }
+    // document.body.appendChild(table);
+
+    // 面向对象:准备对象，对象.属性  对象.方法()
+    // 封装对象的构造函数
+    function MyTable(rows, cols) {
+        // this当前调用函数的对象
+        this.table = document.createElement("table");
+        for (var i = 0; i < rows; i++) {
+            var tr = this.table.insertRow();
+            for (var j = 0; j < cols; j++) {
+                var td = tr.insertCell();
+                td.innerHTML = "第:" + (i + 1) + "行,第:" + (j + 1) + "列";
+                td.style.border = "solid 2px black";
+            }
+        }
+        // 封装方法
+        this.showInElement =function(ele){
+            ele.appendChild(this.table);
+        }
+        this.removeFromSuperElement =function(){
+
+            this.table.parentElement.removeChild(this.table);
+        }
+    }
+    // MyTable是构造函数
+    var table =new MyTable(7,10);
+    table.showInElement(document.body);
+    var table2 =new MyTable(17,5);
+    table2.showInElement(document.body);
+    table2.removeFromSuperElement();
+    // 不允许出现很"直白的代码"
+
+    // 面向对象三大特性:封装，继承,多态
+</script>
+
+</html>

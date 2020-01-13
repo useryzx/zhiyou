@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS原型与原型链</title>
+</head>
+<body>
+
+<script>
+    // JS是弱类型的、动态的、基于原型的脚本语言
+    // JS没有类的概念，通过构造函数来实现对象的创建
+    // 构造函数，即等价于类，描述对象的相关属性和方法信息
+    // 通过构造函数生成实例化对象
+    // 对象的特点：封装、聚集、继承、多态
+
+    // 在JS中，一切皆对象
+    var str = new String('abc');
+    var num = new Number(12);
+    var bol = new Boolean(true);
+    var arr = new Array(1,2,3,4,4);
+    var obj = new Object();
+
+    // 每个对象都有属于自己的原型
+    // 通过 __proto__ 获取该对象的原型
+    // 原型也是一个对象，即，原型对象具有属于自己的原型
+    // 直到原型为Object为止
+    // Object的原型为Null
+    // 原型与原型之间，就形成原型链
+    var str1 = 'abc';
+    console.log( str1.__proto__ );  // String对象
+    console.log( str1.__proto__.__proto__ );  //  Object
+    console.log( str1.__proto__.__proto__.__proto__ ); // null
+
+
+    var num2 = 15;
+    console.log( num2.__proto__ );   // Number对象
+    console.log( num2.__proto__.__proto__ );  //  Object
+    console.log( num2.__proto__.__proto__.__proto__ ); // null
+
+    var bol2 = false;
+    console.log( bol2.__proto__ ); // Boolean对象
+    console.log( bol2.__proto__.__proto__ );  //  Object
+    console.log( bol2.__proto__.__proto__.__proto__ ); // null
+
+    console.log( str.__proto__ ); // String
+    console.log( num.__proto__ );  // Number
+    console.log( arr.__proto__ );  // Array
+    console.log( obj.__proto__ );  // Object
+
+    var show = function(){};
+
+    console.log( show.__proto__ );  //function
+    console.log( show.__proto__.__proto__ ); //Object
+
+    // __proto  浏览器私有方法，供开发者使用
+
+    // 原型prototype
+    // Object.getPrototypeOf() 获取某个对象的原型
+    // Object.setPrototypeOf() 设置某个对象的原型
+    // Object.hasOwnPrototype() 判断对象是否含有某个属性
+    console.log( Object.getPrototypeOf(str) );
+
+</script>
+
+
+</body>
+</html>

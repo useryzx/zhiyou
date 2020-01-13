@@ -59,6 +59,8 @@
         citySel.innerHTML = "";
         // 先选择省份
         var pro = info[provinceSel.selectedIndex];
+        console.log(provinceSel.selectedIndex);
+        
         // 根据选择的省份拿到对应的城市进行数据替换
         for (var i = 0; i < pro.cites.length; i++) {
             var opt = document.createElement("option");
