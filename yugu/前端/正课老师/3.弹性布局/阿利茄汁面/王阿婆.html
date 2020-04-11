@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        main {
+            width: 1500px;
+            height: 700px;
+            background-color: rgb(243, 239, 230);
+            margin: 0 auto;
+            display: flex;
+        }
+        #p1 {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #p1 img{
+            width: 500px;
+            height: 300px;
+        }
+        #right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        #p2 img,#p3 img{
+            width: 500px;
+            height: 250px;
+        }
+        #p4 {
+            background-color: red;
+            border-top: 5px solid yellow;
+            height: 30px;
+           width: 1500px;
+           margin: 0 auto;
+           color: white;
+           line-height: 30px;
+           text-align: center;
+           
+        }
+        span:nth-child(2){
+            float: right;
+            margin-right: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="p1">
+            <img src="3.jpg" alt="">
+        </div>
+        <div id="right">
+            <div id="p2">
+                <img src="2.jpg" alt="">
+            </div>
+            <div id="p3">
+                <img src="4.jpg" alt="">
+            </div>
+        </div>
+    </main>
+    <div id="p4">
+        <span>关于王阿婆|集团新闻|员工风采|加入我们|联系我们</span>
+        <span>Copyright@2014 &nbsp;王阿婆食尚客&nbsp;版权所有</span>
+    </div>
+</body>
+
+</html>

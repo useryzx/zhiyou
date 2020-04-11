@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    //1.自逆字符串
+    // var str ="student a am i";
+    // // "i am a student"
+    // // 根据字符串的分割标识符把字符串拆分成多个数据并存储到数组中
+    // var str1 =str.split(" ");
+    // //反序
+    // console.log("反序之前:"+str1);
+    // var str2 = str1.reverse();//数据已经正过来了 但是格式不正确
+    // // 把数组中的内容拼接成了一个字符串
+    // str2 =str2.join(" ");
+    // console.log(typeof str2);
+
+
+    // // 车牌号限行
+    // var now = new Date();
+    // // 拿到星期几 周日~~周六  0~~6
+    // var weekday = now.getDay();
+    // // console.log(weekday);
+    // var number = prompt("请输入您的车牌号");
+    // var weihao = endNumber(number);
+    // console.log(isXianxing(weihao));
+    // // 根据尾号检测是否限行
+    // function isXianxing(haoma) {
+    //     if (weekday == 6 || weekday == 0) {
+    //        return "不限行";
+    //     }
+    //     //0~~~6  7 8 9
+    //     else if (weekday == haoma || (weekday + 5) % 10 == haoma) {
+    //         return "限行";
+    //     } else {
+    //         return "不限行";
+    //     }
+    // }
+    // // 取尾号的方法
+    // function endNumber(plate) {
+    //     //豫A56BOX
+    //     //    让原本正序筛查的字符串变成倒叙
+    //     for (var i = plate.length - 1; i >= 0; i--) {
+    //         console.log(plate[i]);
+    //         //    plate[i] 代表字符串从末尾开始的某一个单一字符
+    //         var ch = plate[i];
+    //         //   碰到数字了
+    //         if (ch * 1 == ch) {
+    //             return ch;
+    //         }
+    //     }
+    // }
+    // var n =prompt("请输入你的姓名");
+    // var w =prompt("请输入你的体重");
+    // var h =prompt("请输入你的身高");
+    // console.log(people(n, getBmi(w,h)));
+    
+    // function people(name,bmi){
+    //     var tixing ="";
+    //     if (bmi<=18) {
+    //         tixing ="偏瘦";
+    //     } 
+    //     else if (bmi>18 && bmi<=24) {
+    //         tixing ="正常";
+    //     } else {
+    //         tixing ="偏胖";
+    //     }
+    //     return "一个叫做:"+name+"的人，身高为:"+h+"米，体重为："+w+"公斤,体型:"+tixing;
+    // }
+    // // 求bmi
+    // function getBmi(weight,height){
+    //     return weight/(height*height);
+    // }
+
+
+    var n =prompt("请输入账号");
+    var p =prompt("请输入密码");
+    function login(username,psw)
+    {
+        if (username =="" || psw=="") {
+            alert("账号或密码不能为空");
+        } else if(username =="admin" && psw=="123456"){
+            alert("登录成功");
+        }
+        else
+        {
+            alert("账号或密码错误");
+        }
+    }
+    login(n,p);
+</script>
+
+</html>

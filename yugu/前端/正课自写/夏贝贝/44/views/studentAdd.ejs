@@ -1,0 +1,41 @@
+<%-include('./header.ejs')%>
+<body>
+    <form>
+        <input type="text" name="stuName" placeholder="请输入名称" required>
+        <br>
+        <input type="number" name="age" placeholder="请输入年龄" required>
+        <br>
+        <input type="radio" name="isMale" value="true" checked>男
+        <input type="radio" name="isMale" value="false" checked>女
+        <br>
+        <select name="banji" required>
+            <option value="">请选择班级</option>
+            <% list.forEach(function(b){%>
+                <option value="<%=b._id%>"><%=b.className%></option>
+                <%})%>
+        </select>
+        <br>
+        <button type="submit">添加</button>
+    </form>
+</body>
+<script>
+    $('form').submit(function(ev){
+        ev.preventDefault();
+        var data =$(this).serialize();
+        // 发请求
+        $.post('/student/add',data,function(res){
+            if (res.error==0) {
+                alert(res.msg);
+                // 跳转学生添加界面
+                location.href ='/';
+            }
+            else
+            {
+                alert(res.msg);
+                // 重置表单
+                $('form').get(0).reset();
+            }
+        })
+    });
+</script>
+</html>

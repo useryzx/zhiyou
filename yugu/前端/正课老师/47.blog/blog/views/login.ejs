@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+</head>
+<body>
+    <%-include('./header.ejs')%>
+    <%if(tip){%>
+        <h3><%=tip%></h3>
+    
+    <%}%>
+    <main>
+        <form action="/api/user/login" method="post">
+           <input type="text" name="username" placeholder="请输入用户名" required>
+           <br>
+           <input type="password" name="psw" placeholder="请输入用户名" required>
+           <br>
+           <button>登录</button>
+        </form> 
+    </main>
+</body>
+</html>

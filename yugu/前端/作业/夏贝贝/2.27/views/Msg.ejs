@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学员名单</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>学员名单</h1>
+    <form action="/api/student/search" method="post">
+        <label for="name">按姓名查找</label>
+        <input type="text" name="stuName" id="name"><br>
+        <label for="sex">性别条件</label>
+        男<input type="radio" name="stuSex" id="sex" value="男">
+        女<input type="radio" name="stuSex" id="sex" value="女"><br>
+        <button type="submit">查询</button>
+    </form>
+
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>专业</td>
+            <td>兴趣爱好</td>
+            <td>删除</td>
+            <td>编辑</td>
+        </tr>
+        <%var num = data[data.length-1]*1+1;%>
+        <%for(var i=0;i<(data.length-1<5?data.length-1:5);i++){%>
+        <%var student = data[i];%>
+        <tr>
+            <td><%=student.stuName%></td>
+            <td><%=student.stuAge%></td>
+            <td><%=student.stuSex%></td>
+            <td><%=student.stuMajor%></td>
+            <td><%=student.stuHobby%></td>
+            <td>
+                <form action="/api/student/delete" method="post">
+                    <input type="text" style="display: none;" name="id" value="<%=data[i]._id%>">
+                    <button type="submit">删除</button>
+                </form>
+            </td>
+            <td>
+                <form action="/api/student/change" method="post">
+                    <input type="text" style="display: none;" name="id" value="<%=data[i]._id%>">
+                    <button type="submit">编辑</button>
+                </form>
+            </td>
+        </tr>
+        <%}%>
+
+    </table>
+    <h5>第<%=num%>页</h5>
+        <form action="/api/student/page" method="post">
+            <input type="text" name="page" id="page" style="display: none;">
+            <button type="submit" id="btn2">上一页</button>
+            <button type="submit" id="btn">下一页</button>
+        </form>
+</body>
+<script>
+    var pageNum = '<%=data[data.length-1]%>';
+    var btn = document.getElementById('btn');
+    var btn2 = document.getElementById('btn2');
+    var input = document.getElementById('page');
+    btn.onclick = function (e) {
+        if ('<%=data.length-1%>' > 5) {
+            pageNum = pageNum * 1 + 1;
+        }
+        input.value = pageNum;
+    }
+    btn2.onclick = function (e) {
+        if (pageNum <1) {
+            pageNum = 0;
+        }
+        else{
+            pageNum = pageNum * 1 - 1;
+        }
+        input.value = pageNum;
+    }
+</script>
+
+</html>

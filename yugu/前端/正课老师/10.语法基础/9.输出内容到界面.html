@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>输出内容到界面</title>
+</head>
+<body>
+    <!-- 该标签会保留空格换行等特殊的输出 -->
+    <pre>
+        亲爱的同学们:
+           明天我们不上课!!!
+        记住!!!我说的不算。
+                    19.12.16
+    </pre>
+</body>
+<script>
+    // 把想要输出的内容展示到页面中
+    // 目前只需要记着这句代码可以往页面中输出文本
+    document.write("<pre>");
+        // \n代表换行
+    document.write("你好\n");
+    //  \t代表tab
+    document.write("\t同学");
+    // 写入的文本如果是标签会被 解析
+    document.write("</pre>");
+
+    // 取整数
+    var pi =3.1415926;
+    // 向下取整数
+    pi =Math.floor(pi);
+    console.log(pi);
+
+    // 生成随机数 0.0~~9.9999  1~~10
+    var arcNumber =Math.random()*10+1;
+    
+</script>
+</html>

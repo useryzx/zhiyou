@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>添加学生</h1>
+    <form action="/api/student/add" method="post">
+        <input type="text" name="studentName" placeholder="请输入学生姓名" required>
+        <br>
+        <input type="text" name="studentAge" placeholder="请输入学生年龄" required>
+        <br>
+        <input type="radio" name="studentSex" value="男">男
+        <input type="radio" name="studentSex" value="女">女
+        <br>
+        <select name="studentClass">
+            <%for(var i=0;i<data.length;i++){%>
+            <option value="<%=data[i]._id%>"><%=data[i].className%></option>
+            <%}%>
+        </select>
+        <br>
+        <button>添加学生</button>
+    </form>
+</body>
+<script>
+    var option = document.getElementsByTagName('option');
+    var button = document.getElementsByTagName('button')[0];
+    button.onclick = function (e) {
+        if (option.length < 1) {
+            alert('请先添加班级...');
+            e.preventDefault();
+        }
+    }
+
+</script>
+</html>

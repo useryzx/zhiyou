@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/nav.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">标签</a></li>
+            <li><a href="/user/login">登录</a></li>
+            <li ><a href="/register">注册</a></li>
+         </ul>
+
+    </nav>
+    <h1><%=title%></h1>
+    <form>
+        <label for="">用户名：</label>
+        <input type="text" placeholder="输入用户名"
+        name="username" required>
+        <br>
+        <label for="">密码：</label>
+        <input type="password" placeholder="输入密码"
+        name="password" required>
+        <br>
+         <button type="submit">登录</button>
+     </form>
+</body>
+<script src="/jquery.js"></script>
+<script src="/jquery.cookie.js"></script>
+<script src="/nav.js"></script>
+<script>
+    $('li').eq(2).addClass('show')
+    $('form').submit(function(ev){
+        // 先阻止默认行为
+        ev.preventDefault();
+        // 拿到当前form表单的数据进行数据初始化
+        // 把form表单数据>>>data
+        var data =$(this).serialize();
+        // 提交请求
+        $.post('/user/login',data,function(res){
+            if (res.error ==0) {
+                alert(res.msg)
+              location.href = '/'
+            } else {
+                alert(res.msg)
+            }
+        });
+
+    })
+</script>
+</html>

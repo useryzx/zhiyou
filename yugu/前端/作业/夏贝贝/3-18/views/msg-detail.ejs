@@ -1,0 +1,60 @@
+<%-include('./header.ejs')%>
+<%if(user){%>
+<p class="p-item"><a href="">上传</a></p>
+<p class="p-item"><a href="/msg-commit">发布</a></p>
+<p class="p-item"><a href="/user/exit">退出</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+
+    </form>
+</p>
+<%}else{%>
+<p class="p-item"><a href="/user/login">登陆</a></p>
+<p class="p-item"><a href="/user/register">注册</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+    </form>
+</p>
+<%}%>
+</nav>
+<div>
+    <h1><%=title%></h1>
+<hr>
+<artical>
+    <h1><%=data.topic%></h1>
+    <p class="info"><%=data.time%></p>
+    <p class="info"><a href="#"><%=data.author.username%></a></p>
+    <p class="content">
+        <%=data.content%>
+    </p>
+    <%if(user&&user._id==data.author._id){%>
+    <a href="/api/blog/delete?_id=<%=data._id%>">删除帖子</a>
+    <%}%>
+    <hr>
+    <%for(var i=0;i<data.reply.length;i++){%>
+    <div class="reply-box">
+        <h5>回复者:<%=data.reply[i].author%></h5>
+        <p><%=data.reply[i].content%></p>
+    </div>
+    <%}%>
+    <hr>
+    <form action="/api/blog/reply" method="post">
+    <input type="text" name="blogId" value="<%=data._id%>" style="display: none;">
+    <%if(!user){%>
+    <label for="">昵称:</label>
+    <input type="text" name="nickname" required>
+    <%}%>
+    <br>
+    <textarea name="reply"required></textarea>
+    <br>
+    <button>回帖</button>
+    </form>
+</artical>
+</div>
+
+</main>
+</body>
+
+</html>

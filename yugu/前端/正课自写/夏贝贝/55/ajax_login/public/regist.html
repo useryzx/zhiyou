@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>注册</h1>
+    <label for="">账号：</label>
+    <input type="text" id="account">
+    <br>
+    <label for="">密码：</label>
+    <input type="password" id="psw">
+    <br>
+    <label for="">确认密码：</label>
+    <input type="password" id="confirm">
+    <br>
+    <button id="btn">注册</button>
+</body>
+<script src="/libs/jquery.js"></script>
+<script>
+    $('#btn').click(function(){
+        if($('#psw').val()!=$('#confirm').val()){
+            alter('两次密码输入不一样')
+            return;
+        }
+        $.post('/users/regist',{
+            account:$('#account').val(),
+            psw:$('#psw').val()
+        }).then(data=>{
+            alert(data.msg);
+            if(data.err==0){
+                location.href = '/'
+            }
+        })
+    })
+</script>
+</html>

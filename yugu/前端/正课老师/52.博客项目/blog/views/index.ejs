@@ -1,0 +1,27 @@
+<%-include header%>
+<% posts.forEach(function (post,index){%>
+    <p>
+        <h2>
+            <!-- 没/a标签无法捕获该接口因为a标签默认
+            是要找当前连接地址通层叠url
+        a标签链接的是接口的时候会自动在接口后面追加分层符号/
+    但是服务器接口必须要写因为不写/的话客户端这边加上去了
+但是服务器没有-->
+            <a href="/u/<%= post.name%>/<%= post.time.day%>/<%= post.title%>"><%=post.title%></a>
+        </h2>
+    </p>
+    <p class="info">
+       作者: <a href="/u/<%=post.name%>"><%=post.name%></a>|
+       日期: <%= post.time.minute%>|
+       标签:
+       <% post.tags.forEach(function (tag,index){%>
+       <%if (tag) {%>
+        <a href="/tags/<%= tag%>" class="tag"><%= tag%></a>
+        <%}%>
+        <%})%>
+    </p>
+    <p><%- post.post%></p>
+    <p class="info">阅读:<%= post.pv%> | 评论:<%= post.comments.length%></p>
+    <%})%>
+<%-include paging%>
+<%-include footer%>

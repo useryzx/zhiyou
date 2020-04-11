@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- 通过html标签的属性进行事件的绑定 -->
+    <!-- onclick代表点击事件 -->
+
+    <button onclick="zanClick(event)" id="btn">赞</button>
+    <div id="box" class="bgc">
+        <img src="" alt="">
+    </div>
+
+</body>
+<script>
+    // function zanClick(e) {
+    //     console.log(this);
+    //     console.log(e);
+    //     console.log("点击了" + e);
+    // }
+
+    // var btn = document.getElementById("btn");
+    // btn.onclick = function (e) {
+    //     console.log("这是通过js来执行的事件" + e);
+    // }
+    // var box = document.getElementById("box");
+    // box.onmousedown = function (e) {
+    //     console.log("这是div通过js绑定的鼠标按下事件" + e);
+    // }
+    // box.onmouseup = function (e) {
+    //     console.log("这是div通过js绑定的鼠标松开事件" + e);
+    // }
+    // box.onmouseover = function (e) {
+    //     console.log("这是div通过js绑定的鼠标指针进入事件" + e);
+    // }
+    // box.onmouseleave = function (e) {
+    //     console.log("这是div通过js绑定的鼠标离开事件" + e);
+    // }
+    // box.onmousemove = function (e) {
+    //     console.log("这是div通过js绑定的鼠标移动事件" + e);
+    // }
+    var box = document.getElementById("box");
+    var arr = ["https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg","http://img95.699pic.com/photo/50055/5642.jpg_wh300.jpg"];
+    // var arr = ["earth.png","sun.png"];
+
+
+    box.onmousedown = function (e) {
+        console.log('aaaa');
+        var img = document.querySelector("img");
+        img.style.width = "200px";
+        img.style.height = "100px";
+        img.src = img.src==arr[0]?arr[1]:arr[0];
+        // img.src=img.src=="https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg"?"http://img95.699pic.com/photo/50055/5642.jpg_wh300.jpg":"https://img.iplaysoft.com/wp-content/uploads/2019/free-images/free_stock_photo.jpg";
+        // img.src= (img.src=="sun.png"?"sun.png":"earth.png");
+    }
+
+
+
+</script>
+
+</html>

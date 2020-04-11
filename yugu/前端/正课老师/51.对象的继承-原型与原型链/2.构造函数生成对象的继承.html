@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数的生成和对象的继承</title>
+</head>
+<body>
+</body>
+<script>
+    //以猫为例
+    function Cat(name,age){
+        this.name =name;
+        this.age =age;
+        this.color ='black';
+        this.buhuo =function(){
+            console.log(`${this.name}会抓老鼠`);  
+        }
+    }
+    var cat1 =new Cat('黑猫1号',5);
+    var cat2 =new Cat('黑猫2号',3);
+    console.log(cat1);
+    cat2.buhuo();
+
+    // 原型的作用:将构造函数中共享的属性或方法
+    // 存储在该对象的原型中,避免空间资源浪费
+    // 因为在生成实例化数据时，内容会占据空间
+    function Dog(name,age,color){
+        this.name =name;
+        this.age =age;
+        this.color =color;
+    }
+    // 为Dog的原型添加属性或方法
+    Dog.prototype ={
+       color:'black',
+       buhuo:function(){
+           console.log(`${this.name}会抓老鼠`);
+       }
+    }
+    var Dog1 =new Dog('小狗1号',5,);
+    var Dog2 =new Dog('小狗2号',3);
+    // 原型链的作用:为了实现继承原型中的属性和方法
+    // 对象在调用某个属性或者方法时，会优先从自身查找，如果自身
+    // 没有属性或方法,会沿着原型链向上去查找，直到找不到，或者是
+    // 找到该属性或方法为止,有的话就近原则 
+    console.log(Dog1);
+    console.log(Dog2.color);
+    Dog2.buhuo();
+</script>
+</html>

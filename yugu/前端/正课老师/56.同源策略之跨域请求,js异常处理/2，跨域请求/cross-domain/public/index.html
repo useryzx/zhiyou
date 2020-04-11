@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello</h1>
+
+    <button onclick="requestClick()">发起普通的get请求</button>
+    <br>
+
+    <button onclick="corsClick()">cors实现跨域请求</button>
+    <br>
+
+    <button onclick="jsonpClick()">jsonp实现跨域请求</button>
+    <br>
+
+    <button onclick="proxyClick()">proxy实现跨域请求</button>
+
+    
+</body>
+
+<script src="jquery.min.js"></script>
+
+<script>
+    function requestClick(){
+        $.get("/api/test")
+        .then(res=>{
+
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+
+
+    function corsClick(){
+        $.get("http://localhost:3000/api/cors")
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+    
+    // function jsonpClick(){
+    //     // 创建一个script标签，设置src，然后添加到DOM中，浏览器就会自动按照src地址发送请求，如果请求成功得到一段js代码，就会立刻执行这段代码。
+    //     let se = document.createElement("script");
+    //     se.src = "http://localhost:3000/api/jsonp?callback=qwe";
+    //     document.body.appendChild(se);
+    // }
+    // function qwe(res){
+    //     console.log(res);
+    // }
+
+
+    // jquery的getJSON直接支持JSONP请求，需要传递callback=?
+    function jsonpClick(){
+        $.getJSON("http://localhost:3000/api/jsonp?callback=?")
+        .then(res=>{
+            console.log(res);
+        })
+    }
+
+
+    function proxyClick(){
+        $.post("/proxy/toutiao/index",{
+            type:"top",
+            key:"0f0fea85f5fb33b81c20936ca7ec1cc9"
+        })
+        .then(res=>{
+            console.log(res);
+        })
+    }
+
+
+</script>
+
+
+
+</html>

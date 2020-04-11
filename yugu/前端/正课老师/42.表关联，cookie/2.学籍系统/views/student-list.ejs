@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>学生列表界面</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>班级名称</th>
+                <th>专业</th>
+                <th>教室</th>
+                <th>教室</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(var i=0;i<data.length;i++){%>
+                <tr>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].grade.name%></td>
+                    <td><%=data[i].grade.teacher%></td>
+                </tr>
+                <%}%>
+        </tbody>
+    </table>
+</body>
+</html>

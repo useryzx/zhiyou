@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>添加学生</h1>
+    <form action="/api/student/add" method="post">
+        <label for="studentName">姓名</label>
+        <input type="text" id="studentName" name="studentName"><br>
+        <label for="studentClass">班级</label>
+        <select name="studentClass" id="studentClass">
+            <%for(var i =0;i<data.length;i++){%>
+                <option value="<%=data[i].className%>"><%=data[i].className%></option>
+            <%}%>
+        </select><br>
+        
+        <button>提交</button>
+    </form>
+</body>
+</html>

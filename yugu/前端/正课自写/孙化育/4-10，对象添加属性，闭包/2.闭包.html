@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // for(var i=0;i<10;i++){
+    //     var a=i;
+    // }
+    // console.log(a);
+    // console.log(i);
+    // let g1 = "g";
+    // function f1(n) {
+    //     let a = 1;
+    //     let b = 2;
+    //     if(n>0){
+    //         f1(n-1)
+    //     }
+    // }
+    // function f2() {
+    //     let d = 6;
+    //     let e = 9;
+    // }
+    // f1(3)
+
+    // let c = 4;
+
+    // function f3() {
+    //     let a = 1;
+    //     let b = 2;
+    //     function fn() {
+    //         let c = a + b;
+    //         console.log(c);
+    //     }
+    //     return fn;
+    // }
+    // let f4 = f3();
+    // console.log('????');
+
+
+
+
+    // function f1(n){
+    //     function f2(){
+    //         console.log(n);
+    //         n--;
+    //         if(n-1<0){
+    //             return;
+    //         }
+    //         return f2;
+    //     }
+    // }
+    // f1(2)
+
+    // let obj = {
+    //     a:"a",
+    //     b:"b",
+    //     m1(){
+    //         console.log(this.a);
+
+    //     }
+    // };
+
+    // let obj = null;
+    // (function () {
+    //     let c = null;
+    //     let obj = {
+    //         a: "a",
+    //         b: "b",
+    //         m1() {
+    //             c = 123
+    //             console.log(c);
+
+    //         }
+    //     };
+    // })();
+
+
+    let f5 = (function () {
+        // 这里时形成闭包的作用域
+        return function () {
+            console.log("这是要执行的f5函数");
+
+        }
+    })();
+    // ------------------
+
+    // let objfn = (function () {
+    //     let a = 1;
+    //     function fn1() { };
+    //     function fn2() { };
+    //     function fn3() { };
+    //     return {
+    //         fn1,
+    //         fn2,
+    //         fn3
+    //     }
+    // })();
+    // // -------------------------
+    // for (var i = 0; i < 10; i++) {
+    //     var btn = document.createElement("button");
+    //     btn.textContent = i;
+    //     document.body.appendChild(btn);
+    //     (function () {
+    //         let num = i;
+    //         btn.onclick = function () {
+    //             console.log(num);
+    //         }
+    //     })()
+
+    // }
+    // ------------------
+    // 闭包为对象添加get/set属性
+    // let o2 = {};
+    // (function () {
+    //     let age = null;
+    //     Object.defineProperty(o2, "age", {
+    //         set(v) {
+    //             age = v;
+    //         },
+    //         get() {
+    //             return age;
+    //         }
+    //     })
+    // })()
+    // o2.age = 55;
+    // console.log(o2);
+
+
+
+    let o2 = {};
+    (function () {
+        let age = undefined;
+        Object.defineProperty(o2, "age", {
+            set(v) {
+                age = v;
+            },
+            get() {
+                return age;
+            },
+        });
+    })();
+    o2.age = 12;
+    console.log(o2);
+
+
+</script>
+
+</html>

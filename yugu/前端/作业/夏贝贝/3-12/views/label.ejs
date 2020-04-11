@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/nav.css">
+    <style>
+        #labelBox {
+            width: 400px;
+            height: 600px;
+            margin-left: 200px;
+        }
+
+        .label {
+            display: inline-block;
+            margin: 2px 4px;
+            color: white;
+            background-color: red;
+        }
+
+        .label a {
+            text-decoration: none;
+            color: wheat
+        }
+    </style>
+</head>
+
+<body>
+    <%if(user){%>
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/label">标签</a></li>
+            <li><a href="/blog-commit">发帖</a></li>
+            <li><a href="/loginOut">退出登录</a></li>
+            <li><a href=""><%=user.username%></a></li>
+        </ul>
+    </nav>
+    <%}else{%>
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/label">标签</a></li>
+            <li><a href="/user/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+        </ul>
+
+    </nav>
+    <%}%>
+   <div id="labelBox">
+    <%for(var i=0;i<labelList.length;i++){%>
+    <span class="label"><a href="/blog/list?label=<%=labelList[i]%>"> <%=labelList[i]%></a></span>
+    <%}%>
+   </div>
+    
+</body>
+<script src="/jquery.js"></script>
+<script src="/jquery.cookie.js"></script>
+<script src="/nav.js"></script>
+<script>
+    $('li').eq(1).addClass('show')
+</script>
+</html>

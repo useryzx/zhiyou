@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #ball{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+</body>
+<script>
+    var ball =document.getElementById("ball");
+    // 1.每一次增加上去一个固定的加速度
+    var xSpeed =20;
+    var ySpeed =3;
+
+    var x =0,y=0;
+    setInterval(function() {
+        x +=xSpeed;
+        y +=ySpeed;
+        ball.style.left =x +"px";
+        ball.style.top =y +"px";
+        // 判断到边
+        if (x >=window.innerWidth -ball.offsetWidth) {
+            xSpeed =-20;
+        }
+        if (x<=0) {
+            xSpeed =20;
+        }
+        if (y >=window.innerHeight -ball.offsetHeight) {
+            ySpeed =-3;
+        }
+        if (y<=0) {
+            ySpeed =3;
+        }
+    }, 2);
+    // 2.判断到边，到边之后取反
+    // 
+</script>
+</html>

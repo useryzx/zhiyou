@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>课程表</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        td{
+            width: 150px;
+            height: 90px;
+            text-align: center;
+            border: 2px solid green;
+        }
+        #test{
+            border-right: 0px;
+            border-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- 表的标题 -->
+        <caption>课程表</caption>
+        <thead>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+            <th>周六</th>
+            <th>周日</th>
+        </thead>
+        <!-- 表的主体 -->
+        <tbody>
+           <tr>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+               <td rowspan="2">自习</td>
+               <td rowspan="3">休息</td>
+           </tr>
+           <!-- 2 -->
+           <tr>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+               <td>html5</td>
+           </tr>
+           <tr>
+                <td>html5</td>
+                <td>html5</td>
+                <td>html5</td>
+                <td>html5</td>
+                <td>html5</td>
+                <td>html5</td>
+            </tr>
+        </tbody>
+        <!-- 表格底部 caption thead tbody tfoot-->
+        <tfoot>
+            <td>表格测试</td>
+            <td>课程表练习</td>
+            <td colspan="5" id="test"></td>
+        </tfoot>
+    </table>
+</body>
+</html>

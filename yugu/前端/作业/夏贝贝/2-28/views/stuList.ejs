@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生列表界面</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            width: 50%;
+        }
+
+        td {
+            border: black solid 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>学生列表界面</h1>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>班级</td>
+            <td>老师</td>
+        </tr>
+        <%for(var i=0;i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].studentName%></td>
+                <td><%=data[i].studentClass.className%></td>
+                <td><%=data[i].studentClass.classTeacher%></td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>

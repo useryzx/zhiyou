@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1{
+            width: 100px;
+            height: 100px;
+            border: solid 2px red;
+            /* 动画块的名称 */
+            /* animation-name:ani1; */
+            /* 动画的时间 */
+            /* animation-duration: 3s; */
+            /* 设置动画的速率 */
+            /* animation-timing-function: linear; */
+            /* 控制动画的执行次数 默认一次 传入对应的数字执行
+            对应的次数 infinite无限次*/
+            /* animation-iteration-count: infinite; */
+            /* 还可以通过符合属性直接连写 */
+            animation:ani1 3s linear infinite;
+           
+        }
+        /* 关键帧 显示:60  lol:90 吃鸡:120*/
+        @keyframes ani1 {
+            /* 开始帧 form 0%*/
+            from{
+                /* 切 */
+               border-radius: 0;
+            }
+            /* 结束帧 100% */
+            to{
+                border-radius: 50%;
+            }
+        }
+
+       #d2{
+           width: 100px;
+           height: 100px;
+           margin: 100px auto;
+           background-color: red;
+           /* delay 延迟：延迟多久执行 
+           both保持结束动画的状态animation-fill-mode
+           animation-direction:是否反转动画
+           animation-play-state是否暂停*/
+           animation:ani2 3s linear 1 both;
+       }
+      @keyframes ani2 {
+          0%{
+              /* animation里面的值是空格隔开 
+              translate函数里面的是,隔开*/
+              transform: translate(0px,0px) scale(1,1);
+          }
+          20%{
+            transform: translate(100px,50px) scale(1.5,0.5);
+          }
+          40%{
+            transform: translate(200px,150px) scale(1,1.5);
+          }
+          80%{
+            transform: translate(100px,50px) scale(1.5,0.5);
+          }
+          100%{
+            transform: translate(200px,150px) scale(1.5,2.5);
+          }
+      }
+      /*
+      2d,3d提供的有变形
+      transition指的是过渡动画，最好是现有的样式
+      animation可以自定义动画块 可拓展性最好
+      */
+    </style>
+</head>
+<body>
+    <div id="d1">我是个圆</div>
+    <div id="d2">我可以变成长方形</div>
+</body>
+</html>

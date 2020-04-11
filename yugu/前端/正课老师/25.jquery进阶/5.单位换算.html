@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单位换算</title>
+</head>
+<body>
+    <input type="text" class="field" id="meter">米
+    <br>
+    <input type="text" class="field" id="centimeter">厘米
+    <br>
+    <input type="text" class="field" id="millimeter">毫米
+    <br>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // 单位之间的换算
+    var ratio=[
+         [1,100,1000],
+         [0.01,1,10],
+         [0.001,0.1,1]
+    ];
+    $(".field").on("input",function(){
+        // jq的index方法 获取元素在元素集合中的索引
+        // 类似于数组的indexOf方法
+        var index =$(".field").index(this);
+        // 根据索引取出对应的比例
+        var arr =ratio[index];
+        // 记录对象
+        var obj =this;
+        // el代表遍历的数组单一对象  i遍历的索引
+        arr.forEach(function(el,i){
+            console.log(el);
+            // 1000是为了去浮点类型 
+            var v =el*1000*$(obj).val()/1000;
+            // eq根据索引查找到匹配的元素 
+            $(".field").eq(i).val(v);
+        })
+    });
+</script>
+</html>

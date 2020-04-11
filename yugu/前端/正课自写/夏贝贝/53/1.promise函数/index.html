@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise函数</title>
+    
+</head>
+<body>
+    <button>播放</button>
+</body>
+<script>
+    let btn = document.getElementsByTagName('button')[0];
+    let p = new Promise(function(resolve,reject){
+        setTimeout(()=>{
+            console.log('音乐下载完毕');
+            resolve()
+        },3000)
+        btn.onclick = function(){
+            p.then(()=>{
+                console.log('正在播放--------------');
+            })
+        }
+    })
+</script>
+<!-- <script src="index.js"></script> -->
+</html>

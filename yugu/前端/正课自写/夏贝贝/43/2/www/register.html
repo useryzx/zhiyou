@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>注册界面</h1>
+    <form action="/api/register" method="post">
+        <label for="">用户名</label>
+        <input type="text" name="userName" required>
+        <br>
+        <label for="">密码</label>
+        <input type="text" name="psw" required id="psw">
+        <br>
+        <label for="">确认密码</label>
+        <input type="text" id="confirm" required>
+        <br>
+        <button onclick="btnClick(event)">提交</button>
+    </form>
+</body>
+<script>
+    var pswField = document.getElementById('psw');
+    var confirmField = document.getElementById('confirm');
+    function btnClick(event) {
+        if (pswField.value != confirmField.value) {
+            alert('两次密码不一样')
+            event.preventDefault();
+        }
+    }
+</script>
+
+</html>

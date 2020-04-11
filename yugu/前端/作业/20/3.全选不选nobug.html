@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="all"><label for="all" id="allSelect">全选</label><a href="#">反选</a><br>
+    <div>
+        <input type="checkbox" name="checkbox"><label>选项一</label><br>
+        <input type="checkbox" name="checkbox"><label>选项二</label><br>
+        <input type="checkbox" name="checkbox"><label>选项三</label><br>
+        <input type="checkbox" name="checkbox"><label>选项四</label><br>
+        <input type="checkbox" name="checkbox"><label>选项五</label><br>
+        <input type="checkbox" name="checkbox"><label>选项六</label><br>
+        <input type="checkbox" name="checkbox"><label>选项七</label><br>
+        <input type="checkbox" name="checkbox"><label>选项八</label><br>
+        <input type="checkbox" name="checkbox"><label>选项九</label><br>
+        <input type="checkbox" name="checkbox"><label>选项十</label><br>
+    </div>
+
+    <p>1、切换全选/全不选文字；2、根据选中的个数更新全选框状态；</p>
+</body>
+<script>
+    var inputList = document.querySelectorAll("div input");
+    var allChecked = document.getElementById("all");
+    var div = document.querySelector("div");
+    var a = document.querySelector("a");
+    var allSelect =document.querySelector("#allSelect");
+    console.log("所有input：" + inputList);
+
+    // 定义一个方法,添加删除checked属性
+    function switchInput(inputItem) {
+        console.log("inputItem" + inputItem.checked);
+        if (!inputItem.checked) {
+            inputItem.checked = false;
+        }
+        else {
+            inputItem.checked = true;
+        }
+    }
+    for (var i = 0; i < inputList.length; i++) {
+        // 对每个选项input绑定点击事件，并执行是不是全部选中
+        inputList[i].onclick = function (e) {
+            switchInput(this);
+            allInputChecked();
+        }
+    }
+    // 封装方法，判断是否所有的input都有checked属性
+    function allInputChecked() {
+        // 创建数组接收每个input是不是包含checked的判断返回布尔值
+        var arr = [];
+        // 遍历获取判断属性的arr
+        for (var i = 0; i < inputList.length; i++) {
+            var inputTrue = inputList[i].checked;
+            arr.push(inputTrue);
+        }
+
+        // 如果arr里面不存在false，即为全部选中，给全选框添加checked
+        if (!(arr.includes(false))) {
+            console.log("全选");
+            allChecked.checked = true;
+            allSelect.textContent = "全不选";
+        }
+        else {
+            console.log("没有全选");
+            allChecked.checked = false;
+            allSelect.textContent = "全选";
+        }
+    }
+    // 封装一个全选的方法给全选按钮绑定
+    function allCheckedOrNot() {
+        if (allChecked.checked) {
+            allChecked.checked = true;
+            allSelect.textContent = "全不选";
+            for (var i = 0; i < inputList.length; i++) {
+                inputList[i].checked = true;
+            }
+        }
+        else {
+            allChecked.checked = false;
+            allSelect.textContent = "全选";
+            for (var i = 0; i < inputList.length; i++) {
+                inputList[i].checked = false;
+            }
+        }
+    }
+    allChecked.onclick = allCheckedOrNot;
+    a.onmousedown = switchInputAll;
+    function switchInputAll() {
+        for (var i = 0; i < inputList.length; i++) {
+            if (inputList[i].checked) {
+                inputList[i].checked = false;
+                allInputChecked();
+            }
+            else {
+                inputList[i].checked = true;
+                allInputChecked();
+            }
+        }
+    }
+</script>
+
+</html>

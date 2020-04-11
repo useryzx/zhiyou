@@ -1,0 +1,29 @@
+<%-include('header.ejs')%>
+
+<body>
+    <form>
+        <input type="text" placeholder="班级名称" name="className" required>
+        <br>
+        <input type="text" placeholder="班级位置" name="classRoom" required>
+        <br>
+        <input type="text" placeholder="班级教师" name="classTeacher" required>
+        <br>
+        <button type="submit">添加班级</button>
+    </form>
+</body>
+<script>
+    $("form").submit(function (e) {
+        var data = $(this).serialize();
+        $.post('/class/add', data, function (res) {
+            if (res.error == 0) {
+                alert(res.msg);
+                location.href = '/';
+            }
+            else {
+                alert(res.msg)
+            }
+        })
+    })
+</script>
+
+</html>

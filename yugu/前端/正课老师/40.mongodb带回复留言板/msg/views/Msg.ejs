@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ta {
+            width: 100%;
+            height: 200px;
+            resize: none;
+        }
+
+        .msg-box {
+            border: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>留言板</h1>
+    <p id="char-count">还能输入140个字</p>
+    <form action="/api/msg/commit" method="POST">
+        <textarea name="msg" id="ta"></textarea>
+        <button>提交</button>
+    </form>
+    <hr>
+    <%for(var i=0;i<data.length;i++){%>
+    <div class="msg-box">
+        <p>
+            <b><%=data[i].ip%></b>
+            <span><%=data[i].time%></span>
+        </p>
+        <p><%=data[i].msg%></p>
+        <hr>
+        <%for(var j =0;j<data[i].reply.length;j++){%>
+        <%var r =data[i].reply[j]%>
+        <div class="reply-box">
+            <p><%=r.ip%></p>
+            <p><%=r.time%></p>
+            <p><%=r.content%></p>
+        </div>
+        <%}%>
+       <form action="/api/msg/reply" method="post">
+           <input type="text" style="display: none;" 
+           name="id" value="<%=data[i]._id%>">
+           <textarea name="content" id=""></textarea>
+           <button>回复</button>
+       </form>     
+    </div>
+    <%}%>
+</body>
+<script>
+    var charCount =document.getElementById('char-count');
+    var ta =document.getElementById('ta');
+    ta.oninput =function(){
+        // 还余下多少字
+        var remanent =140 -ta.value.length;
+        charCount.textContent ='你还可以输入:'+remanent+'个字';
+        if (remanent<0) {
+            ta.value =ta.value.substr(0,140);
+            charCount.textContent ='你还可以输入:'+0+'个字';
+        }
+    }
+</script>
+</html>

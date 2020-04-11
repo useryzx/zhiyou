@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">2秒之后输出你好</button>
+</body>
+<script>
+    // 箭头函数：另一种匿名函数的写法
+    // let f1=function(a,b){
+    //     console.log(a+b);
+    // }
+
+    // 箭头函数写法:可以理解为把function换成了=>
+    // 结构：(参数)=>{函数体}
+    let f1 =(a,b)=>{
+        console.log(a+b);
+    }
+    // f1(5,10);
+
+    // 当箭头函数的参数有且仅有一个时，参数的括号可以省略
+    let f2=p=>{
+        console.log(p);
+    }
+    // f2(10)
+    let obj={
+        m1:o=>{
+            console.log('嘿嘿'+o);
+        }
+    }
+    // 调obj的方法
+    // obj.m1(100);
+    // let f4=(a,b)=>{
+    //     return a+b
+    // }
+
+
+    // 当箭头函数体只有一句return的时候，可以把函数体的{}和return省略，直接在箭头之后写要返回的表达式
+    let f4=(a,b)=>a+b;
+    console.log(f4(5,15));
+    
+    // 实现button效果
+    let btn=document.getElementById('btn')
+    let time=setTimeout((btn) => {
+        console.log('出来');
+    }, 3000);
+</script>
+<script src="index2.js"></script>
+<html>                                                           

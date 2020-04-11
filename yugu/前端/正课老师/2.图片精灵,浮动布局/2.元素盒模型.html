@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>元素盒模型</title>
+    <style>
+        #d1{
+            width: 50px;
+            height: 50px;
+            /* 内边距 */
+            padding: 10px;
+            /* 边框 */
+            border: solid 10px black;
+            /* 通过f12键查看盒模型 默认情况下，给元素设置的
+            宽高是内容盒的宽高content-box不包含边框和内间距*/
+        }
+        #d2{
+            width: 50px;
+            height: 50px;
+            border: solid 10px red;
+            /* box-sizing更改元素的盒模型  默认是内容盒
+            border-box边框盒:内容的宽高+内间距+边框=设置的宽高 */
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1"></div>
+    <div id="d2"></div>
+</body>
+</html>

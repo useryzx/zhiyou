@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>添加学员</h1>
+    <form action="/api/stu/add" method="post">
+    <label for="stuName">姓名</label><input type="text" name="stuName" id="stuName"><br>
+    <label for="stuAge">年龄</label><input type="text" name="stuAge" id="stuAge"><br>
+    <span>性别</span>
+    <label for="man">男</label><input type="radio" name="stuSex" id="man" value="男">
+    <label for="woman">女</label><input type="radio" name="stuSex" id="woman" value="女">
+    <br>
+    <span>专业</span>
+    <select name="stuMajor" id="">
+        <option>web前端</option>
+        <option>java</option>
+        <option>大数据</option>
+        <option>python</option>
+    </select><br>
+    <span>兴趣爱好</span>
+    <label>体育</label><input type="checkbox" name="stuHobby" value="体育">
+    <label>音乐</label><input type="checkbox" name="stuHobby" value="音乐">
+    <label>美术</label><input type="checkbox" name="stuHobby" value="美术">
+    <br>
+    <button type="submit">提交</button>
+    </form>
+</body>
+</html>

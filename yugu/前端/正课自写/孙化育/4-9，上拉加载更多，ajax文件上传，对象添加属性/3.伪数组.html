@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="line">1</p>
+    <p class="line">2</p>
+    <p class="line">3</p>
+    <p class="line">4</p>
+    <p class="line">5</p>
+</body>
+<script>
+    let arr = ['123','abc'];
+    console.log(arr);
+    let lines = document.getElementsByClassName("line")
+    console.log(lines);
+    console.log([].slice.call(lines));
+    
+    // console.log(Array.from(lines));
+</script>
+</html>

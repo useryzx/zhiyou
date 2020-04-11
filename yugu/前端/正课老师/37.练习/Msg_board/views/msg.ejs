@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ta{
+            width: 100%;
+            height: 200px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>留言板</h1>
+    <form action="/api/msg/commit" method="post">
+        <textarea name="msg" id="ta" >
+
+        </textarea>
+        <br>
+        <button>提交</button>
+    </form>
+    <hr>
+    <%for(var i=0;i<msgArr.length;i++){%>
+     <%var m =msgArr[i]%>
+     <div class="msg-box">
+         <h4>
+             <span><%= m.ip%></span>
+             <span>---------</span>
+             <span><%= m.time%></span>
+         </h4>
+         <p>
+             <%= m.msg%>
+         </p>
+     </div>
+     <%}%>
+</body>
+</html>

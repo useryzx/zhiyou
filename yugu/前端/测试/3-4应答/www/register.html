@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>注册</h1>
+    <form action="/api/register" method="post">
+        <input type="text" name="userName" placeholder="请输入用户名" required>
+        <br>
+        <input type="text" name="userPsw" placeholder="请输入密码" required id="userPsw">
+        <br>
+        <input type="text" placeholder="请确认密码" required id="userPsw1">
+        <br>
+        <input type="text" name="userEmail" placeholder="请输入邮箱" required id="email">
+        <br>
+        <button>注册</button>
+    </form>
+</body>
+<script>
+    var userPsw = document.getElementById('userPsw');
+    var userPsw1 = document.getElementById('userPsw1');
+    var btn = document.getElementsByTagName('button')[0];
+    var email = document.getElementById('email');
+    // 邮箱正则匹配
+    btn.onclick = function (e) {
+        if (userPsw.value != userPsw1.value) {
+            alert('两次密码不一致');
+            //    停止此次form表单的action
+            e.preventDefault();
+        }
+        else {
+            // 使用正则表达式判断邮箱是否正确
+            var reg = /^([A-z]|[0-9])(\w|\-)+@[A-z0-9]+\.([A-z]{2,4})$/;
+            if (!reg.test(email.value)) {
+                alert("邮箱格式不正确");
+                e.preventDefault();
+            }
+        }
+    }
+</script>
+
+</html>

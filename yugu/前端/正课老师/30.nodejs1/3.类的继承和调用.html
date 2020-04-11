@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>类的继承和调用</title>
+</head>
+<body>
+</body>
+<script>
+    // 类:具有相同属性和行为特征的集合的抽象
+    // 面向对象就是类过渡到对象的一个过程
+    // 面向对象有三大特性:封装，继承和多态
+    // 继承:如果一个具体类属于另外一个大类的一种，那么创建
+    //这个具体类的时候可以让其继承大的类，在继承中，大类叫做
+    // 父类，继承者叫做子类
+    function People(name,age){
+        // people的对象
+        // this.name =name;
+        // this.age =age;
+        this.eat =function(){
+            console.log("中午都不要吃饭了。");
+            console.log(this.major);
+            
+        }
+
+    }
+    // 构造学生类
+    function Student(name,age,major,stuID)
+    {
+        // name,age是在People中已经存在的，不需要在创建了
+        // 改变了People构造函数中的this的指向，
+        // 通过子类的构造函数改变this的指向，来设置属性的继承
+        People.call(this,name,age); 
+        // 拓展父类中没有的新特性
+        this.major =major;
+        this.stuID =stuID;
+
+    }
+     属性和方法都可以继承
+   var s1 = new Student("张三",28,"web前端",666);
+//    s1.eat
+   var p =new People("人",100);
+//    改变this的指向  
+   var sEat =p.eat.bind(s1);
+   sEat();
+</script>
+</html>

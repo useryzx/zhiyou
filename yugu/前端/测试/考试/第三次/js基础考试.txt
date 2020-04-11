@@ -1,0 +1,65 @@
+1.js中有几种创建对象的方式,列出!
+
+2.事件的执行顺序是什么?
+
+3.如何添加一个节点?
+
+4.插入一个节点的方法?
+
+5.查找节点的方法有哪些？分别说明用途
+
+6.for(var i = 1; i <= 3; i++){  
+  setTimeout(function(){
+      console.log(i);   
+  },0); 
+};这段代码的输出结果是多少？
+
+7.当一个叫做box的DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做，写出具体的代码?
+
+8.希望获取到页面中所有的checkbox(注意:checkbox是input的类型)怎么做？
+
+9.如何获取输入框内容的长度?
+
+10.a标签的行为为什么用propagation()阻止不了？
+该如何阻止?propagation()能阻止什么？
+
+11.var a= [];
+var b= a;
+b[0] = 1;
+console.log(a[0] ) ; console.log(b[0] ) ; console.log(a===b) ; 此段代码的运行结果是什么？
+
+12.var x= 10;
+var y= 20;
+var z= x< y? x++ : ++y;
+上述代码运行后，变量 x、 y和 z的值为多少？
+
+13.function test() {
+var sum= 0;
+for (var i= 0; i< 10; i++) {
+sum+= i;
+}
+console.log(sum) ;
+console.log(i) ;
+}
+test() ;
+上述代码运行后,打印出来的结果为多少?
+
+14.innerHTML、 nodeValue与 textContent之间的区别是什么
+
+15.DOM操作中，如何获取元素的属性值？
+
+16.setTimeout和setInterval的区别是什么?
+
+17.在使用setTimeout或setInterval的事后，需要注意什么？说明原因
+
+18. javascript的typeof返回哪些数据类型?
+
+19.”==”和“===”的不同
+
+20.节点的种类有几种，分别是什么？
+
+
+
+
+
+

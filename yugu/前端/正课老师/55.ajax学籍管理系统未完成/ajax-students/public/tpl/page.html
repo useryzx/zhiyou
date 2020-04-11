@@ -1,0 +1,22 @@
+<nav>
+   <ul class="pagination">
+        <li id="prev-btn" class="<%=currentPage==0?'disabled':''%>">
+            <a href="#">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <!-- 可以显示多少页 -->
+        <%for(var i=0;i<totalPage;i++){%>
+            <!-- 选中当前所在的页面 然后为每个li设置索引 -->
+            <li class="page-item <%=i==currentPage?'active':''%>" ind="<%=i%>">
+                <a href="#"><%=i+1%></a>
+            </li>
+        <%}%>
+
+        <li id="next-btn" class="<%=currentPage==totalPage-1?'disabled':''%>">
+            <a href="#">
+                <span>&raquo;</span>
+            </a>
+        </li>
+   </ul>
+</nav>

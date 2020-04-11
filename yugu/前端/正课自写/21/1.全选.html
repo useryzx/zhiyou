@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <input type="checkbox" value="">
+        <span>全选</span>
+        <a href="#">反选</a>
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项一
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项二
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项三
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项四
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项五
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项六
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项七
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项八
+    </p>
+    <p>
+        <input type="checkbox" name="" id="">选项九
+    </p>
+    <p>1、切换全选/全不选文字；2、根据选中的个数更新全选框状态；</p>
+</body>
+<script>
+    /*
+    1.当9个选项卡被选中的时候 全选的文字变成全不选
+    2.点击全选 10个选项卡被选中   全选文字变成全不选
+    3.点击全不选 10个选项卡都不被选中  全不选文字变成全选
+    4.点击反选时   所有选项取反值
+    */
+    // 拿出第一个
+    var optionOne = document.querySelector("input");
+    // 取出所有的input
+    var inputAll = document.querySelectorAll("input");
+    var a = document.querySelector("a");
+    var span = document.querySelector("span");
+    // 给input绑定事件
+    // 因为第一个input关联所有，排除第一个  所以i从1开始
+    for (var i = 1; i < inputAll.length; i++) {
+        inputAll[i].onclick = function () {
+            // 展示
+            show();
+        }
+    }
+    // 因为展示效果多出用到，所以封装一个函数
+    function show() {
+        var num = 0;
+        // 记录选中的数量
+        // 遍历所有单一的选项卡
+        for (var j = 1; j < inputAll.length; j++) {
+            // if(inputAll[j].checked){
+            //     // 选中
+            //     num++;
+            // } 
+            // 简单写法
+            inputAll[j].checked && num++;
+        }
+        console.log(num);
+        optionOne.checked = (num === inputAll.length - 1);
+        span.innerHTML = optionOne.checked ? "全不选" : "全选";
+    }
+    // 点击全选或全不选的checkbox的时候让下面九个保持一致
+    optionOne.onclick = function () {
+        for (var j = 1; j < inputAll.length; j++) {
+            inputAll[j].checked = optionOne.checked;
+        }
+        span.innerHTML = optionOne.checked ? "全不选" : "全选";
+    }
+
+    // 反选的按钮
+    a.onclick = function (e) {
+        // 因为a标签有默认行为
+        e.preventDefault;
+        for (var j = 1; j < inputAll.length; j++) {
+            inputAll[j].checked = !inputAll[j].checked;
+        }
+        show();
+    }
+</script>
+
+</html>

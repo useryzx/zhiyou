@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>weatherReport</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            height: 800px;
+            width: 800px;
+            background-color: rgba(161, 161, 161, 0.5);
+            border-radius: 30px;
+            /* border: rgb(255, 123, 0) 1px solid; */
+        }
+
+        #head {
+            width: 100%;
+            height: 100px;
+            background-image: radial-gradient(circle, rgba(255, 254, 254, 1), rgba(202, 97, 97, 0.3));
+            font-size: 50px;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 30px 30px 40% 40%;
+        }
+
+        #body {
+            height: 700px;
+            width: 100%;
+            /* border: solid 1px firebrick; */
+            display: flex;
+            color: white;
+        }
+
+        #left,
+        #right {
+            height: 100%;
+            width: 50%;
+            /* border: fuchsia 1px solid; */
+        }
+
+        #left {
+            border-right: rgba(161, 161, 161, 0.3) 7px solid;
+            border-bottom: rgba(161, 161, 161, 0.3) 14px solid;
+            border-bottom-left-radius: 30px;
+        }
+
+        #right {
+            border-left: rgba(161, 161, 161, 0.3) 7px solid;
+
+        }
+
+        #left,
+        .smallRight {
+            padding: 30px;
+            box-sizing: border-box;
+
+        }
+
+        .smallRight {
+            height: 50%;
+            width: 100%;
+            /* border: solid 3px goldenrod; */
+            border-bottom: rgba(161, 161, 161, 0.3) 14px solid;
+
+        }
+
+        .smallRight:nth-of-type(2) {
+            border-bottom-right-radius: 30px;
+        }
+
+
+        .date {
+            height: 70px;
+        }
+
+        span,
+        img {
+            vertical-align: middle;
+        }
+
+        span {
+            font-size: 40px;
+            margin-left: 60px;
+        }
+
+        .city {
+            font-size: 50px;
+        }
+
+        .weather1 {
+            font-size: 30px;
+            text-align: center;
+            text-indent: 4em;
+
+        }
+
+
+        .qiwen {
+            font-size: 30px;
+            margin-top: 100px;
+        }
+
+        .temperature1 {
+            font-size: 40px;
+            text-align: center;
+            text-indent: 1em;
+        }
+
+        .date {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .temperature2 {
+            font-size: 40px;
+            text-align: center;
+            line-height: 120px;
+        }
+
+        #right img {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 主盒子 -->
+    <main>
+        <!-- 头部盒子 -->
+        <div id="head">
+            天气预报
+        </div>
+        <!-- 下半身盒子 -->
+        <div id="body">
+            <!-- 下半身左侧盒子 -->
+            <div id="left">
+                <h2 class="city">上海</h2>
+                <h3 class="cityPy">shanghai</h3>
+                <section>
+                    <img src="/images/days/cloudy1.png" alt="">
+                    <span class="todayWord date" style="font-size: 22px;">今天
+                    </span>
+                </section>
+                <div class="weather weather1">多云</div>
+                <div class="qiwen">气温</div>
+                <div class="temperature temperature1">26-19℃</div>
+            </div>
+            <!-- 下半身右侧盒子 -->
+            <div id="right">
+                <!-- 下半身右侧上部分 -->
+                <div class="smallRight">
+                    <div class="date">星期五</div>
+                    <section id="s2">
+                        <img src="/images/days/cloudy1.png" alt="">
+                        <span class="weather weather2">多云
+                        </span>
+                    </section>
+                    <div class="temperature temperature2">气温</div>
+                </div>
+                <!-- 下半身右侧下部分 -->
+                <div class="smallRight">
+                    <div class="date">星期五</div>
+                    <section id="s2">
+                        <img src="/images/days/cloudy1.png" alt="">
+                        <span class="weather weather2">多云
+                        </span>
+                    </section>
+                    <div class="temperature temperature2">气温</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- 添加脚本 -->
+    <script src="Convert_Pinyin.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+        // 访问天气接口获取天气信息
+        // 跨域请求
+        $.get('/proxy/simpleWeather/query?city=%E9%83%91%E5%B7%9E&key=2d40dc57c8fd155800f210429714ab1f', function (data) {
+            console.log(data);
+            $.each(data.result.future, function (i, v) {
+                $(".city").text(data.result.city);
+                $(".cityPy").text(pinyin.getFullChars(data.result.city));
+                let weather = v.weather;
+                $(".weather").eq(i).text(weather);
+                $(".date").eq(i).text(v.date);
+                if (i == 0) {
+                    $(".temperature").eq(i).text(v.temperature);
+                }
+                else {
+                    $(".temperature").eq(i).text("气温" + v.temperature);
+                }
+                // 定义天气方法
+                var ssrc = "images/days/";
+                function yun(param) {
+                    $("img")[param].src = ssrc + "duoyun.png";
+                }
+                function yin(param) {
+                    $("img")[param].src = ssrc + "yin.png";
+                }
+                function yu(param) {
+                    $("img")[param].src = ssrc + "xiaoyu.png";
+                }
+                function xue(param) {
+                    $("img")[param].src = ssrc + "xue.png";
+                }
+                function qing(param) {
+                    $("img")[param].src = ssrc + "qing.png";
+                }
+                // 存在相关关键字，即执行相关的替换图片操作，调用前三天的显示
+                if (i < 3) {
+                    if (weather.indexOf("晴") > -1) {
+                        qing(i);
+                    }
+                    if (weather.indexOf("阴") > -1) {
+                        yin(i);
+                    }
+                    if (weather.indexOf("云") > -1) {
+                        yun(i);
+                    }
+                    if (weather.indexOf("雨") > -1) {
+                        yu(i);
+                    }
+                    if (weather.indexOf("雪") > -1) {
+                        xue(i);
+                    }
+                }
+            });
+
+        })
+
+
+    </script>
+</body>
+
+</html>

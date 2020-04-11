@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>control</title>
+    <style>
+        /* div{
+            width: 1000px;
+            border: solid black 1px;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div></div> -->
+</body>
+<script src="Circle.js"></script>
+<script src="Point.js"></script>
+<script src="Line.js"></script>
+<script src="Rect.js"></script>
+<script>
+    /*
+    面向对象的程序设计，把每一个编程元素都视为一个对象，当需要对
+    这个对象进行操作的时候，不需要写代码或者函数操作对象，
+    而是把函数或者代码封装到对象内部，作为对象的属性
+    或者是方法出现
+    */ 
+//    圆中心点是两个值(x,y)  >>>传递进去一个对象
+// new Point(500,150) 构造一个point对象
+   var circle =new  Circle(new Point(500,150),100);
+   circle.draw();
+
+   var line =new Line(new Point(80,0),new Point(800,1000));
+   line.draw();
+   
+   var rect =new Rect(50,50,100,100);
+   rect.draw();
+   rect.beginLoop();
+   
+//    矩形
+</script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- editBy:yuguaa -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>学员列表</h1>
+    <form action="" method="get">
+        <label for="stuName">按姓名条件查询</label><input type="text" name="stuName" id="stuName"><br>
+        <span>按性别查询</span>
+        <label for="man">男</label><input type="radio" name="stuSex" id="man" value="男">
+        <label for="woman">女</label><input type="radio" name="stuSex" id="woman" value="女">
+        <br>
+        <button type="submit">查询</button>
+    </form>
+    <table>
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>专业</th>
+            <th>兴趣爱好</th>
+            <th>删除</th>
+            <th>编辑</th>
+        </thead>
+        <% for(var i=0;i<data.length;i++){ %>
+        <tr>
+            <td><%= data[i].stuName %></td>
+            <td><%= data[i].stuAge %></td>
+            <td><%= data[i].stuSex %></td>
+            <td><%= data[i].stuMajor %></td>
+            <td><%= data[i].stuHobby %></td>
+            <td><a href="/api/stu/remove?_id=<%= data[i]._id %>">删除</a></td>
+            <td><a href="/api/stu/update?_id=<%= data[i]._id %>">编辑</a></td>
+        </tr>
+        <% } %>
+    </table>
+    <% if(page>0){%>
+        <a href="/api/stu/list?page=<%= page-1 %>">上一页</a>
+    <% } %>
+    <span>第<%= page+1 %>页</span>
+    <% if(page<total-1){ %>
+        <a href="/api/stu/list?page=<%= page+1 %>">下一页</a>
+    <% } %>
+</body>
+
+</html>

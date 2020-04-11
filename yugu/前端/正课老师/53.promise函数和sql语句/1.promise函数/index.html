@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise函数</title>
+</head>
+<body>
+    <button id="btn">播放</button>
+</body>
+<script>
+    let btn =document.getElementById('btn');
+    // 把promise带入到实际的项目需求中
+    let p1 =new Promise(function (resolve,reject) {
+        // 假定下载音乐需要时间，那么就可以把该功能放到
+        // promise对象中来让promise监管
+        setTimeout(() => {
+            console.log('音乐下载完毕');
+            resolve()
+        }, 3000);
+      })
+    //   好处是不需要监管数据的下载完毕情况了
+      btn.onclick =function(){
+          p1.then (()=>{
+              console.log('播放');
+          })
+      }
+</script>
+<!-- <script src="index.js"></script> -->
+</html>

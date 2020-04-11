@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户端</title>
+    <script src="./libs/jquery.js"></script>
+</head>
+
+<body>
+    <h1>ajax请求</h1>
+    <select>
+        <option value="">123</option>
+        <option value="">456</option>
+    </select>
+    <br>
+    <button onclick="ajaxClick()">ajax请求</button><br>
+    <button id="jqbtnget">jquery get ajax请求</button><br>
+    <button id="jqbtnpost">jquery post ajax</button><br>
+    <button id="jqbtnslef">jquery自定义的 ajax 请求</button>
+</body>
+<script>
+    function ajaxClick() {
+        console.log('请求');
+        // ajax请求分为两种方式[1.原生的ajax请求,2.jquery的方式]
+        // 1.创建用来处理xml通信的请求对象
+        let xhr = new XMLHttpRequest();
+        // 2.设置xhr对象的状态变化事件回调
+        // xhr有1.就绪，2.准备接收，3.失败，4.完成  多种状态
+        // readyState：（存有 XMLHttpRequest 的状态。从 0 到 4 发生变化）
+        // - 0: 请求未初始化
+        //     - 1: 服务器连接已建立
+        //         - 2: 请求已接收
+        //             - 3: 请求处理中
+        //                 - 4: 请求已完成，且响应已就绪
+        // status：
+        // - 200: "OK"。
+        // - 404: 未找到页面。
+        // 每当xhr从一个状态切换到另一个状态时就会触发
+        // onreadystatechange事件
+        xhr.onreadystatechange = function () {
+            // 状态码为4的时候说明成功
+            if (xhr.readyState == 4) {
+                console.log('服务器返回数据了');
+                let obj = JSON.parse(xhr.responseText);
+                console.log(obj);
+            }
+        }
+        // 3.设置请求方式和url地址
+        xhr.open('get', '/api/get?name=yugu&age=25')
+        // 4.发送请求  参数是请求体，如果是post请求，需要事先准备好请求体然后传递
+        xhr.send();
+    }
+
+// ---------------------------------
+
+    // jQuery的get请求
+    $("#jqbtnget").on('click',function(){
+        // $.get('/api/get?name=yugu&age=25',function(data){
+        //     console.log(data);
+        // })
+        let param = 'name=yugu&age=25';
+        // let a = $.get('/api/get',param)
+        // console.log(a);
+        
+        $.get('/api/get',param).then(data=>{
+            console.log(data);
+            
+        }).catch(err=>{
+            console.log(err);
+            
+        })
+    })
+
+// ----------------------------------
+
+    // jquery的post ajax
+    $('#jqbtnpost').on('click',function(){
+        let obj2 = {name:'yugu',age:25}
+        $.post('/api/post',obj2).then(data=>{
+            console.log(data);
+        }).catch(err=>{
+            console.log(err);
+        })
+    })
+
+    // -------------------------------
+    // 自定义
+    $('#jqbtnslef').on('click',function(){
+        let obj3 = {name:'yugu',age:25}
+        $.ajax({
+            type: "post",
+            url: "/api/post",
+            data: obj3,
+            success: function (data) {
+                console.log(data);
+                console.log('请求成功');
+                
+            },
+            // 请求超时时间
+            timeout:5000,
+            err:function(err){
+                console.log(err);
+            },
+            beforeSend:function(){
+                console.log('开始请求');
+                
+            }
+        });
+    })
+
+</script>
+
+</html>

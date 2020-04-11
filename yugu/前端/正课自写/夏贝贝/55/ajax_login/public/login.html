@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <h1>登陆</h1>
+    <form id="login_form">
+        <label for="">账号：</label>
+        <input type="text" id="account" name="account">
+        <br>
+        <label for="">密码：</label>
+        <input type="password" id="psw" name="psw">
+        <br>
+    </form>
+    <button id="btn">登陆</button> -->
+
+    <form id="login_form">
+        <label for="">账号：</label>
+        <input type="text" id="account" name="account">
+        <br>
+        <label for="">密码：</label>
+        <input type="password" id="psw" name="psw">
+        <br>
+        <button id="btn">登陆</button>
+    </form>
+   
+</body>
+<script src="/libs/jquery.js"></script>
+<script>
+    $('form').submit(function(e) {
+        e.preventDefault();
+        console.log($(this));
+        let params = $(this).serialize();
+        console.log('***'+params);
+        
+        $.post('/users/login', params).then(data => {
+            alert(data.msg);
+            if (data.err == 0) {
+                location.href = '/'
+            }
+        })
+    })
+    // $('#btn').click(function (e) {
+    //     // if ($('#psw').val() != $('#confirm').val()) {
+    //     //     alter('两次密码输入不一样')
+    //     //     return;
+    //     // }
+    //     // $.post('/users/regist', {
+    //     //     account: $('#account').val(),
+    //     //     psw: $('#psw').val()
+    //     // }).then(data => {
+    //     //     alert(data.msg);
+    //     //     if (data.err == 0) {
+    //     //         location.href = '/'
+    //     //     }
+    //     // })
+        
+    //     let params = $("#login_form").serialize();
+    //     console.log('***'+params);
+        
+    //     $.post('/users/login', params).then(data => {
+    //         alert(data.msg);
+    //         if (data.err == 0) {
+    //             location.href = '/'
+    //         }
+    //     })
+    // })
+</script>
+
+</html>

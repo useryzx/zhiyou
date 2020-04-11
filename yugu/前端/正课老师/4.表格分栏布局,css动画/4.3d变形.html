@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d变形</title>
+    <style>
+        body{
+            /* 属性定义了3d元素距离试图的间距单位是像素
+            当为元素定义该属性时，其子元素会获得透视效果，元素
+            本身不获得 */
+            perspective: 1000px;
+        }
+        #d1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 30px auto;
+            transform-origin: 0 50%;
+            /* 添加过渡动画 */
+            /* 表示当所有的样式值发生变化时，变化过渡的时间是0.7s */
+            transition: all 0.7s;
+        }
+        #d1:hover
+        {
+            transform: rotateY(360deg);
+        }
+        #container{
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+            border: solid 1px red;
+            position: relative;
+            transition: all 1.7s;
+            /* 设置过渡类型，preserve-3d保留父元素的3d变形效果 */
+            transform-style: preserve-3d;
+        }
+        #container:hover
+        {
+            transform:rotateX(360deg);
+        }
+        .p1,.p2{
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .p1{
+            background-color: bisque;
+            transform: translateY(150px) rotateX(90deg);
+        }
+        .p2{
+            background-color: paleturquoise;
+            transform: translateZ(150px);
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+       变形
+    </div>
+    <div id="container">
+         <div class="p1"></div>
+         <div class="p2"></div>
+    </div>
+    <div><span>品牌:</span><h3>法拉利</h3></div>
+    <div><span>赛车</span></div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 800px;
+            height: 600px;
+            border: solid 10px black;
+            overflow-y: scroll;
+        }
+
+        .list-item{
+            border-bottom: solid 1px black;
+        }
+        #indicator-line{
+            height: 100px;
+            text-align: center;
+        }
+
+        #indicator{
+            display: inline-block;
+            font-size: 40px;
+            color: green;
+            font-weight: bold;
+            animation-name: spin;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes spin{
+            0%{
+                transform: rotate(0);
+            }
+
+            100%{
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div>
+</body>
+
+
+<script type="text/html" id="tpl">
+    <% for(var i = 0;i<jokeList.length;i++){ %>
+    <div class="list-item">
+        <h3><%=jokeList[i].updatetime%></h3>
+        <p><%=jokeList[i].content%></p>
+    </div>
+    <%}%>
+
+    <div id="indicator-line">
+        <span id="indicator">+</span>
+    </div>
+</script>
+
+
+<script src="jquery.min.js"></script>
+<script src="ejs.js"></script>
+
+<script>
+    // 存储列表数据
+    let jokeList = [];
+
+    // 记录当前是否正在请求数据
+    let isLoading = false;
+
+    function loadData(){
+        isLoading = true;
+        $.get("/proxy/joke/content/text.php",{
+            key:"c5c0bd0e10a4ff41739664ea2ba68ca0",
+            page:jokeList.length/10+1,
+            pagesize:10
+        })
+        .then(res=>{
+            // console.log(res);
+            isLoading = false;
+            jokeList = jokeList.concat(res.result.data);
+            render();
+        })
+        .catch(err=>{
+            isLoading = false;
+        })
+    }
+
+    function render(){
+        let htmlStr = ejs.render($("#tpl").html(),{jokeList});
+        $("#main").html(htmlStr);
+    }
+
+    loadData();
+
+    window.onscroll = function(e){
+        // console.log($(window).scrollTop());
+
+        // console.log(document.documentElement.scrollTop);
+        let st = document.documentElement.scrollTop;
+        let sh = document.documentElement.scrollHeight;
+        let ch = document.documentElement.clientHeight;
+        if(st >= sh - ch-100){
+            if(!isLoading){
+                loadData();
+            }
+        }
+        
+    }
+
+</script>
+
+</html>

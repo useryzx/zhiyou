@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽事件</title>
+    <style>
+        li{
+            cursor: ns-resize;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <!-- draggable拖拽属性 默认为false true打开了-->
+        <li draggable="true">html</li>
+        <li draggable="true">css</li>
+        <li draggable="true">javascript</li>
+        <li draggable="true">jquery</li>
+    </ul>
+</body>
+<script>
+    var lis =document.getElementsByTagName("li");
+    // 绑定拖拽事件
+    // 1.记录当前拖拽的对象  2.当放下的时候和放下的对象交换位置
+    var moveLi;
+    for(var i=0;i<lis.length;i++){
+        // 为所有的li绑定上拖拽事件
+        var li =lis[i];
+        li.ondragstart =function(e){
+            // 记录当前拖拽的对象
+            // currentTarget代表当前选中事件触发对象
+            moveLi =e.currentTarget;
+            //dataTransfer属性定义操作的对象所允许的一个效果
+            //  move代表拖动时候数据会跟随移动
+            e.dataTransfer.effectAllowed="move";
+            // 原来的位置需要清空(因为数据已经跟随移动走了)
+            e.dataTransfer.setData(null,null);
+        }
+        // 拖拽悬停
+        li.ondragover =function(e){
+            // console.log("拖拽悬停");
+            // 假如拖拽是图片之类的文件,浏览器有可能会误操作
+            e.preventDefault();
+        }
+        // 拖拽进入
+        li.ondragenter =function(e){
+            // console.log("拖拽进入");
+            // 拖拽进入的时候添加一个底部的边框
+            e.currentTarget.style.borderBottom ="solid 2px red";
+        }
+        // 拖拽离开
+        li.ondragleave =function(e){
+            // console.log("拖拽离开");
+            e.currentTarget.style.borderBottom ="none";
+        }
+        // 拖拽被放下()
+        li.ondrop =function(e){
+            // e代表的是放到了某个对象上
+            console.log("放下1:"+e.currentTarget.innerHTML);
+            console.log("放下2:"+moveLi.innerHTML);
+            e.currentTarget.style.borderBottom ="none";
+            // 原地不动
+            if (moveLi ==e.currentTarget)return;
+            // 交换数据
+            // 1.首先把拖拽的li从ul中删除
+            // parentElement 返回元素所处的父元素对象
+            var ul =e.currentTarget.parentElement;
+            ul.removeChild(moveLi);//只是把moveLi记录的对象删除了
+            // insertBefore在xx之前插入一个新的
+            // nextSibling 返回某个元素之后紧跟的节点
+            ul.insertBefore(moveLi,e.currentTarget.nextSibling);
+        }
+    }
+</script>
+</html>

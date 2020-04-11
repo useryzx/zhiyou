@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数的使用</title>
+</head>
+
+<body>
+</body>
+<script>
+    /*
+    函数:预先封装好的可以完成某种功能的一个代码块
+    系统带有很多自己的函数例如:...log  write..join...splice..
+    开发人员可以根据自己的需求封装属于自己的函数
+    好处:代码重复利用，性能优化
+    */
+    /*
+      固定写法:function 代表声明一个函数
+              work代表函数的名称 随便写  一般都建议驼峰命名法
+              命名为函数的用途最好 helloWorld(单词与单词之间首字母大写)
+    */
+    function work() {
+        console.log("我的工作是让大家都能找到工作!!!");
+    }
+    // 函数：用的时候需要用哪个函数就调用对应函数的函数名就可以
+    work();
+
+    // 当函数名()内有变量出现的时候代表该函数是一个需要传参数的函数
+    function setAge(age) {
+        console.log("这个 老师的年龄为:" + age);
+    }
+    // 如果函数要求的有参数 那么在调用的时候需要传入具体的值
+    setAge(30);
+    // 函数的多个参数之间使用,分割
+    function people(name, age, sex) {
+        var sexStr = "";
+        if (sex == true) {
+            sexStr = "男生";
+        } else {
+            sexStr = "女生";
+        }
+        console.log("一个叫做:" + name + "的人，今年:" + age +
+            "岁了，是个" + sexStr);
+    }
+    people("夏贝", 30, true);
+
+    // 利用函数来求和
+    function sum(a, b) {
+        console.log(a + b);
+    }
+    sum(10, 20);
+
+    // 带返回类型的方法:当调用该函数的时候函数会返回出来数据
+    function getName() {
+        // return 代表返回  返回某个数据
+        return "夏贝";
+    }
+    var result = getName();
+    console.log(result);
+
+    var he = sum2(10, 30);
+    console.log(he);
+    /*
+      方法可以分为三种：
+          1.没有参数也没有返回类型的方法 例如work()
+          2.有参数没有返回类型的方法，用的时候
+          需要搞清楚参数的结构在调用,例如setAge以及people
+          3.有参数有返回类型的方法，记得要传参以及调用之后
+          的接收
+    */
+    function test() {
+        //变量在函数内的执行也是后面的赋值会覆盖掉前面的
+        var a = 10;
+        return a;
+    }
+    // console.log(test());
+    function test2() {
+        // 在函数内部创建的a叫做局部变量 出了函数就会失效
+        //在方法中调用了其他的方法(方法可以相互之间进行调用)
+        var a = test();
+        return a;
+    }
+    console.log(test2());
+
+
+    //带参数还带有返回类型的方法
+    function sum2(a, b) {
+        return a + b;
+    }
+    // 请写一个三个数求和的方法 该方法要求调用两个数求和的方法
+    // 来完成(不能出现+号)
+    function sum3(e,f,g){
+         var ef=sum2(e,f);
+         var efg =sum2(ef,g);
+         return efg;
+    }
+    console.log(sum3(10,20,30));
+    // 登录>>封装一个登录的方法 admin 123456
+
+  
+    
+</script>
+
+</html>

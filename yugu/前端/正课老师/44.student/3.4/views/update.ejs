@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>修改信息</h1>
+    <form action="/api/edit" method="POST">
+        <input type="text" name="_id" value="<%=data._id%>" style="display: none;">
+        <input type="text" name="name" placeholder="请输入学生姓名">
+        <br>
+        <input type="text" name="age" placeholder="请输入年龄">
+        <br>
+        <label for="">男</label>
+        <input type="radio" name="sex" value="男">
+        <label for="">女</label>
+        <input type="radio" name="sex" value="女">
+        <br>
+        <select name="class" required>
+            <%for(var i=0;i<data.length;i++){%>
+                <%var s=data[i]%>
+                <option value="<%= s._id%>"><%= s.classname%></option>
+            <%}%>
+        </select>
+        <br>
+        <button>修改</button>
+    </form>
+</body>
+
+</html>

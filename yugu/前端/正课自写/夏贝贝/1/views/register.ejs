@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/nav.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">标签</a></li>
+            <li><a href="#">登录</a></li>
+            <li ><a href="/register">注册</a></li>
+         </ul>
+
+    </nav>
+    <h1><%=title%></h1>
+    <form action="/user/register" method="post">
+        <label for="">用户名：</label>
+        <input type="text" 
+        name="username" required>
+        <br>
+        <label for="">密码：</label>
+        <input type="password"  class="psw"  
+        name="password" required>
+        <br>
+        <label for="">确认密码：</label>
+        <input type="password"  class="repsw"
+         required>
+        <br>
+         <button>注册</button>
+     </form>
+</body>
+<script src="/jquery.js"></script>
+<script src="/jquery.cookie.js"></script>
+<script src="/nav.js"></script>
+<script>
+    $('li').eq(3).addClass('show')
+    $('.repsw').on('change',function(){
+       console.log($('.psw').val());
+       console.log($('.repsw').val()+"???");
+       if($('.psw').val() == $('.repsw').val() ){
+           return
+       }else{
+           alert('两次密码不一致')
+           
+       }
+    })
+ 
+</script>
+</html>

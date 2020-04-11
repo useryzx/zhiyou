@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的原型</title>
+</head>
+<body>
+</body>
+<script>
+    function People(name){
+        this.name =name;
+        this.say =function(){
+            console.log("???");
+            
+        }
+    }
+    var p1 =new People("王少欢");
+    // __proto__所有的对象都有的隐藏属性，代表对象的原型
+    // 打印出来的值也是一个对象
+    console.log(p1.__proto__);
+    /*
+       构造函数在创建对象的时候会调用构造函数的方法
+       prototype也是一个对象，叫做构造函数的原型对象
+       凡是通过构造函数创建的对象，其原型__proto__都
+       指向了这个构造函数的prototype
+       __proto__ =prototype;
+       要给一个类添加方法，其实只需要给prototype添加方法就可以了
+    */
+    People.prototype.say =function(){
+        console.log("我叫:"+this.name);
+    }
+    // 当对象调用方法的时候，如果方法中存在这个方法那么直接使用，
+    // 如果方法中不存在则回去原型中查找方法
+    p1.say();
+    
+</script>
+</html>

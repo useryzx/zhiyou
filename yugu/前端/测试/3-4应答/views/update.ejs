@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>修改</h1>
+    <form action="/api/student/resave" method="post">
+    <input type="text" name="studentName" value="<%= a.studentName %>">
+    <br>
+    <input type="text" name="studentAge" value="<%= a.studentAge %>"><br>
+    <input type="radio" name="studentSex" value="男" disabled <%= a.studentSex=='男'?'checked':'' %>>男
+    <input type="radio" name="studentSex" value="女" disabled <%= a.studentSex=='女'?'checked':'' %>>女
+    <br>
+    <select name="studentClass">
+        <%for(var i=0;i<data.length;i++){%>
+            <option value="<%=data[i]._id%>" <%= a.studentClass.className==data[i].className?'selected':'' %>><%=data[i].className%></option>
+            <%}%>
+    </select>
+    <br>
+    <input type="text" name="_id" value="<%= a._id %>" style="display: none;">
+    <button type="submit">提交</button>
+    </form>
+</body>
+</html>

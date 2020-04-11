@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>看图识字</title>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            vertical-align: bottom;
+        }
+
+        li {
+            cursor: pointer;
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        #fruit,
+        #fruitPic {
+            width: 463px;
+            height: 722px;
+            border: 1px solid red;
+        }
+
+        #fruitPic {
+            background-image: url(images/看图识字.png);
+        }
+
+        table {
+            margin: 0 auto;
+            margin-top: 80px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+
+        td {
+            margin: 0;
+            padding: none;
+            height: 152px;
+            width: 102px;
+            vertical-align: bottom;
+            text-align: center;
+        }
+
+        span {
+            font-size: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fruit">
+        <ul>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+            <li><img draggable="true" class="fruitItem" src="" alt=""></li>
+        </ul>
+    </div>
+    <div id="scoreBar">
+        <span>分数：</span>
+        <span id="score">00</span id>
+    </div>
+    <div id="fruitPic">
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    var fruitItemList = document.querySelectorAll(".fruitItem");
+    var tdList = document.querySelectorAll("td");
+    var scoreSpan = document.querySelector("#score");
+    var moveImg;
+    var score = 0;
+    var arr = [];
+    // 生成数组1-16而且不能重复
+
+    for (var i = 0; i < 16; i++) {
+        var num = Math.floor(Math.random() * 16) + 1;
+        // 判断数组中是否存在此数字
+        if (arr.indexOf(num) == -1) {
+            arr.push(num);
+        }
+        else {
+            i--;
+        }
+    }
+
+    for (var i = 0; i < arr.length; i++) {
+        fruitItemList[i].src = "images/" + (arr[i] < 10 ? "0" + arr[i] : arr[i]) + ".png";
+    }
+
+    for (var i = 0; i < fruitItemList.length; i++) {
+        fruitItemList[i].ondragstart = function (e) {
+            moveImg = e.target;
+            e.dataTransfer.effectAllowed = "move";
+            e.dataTransfer.setData(null, null);
+        }
+        tdList[i].index = i + 1;
+        tdList[i].ondragover = function (e) {
+            e.preventDefault();
+        }
+        tdList[i].ondrop = function (e) {
+            if (e.target.index == moveImg.src.slice(-6, -4)) {
+                this.appendChild(moveImg);
+                score++;
+                scoreSpan.textContent = score < 10 ? "0" + score : score;
+            }
+        }
+    }
+</script>
+
+</html>

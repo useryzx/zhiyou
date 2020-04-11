@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>App登录</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* 导航部分 */
+        main {
+            /* flex-basis: 515px 885px; */
+            flex-basis: 515px;
+            flex-shrink: 1;
+            height: 885px;
+            background-image: url(startup750.png);
+            background-size: 100% 100%;
+            opacity: 0.8;
+        }
+
+        #nav {
+            margin-top: 15px;
+            width: 515px;
+            display: flex;
+            justify-content: space-between;
+            line-height: 26px;
+        }
+
+        span {
+            display: block;
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .text-color {
+            font-size: 16px;
+        }
+
+        .s1 {
+            margin-left: 50px;
+        }
+
+        .s2 {
+            margin-right: 50px;
+        }
+
+        /* 头像部分 */
+        #circle {
+            width: 100%;
+            height: 340px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #circle-img {
+            width: 165px;
+            height: 165px;
+            background-image: url(1.jpg);
+            background-size: 100% 100%;
+            border-radius: 50%;
+            /* animation: rotate 5s linear infinite; */
+            position: relative;
+        }
+
+        #circle-img::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            bottom: -5px;
+            right: -5px;
+            border: 5px solid orange;
+            /* border-radius: 50%; */
+            animation: snake 2s linear infinite;
+        }
+
+        #circle-img::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            bottom: -5px;
+            right: -5px;
+            border: 5px solid skyblue;
+            /* border-radius: 50%; */
+            animation: snake 2s linear infinite -1s;
+        }
+
+        @keyframes snake {
+
+            0%,
+            100% {
+                clip: rect(0, 175px, 5px, 0);
+            }
+
+            25% {
+                clip: rect(0, 175px, 175px, 170px);
+            }
+
+            50% {
+                clip: rect(170px, 175px, 175px, 0);
+            }
+
+            75% {
+                clip: rect(0px, 5px, 175px, 0);
+            }
+        }
+
+        /* 账号密码部分 */
+        #name-s {
+            width: 100%;
+            text-align: center;
+        }
+
+        label,
+        input {
+            font-size: 18px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            color: #ffffff;
+        }
+
+        label,
+        input {
+            font-size: 18px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            color: #ffffff;
+        }
+
+        hr {
+            width: 60%;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        #eye {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url(yan.png);
+            background-size: 100% 100%;
+        }
+
+        #label-bottom {
+            margin-left: 11px;
+        }
+
+        input {
+            margin-left: 20px;
+        }
+
+        #hr-top {
+            height: 20px;
+        }
+
+
+        /* 登录提交及忘记密码 */
+        #commit-reset {
+            width: 100%;
+            height: 240px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        #commit {
+            height: 45px;
+            width: 33%;
+            background-color: #30a760;
+            /* color: white; */
+            border-radius: 10px;
+            text-align: center;
+            line-height: 45px;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        #reset {
+            width: 20%;
+            height: 20px;
+            /* color: white; */
+            /* background-color: red; */
+            /* text-decoration: underline; */
+        }
+
+        #other-top {
+            width: 100%;
+        }
+
+        /* 其他方式上部分 */
+        #other {
+            width: 75%;
+            display: flex;
+            margin: 0 auto;
+        }
+
+        #top-middle {
+            color: white;
+        }
+
+        .hr,
+        #top-middle {
+            flex-basis: 28%;
+            flex-shrink: 1;
+        }
+
+        .hr {
+            margin-top: 12px;
+        }
+
+        /* qq微信微博 */
+        #container {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        #weibo,
+        #wechat {
+            flex-basis: 40%;
+            height: 75px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #qq {
+            flex-basis: 20%;
+            height: 75px;
+            background-image: url(qq.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 50% 50%;
+        }
+
+        #weibo {
+            background-image: url(weibo.png);
+            background-position: 50% 50%;
+            margin-left: 3px;
+
+        }
+
+        #wechat {
+            background-image: url(weixin.png);
+            background-position: 50% 50%;
+            margin-right: 3px;
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- 导航部分 -->
+        <div id="nav">
+            <span class="text-color s1">返回</span>
+            <span>登陆</span>
+            <span class="text-color s2">注册</span>
+        </div>
+
+        <!-- 头像部分 -->
+        <div id="circle">
+            <div id="circle-img"></div>
+        </div>
+
+        <!-- 账号密码部分 -->
+        <div id="name-s">
+            <label for="zhanghao">账号<input type="text" id="zhanghao" placeholder="请输入账号"></label>
+
+            <hr id="hr-top">
+            <label id="label-bottom" for="mima">密码<input type="text" id="mima" placeholder="请输入密码"><span
+                    id="eye"></span></label>
+            <hr>
+        </div>
+
+        <!-- 登录提交及忘记密码 -->
+        <div id="commit-reset">
+            <div id="commit">登陆</div>
+            <div id="reset">忘记密码？</div>
+        </div>
+
+        <!-- 其他方式上部分 -->
+        <div id="other-top">
+            <div id="other">
+                <hr class="hr">
+                <div id="top-middle">其他方式登陆</div>
+                <hr class="hr">
+            </div>
+        </div>
+
+        <!-- qq微信微博 -->
+        <div id="container">
+            <div id="weibo"></div>
+            <div id="qq"></div>
+            <div id="wechat"></div>
+        </div>
+    </main>
+</body>
+
+</html>

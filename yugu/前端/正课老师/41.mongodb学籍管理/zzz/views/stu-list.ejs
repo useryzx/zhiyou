@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #list{
+        border: solid 1px black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #list td,#list th{
+        border: solid black 1px;
+            text-align: center;
+    }
+</style>
+<body>
+    <h1>学员名单</h1>
+    <form action="">
+        <label>按姓名查询</label>
+        <input type="text" name="name" placeholder="请输入姓名">
+        <br>
+        <label>按性别条件查询</label>
+        <br>
+        <label for="">男</label>
+        <input type="radio" name="sex" value="男">
+        <label for="">女</label>
+        <input type="radio" name="sex" value="女">
+        <br>
+        <button>查询</button>
+    </form>
+    <table id="list">
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>专业</th>
+            <th>兴趣爱好</th>
+            <th>删除</th>
+            <th>编辑</th>
+        </thead>
+        <!-- data里面的数据装的是对象，每个对象对应一个tr -->
+        <%for(var i=0;i<data.length;i++){%>
+            <%var s = data[i]%>
+        <tr>
+            <td><%=s.name%></td>
+            <td><%=s.age%></td>
+            <td><%=s.sex%></td>
+            <td><%=s.major%></td>
+            <td><%=s.hobby%></td>
+            <td>
+                <a href="/api/stu/remove?id=<%=s._id%>">删除</a>
+            </td>
+            <td>
+                <a href="/api/stu/edit?id=<%=s._id%>">编辑</a>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+    <!-- 设置页数 -->
+    <%if(page>0){%>
+        <a href="/stu-list?page=<%=page-1%>">上一页</a>
+    <%}%>
+    <span>第<%=page+1%>页</span>
+    <%if(page<total -1){%>
+        <a href="/stu-list?page=<%=page+1%>">下一页</a>
+    <%}%>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(".del").on("click",function (e) {
+        var flag=confirm("确定要删除吗？")
+        if (!flag) {
+            e.preventDefault();
+        }
+    })
+
+</script>
+</html>

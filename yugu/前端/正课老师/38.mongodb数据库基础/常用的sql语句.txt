@@ -1,0 +1,31 @@
+show dbs:用于查询所有的数据库     da:database
+
+use xxx :用于创建或者是切换到某个数据库(存在就切换，不存在就创建)
+
+db：查询当前所在的数据库
+
+db.createCollection("xxxxx")在当前数据库中创建一张表 表名交xxxx
+
+数据库可以理解为房子 表可以理解为房子里的房间 数据可以理解为房间中的人
+
+db.表名.insert({name:"xxxxx",age:25})  在当前数据库的表中插入一条数据 数据格式是对象
+
+db.表名.find()查询表中所有的数据
+
+_id是数据库中每条数据的编号，不能修改也不要触碰或占用
+
+条件查询：
+db.表名.find({name:"xxx"})查询出所有name为xxx的数据
+db.表名.find({name:"xxx",age:xx})查询出表中name叫做xxxx为xx的数据
+db.表名.find({name:/^x/})查询表中name数据所有以x开头的查询的条件可以是正则表达式
+db.表名.find({age:{$lt:30}})查询表中age小于30的 $lt是小于 $gt大于 $lte小于等于 $gte大于等于
+db.表名.find({age:{$lt:60,$gt:20}})代表查询表中的age小于60同时大于20的数据
+db.表名.find().count()返回本次查询的条数
+db.表名.find().sort({age:1})把表中所有的age按照升序排列(小在前)
+ -1是按照降序排列(大在前)
+db.表名.find().skip(n).limit(m)从查询结果中挑出前面n条取后面m条 得到没被挑出的数据 一般都是分页查询的时候使用
+db.表名.remove({k:v}) 删除表中所有符合条件的数据，大部分都是以主键(_id)来作为删除条件 k=key v=value
+db.表名.update({name:"xx"},{$set:{age:1000}})将表中姓名为xx的人的age设置为1000
+
+增删改查
+ mongodb的查询一般都是以正则表达式作为条件的

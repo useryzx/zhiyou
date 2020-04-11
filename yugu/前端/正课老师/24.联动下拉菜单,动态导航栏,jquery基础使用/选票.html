@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="down" style="border: 3px solid red;"></p>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $("<table></table>").appendTo($("body"))
+
+var rows = 3;
+
+var cols = 4;
+
+
+for (var i = 0; i < rows; i++) {
+
+    var $tr = $("<tr></tr>");
+
+    $("table").append($tr);
+
+    for (var j = 0; j < cols; j++) {
+
+        var $td = $("<td></td>").text((i + 1) + "排" + (j + 1) + "座").css({
+
+            width: "100px",
+
+            height: "50px",
+
+            border: "1px solid black"
+
+        }).attr(
+
+            "isDown", "true",
+
+
+        )
+
+        $tr.append($td);
+
+    }
+
+}
+
+for (var i = 0; i < $("td").length; i++) {
+
+    $("td").eq(i).attr("index", (i + 1))
+
+}
+
+$("td").on("click", function (e) {
+
+    if ($(this).attr("isDown") == "true") {
+
+        $(this).css("background", "red")
+
+        $(this).attr("isDown", "false")
+
+        $("<span></span>").text($(this).text()).attr("index", $(this).attr("index")).css("margin", "5px")
+
+            .appendTo($(
+
+                "#down"))
+
+    } else if ($(this).attr("isDown") == "false") {
+
+        console.log(111);
+
+        $(this).css("background", "")
+
+        $(this).attr("isDown", "true")
+
+        var a = $(this).attr('index')
+
+        console.log(a);
+
+        $("span[index=" + a + "]").remove()
+
+
+    }
+
+})
+</script>
+</html>

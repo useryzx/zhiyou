@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            width: 80%;
+            text-align: center;
+        }
+        td{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>首页界面</h1>
+    <div id="before">
+        <a href="login.html" id="login">登陆</a>
+        <a href="register.html" id="register">注册</a>
+    </div>
+    <div id="after">
+        <a href="/api/student/manage">添加学生</a>
+        <a href="class.html">添加班级</a>
+        <a href="/api/exit">退出</a>
+    </div>
+    <br>
+    <br>
+    <form action="/" method="get">
+        <input type="text" name="studentName" placeholder="请输入搜索内容">
+        <button>搜索</button>
+    </form>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>班级</td>
+            <td>性别</td>
+            <td class="tdManage">操作</td>
+        </tr>
+        <%for(var i =0;i<data.length;i++){%>
+        <tr>
+            <td><%=data[i].studentName%></td>
+            <td><%=data[i].studentAge%></td>
+            <td><%=data[i].studentClass.className%></td>
+            <td><%=data[i].studentSex%></td>
+            <td class="tdManage">
+                <a href="/api/student/update?_id=<%=data[i]._id%>">修改</a>
+                <form action="/api/student/delete" method="post">
+                    <input type="text" name="_id" id="id" style="display: none;" value="<%=data[i]._id%>">
+                    <button>删除</button>
+                </form>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+    <% if(num>0){%>
+        <a href="/?num=<%= num-1 %>">上一页</a>
+    <% } %>
+    <span>第<%= num+1 %>页</span>
+    <% if(num<total-1){ %>
+        <a href="/?num=<%= num+1 %>">下一页</a>
+    <% } %>
+</body>
+<script>
+    // 使用flag标记有没有session，由于session保存在服务端，js无法直接获取，使用cookie更方便，当存在session.user时候，flag==true,由于传递过来以后转成了字符串，需要进行==判断
+    // 使用display：none的属性进行登陆前后的页面显示
+    // 使用ejs模板中返回链接应该是更安全的做法
+    var flag = "<%=flag%>";
+    var before = document.getElementById('before');
+    var after = document.getElementById('after');
+    var td = document.getElementsByClassName('tdManage');
+    console.log(flag);
+    if(flag=="true"){
+        before.style.display = 'none';
+        for(var i=0;i<td.length;i++){
+            td[i].style.display = 'table-cell';
+        }
+        after.style.display = 'inline-block';
+    }
+    else{
+        // 未登录时隐藏修改删除操作
+        before.style.display = 'inline-block';
+        for(var i=0;i<td.length;i++){
+            td[i].style.display = 'none';
+        }
+        after.style.display = 'none';
+    }
+    
+</script>
+</html>

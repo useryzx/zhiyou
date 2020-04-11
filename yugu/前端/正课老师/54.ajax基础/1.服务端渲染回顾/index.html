@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 前端只负责了调用，所有的数据都是百度整理好打包给前端渲染的
+    偏后端的开发 -->
+    <a href="http://www.baidu.com" target="_blank">百度一下</a>
+
+    <button onclick="btnCLick()">前端的按钮</button>
+</body>
+<script>
+    // 逻辑前端也参与了
+    let num =0;
+    function btnCLick() { 
+        num++;
+        console.log(num);
+     }
+</script>
+</html>

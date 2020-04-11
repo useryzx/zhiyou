@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    var div = document.createElement("div");
+    div.style.backgroundImage = "url(bg.jpg)";
+    div.style.height = "400px";
+    div.style.backgroundsize = "1920px 400px";
+    div.style.backgroundposition = " 50% 50%";
+    document.body.appendChild(div);
+
+    document.body.style.margin = "0";
+    document.body.style.backgroundColor = "gray";
+   
+    var main=document.createElement("main");
+    main.style.width="1000px";
+    main.style.margin= "0 auto";
+    main.style.marginBottom="40px";
+
+    var h1 = document.createElement("h1");
+    h1.textContent="张佳仪的个人主页";
+    h1.style.textAlign="center";
+    h1.style.fontSize="24px";
+    h1.style.color="black";
+    h1.style.fontFamily="仿宋";
+    h1.style.fontWeight="bold";
+    main.appendChild(h1);
+
+    var div = document.createElement("div");
+    var h3=document.createElement("h3");
+    h3.textContent="我的学校";
+    div.appendChild(h3);
+
+    var p=document.createElement("p");
+    p.textContent="中国人民解放军战略支援部队信息工程大学（Information Engineering University），以原信息工程大学、外国语学院为基础重建，隶属战略支援部队，主要为国防和军队现代化建设培养信息领域高层次人才，为军队2110工程重点建设院校。学校创建于1931年1月，前身是军委工程学校第二部、第三部和东北民主联军测绘学校；先后由原解放军信息工程学院、解放军测绘学院、解放军电子技术学院和解放军外国语学院合并组建而成。";
+    p.style.textIndent="2em";
+    p.style.color="red";
+    div.appendChild(p);
+
+    var img= document.createElement("img");
+    img.src="daxue.png";
+    img.style.width="100%";
+    div.appendChild(img);
+    
+    main.appendChild(div);
+    document.body.appendChild(main);
+
+
+ 
+   
+
+
+</script>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人主页</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: gray;
+        }
+
+        #nav-bar {
+            /* 固定位置 */
+            position: fixed;
+            background-color: #cccccc;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        #nav-list {
+            list-style: none;
+            background-color: yellowgreen;
+            margin: 0 auto;
+            width: 1000px;
+        }
+
+        #nav-list li {
+            display: inline-block;
+        }
+
+        #nav-list li a {
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        #nav-list li a:hover {
+            background-color: cyan;
+        }
+
+        #banner {
+            height: 400px;
+            /* 背景图片 */
+            background-image: url("imgs/bg.jpg");
+            /* 设置背景图片的尺寸 */
+            background-size: 100% 100%;
+            /* 背景图展示的位置 x,y 中心点 */
+            background-position: 50% 50%;
+        }
+        #main{
+            width: 1000px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+        #title{
+            text-align: center;
+            font-size: 35px;
+            color: #333333;
+            font-family: "仿宋";
+            font-weight: bold;
+        }
+        .line{
+            text-indent: 2em;
+            color: red;
+        }
+        .pic{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航 -->
+    <nav id="nav-bar">
+        <ul id="nav-list">
+            <li>
+                <a href="">我的学校</a>
+            </li>
+            <li>
+                <a href="">我的家乡</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- 图片 -->
+    <div id="banner"></div>
+    <div id="main">
+        <h1 id="title">夏贝的主页</h1>
+        <div>
+            <h3 id="subtitle">我的学校</h3>
+            <p class="line">中国人民解放军战略支援部队信息工程大学（Information Engineering
+                University），以原信息工程大学、外国语学院为基础重建，隶属战略支援部队，主要为国防和军队现代化建设培养信息领域高层次人才，为军队2110工程重点建设院校。学校创建于1931年1月，前身是军委工程学校第二部、第三部和东北民主联军测绘学校；先后由原解放军信息工程学院、解放军测绘学院、解放军电子技术学院和解放军外国语学院合并组建而成。
+            </p>
+            <img class="pic" src="imgs/daxue.png" alt="">
+        </div>
+        <div>
+            <h3 id="subtitle">我的家乡</h3>
+            <p class="line">中国人民解放军战略支援部队信息工程大学（Information Engineering
+                University），以原信息工程大学、外国语学院为基础重建，隶属战略支援部队，主要为国防和军队现代化建设培养信息领域高层次人才，为军队2110工程重点建设院校。学校创建于1931年1月，前身是军委工程学校第二部、第三部和东北民主联军测绘学校；先后由原解放军信息工程学院、解放军测绘学院、解放军电子技术学院和解放军外国语学院合并组建而成。
+            </p>
+            <img class="pic" src="imgs/daxue.png" alt="">
+        </div>
+    </div>
+</body>
+
+</html>

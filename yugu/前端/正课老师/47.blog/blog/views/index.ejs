@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        .blog-title{
+            color: red;
+        }
+        .blog-title a{
+            color: red;
+        }
+        .link:hover{
+           color: red;
+        }
+        .tag-item{
+            background-color: red;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <%-include('./header.ejs')%>
+    <main>
+        <%for(var i=0;i<data.length;i++){%>
+        <% var b =data[i]%>
+        <div>
+            <h2 class="blog-title">
+                <a href="/blog/detail?_id=<%=b._id%>"><%=b.title%></a>
+            </h2>
+            <p>
+                <span>
+                    作者: <a href="/blog/author?author=<%=b.author._id%>" class="link"><%=b.author.username%></a>
+                </span>
+                <span><%=b.time%></span>
+                <%for(var j=0;j<b.tag.length;j++){%>
+                    <a href="/blog/list?tag=<%=b.tag[j]%>" class="tag-item"><%=b.tag[j]%></a>
+                 <%}%>   
+            </p>
+            <p>
+                <span>阅读:<%=b.readCount%></span>
+                <span>阅读:<%=b.reply.length%></span>
+            </p>
+        </div>
+        <%}%>
+    </main>
+
+</body>
+
+</html>

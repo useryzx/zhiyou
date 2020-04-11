@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function People({name,age}){
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // People.prototype.speak = function(){
+    //     console.log(`我叫${this.name}`);
+
+    // }
+    // let p1 = new People({name:'yugu',age:10})
+    // p1.speak();
+    // function Student({stuID}){
+    //     People.call(this,arguments[0])
+    //     this.stuID = stuID
+    // }
+    // Student.prototype = Object.create(People.prototype)
+    // Student.prototype.study = function(){
+    //     console.log('学习');
+    // }
+    // let s = new Student({name:'yugu',age:12,stuID:28})
+    // s.speak();
+    // s.study();
+
+
+    class People {
+        constructor({ name, age }) {
+            this.name = name;
+            this.age = age;
+        }
+        speak(){
+            console.log(`我叫${this.name}`);
+            
+        }
+    }
+    var p = new People({name:'yugu',age:18})
+    console.log(p);
+    p.speak();
+
+    // es6之后的继承
+    class Student extends People{
+        constructor({stuID}){
+            // super表示调用父类的此函数
+            super(arguments[0])
+            this.stuID = stuID
+        }
+        study(){
+            console.log('学习');
+            
+        }
+    }
+    let m = new Student({name:'yugu',age:89})
+    console.log(m);
+    m.study()
+    m.speak()
+    
+    
+</script>
+
+</html>

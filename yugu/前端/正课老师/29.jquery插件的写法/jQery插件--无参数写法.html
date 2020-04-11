@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery插件--无参数的写法</title>
+    <style>
+        div {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+        }
+
+        aside {
+            width: 100px;
+            height: 150px;
+            background-color: blue;
+            margin-top: 50px;
+        }
+
+        section {
+            width: 100px;
+            height: 150px;
+            background-color: green;
+            margin-top: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <aside></aside>
+    <section></section>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // 全局会生成jquery的对象可以用jQuery也可以使用$
+    // $是简写
+    // console.log($);
+    // console.log(jQuery);
+    console.log($ === jQuery); //true
+    //  .fn也是一个对象，存储的是jquery的所有信息，包括版本和
+    // 所有方法
+    console.log($.fn);
+    //  给jquery对象绑定新方法,jquery方法是jquery对象调用的
+    $.fn.styleChange = function () {
+        console.log(this);
+        console.log('调用了自定义方法');
+        $(this).click(function () {
+            $(this).css({
+                backgroundColor:'green',
+                border:'solid 1px #000',
+                boxShadow:'0 0 5px red',
+                width:120,
+                height:120,
+                borderRadius:'50%'
+            })
+        })
+        // 确保对象的链式调用(对象调用一个方法，方法的返回还是
+        // 对象的本身)
+        return  $(this);
+    }
+    $('div').styleChange();
+    $('section').styleChange();
+    $('aside').styleChange();
+    
+</script>
+
+</html>

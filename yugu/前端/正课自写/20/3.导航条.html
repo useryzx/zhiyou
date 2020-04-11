@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 80%;
+            height: 60px;
+            margin: 0 auto;
+            background-color: #666;
+            color: purple;
+            line-height: 60px;
+            border-bottom: 1px solid #666;
+        }
+
+        ul {
+            list-style: none;
+            border: purple 1px solid;
+        }
+
+        li {
+            display: inline-block;
+            width: 80px;
+            text-align: center;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .fixRed {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="fixRed">首页</li>
+            <li>国内</li>
+            <li>国际</li>
+            <li>军事</li>
+            <li>财经</li>
+            <li>互联网</li>
+            <li>房产</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var liList = document.querySelectorAll("li");
+    var ul = document.querySelector("ul");
+    var childNodesList = ul.childNodes;
+    for (var i = 0; i < childNodesList.length; i ++) {
+        ul.removeChild(childNodesList[i]);
+    }
+
+    for (var i = 0; i < liList.length; i++) {
+        liList[i].onmouseenter = function (e) {
+            this.classList.add("red");
+        }
+        liList[i].onmouseleave = function (e) {
+            this.classList.remove("red");
+        }
+    }
+</script>
+
+</html>

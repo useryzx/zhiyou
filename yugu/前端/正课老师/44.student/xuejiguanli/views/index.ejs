@@ -1,0 +1,84 @@
+<%-include('./header.ejs')%>
+
+<body>
+    <% if(user){%>
+    <a href="/student/add">添加学生</a>
+    <a href="/banji/add">添加班级</a>
+    <a href="/user/logout">推出</a>
+    <%} else{%>
+    <a href="/user/login">登录</a>
+    <a href="/user/zhuce">注册</a>
+    <%}%>
+    <br>
+    <br>
+    <form>
+       <input type="search" placeholder="请输入搜索内容" name="content">
+       <button type="submit">搜索</button>
+    </form>
+    <br>
+    <%if(students.length==0){%>
+    <h2>没有学生,请添加学生信息</h2>
+    <%}else{%>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>班级</td>
+            <td>性别</td>
+            <td>操作</td>
+        </tr>
+        <%students.forEach(function(item){%>
+        <tr>
+            <td><%=item.stuName%></td>
+            <td><%=item.age%></td>
+            <td><%=item.banji.className%></td>
+            <td><%=item.isMale?'男':'女'%></td>
+            <td>
+                <a href="<%= '/student/update/'+item.banji._id+'/'+item.stuName%>">修改</a>
+                <button class="delete" stuName='<%= item.stuName%>' banji='<%= item.banji._id%>'>删除</button>
+            </td>
+        </tr>
+        <%})%>
+            </table>
+            <%= pages%>
+            <div>
+                <a href="/">首页</a>
+                
+                <% pages.forEach(function(item){%>
+                    <a href="<%= '/?page=' + item%>"><%=item%></a>
+                    <%})%>
+                <a href="<%= '/?page=' + pageTotal%>">末页</a>
+            </div>
+        <%}%>
+</body>
+<script>
+    // 删除,更新, 搜索，
+    $('.delete').click(function(){
+         var stuName =$(this).attr('stuName');
+         var banji =$(this).attr('banji');
+        //  拼接get请求就可以了
+        $.get('/student/delete/'+banji+'/'+stuName
+        ,function(res){
+            if (res.error==0) {
+                alert(res.msg);
+                location.href ='/';
+            } else {
+                alert(res.msg);
+            }
+        });
+    });
+    // 搜索的内容
+    // 1.回车按钮可以搜索  2.点击搜索按钮也可以搜索
+    $('form').submit(function(ev){
+        ev.preventDefault();
+        var data =$(this).serialize();
+        $.get('/search',data,function(res){
+            // search的rounter
+            // 把所有班级里面叫同一个名字的学生找出来
+            if (res.error==0) {
+                location.href ='/search/'+res.stu.stuName;
+            }
+        })
+    })
+</script>
+</html>

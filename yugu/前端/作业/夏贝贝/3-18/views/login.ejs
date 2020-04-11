@@ -1,0 +1,23 @@
+<%-include('./header.ejs')%>
+<p class="p-item"><a href="/user/login">登陆</a></p>
+<p class="p-item"><a href="/user/register">注册</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+
+    </form>
+</p>
+</nav>
+<div>
+    <h1><%=title%></h1>
+    <hr>
+    <form action="/user/login" method="post">
+        <input type="text" name="username" required value="<%=a?a.username:''%>"><br>
+        <input type="password" name="psw" required value="<%=a?a.psw:''%>"><br>
+        <button>登陆</button>
+    </form>
+</div>
+</main>
+</body>
+
+</html>

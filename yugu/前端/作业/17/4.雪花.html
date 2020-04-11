@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        img {
+            transition: all 5000ms;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    document.body.style.backgroundColor = "black";
+    var wl = window.innerWidth;
+    var wt = window.innerHeight;
+    // var snowNum = Math.floor(Math.random() * 10);
+    setInterval(function () {
+        var snow = document.createElement("img");
+        snow.src = "flake.png";
+        snow.style.position = "absolute";
+        var num = 5 + Math.floor(40 * Math.random());
+        snow.style.width = num + "px";
+        snow.style.left = Math.floor(wl * Math.random()) + "px";
+        snow.style.top = -num + "px";
+        snow.style.opacity = "0.7";
+        document.body.appendChild(snow);
+
+        setTimeout(function () {
+            snow.style.left = Math.floor(wl * Math.random()) + "px";
+            snow.style.top = wt + "px";
+            snow.style.opacity = Math.random();
+
+            setTimeout(function () {
+                document.body.removeChild(snow);
+            }, 5000);
+        }, 100);
+    }, 100)
+
+</script>
+
+</html>

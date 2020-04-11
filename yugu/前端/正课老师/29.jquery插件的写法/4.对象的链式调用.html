@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象的链式调用</title>
+</head>
+<body>
+</body>
+<script src="jquery.js"></script>
+<script>
+   var obj ={
+       f1:function(){
+           console.log('f1调用;');
+           return this;
+       },
+       f2:function(){
+           console.log('f2调用;');
+           return this;
+       }
+   }
+//    对象的链式调用 
+// 对象调用一个方法，方法的返回还是对象的本身) 
+   obj.f2().f1().f2().f1();
+//    jquery中有大量使用链式调用的写法
+   $('<div></div>')//对象
+   .css('color','red') //对象
+   .text('text','jquery')//对象
+   .attr('title','跟上')//对象
+   .appendTo('body');
+</script>
+</html>

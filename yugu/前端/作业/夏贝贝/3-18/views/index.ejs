@@ -1,0 +1,53 @@
+<%-include('./header.ejs')%>
+<%if(user){%>
+<p class="p-item"><a href="">上传</a></p>
+<p class="p-item"><a href="/msg-commit">发布</a></p>
+<p class="p-item"><a href="/user/exit">退出</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+
+    </form>
+</p>
+<%}else{%>
+<p class="p-item"><a href="/user/login">登陆</a></p>
+<p class="p-item"><a href="/user/register">注册</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+    </form>
+</p>
+<%}%>
+</nav>
+<div>
+    <h1><%=title%></h1>
+    <hr>
+    <article>
+        <%for(var i=0;i<data.length;i++){%>
+        <% var b =data[i]%>
+        <article>
+            <h2 class="blog-title">
+                <a href="/msg/detail?_id=<%=b._id%>"><%=b.topic%></a>
+            </h2>
+            <p>
+                <span>
+                    作者: <a href="" class="link"><%=b.author.username%></a>
+                </span>
+                <span><%=b.time%></span>
+                <%for(var j=0;j<b.tag.length;j++){%>
+                    <a href="/blog/list?tag=<%=b.tag[j]%>" class="tag-item"><%=b.tag[j]%></a>
+                <%}%>   
+            </p>
+            <p>
+                <span>阅读:<%=b.readCount%></span>
+                <span>阅读:<%=b.reply.length%></span>
+            </p>
+        </article>
+        <%}%>
+    </article>
+</div>
+
+</main>
+</body>
+
+</html>

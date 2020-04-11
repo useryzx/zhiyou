@@ -1,0 +1,21 @@
+1.元素的节点(增，删，该，查)
+2.属性节点 
+   查看一个元素的属性首先应该先拿到属性列表attributes>>>在去遍历列表中的属性对象>>>其中
+name代表的是属性名称  value代表的是属性的值
+
+    setAttribute:修改或添加属性
+    removeAttribute: 代表删除
+    classList:css样式的属性使用
+
+3.文本节点
+
+      nodeType表示节点类型  1.为元素 2.属性       3.文本
+      
+      childNodes表示本节点所有的子节点
+
+
+setInterval:重复定时器
+
+setTimeout:延迟加载定时器
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // es5
+    // function People({name,age}){
+    //     this.name=name;
+    //     this.age=age;
+    // }
+    // People.prototype.speak=function(){
+    //     console.log('我叫'+this.name);
+    // }
+    // let p1=new People({name:'张',age:22});
+    // p1.speak();
+    // function  Student({stuID}){
+    //     People.call(this,arguments[0]);
+    //     this.stuID=stuID
+    // }
+    // Student.prototype=Object.create(People.prototype);
+    // Student.prototype.study=function(){
+    //     console.log('学习');
+    // }
+    // let s=new Student({name:'张',age:22,stuID:88});
+    // s.speak();
+    // s.study();
+
+
+    // -----------------------------------
+    /*
+        在es5中，声明一个类只能通过构造函数，在构造函数的原型中添加方法
+        在es6中，增加了像其他语言一样的类声明方式
+        class关键字：声明类
+    */
+    class People{
+        // 构造函数
+        constructor({name,age}){
+            this.name=name;
+            this.age=age;
+        }
+        // 实例方法
+        speak(){
+            console.log('我叫'+this.name);
+        }
+    }
+    // let p1=new People({name:'张',age:22});
+    // p1.speak();
+
+    // 在es6之后的继承
+    // extends关键字用于设置本类继承的父类
+    class Student extends People{
+        constructor({stuID}){
+            // super表示调用父类的此函数
+            super(arguments[0]);
+            this.stuID=stuID
+        }
+        study(){
+            console.log('学习');
+        }
+    }
+    var m2=new Student({name:'张',age:22,stuID:88});
+    console.log(m2);
+    m2.study();   
+    m2.speak(); 
+</script>
+</html>

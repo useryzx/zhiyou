@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <b>// edit by yugu //</b>
+    <h1><%= title %></h1>
+    <% if (success) { %>
+        <div><%= success %></div>
+        <% } %>
+        <% if (error) { %>
+        <div><%= error %> </div>
+        <% } %>

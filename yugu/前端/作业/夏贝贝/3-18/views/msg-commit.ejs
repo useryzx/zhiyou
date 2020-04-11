@@ -1,0 +1,33 @@
+<%-include('./header.ejs')%>
+<p class="p-item"><a href="">上传</a></p>
+<p class="p-item"><a href="/msg-commit">发布</a></p>
+<p class="p-item"><a href="/user/exit">退出</a></p>
+<p class="p-item">
+    <form action="">
+        <input type="text" name="search" placeholder="search" id="hinput">
+    </form>
+</p>
+</nav>
+<div>
+    <h1><%=title%></h1>
+    <hr>
+    <main>
+        <form action="/api/msg/commit" method="post">
+            <p>标题</p>
+            <input type="text" class="field" name="topic" required>
+            <p>标签</p>
+            <input type="text" class="field" name="tag" required>
+            <input type="text" class="field" name="tag">
+            <input type="text" class="field" name="tag">
+            <p>正文</p>
+            <textarea name="content" id="content"></textarea>
+            <br>
+            <button>提交</button>
+        </form>
+    </main>
+</div>
+
+</main>
+</body>
+
+</html>

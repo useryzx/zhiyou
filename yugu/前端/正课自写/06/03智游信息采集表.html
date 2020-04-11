@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CXK采集表</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .infobox {
+            margin: 5px;
+        }
+        #education,#major{
+            width: 150px;
+        }
+        #majorLabel{
+            vertical-align: top;
+        }
+        #feel{
+            width: 100%;
+            resize: none;
+            font-size: 3vm;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CXK信息采集表</h1>
+    <form action="#">
+        <fieldset>
+            <legend>基本信息</legend>
+            <div class="infobox">
+                <label for="name">姓名</label>
+                <!-- checked 必填 -->
+                <input type="text" placeholder="请输入全名" id="name" name="username" checked>
+            </div>
+            <div class="infobox">
+                <span>性别：</span>
+                <input type="radio" name="gender" checked id="male" value="1">
+                <label for="male">男</label>
+                <input type="radio" name="gender" checked id="female" value="2">
+                <label for="female">女</label>
+            </div>
+            <div class="infobox">
+                <label for="userId">身份证号：</label>
+                <input type="text" name="userId" id="userId" checked placeholder="请输入身份证号">
+                <hr>
+                <span>爱好：</span>
+                <input type="checkbox" name="hobby" id="sing" value="1">
+                <label for="sing">唱</label>
+
+                <input type="checkbox" name="hobby" id="jump" value="2">
+                <label for="jump">跳</label>
+
+                <input type="checkbox" name="hobby" id="RAP" value="3">
+                <label for="RAP">RAP</label>
+
+                <input type="checkbox" name="hobby" id="basketball" value="4">
+                <label for="basketball">篮球</label><br>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="infobox">
+                <label for="education">学历</label>
+                <select name="" id="education">
+                    <optgroup label="本科以下">
+                        <option value="1">初中</option>
+                        <option value="2">高中</option>
+                        <option value="3">大专</option>
+                    </optgroup>
+                    <optgroup label="本科以上">
+                        <option value="4">本科</option>
+                        <option value="5">硕士</option>
+                        <option value="6">博士</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="infobox">
+                <label for="major" id="majorLabel">专业课程：</label>
+                <select name="major" id="major" multiple>
+                    <option value="1">html</option>
+                    <option value="2">ios</option>
+                    <option value="3">android</option>
+                    <option value="4">windows</option>
+                    <option value="5">bigData</option>
+                </select>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>学习感言</legend>
+            <!-- 留言板 -->
+            <textarea name="" id="feel" cols="30" rows="10" placeholder="不能少于15字"></textarea>
+            <input type="submit" value="提交信息" id="submit">
+            <input type="reset" id="reset">
+        </fieldset>
+    </form>
+</body>
+
+</html>

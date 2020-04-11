@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速创建table</title>
+    <style>
+        .cell{
+            border: solid 2px black;
+        }
+    </style>
+</head>
+<body>
+</body>
+<script>
+    // js创建出来一个6行8列的table表
+    // 每一个单元格输出这是第几行第几列
+    var table =document.createElement("table");
+    document.body.appendChild(table);
+    for(var i=0;i<6;i++)
+    {
+        // 往表中插入一行 并返回插入的行对象
+        var tr =table.insertRow();
+        for(var j=0;j<8;j++)
+        {
+            // 往行中插入一列  并返回列对象
+            var td =tr.insertCell();
+            td.textContent ="第:"+(i+1)+"行,第:"+(j+1)+"列";
+            td.classList.add("cell");
+        } 
+    }
+
+
+
+
+
+
+
+    // 麻烦  不推荐
+    // for(var i=0;i<6;i++){
+    //     var tr =document.createElement("tr");
+    //     // i走一遍  j走八次
+    //     for(var j=0;j<8;j++)
+    //     {
+    //         var td =document.createElement("td");
+    //         td.textContent ="第:"+(i+1)+"行,第:"+(j+1)+"列";
+    //         td.classList.add("cell");
+    //         // td.setAttribute("rowspan","2");
+    //         tr.appendChild(td);
+    //     }
+    //     table.appendChild(tr);
+    // }
+</script>
+</html>

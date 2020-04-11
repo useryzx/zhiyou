@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件上传</title>
+    <style>
+        .preview {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            border: solid 1px black;
+        }
+
+        #preview {
+            display: inline-block;
+        }
+
+        #pic-label {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border: solid 1px black;
+            font-size: 160px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            user-select: none;
+            background-size: 100% 100%;
+            background-image: url(timg.jfif);
+            box-sizing: border-box;
+        }
+
+        #pic-label.highlighted {
+            filter: brightness(0.2);
+            border: solid 4px rgb(204, 204, 204);
+        }
+
+        #pic-field {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>图片上传，最多九张</h1>
+        <br>
+        <main id="container">
+            <span>选择图片</span>
+            <br>
+            <br>
+            <br>
+            <section id="preview">
+                <label id="pic-label" for="pic-field"></label>
+                <input id="pic-field" type="file" name="pictures" accept="image/*" multiple>
+            </section>
+        </main>
+        <br>
+        <br>
+        <button>上传</button>
+    </div>
+</body>
+<script src="jquery.min.js"></script>
+<script>
+    // 上传的文件写进数组
+    let files = [];
+    // 当选择文件时监听文件上传
+    $("#pic-field").on("change", function (e) {
+        // 将上传的文件放进imgFiles,一次性超过九个截取前九个
+        let imgFiles = this.files;
+        getFiles(imgFiles)
+    })
+
+    // 点击上传按钮的时候
+    $("button").on("click", function () {
+        // 没有选择文件的时候禁止上传
+        if (files.length < 1) {
+            return alert("请先选择文件");
+        }
+        // 文件多于9个禁止上传
+        if (files.length > 9) {
+            return alert("文件最多支持九个");
+        }
+        let data = new FormData();
+        files.forEach(val => {
+            data.append('pictures', val)
+        })
+        $.ajax({
+            url: "/api/upload",
+            method: "POST",
+            data,
+            // jquery会帮助处理数据，上传文件需要取消掉
+            contentType: false,
+            processData: false,
+        })
+            .then(res => {
+                alert(res.msg);
+            })
+    })
+
+
+    // 拖拽
+    $("#pic-label").on("dragenter", function () {
+        $("#pic-label").addClass("highlighted");
+    });
+
+    $("#pic-label").on("dragleave", function () {
+        $("#pic-label").removeClass("highlighted");
+    });
+
+    // 当把文件拖拽到浏览器窗口中时，阻止文件在页面中打开
+    $("body").on("dragover", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    $("#pic-label").on("drop", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $("#pic-label").removeClass("highlighted");
+        let imgFiles = e.originalEvent.dataTransfer.files;
+        getFiles(imgFiles);
+    });
+
+    // 封装获取file的方法
+    function getFiles(imgFiles) {
+        // 超过九张截取
+        if (imgFiles.length > 9) {
+            alert('最多上传9张,已为你截取');
+        }
+        // 只添加九张
+        for (let i = 0; i < (imgFiles.length < 9 ? imgFiles.length : 9); i++) {
+            files.push(imgFiles[i])
+        }
+        console.log(files.length);
+        // 在+前面添加上刚添加的图片
+        for (let i = 0; i < (imgFiles.length < 9 ? imgFiles.length : 9); i++) {
+            let src = URL.createObjectURL(imgFiles[i]);
+            $(`<div class="preview" style="background-image:url(${src})"></div> `).insertBefore($("#pic-label"));
+        }
+
+        // 当添加的图片多于3个或者6个时，换行,只换行一次
+        if (files.length == 3 || $(".preview").eq(2).next()[0].className == 'preview') {
+            $("<br>").insertAfter($(".preview").eq(2));
+        }
+        if (files.length == 6 || $(".preview").eq(5).next()[0].className == 'preview') {
+            $("<br>").insertAfter($(".preview").eq(5));
+        }
+        // 当9张图片时，隐藏添加按钮
+        if (files.length == 9) {
+            $("#pic-label").css("display", "none")
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+<script>
+    var div = document.querySelector("div");
+    var num = 0;
+    div.addEventListener("tip", function () {
+        alert("星星");
+        num = 0;
+    })
+    div.addEventListener("click", function () {
+        num++;
+        console.log(num);
+        
+        if (num == 1) {
+            console.log(num);
+            setTimeout(function () {
+                num = 0;
+            }, 1000);
+        }
+        else if (num >= 3) {
+            console.log(num);
+            var tip = new CustomEvent("tip", {});
+            div.dispatchEvent(tip);
+            num = 0;
+        }
+    })
+
+</script>
+
+</html>

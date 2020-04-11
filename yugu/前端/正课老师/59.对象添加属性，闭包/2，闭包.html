@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+
+<script>
+
+
+    // js使用var生命的变量是函数级作用域变量，只有在函数内部能够形成一个作用域。
+    // for(var i = 0;i<10;i++){
+    //     var a = i;
+    // }
+    // console.log(a);
+
+
+    // ES6中的let生命的是块级作用域变量。
+    // for(var i = 0;i<10;i++){
+    //     let a = i;
+    // }
+    // console.log(i);
+
+    //-----------------------------------------------------------------------------
+
+    // let g1 = "g";
+    
+    // // 函数作用域的生命周期，当函数开始执行时生成，函数执行完毕时释放。
+    // function f1(n){
+    //     console.log("diaoyong")
+    //     let a = 1;
+    //     let b = 2;
+    //     if(n>0){
+    //         f1(n-1);
+    //     }
+    // }
+
+    // function f2(){
+    //     let d = 6;
+    //     let e = 9;
+    // }
+    
+    // f1(3);
+
+    // let c = 4;
+
+    //-------------------------------------------------------------------------------
+
+
+    // 当一个函数A的作用域被其他函数B引用时，即使函数A执行完毕，如果函数B还一直存在，那么函数A的作用域就会被闭包。不会释放，函数B可以继续使用函数A的作用域。
+    function f3(){
+        let a = 1;
+        let b = 2;
+
+        function fn(){
+            let c = a+b;
+            console.log(c);
+        }
+
+        return fn;
+    }
+
+
+    let f4 = f3();
+
+    f4();
+
+    console.log("???");
+
+    //-------------------------------------------------------------------------------
+    let obj = null;
+    
+    
+    // 匿名函数直接调用，经常用于生成闭包。
+    // 使用闭包还能实现类似对象私有属性的效果。
+    (function(){
+        let c = null;
+        obj = {
+            a:"a",
+            b:"b",
+            m1(){
+                c = 123;
+                console.log(c);
+            }
+        }
+    })();
+
+    //--------------------------------------------------------------
+    
+    // 闭包的主要用途是将某个功能的变量声明到闭包的局部作用域中，避免污染全局域。
+    let f5 = (function(){
+        // 这里是形成闭包的作用域
+        return function(){
+            console.log("这是要执行的f5函数");
+        }
+    })();
+
+
+    let objfn = (function(){
+        let a = 1;
+        function fn1(){};
+        function fn2(){};
+        function fn3(){};
+        return {
+            fn1,
+            fn2,
+            fn3
+        }
+
+    })();
+
+    //--------------------------------------------------------------
+
+    for(var i = 0;i<10;i++){
+        var btn = document.createElement("button");
+        btn.textContent = i;
+        document.body.appendChild(btn);
+
+        (function(){
+            let num = i;
+            btn.onclick = function(){
+                console.log(num);
+            }
+        })();
+    }
+
+    //--------------------------------------------------------
+
+    // 闭包可以为对象添加set/get属性
+
+    let o2 = {};
+    (function(){
+        let age = null;
+        Object.defineProperty(o2,"age",{
+            set(v){
+                age = v;
+            },
+            get(){
+                return age;
+            }
+        });
+    })();
+
+    o2.age = 12;
+    console.log(o2);
+
+
+</script>
+
+
+
+
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>form表单连接接口测试</h1>
+    <!-- form表单专门用来为服务器提交数据的
+    action填写的就是接口的名称  
+    method代表的是此次请求的方法 默认是get
+访问的接口类型是什么就对应写指定的method-->
+    <form action="/form-commit" method="get">
+        <!-- submit会自动提交表单(参照action的地址去递交) -->
+        <label for="count">数量</label>
+        <!-- input的name属性对应的就是服务器接口要求的键
+        接口是要有专门的接口文档的 -->
+        <input type="text" id="count" name="commitCount">
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理系统</title>
+    <style>
+        table,
+        td {
+            border: solid 1px #000000;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 可以跳连接 -->
+    <a href="add.html">添加页面</a>
+    <div></div>
+    <script src="jquery.js"></script>
+    <script>
+        // 每一次进到首页都在首页发请求获取数据
+        $.get('/students/getData', '', function (res) {
+            console.log(res);
+            var students = res.data;
+            // 创建界面
+            var html = '';
+            html += '<table>';
+            html += '<tr>';
+            html += '<td>姓名</td><td>年龄</td><td>班级</td><td>性别</td><td>操作</td>';
+            html += '</tr>'
+            // 需要根据当前的students数组的数量创建对应的td
+            students.forEach(function (student, ins) {
+                html += '<tr>';
+                html += '<td>' + student.stuName + '</td>';
+                html += '<td>' + student.age + '</td>';
+                html += '<td>' + student.class + '</td>';
+                var sex =student.isMale =="true"?'男':'女';
+                html += '<td>' + sex + '</td>';
+                // 操作分为delete和update
+                html+='<td>';
+                    html+="<button class ='update'>修改</button>";
+                    // 自定义属性(让按钮的自定义属性记录当前对象的信息)
+                    html+="<button class ='delete' stuName ='"+student.
+                    stuName+"' studentClass='"+student.class+"'>删除</button>";
+                html += '</tr>';
+            });
+            html += '</table>';
+            // 追加到div上
+            document.querySelector('div').innerHTML = html;
+            // 为删除按钮绑定事件
+            $('.delete').click(function(){
+              
+                var stuName =$(this).attr('stuName');
+                var banji =$(this).attr('studentClass');
+                console.log(banji);
+                
+                // 根据拿到的班级和名字读取数据
+                // 拼接一套get请求的数据
+                // ?stuName=xxx&
+                var data ='stuName='+stuName+'&'+'class='+banji;
+                // 调用删除的接口
+                $.get('/student/delete',data,function(res){
+                    //   拼接出来文件路径 删除掉
+                    if (res.error==0) {
+                        alert(res.msg);
+                        location.href ='/';
+                    }
+                });
+            });
+        });
+        /*
+          在操作信息管理之类的软件的时候如果单纯的使用文件
+          系统对于数据操作不太方便，所以在处理比较大的数据的时候
+          会把数据库引入进来，对于前段来说比较好用的数据库有mongodb
+          mysql
+
+          1.把修改接口补完
+          2.把mongodb安装完成
+            1.可以通过命令段启动
+            2.可以配置成windows服务  
+        */ 
+    </script>
+</body>
+
+</html>

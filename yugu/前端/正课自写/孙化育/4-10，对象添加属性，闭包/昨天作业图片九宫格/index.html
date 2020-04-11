@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #pics {
+            display: none;
+        }
+
+        #add-btn {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            font-size: 160px;
+            text-align: center;
+            line-height: 200px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            margin: 10px 0;
+        }
+
+        .img-list-item {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            vertical-align: bottom;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .del-btn {
+            font-size: 10px;
+            text-align: center;
+            border-radius: 5px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            user-select: none;
+        }
+
+        #img-box {
+            font-size: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+            width: 650px;
+        }
+
+        .flex-placeholder {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="img-box">
+        <label for="pics" id="add-btn">+</label>
+    </div>
+    <input type="file" accept="image/*" multiple id="pics">
+</body>
+<script src="ejs.js"></script>
+<script type="text/html" id="t1">
+    <%for (let i = 0; i < fileList.length; i++) {%>
+        <div class = "img-list-item" style="background-image:url(<%=fileList[i].url%>)">
+            <div class="del-btn" onclick=delBtnClick(event,<%=i%>)>X</div>
+        </div>
+    <%}%>
+
+    <%if(fileList.length<9){%>
+        <label for="pics" id="add-btn">+</label>
+    <%}%>
+    <div class="flex-placeholder"></div>
+    <div class="flex-placeholder"></div>
+
+</script>
+<script>
+    let fileList = [];
+    let pics = document.getElementById("pics");
+    pics.onchange = function () {
+        if (fileList.length > 9) {
+            return;
+        }
+        let imgs = Array.from(pics.files);
+        imgs.forEach(el => {
+            el.url = URL.createObjectURL(el);
+        })
+        fileList = fileList.concat(imgs);
+        if (fileList.length >= 9) {
+            fileList = fileList.slice(0, 9)
+        }
+        reflashImgList();
+    }
+
+    function reflashImgList() {
+        let t1 = document.getElementById("t1").textContent;
+        let imgBox = document.getElementById("img-box");
+        let htmlStr = ejs.render(t1, { fileList });
+        imgBox.innerHTML = htmlStr;
+    }
+    function delBtnClick(event,index) {
+        console.log(index);
+        fileList.splice(index,1);
+        reflashImgList();
+    }
+</script>
+
+</html>

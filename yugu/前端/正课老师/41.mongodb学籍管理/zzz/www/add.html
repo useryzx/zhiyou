@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>添加新同学</h1>
+    <form action="/api/stu/add" method="POST">
+        <label for="">姓名</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="">年龄</label>
+        <input type="text" name="age" id="age">
+        <br>
+        <span>性别</span>
+        <br>
+        <label for="">男</label>
+        <input type="radio" name="sex" value="男" id="male">
+        <label for="">女</label>
+        <input type="radio" name="sex" value="女" id="female">
+        <br>
+        <label for="">专业</label>
+        <select name="major" id="major">
+            <option value="前端WEB">前端WEB</option>
+            <option value="JAVA">JAVA</option>
+            <option value="UI">UI</option>
+            <option value="VR">VR</option>
+        </select>
+        <br>
+        <span>兴趣爱好</span>
+        <label for="">体育</label>
+        <input type="checkbox" name="hobby" id="sport" value="体育">
+        <label for="">音乐</label>
+        <input type="checkbox" name="hobby" id="music" value="音乐">
+        <label for="">唱歌</label>
+        <input type="checkbox" name="hobby" id="sing" value="唱歌">
+        <br>
+        <button>提交</button>
+    </form>
+</body>
+</html>

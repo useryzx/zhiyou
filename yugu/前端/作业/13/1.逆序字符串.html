@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var str = prompt("请输入");
+    console.log(str);
+    // 判断字符串中是否存在空格
+    for (var i = 0;i<str.length;i++){
+        if (str[i]==" "){
+            // 存在空格以空格分割
+            str = str.split(" ");
+            break;
+        }
+    }
+    console.log(str);
+    var strReverse = "";
+    for (var i = str.length - 1; i >= 0; i--) {
+        strReverse += (str[i] + " ");
+    }
+    alert(strReverse);
+
+
+</script>
+
+</html>

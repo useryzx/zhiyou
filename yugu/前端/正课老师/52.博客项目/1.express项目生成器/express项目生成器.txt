@@ -1,0 +1,22 @@
+express-generator:express项目生成器
+是一个nodejs的程序，用途是快速搭建一个express项目
+
+核心操作也是使用命令
+1.npm install express-generator -g 先安装生成器
+
+2.创建:express [项目名称] --view=ejs
+  项目根目录下会有4个自带的文件夹
+  bin:存放项目源代码的文件夹
+  public:项目静态的文件夹
+  routers:存放路由的文件夹
+  views:存放模板的文件夹
+
+3.创建的项目中没有node_modules文件夹,但是package.json中写好了依赖项，所以创建完仙姑之后需要先npm insatll 安装依赖项
+
+4.启动:运行项目的命令是npm start
+
+npm xxxx如果xxxx不是npm自带的命令,就会当前
+的package.json中查找这个命令并执行
+所以第四步执行的npm start就是package.json
+中的script中的start命令
+

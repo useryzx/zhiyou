@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对象</title>
+</head>
+
+<body>
+</body>
+<script>
+    /*
+       js中数据类型分为两种:
+    1.基本数据类型:数字类型，字符串类型，布尔类型...
+    2.引用类型:但凡是对象都是引用类型，和基本数据类型核心的区别
+    在于基本数据类型保存的是值，而引用数据类型保存的是内存地址
+    对象:把变量，函数，整合到一起的一个复杂的数据类型
+    */
+    var obj; //只是常规的变量(因为并没有赋值)
+    // new 开辟内存，Object()构造对象的函数
+    obj = new Object();
+    // 对象.属性(任意)
+    obj.name = "夏贝";
+    obj.age = 30;
+    obj.sex = "男";
+    // 属性赋值和常规变量赋值一样  调用时候只需要对象.属性名
+    console.log(obj.name);
+    // 对象的声明和实现可以写在一起
+    var obj2 = new Object();
+    // 当对象的属性后面的赋值变成了函数的时候那么可以把这个
+    // 属性叫做对象的方法
+    obj2.eat = function () {
+        console.log("今早吃了五个包子");
+    }
+    // 调用:对象名.方法名
+    obj2.eat();
+
+    // 对象也可以使用字面量创建法来创建
+    var obj3 = {
+        // 字面量创建的时候属性与属性之间要用,分割
+        name: "阿达",
+        major: "学生",
+        // 对象里面的方法也是可以像单一的函数一样高度自定的
+        speak: function () {
+            return "又快该吃饭了";
+        }
+    }
+    // 
+    console.log("一个叫做:" + obj3.name + "是一个:" + obj3.major + obj3.speak());
+
+    /*
+      对象其实就是一个容器，其中存着多条数据,数据在对象中用
+      键值的形式出现,比如name就是键key 阿达就是值value
+      通过键来取值
+    */
+    var phone = {
+        brand: "HUAWEI",
+        size: 6.1,
+        RGM: "2.0"
+    }
+    // 删除对象的某个属性
+    delete phone.RGM;
+    // console.log(phone);
+
+    // 对象的另一种访问方式
+    var man = new Object();
+    man.name = "阿达";
+    man.age = 1;
+    // 根据键来取值[]内部要用双引号来包裹键名称
+    console.log(man["name"]);
+
+    // 对象的属性还可以是一个对象
+    var superMan = new Object();
+    superMan.name = "张长流";
+    superMan.age = 22;
+    // 车有颜色  品牌
+    superMan.car = new Object();
+    superMan.car.brand = "保时捷";
+    superMan.car.color = "荧光绿";
+    console.log(superMan.name + "开着一辆:" +
+        superMan.car.color + "的" + superMan.car.brand);
+
+
+    /*
+      封装一个函数，该函数要求传入一个男生对象，根据男生对象的
+      年龄来判断出来男生属于哪一个阶段...
+    */
+
+    // 对象也可以作为参数传递到函数中
+    function getMan(aMan) {
+        var result = "";
+        if (aMan.age < 16) {
+            result = "未成年";
+        } else {
+            result = "成年";
+        }
+        return result;
+    }
+    console.log(getMan(superMan));
+
+    /*
+      有一个相亲的方法传递进去一个男生对象，如果这个男生
+      金钱不够十万，那么返回""不同意"
+      如果达到十万及以上的时候年龄在30岁以下的，返回欧巴，我爱你
+      如果达到十万及以上的时候年龄在50岁以下的，返回大数，我爱你
+       如果达到十万及以上的时候年龄在80岁以下的,直接
+       返回一个年龄为20岁，身高为1.8,的美女出来.
+       最后把返回的结果在方法外部组织成一段话打印出来
+    */
+    var man2 = new Object();
+    man2.age = 80;
+    man2.money = 100000;
+
+    function findNaNPengyou(aMan) {
+        // 空对象
+        var result;
+        if (aMan.money < 100000) {
+            result = "不同意";
+        } else //金钱已经达标了
+        {
+            if (aMan.age <= 30) {
+                result = "欧巴，我爱你";
+            } else if (aMan.age > 30 && aMan.age <= 50) {
+                result = "大叔，我爱你";
+            } else {
+                result = new Object();
+                result.age =20;
+                result.height =1.80;
+            }
+        }
+        return result
+    }
+   var j = findNaNPengyou(man2);
+//    检测当前返回的j上面有没有属性
+   if (j.age !=undefined) {
+      console.log("这是一个年芳:"+j.age+"身高:"+j.height+"米的大长腿"); 
+   }
+   else
+   {
+       console.log(j);
+   }
+
+   
+</script>
+
+</html>

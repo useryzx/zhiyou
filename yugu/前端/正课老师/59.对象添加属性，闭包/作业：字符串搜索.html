@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="key-word">
+
+    <p id="content-line">
+        通过以下 API 可以方便获取 BootCDN 所加速的所有前端开源库的基本信息和文件列表。... 以bootstrap 为例,请在浏览器中打开通过以下 API 可以方便获取 BootCDN 所加速的所有前端开源库的基本信息和文件列表。... 以bootstrap 为例,请在浏览器中打开通过以下 API 可以方便获取 BootCDN 所加速的所有前端开源库的基本信息和文件列表。... 以bootstrap 为例,请在浏览器中打开通过以下 API 可以方便获取 BootCDN 所加速的所有前端开源库的基本信息和文件列表。... 以bootstrap 为例,请在浏览器中打开通过以下 API 可以方便获取 BootCDN 所加速的所有前端开源库的基本信息和文件列表。... 以bootstrap 为例,请在浏览器中打开
+    </p>
+</body>
+
+<script>
+    let contentLine = document.getElementById("content-line");
+    let str = contentLine.textContent;
+
+    let keyWord = document.getElementById("key-word");
+    keyWord.oninput = function(){
+        seaRes = str.replace(new RegExp(keyWord.value,"g"),`<mark>${keyWord.value}</mark>`);
+        contentLine.innerHTML = seaRes;
+    }
+
+    //compositionend
+    // keyWord.addEventListener("compositionend",function(){
+    //     console.log(123);
+    // })
+
+    
+
+</script>
+
+
+</html>

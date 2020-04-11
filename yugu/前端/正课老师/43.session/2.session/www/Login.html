@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>登录界面</h1>
+    <form action="/api/login" method="POST">
+        <label for="">用户名:</label>
+        <input type="text" name="userName" required>
+        <br>
+        <label for="">密码:</label>
+        <input type="text" name="psw" required id="psw">
+        <br>
+        <!-- 在提交之前需要先处理密码的一致性问题 -->
+        <button>提交</button>
+    </form>
+</body>
+</html>

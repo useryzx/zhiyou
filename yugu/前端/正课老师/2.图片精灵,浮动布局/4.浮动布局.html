@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动布局</title>
+    <style>
+        #web-list{
+            list-style: none;
+            padding: 0;
+            background-color: cyan;
+        }
+        #web-list li{
+            /* float设置元素采用浮动布局,浮动有左浮动和右浮动
+            元素在使用浮动布局后，会脱离原来的文档流，在浮动流
+            中，块元素也会横向排列 */
+            float: left;
+            background-color: greenyellow;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            /* 鼠标指针的方式 */
+            cursor: pointer;
+        }
+        #web-list li:hover{
+            background-color: red;
+        }
+        /* 在使用浮动布局的时候一定要注意清除浮动，否则会影响到后续
+        的页面，也会导致父元素不能根据内容进行高度适应 */
+        #dl{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        /* 最基础的方法，在最后一个浮动的元素后面追加一个元素，设置
+        这个元素的clear为both */
+        .clear{
+            clear: both;
+        }
+        /* 在不添加新元素的情况下浮动的元素都会有一个父物体，
+        给父物体添加一个后缀，在后缀中清除元素,一般情况下都会将
+        浮动样式写成(class:clear-fix)哪个元素需要清除浮动，就为这个
+        元素添加clear-fix */
+        .clear-fix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <ul id="web-list" class="clear-fix">
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+        <li>jquery</li>
+    </ul>
+    <!-- <div class="clear"></div> -->
+    <div id="dl">
+        dadsadsadas
+    </div>
+</body>
+</html>

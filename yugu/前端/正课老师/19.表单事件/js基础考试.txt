@@ -1,0 +1,99 @@
+1.js中有几种创建对象的方式,列出!
+  1.new Object()
+  2.字面量创建法
+
+2.事件的执行顺序是什么?
+  先捕获后冒泡
+
+3.如何添加一个节点?
+  appendChild();
+
+4.插入一个节点的方法?
+  insertBefore();
+
+5.查找节点的方法有哪些？分别说明用途
+  document.getElementById();
+document.getElementsByTagName();
+document.getElementsByClassName();
+document.querySelector();
+document.querySelectAll();  
+
+6.for(var i = 1; i <= 3; i++){         
+  setTimeout(function(){   
+      console.log(i);   
+  },0); 
+};这段代码的输出结果是多少？4 4 4
+
+7.当一个叫做box的DOM节点被点击时候，我们希望能够执行一个函数，应该怎么做，写出具体的代码?
+  var box =document.getElementBy("box");
+   box.onclick =fuction(){
+       console.log("满分");
+   }  
+
+8.希望获取到页面中所有的checkbox(注意:checkbox是input的类型)怎么做？
+  var form =document.forms[0];
+
+9.如何获取输入框内容的长度?
+   e.value.length;
+
+10.a标签的行为为什么用propagation()阻止不了？
+该如何阻止?propagation()能阻止什么？
+  
+  因为a标签属于浏览器的默认行为  preventDefault();  事件的传播
+
+11.var a= [];
+var b= a;
+b[0] = 1;
+console.log(a[0] ) ; console.log(b[0] ) ; console.log(a===b) ; 此段代码的运行结果是什么？
+
+12.var x= 10;
+var y= 20;
+var z= x< y? x++ : ++y;
+上述代码运行后，变量 x、 y和 z的值为多少？
+
+13.function test() {
+var sum= 0;
+for (var i= 0; i< 10; i++) {
+sum+= i;
+}
+console.log(sum) ;
+console.log(i) ;
+}
+test() ;
+上述代码运行后,打印出来的结果为多少?
+
+14.innerHTML、 nodeValue与 textContent之间的区别是什么
+   innerHTML:解析文本中的标签
+   nodeValue:节点的值
+   textContent:直接显示文本
+
+15.DOM操作中，如何获取元素的属性值？
+     元素.getA
+
+16.setTimeout和setInterval的区别是什么?
+   延迟定时器:延迟一定的时间之后执行
+   重复定时器:按照一定的时间频率执行
+
+17.在使用setTimeout或setInterval的事后，需要注意什么？说明原因
+   需要清除，同时对象清空。
+   因为只清除不清空 定时器内存还在，需要把内存也清空，这样系统在回收内存的时候就会把清空的内存回收
+掉不会造成内存泄漏
+
+18. javascript的typeof返回哪些数据类型?
+    boolean number string object undifind null
+    
+
+19.”==”和“===”的不同
+    ==:代表判断值是否相同
+    ===:代表判断值的同时判断类型
+
+20.节点的种类有几种，分别是什么？
+    
+   3种  元素节点  属性节点  文本节点
+
+
+
+
+
+
+

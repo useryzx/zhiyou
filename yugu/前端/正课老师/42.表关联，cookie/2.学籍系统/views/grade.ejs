@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>班级管理</h1>
+    <form action="/api/grade/add" method="post">
+        <label for="">班级名称</label>
+        <input type="text" name="name">
+        <br>
+        <label for="">专业</label>
+        <select name="major" id="">
+          <option>web前端</option>
+          <option>java</option>
+          <option>ui</option>
+        </select>
+        <br>
+        <label for="">教室</label>
+        <input type="text" name="room">
+        <br>
+        <label for="">教师</label>
+        <input type="text" name="teacher">
+        <br>
+        <button>添加</button>
+    </form>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>班级名称</th>
+                <th>专业</th>
+                <th>教室</th>
+                <th>教室</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(var i=0;i<data.length;i++){%>
+                <tr>
+                    <td><%=data[i].name%></td>
+                    <td><%=data[i].major%></td>
+                    <td><%=data[i].room%></td>
+                    <td><%=data[i].teacher%></td>
+                </tr>
+                <%}%>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 1000px;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+        #d1{
+            background-color: red;
+        }
+        #d2{
+            background-color: green;
+            /* position样式:表示元素的定位方式,默认是static
+            采用流式布局定位，不能通过top等样式来设置位置 
+            relative是相对定位,相对定位的元素还是在流式文档
+            的位置上,通过top等属性进行样式的微调 一般情况下
+            如果是父子元素父元素里面可以设置样式relative*/
+            position: relative;
+            top:20px ;
+            left: 20px;
+        }
+        #d3{
+            background-color: yellow;
+        }
+        #container{
+            background-color: pink;
+            margin: 50px;
+            /* 这个定位实际上是为子元素的定位提供参照点的 */
+            position: relative;
+        }
+        #d4{
+            background-color: rebeccapurple;
+        }
+        #d5{
+            background-color: yellow;
+            /* 绝对定位:元素脱离文档流，不在参与父元素的流式布局
+             ,不在撑开父元素，absolute在定位置后，不使用left等
+             值设置的话，会跑到原有的位置上，切记：工作中不要这样做
+            开启了absolute定位的元素在定位的时候参照的是离自己最近的
+            position而非static,所以在进行绝对定位的时候，要为
+            父元素的位置更改为relative,不要把父元素也设置成absolute
+            因为父元素如果脱离文档流，流失布局特性就会消失 */
+            position: absolute;
+            left: 130px;
+            top: 50px;
+        }
+        #id3{
+            background-color: chocolate;
+            /* 固定位置固定位置脱离文档流，党对于根标签进行定位
+            页面滚动时候不随着页面的滚动而滚动 */
+            position:fixed;
+            left: 30px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 定位方式: -->
+    <div class="box" id="d1"></div>
+    <div class="box" id="d2"></div>
+    <div class="box" id="d3"></div>
+
+    <div id="container">
+        <div class="box" id="d4"></div>
+        <div class="box" id="d5"></div>
+        <div class="box" id="d6"></div>
+    </div>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p id="id3">撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+    <p>撑开当前界面</p>
+</body>
+</html>

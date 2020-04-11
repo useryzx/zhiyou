@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .bannerBox{
+            background-color: red;
+            width: 600px;
+            height: 500px;
+            margin: 60px auto;
+            position: relative;
+        }
+        .imgBox li{
+            position: absolute;
+            opacity: 0;
+            /* 过渡效果 */
+            transition: all 0.5s;
+        }
+        .tabBox{
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+        }
+        .tabBox li{
+            border: solid 2px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        /* 默认是第五个 */
+        .imgBox li.active{
+            opacity: 1;
+        }
+        .tabBox li.current{
+            border-color: #ffffff;
+            background-color: #ffffff;
+            box-shadow: 0 0 1px 5px rgba(0, 0, 0, 0.3);;
+        }
+    </style>
+</head>
+<body>
+    <!-- 轮播图 -->
+    <div class="bannerBox">
+        <span class="prev">上一张</span>
+        <span class="next">下一张</span>
+        <!-- 图片 -->
+        <ul class="imgBox">
+            <li><img src="images/photo1.jpg" alt=""></li>
+            <li><img src="images/photo2.jpg" alt=""></li>
+            <li><img src="images/photo3.jpg" alt=""></li>
+            <li><img src="images/photo4.jpg" alt=""></li>
+            <li class="active"><img src="images/photo5.jpg" alt=""></li>
+            <li><img src="images/photo6.jpg" alt=""></li>
+        </ul>
+        <ul class="tabBox">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // li需要拿出来
+    var liImg =document.querySelectorAll(".imgBox li");
+    var liTab =document.querySelectorAll(".tabBox li");
+    // 第一个
+    var prevSpan =document.querySelector("span");
+    var nextSpan =document.querySelectorAll("span")[1];
+    
+    var timer;
+    var bannerBox =document.querySelector(".bannerBox");
+    // 需要把六张图铺开
+    var showIndex =0;
+    function show(){
+        // 找出所有的图片的li和引导点的li
+        for(var i =0;i<liTab.length;i++){
+            // class全部清空
+            liTab[i].className ="";
+            liImg[i].className ="";
+        }
+        liTab[showIndex].className ="current";
+        liImg[showIndex].className ="active"; 
+    }
+    show();
+    // 上一张下一张的实现和定时器自动播放的实现是一个原理
+    // 下一张的方法
+    function next()
+    {
+        showIndex =showIndex +1;
+        if (showIndex >= liTab.length) {
+            showIndex =0;
+        }
+        show();
+    }
+
+    function prev()
+    {
+        showIndex --;
+        if (showIndex <0) {
+            showIndex =liTab.length -1;
+        }
+        show();
+    }
+    nextSpan.onclick =function(){
+        next();
+    }
+    prevSpan.onclick =function(){
+        prev();
+    }
+    // 自动播放
+    timer =setInterval(function(){
+        prev();
+    },1000);
+    // 当鼠标移动图片的时候需要停止轮播
+    bannerBox.onmouseover =function(){
+        console.log("进来?");
+        
+        clearInterval(timer);
+    }
+    bannerBox.onmouseleave =function(){
+        timer =setInterval(function(){
+        prev();
+        },1000);
+    }
+    // 索引
+    for(var i =0;i<liTab.length;i++){
+        // 为每一个小点添加了一个属性  0~~5
+        liTab[i].index =i;
+        // 事件是满足条件才触发
+        liTab[i].onmouseover =function(e){
+            console.log("///");
+            // 当鼠标检进入到当前的li时，让索引换成当前li的索引
+            // e.target>>>>事件的对象
+            showIndex =e.target.index;
+            show();
+        }
+    }
+</script>
+</html>

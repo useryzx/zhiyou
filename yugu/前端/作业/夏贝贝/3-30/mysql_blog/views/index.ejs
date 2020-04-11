@@ -1,0 +1,9 @@
+<%-include header%>
+  <%if(user){%>
+  <h1>欢迎&emsp;&emsp;<%=user.name%>&emsp;&emsp;来到首页</h1>
+  <%}else{%>
+  <a href="/api/register">注册</a>
+  <a href="/api/login">登陆</a>
+  <%}%>
+
+<%-include footer%>

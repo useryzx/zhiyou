@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function jiecheng(n){
+        if(n<0){
+            throw new Error("参数不能为负数");
+        }
+        let m=1;
+        for (let i = 1; i < n; i++) {
+           m=m*i;
+        }
+        return m;
+    }
+    console.log(1);
+
+
+    // try...catch 代码块用于捕获代码异常
+    // 可以将有可能抛出异常的代码写在try中，如果代码执行时某段代码出现了异常，则try中的代码会立刻停止执行，然后转入catch代码块执行，如果try中的代码没有出现异常，执行完毕后会继续向下执行，，finally中代码无论是否抛出异常都会执行
+
+    // 如果catch代码块中继续抛出了这个异常，那么这个异常会抛出给上层调用栈，如果这个异常继续向上抛出，直到js执行引擎，则代码会立刻停止。
+    try{
+        console.log(jiecheng(-3));
+        console.log(2);
+        
+    }catch(error){
+        // 将前端页面的异常发送到服务器进行分析
+        console.log(error);
+        throw error
+    } finally{
+        console.log("最后");
+    }
+    console.log(3);
+    
+
+
+    async function f1(){
+        return Promise.resolve();
+    }
+    function f2(){
+        let rl=await f1();
+        
+    }
+</script>
+</html>

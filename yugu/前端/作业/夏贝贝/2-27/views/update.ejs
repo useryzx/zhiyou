@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>编辑学员信息</h1>
+    <form action="/api/stu/updateOne" method="post">
+    <label for="stuName">姓名</label><input type="text" name="stuName" id="stuName" value="<%= stuName %>"><br>
+    <label for="stuAge">年龄</label><input type="text" name="stuAge" id="stuAge" value="<%= stuAge %>"><br>
+    <span>性别</span>
+    <label for="man">男</label><input type="radio" name="stuSex" id="man" value="男" disabled <%= stuSex=='男'?'checked':'' %>>
+    <label for="woman">女</label><input type="radio" name="stuSex" id="woman" value="女" disabled <%= stuSex=='女'?'checked':'' %>>
+    <br>
+    <span>专业</span>
+    <select name="stuMajor" id="">
+        <option <%= stuMajor=='web前端'?'selected':'' %>>web前端</option>
+        <option <%= stuMajor=='java'?'selected':'' %>>java</option> 
+        <option <%= stuMajor=='大数据'?'selected':'' %>>大数据</option>
+        <option <%= stuMajor=='python'?'selected':'' %>>python</option>
+    </select><br>
+    <span>兴趣爱好</span>
+    <label>体育</label><input type="checkbox" name="stuHobby" value="体育" <%= stuHobby.indexOf("体育")==-1?'':'checked' %>>
+    <label>音乐</label><input type="checkbox" name="stuHobby" value="音乐" <%= stuHobby.indexOf("音乐")==-1?'':'checked' %>>
+    <label>美术</label><input type="checkbox" name="stuHobby" value="美术" <%= stuHobby.indexOf("美术")==-1?'':'checked' %>>
+    <br>
+    <input type="text" name="_id" value="<%= _id %>" style="display: none;">
+    <button type="submit">提交</button>
+    </form>
+</body>
+</html>

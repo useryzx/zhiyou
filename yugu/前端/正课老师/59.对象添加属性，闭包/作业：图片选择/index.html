@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #pics{
+            display: none;
+        }
+
+        #add-btn{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            font-size: 160px;
+            text-align: center;
+            line-height: 200px;
+            border: solid 1px black;
+            box-sizing: border-box;
+            margin: 10px 0;
+
+            /* 垂直对齐方式 */
+            /* vertical-align: bottom; */
+        }
+
+        .img-list-item{
+            width: 200px;
+            height: 200px;
+            background-size: 100% 100%;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .del-btn{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #img-box{
+            /* font-size: 0; */
+
+            display: flex;
+            width: 640px;
+            flex-wrap: wrap;
+            border: solid 1px red;
+            justify-content: space-between;
+        }
+
+        .flex-placeholer{
+            width: 200px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="img-box">
+        <label for="pics" id="add-btn">+</label>
+        
+    </div>
+
+    <input type="file" accept="image/*" multiple id="pics">
+    
+</body>
+
+<script type="text/html" id="t1">
+    <%for(let i = 0;i<fileList.length;i++){%>
+        <!-- <img class="img-list-item" src="<%=fileList[i].url%>"> -->
+        <div class="img-list-item" style="background-image: url(<%=fileList[i].url%>)">
+            <div class="del-btn" onclick="delBtnClick(event,<%=i%>)">
+                X
+            </div>
+        </div>
+    <%}%>
+    
+    <%if(fileList.length<9){%>
+    <label for="pics" id="add-btn">+</label>
+    <%}%>
+
+    <div class="flex-placeholer"></div>
+    <div class="flex-placeholer"></div>
+</script>
+
+<script src="ejs.js"></script>
+<script>
+
+    let fileList = [];
+
+    let pics = document.getElementById("pics");
+
+    pics.onchange = function(){
+        if(fileList.length>=9){
+            return;
+        }
+        // console.log(pics.files);
+        let imgs = Array.from(pics.files);
+        imgs.forEach(el=>{
+            el.url = URL.createObjectURL(el);
+        })
+
+        fileList = fileList.concat(imgs);
+        if(fileList.length>9){
+            fileList = fileList.slice(0,9);
+        }
+        
+
+        // 每当选择图片之后，重新渲染一次图片列表
+        refreshImgList();
+    }
+
+    function refreshImgList(){
+        let t1 = document.getElementById("t1").textContent;
+        let imgBox = document.getElementById("img-box");
+        let htmlStr = ejs.render(t1,{fileList});
+
+        imgBox.innerHTML = htmlStr;
+
+    }
+
+    function delBtnClick(e,index){
+        // console.log(index);
+
+        fileList.splice(index,1);
+
+        refreshImgList();
+    }
+
+
+
+</script>
+
+</html>

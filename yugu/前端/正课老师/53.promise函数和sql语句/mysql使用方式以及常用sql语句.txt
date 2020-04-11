@@ -1,0 +1,110 @@
+sql：structure query language:结构化查询语句
+
+mysql和mongodb最大的不同是mysql是通过封装的函数来执行sql语句完成数据操作的  要求sql不能写错
+mongodb类似于对象类型的操作
+
+
+1.确保服务能启动，然后登陆mysql
+
+
+sql语句:每个sql语句后面都要以;结束
+
+1.show databases;显示当前数据库
+
+2.创建数据库:CREATE DATABASE 数据库名称;
+
+3.use 数据库名称:切换数据库
+
+4.删除数据库
+  DROP DATABASE 数据库名称
+
+创建表的时候设置语言编码
+create database dbname default character set utf8;
+
+
+创建一个People表同时设置表的主键id,name键和age键
+4.创建数据库:CREATE TABLE IF NOT EXISTS People(id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(32) NOT NULL UNIQUE,age INT)
+
+                           IF NOT EXISTS People:如果没有People表则创建
+
+                           PRIMARY KEY:设置这一列为主键，一个表中只能有一个主键
+
+                           AUTO_INCREMENT:自增列，插入数据时，这一列不用填写数据，会自动填充一个最大值
+                           
+                           NOT NULL:非空，插入数据时，这一列不能为空，否则插入会失败
+    
+                           UNIQUE:唯一值，插入的数据这一列不能和表中已存在的数据重复
+
+创建表的结构:CREATE TABLE 表名(列名1 类型,列名2 类型 类型.......);
+
+5.向表中插入数据
+INSERT INTO 表名 (name,age) VALUES ("夏贝",30);
+
+6.查询语句
+查询表中所有的数据
+
+SELECT * FROM People;
+
+7.DESC 表名 查询表结构
+
+8.查询表中某一列的数据
+SELECT  name,age form 表名；
+
+查询表中所有name为夏的数据
+SELECT * FROM People WHERE name="夏";
+ 
+查询表中姓名夏贝，且年龄小于30岁的数据   AND是且  OR表示或
+SELECT * FROM People WHERE name='夏贝' AND age<30;
+
+查询表中所有name以夏开头的人
+SELECT * FROM People WHERE name LIKE "夏%";
+查询表中所有name以贝结尾的人
+SELECT * FROM People WHERE name LIKE "%贝";
+
+查询表中数据的条数
+SELECT COUNT(*) FROM 表
+
+查询表中数据并按照age进行排序，ASC表示升序，DESC表示降序
+
+SELECT * FROM People ORDER BY age DESC;
+
+
+分页查询  limit第一个代表查询的索引(0开始)后面几位（包含起始位置）
+
+SELECT * FROM People LIMIT 2,2;
+
+查询表中最大的age
+SELECT MAX(age) FROM People;
+
+
+查询表中最小的age
+SELECT MIN(age) FROM People;
+
+查询出当前年龄最小的人[sql语句条件可以穿插使用]
+SELECT * FROM People WHERE age=(SELECT MIN(age) FROM People);
+
+把表中id为6的数据 name修改为刘德华  age修改为66
+UPDATE People SET name="刘德华",age=66 WHERE id=6;
+
+删
+DELETE FROM People WHERE id=7;
+
+
+mysql:增删改查需要熟练掌握
+
+nodejs连接mysql数据库需要建立在sql语句完全正确的条件下进行。
+
+退出数据库
+exit;
+
+
+
+
+
+
+
+
+
+
+
+                          

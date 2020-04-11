@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>有参数的写法</title>
+    <style>
+        div {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+        }
+
+        aside {
+            width: 100px;
+            height: 150px;
+            background-color: blue;
+            margin-top: 50px;
+        }
+
+        section {
+            width: 100px;
+            height: 150px;
+            background-color: green;
+            margin-top: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <aside></aside>
+    <section></section>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // 可以进行参数传递
+    $.fn.styleChange = function (newStyle) {
+        //  自带一套样式，也可以传递样式
+        var settings = {
+            backgroundColor: 'green',
+            border: 'solid 1px #000',
+            boxShadow: '0 0 5px red',
+            width: 120,
+            height: 120,
+            borderRadius: '50%'
+        }
+        if (newStyle) {
+            // 合并 等价于Object.assign
+            $.extend(settings,newStyle);
+        }
+        $(this).click(function(){
+            $(this).css(settings);
+        })
+        return $(this);
+    }
+    $('div').styleChange();
+    $('section').styleChange({
+        backgroundColor: 'blue'
+    });
+    var obj ={
+        backgroundColor: 'purple'
+    }
+    $('aside').styleChange(obj).addClass('on');
+</script>
+
+</html>

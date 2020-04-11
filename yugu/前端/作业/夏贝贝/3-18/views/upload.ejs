@@ -1,0 +1,14 @@
+<h1>上传</h1>
+    <hr>
+    <%if(user){%>
+<p><%=user.username%></p>
+<img src="<%=user.avatar%>" alt="这里是一张图" id="avatar">
+<%}%>
+        <ul>
+            <%if(!user){%>
+<li><a href="/login.html">登陆</a></li>
+<li><a href="/register.html">注册</a></li>
+<%}else{%>
+<li><a href="/upload">头像上传</a></li>
+<%}%>
+        </ul>

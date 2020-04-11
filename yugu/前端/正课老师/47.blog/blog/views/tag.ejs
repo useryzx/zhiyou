@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签</title>
+    <style>
+        #tag-list{
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        #tag-list li{
+            margin:10px 20px;
+        }
+        .tag-item{
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: red;
+            color: white;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <%-include('./header.ejs')%>
+    <main>
+        <ul id="tag-list">
+           <%for(var i =0;i<tags.length;i++){%>
+               <li>
+                   <a href="/blog/list?tag=<%=tags[i]%>" class="tag-item"><%=tags[i]%></a>
+               </li>
+               <%}%>
+        </ul>
+    </main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // 邮箱
+    // +代表匹配一位或者是多位
+    // \w+ 代表以数字，字母，下划线任意一种开头，多位的数字后面
+    // 要跟@符号 
+    var email =/^\w+@\w+\.\w+$/;
+    var str ="abc345g,abc123abcfaks6789dasdas,a";
+    //  \d 0~~9的数字 代表全局查找匹配正则的关键字
+    var abcReg =/\d{3}/g;
+    var value ="";
+    var arr;
+    // 赋值语句当做表达式 表达式的值是右部分的值
+    // exec 满足正则条件的str语句会截取出来返回
+//   value =abcReg.exec(str) 只有返回的有值的时候才是true
+// 后期数据库查询数据的时候经常用到
+    while(value =abcReg.exec(str))
+    {
+      console.log(value);
+      arr.push(value);
+    }
+
+</script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>添加班级</h1>
+    <form action="/api/class/add" method="post">
+        <input type="text" name="className" placeholder="请输入班级名称" required>
+        <br>
+        <input type="text" name="classRoom" placeholder="请输入班级位置" required>
+        <br>
+        <input type="text" name="classTeacher" placeholder="请输入授课教师" required>
+        <br>
+        <button>添加班级</button>
+    </form>
+</body>
+</html>

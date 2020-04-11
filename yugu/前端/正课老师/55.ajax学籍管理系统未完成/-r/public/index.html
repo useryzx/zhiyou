@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        #book-table{
+            width: 400px;
+            border: solid 1px black;
+            border-collapse: collapse;
+        }
+        #book-table td{
+            border: solid 1px black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>书籍列表</h1>
+    <!-- 从服务器拿到内容之后展示 -->
+    <div id="book-box"></div>
+</body>
+<script src="./jquery.js"></script>
+<!-- 既然支持了html,book是一个变量，所以还需要支持ejs
+既要支持ejs,又要支持html,还要支持js 
+ 默认ejs模板是不允许写纯js代码的-->
+<script src="./ejs.js"></script>
+<!-- script标签的type默认是text/javascript可以设置为textml 或者text/ejs 设置了对应的格式之后就表示可以在该标签中写对应的代码  这个script可以用来写标签而且这些标签还不会出现在页面中 只有调用了才会出现 -->
+
+<script type="text/html" id="t1">
+    <table id="book-table">
+        <tr>
+            <td>序号</td>
+            <td>书名</td>
+            <td>价格</td>
+        </tr>
+  
+       <% for (var i = 0; i < books.length; i++){%>
+         <tr>
+          <td><%=i+1%></td>
+          <td><%=books[i].name%></td>
+          <td><%=books[i].price%></td>
+         </tr>
+         <%}%>
+    </table>
+</script>
+
+
+<script>
+    $.get("/api/books")
+    // 箭头函数里面的this始终指向window
+    .then(data=>{
+        // 异步函数不能刷新ui所以需要回调主线程
+        // renderBooks(data.books)
+
+        // ejs模板加载
+        // ejs.render方法，用于将模板和数据渲染成html字符串，第一个参数是模板的字符串，第二个参数是数据，返回的值就是渲染之后的html
+        let htmlStr=ejs.render($("#t1").text(),data);
+        $("#book-box").html(htmlStr)
+    });
+    // 加载页面的方法
+    // function renderBooks(books) {
+    //     // 任务就是刷新
+    //     let htmlStr=`
+    //     <table id="book-table">
+    //         <tr>
+    //             <td>序号</td>
+    //             <td>书名</td>
+    //             <td>价格</td>
+    //         </tr>
+    //     `;
+    //     for(var i=0;i<books.length;i++){
+    //         htmlStr+=`
+    //         <tr>
+    //             <td>${i+1}</td>
+    //             <td>${books[i].name}</td>
+    //             <td>${books[i].price}</td>
+    //         </tr>
+    //         `;
+    //     }
+    //     htmlStr+=`</table>`;
+    //     $("#book-box").html(htmlStr)
+    //     // 完整的前端向后端请求数据，然后拿着请求到的数据在前端中重新激活界面进行数据填充
+    // }
+</script>
+</html>

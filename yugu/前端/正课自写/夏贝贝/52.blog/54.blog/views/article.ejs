@@ -1,0 +1,45 @@
+<%-include header%>
+<!-- 判断是不是本人提交 -->
+<%if( user &&(user.name ==post.name)){%>
+<span> <a href="/edit/<%= post.name%>/<%= post.time.day%>/<%= post.title%>" class="edit">编辑</a></span>
+<span> <a href="/remove/<%= post.name%>/<%= post.time.day%>/<%= post.title%>" class="edit">删除</a></span>
+<%}%>
+ <p class="info">
+作者: <a href="/u/<%= post.name %>"><%= post.name %></a>|
+日期: <%= post.time.minute%>|
+标签:
+<% post.tags.forEach(function(tag,index) {%>
+<% if (tag) {%>
+<a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+<% } %>
+<% }) %>
+</p>
+<!-- 因为markdown已经把数据转成了html所以在ejs模板中引入
+html内容   - -->
+<%-post.post%>
+<p class="info">阅读:<%=post.pv%> | 评论: <%=post.comments.length%> </p>
+<br>
+<!-- 回帖 -->
+<% post.comments.forEach(function(comment,index) {%>
+   <p>
+      <a href=""><%= comment.name%></a>
+      <span class="info">回复与 <%= comment.time%></span>
+   </p>
+   <!--回复内容 -->
+   <p><%-comment.content%></p>
+<% }) %> 
+<!-- 提交内容区域 -->
+<form action="/u/<%= post.name%>/<%= post.time.day%>/<%= post.title%>" method="post">
+   <%if (user) {%>
+      用户: <input type="text" name="name" value="<%= user.name%>"><br>
+      邮箱: <input type="email" name="email" value="<%= user.email%>"><br>
+
+      <% } else {%>
+      用户: <input type="text" name="name"><br>
+      邮箱: <input type="email" name="email"><br>
+   <%}%>
+   <!-- 留言板 -->
+   <textarea name="content" cols="80" rows="5"></textarea><br>
+   <input type="submit" value="留言">
+</form>
+<%-include footer%>

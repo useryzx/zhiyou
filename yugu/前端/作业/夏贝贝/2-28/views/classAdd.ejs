@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+
+        td,th{
+            border: 1px solid black;
+        }
+        strong{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>班级管理</h1>
+    <form action="/api/class/add" method="post">
+        <label for="className">班级名称</label>
+        <input type="text" id="className" name="className"><br>
+        <label for="classMajor">专业</label>
+        <select name="classMajor" id="classMajor">
+            <option value="web前端">web前端</option>
+            <option value="python">python</option>
+            <option value="java">java</option>
+        </select><br>
+        <label for="classNum">教室</label>
+        <input type="text" id="classNum" name="classNum"><br>
+        <label for="classTeacher">讲师</label>
+        <input type="text" id="classTeacher" name="classTeacher"><br>
+        <button>添加</button>
+    </form>
+    <hr>
+    <strong>是鱼骨啊</strong>
+    <hr>
+    <table>
+        <tr>
+            <th>班级名称</th>
+            <th>专业</th>
+            <th>教室</th>
+            <th>老师</th>
+        </tr>
+        <%for(var i =0;i<data.length;i++){%>
+            <tr>
+                <td><%=data[i].className%></td>
+                <td><%=data[i].classMajor%></td>
+                <td><%=data[i].classNum%></td>
+                <td><%=data[i].classTeacher%></td>
+            </tr>
+        <%}%>
+    </table>
+</body>
+</html>

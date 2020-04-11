@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .photo {
+            display: none;
+        }
+
+        .list {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: solid 1px black;
+            font-size: 80px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+            user-select: none;
+            background-size: 100% 100%;
+            background-image: url('./images/timg.jfif');
+            box-sizing: border-box;
+        }
+
+        #avatar-label.highlighted {
+            filter: brightness(0.7);
+            border: solid 4px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="fm">
+        <label for="">姓名</label>
+        <input type="text" name="name" id="name-field">
+        <br>
+
+        <span>请选择头像</span>
+        <br>
+        <label class="list" id="avatar-label" for="avatar-field"></label>
+        <input class="photo" id="avatar-field" type="file" name="avatar" accept="image/*">
+
+        <label class="list" id="avatar-label" for="avatar-field1" style="display: none;"></label>
+        <input class="photo" id="avatar-field1" type="file" name="avatar" accept="image/*">
+
+        <label class="list" id="avatar-label" for="avatar-field2" style="display: none;"></label>
+        <input class="photo" id="avatar-field2" type="file" name="avatar" accept="image/*">
+
+        <label class="list" id="avatar-label" for="avatar-field3" style="display: none;"></label>
+        <input class="photo" id="avatar-field3" type="file" name="avatar" accept="image/*">
+
+        <label class="list" id="avatar-label" for="avatar-field4" style="display: none;"></label>
+        <input class="photo" id="avatar-field4" type="file" name="avatar" accept="image/*">
+        <br>
+    </form>
+
+    <!-- <button id="commit-btn">提交</button> -->
+
+</body>
+
+<script src="jquery.js"></script>
+
+<script>
+
+    let file = null;
+    $(".photo").on("change", function (e) {
+        file = e.target.files[0];
+        let url = URL.createObjectURL(file);
+        $(".list").eq($(".photo").index(this))
+            .css("backgroundImage", `url(${url})`);
+        $(".list").eq($(".photo").index(this) + 1).css("display", "inline-block")
+    });
+
+
+
+</script>
+
+</html>

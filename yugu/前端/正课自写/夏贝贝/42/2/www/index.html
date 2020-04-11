@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index2.html">跳转第二个页面</a>
+    <!-- 再导入的过程中一定要先导入jquery在导入cookie -->
+    <script src="jquery.js"></script>
+    <!-- jquery.cookie是浏览器端对cookie进行处理的插件，可以进行增删改查 -->
+    <script src="jquery.cookie.js"></script>
+    <script>
+        // 查看当前浏览器端的cookie数据
+        console.log($.cookie());
+        $.cookie('name','张三')
+        $.cookie('age',30)
+        $.cookie('ismale',true)
+        // 默认情况下，设置的cookie有限期是用户关闭这次请求的浏览器，这种cookie也叫做回话cookie
+        $.cookie('lao','tie',{
+            expires:1
+        })
+        console.log($.cookie('lao'));
+        $.cookie('lao','张倩倩')
+        console.log($.cookie('name'));
+        $.removeCookie('lao')
+    </script>
+</body>
+</html>

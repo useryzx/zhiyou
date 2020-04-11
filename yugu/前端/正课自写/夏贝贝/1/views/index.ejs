@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/nav.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .blog {
+            width: 500px;
+
+        }
+
+        h2 a {
+            text-decoration: none;
+            color: red;
+
+        }
+
+        h2 {
+            margin: 5px 0 10px 0;
+
+        }
+
+        .author {
+            color: blue
+        }
+
+        .label {
+            display: inline-block;
+            padding: 0 2px;
+            background-color: red;
+        }
+
+        section {
+            width: 100%;
+            margin-left: 200px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <%if(user){%>
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/label">标签</a></li>
+            <li><a href="/blog-commit?">发帖</a></li>
+            <li><a href="/loginOut">退出登录</a></li>
+            <li><a href=""><%=user.username%></a></li>
+        </ul>
+    </nav>
+    <%}else{%>
+    <nav>
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="/label">标签</a></li>
+            <li><a href="/user/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+        </ul>
+
+    </nav>
+    <%}%>
+   <section>
+   <%for(var i=0;i<data.length;i++){%>
+    <div class="blog">
+        <h2><a href="/blog/detail?id=<%=data[i]._id%>&count=<%=data[i].count%>"><%=data[i].title%></a></h2>
+        <div>作者:<span class="author"><%=data[i].author%></span> <span class="time"><%=data[i].time%></span>
+            <%for(var j=0;j<data[i].label.length;j++){%>
+            <span class='label'><%=data[i].label[j]%></span>
+            <%}%>
+      </div>
+     <p>阅读：<span class="readCount"><%=data[i].count%></span>回复：<span class="replyCount">
+                <%=data[i].reply.length%></span> </p>
+            <hr>
+            <%}%>
+</div>
+</section>
+    
+</body>
+<script src="/jquery.js"></script>
+<script src="/jquery.cookie.js"></script>
+<script src="/nav.js"></script>
+<script>
+
+    $('li').eq(0).addClass('show')
+
+
+</script>
+
+</html>

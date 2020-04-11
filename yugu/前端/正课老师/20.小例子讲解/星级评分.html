@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 800px;
+            margin: 50px auto;
+            position: relative;
+        }
+        ul
+        {
+            list-style: none;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        li{
+            width: 30px;
+            height: 30px;
+            background: url(star.png);
+            background-size: 30px;
+            display: inline-block;
+
+            cursor: pointer;
+        }
+        div span:nth-of-type(2)
+        {
+            display: none;
+        }
+        span strong{
+            color: red;
+        }
+        p
+        {
+            color: red;
+            width: 200px;
+            position: absolute;
+            left: 120px;
+            display: none;
+        }
+        li.on{
+            background-position: 0 bottom;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>点击星星进行评分:</span>
+        <ul>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+            <li> </li>
+        </ul>
+        <!-- 打的分数 -->
+        <span>
+            <strong>5分</strong>
+        </span>
+        <!-- 当前分数的评价 -->
+        <p>
+           质量不错
+        </p>
+    </div>
+</body>
+<script>
+     var arr1 = [
+        '非常不满意', '不满意', '一般', '满意', '挺满意'
+    ]
+    var arr2 = [
+        '差得太离谱，与卖家描述的严重不符，非常不满',
+        '部分有破损，与卖家描述的不符，不满意',
+        '质量一般，没有卖家描述的那么好',
+        '质量不错，与卖家描述的基本一致，还是挺满意的',
+        '质量非常好，与卖家描述的完全一致，非常满意'
+    ];
+    // 1.鼠标滑过星星时，当前星星及之前的都变黄色
+    // 2.鼠标离开时，星星恢复原色
+    // 3.鼠标点击星星时，当前星星及之前的都变黄色，但是，鼠标离开时，保留被点击的效果，即保留黄色
+
+    // 拿到所有的星星
+    var lis =document.querySelectorAll("li");
+    // 滑动展示,离开恢复
+    // 存储被点击的星星的索引
+    var clickNum = -lis.length
+    for(var i=0;i<lis.length;i++)
+    {
+        // 记录当前星星的索引
+        lis[i].index =i;
+        // 鼠标滑过的事件
+        lis[i].onmouseover =function(){
+            // 展示把当前索引传入 
+            show(this.index);
+        }
+        // 鼠标离开
+        lis[i].onmouseleave =function(){
+            // 展示把当前索引传入 
+            show(clickNum);
+        }
+        lis[i].onclick =function(){
+            clickNum =this.index; 
+            // 第一步选择的星星要生效
+            show(this.index);
+            // 展示评价
+            showScore(clickNum);
+        }
+    }
+    // 展示界面
+    function show(index){
+        // 传入的数字假如是2  那么i=0~~2的前三次都满足，意味着用户鼠标在
+        // 第三个星星上
+        for(var i=0;i<lis.length;i++){
+            if (i <= index) {
+                // 选中
+                console.log("选中");
+                lis[i].className ='on';
+            }
+            else
+            {
+                lis[i].className ='';
+            }
+        }
+    }
+
+    // 评价
+    function showScore(num){
+         var span =document.querySelectorAll("span")[1];
+         span.style.display ='block';
+         span.innerHTML ='<strong>'+(num+1)+'</strong> 分'+arr1[num];
+
+         var p =document.querySelector("p");
+         p.style.display ='block';
+         p.innerHTML ='<strong>'+arr2[num]+'</strong>';
+    }
+</script>
+</html>

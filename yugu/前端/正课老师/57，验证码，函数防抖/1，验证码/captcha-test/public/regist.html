@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #change-cap{
+            font-size: 12px;
+            color: #6666ff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form id="regist-form">
+        <label for="">用户名：&emsp;</label>
+        <input 
+            id="username-field" 
+            name="username" 
+            type="text" 
+            placeholder="至少3位" 
+            required 
+            pattern="\w{3,}"
+        >
+        <label id="username-tag"></label>
+        <br>
+        <label for="">密码：&emsp;&emsp;</label>
+        <input name="psw" id="psw" type="password" placeholder="至少6位" required pattern="\w{6,}">
+        <br>
+        <label for="">确认密码：</label>
+        <input id="confirm" type="password">
+        <br>
+
+        <img id="cap-img" src="/captcha" alt="">
+        <span id="change-cap">看不清，换一张</span>
+
+        <br>
+        <label for="">验证码：&emsp;</label>
+        <input type="text" name="captcha">
+
+        <br>
+
+        <button disabled id="send-btn">提交</button>
+    </form>
+
+    
+</body>
+<script src="jquery.min.js"></script>
+
+<script>
+    $("#regist-form").on("submit",function(e){
+        e.preventDefault();
+
+        if($("#psw").val()!=$("#confirm").val()){
+            alert("两次密码输入不一致");
+            return;
+        }
+
+        // 发请求
+        // console.log($("#regist-form").serialize());
+        
+        $.post("/users/regist",$("#regist-form").serialize())
+        .then(res=>{
+            alert(res.msg);
+        })
+
+    });
+
+    let timer = null;
+
+    $("#username-field").on("input",function(){
+
+        if(timer){
+            clearTimeout(timer);
+        }
+
+        timer = setTimeout(() => {
+            timer = null;
+            if($("#username-field").val().length<3){
+                $("#username-tag")
+                .text("用户名必须3位以上")
+                .css("color","red");
+                return;
+            }
+
+            $.get("/users/available",{
+                username:$("#username-field").val()
+            })
+            .then(res=>{
+                if(!res.err){
+                    // console.log("可以使用");
+                    $("#username-tag")
+                    .text("此用户名可以使用")
+                    .css("color","green");
+                    $("#send-btn").prop("disabled",false);
+
+                }else{
+                    // console.log("已被占用");
+                    $("#username-tag")
+                    .text("此用户名已被占用")
+                    .css("color","red");
+                    $("#send-btn").prop("disabled",true);
+                }
+            })
+        }, 1000);
+        
+    });
+
+
+    $("#change-cap").on("click",function(){
+        // 更换验证码。
+        $("#cap-img").attr("src","/captcha?"+Math.random());
+
+    });
+    
+</script>
+
+</html>

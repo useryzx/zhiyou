@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        #book-box {
+            width: 400px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #book-box td {
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>书籍列表：</h1>
+    <div id="book-box">
+
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script src="./ejs.js"></script>
+<script type="text/html" id="t1">
+<table id='book-box'>
+    <tr>
+        <td>序号</td>
+        <td>书名</td>
+        <td>价格</td>
+    </tr>
+    <%for(let i=0;i<books.length;i++){%>
+        <tr>
+            <td><%=i+1%></td>
+            <td><%=books[i].name%></td>
+            <td><%=books[i].price%></td>
+        </tr>
+    <%}%>
+
+</table>
+</script>
+
+<script>
+    $.get('/api/books').then(data => {
+        let htmlStr = ejs.render($('#t1').text(),data);
+        $('#book-box').html(htmlStr)
+    })
+</script>
+<!-- <script>
+    $.get('/api/books').then(data=>{
+        renderBooks(data.books)
+    })
+    function renderBooks(books){
+        let htmlStr = `
+        <table id='book-box'>
+            <tr>
+                <td>序号</td>
+                <td>书名</td>
+                <td>价格</td>
+            </tr>
+        `;
+        for(let i=0;i<books.length;i++){
+            htmlStr+=`
+            <tr>
+                <td>${i+1}</td>
+                <td>${books[i].name}</td>
+                <td>${books[i].price}</td>
+            </tr>
+            `
+        }
+        htmlStr+=`</table>`
+        $('#book-box').html(htmlStr)
+    }
+</script> -->
+
+</html>

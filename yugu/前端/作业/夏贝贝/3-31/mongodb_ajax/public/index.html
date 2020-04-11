@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit by yuguaa</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/favicon.jpg" type="image/x-icon">
+</head>
+
+<body>
+    <b>// edit by yugu //</b>
+    <br>
+    <main id="userOn">
+        <h1>welcome</h1>
+    </main>
+    <br>
+    <main id="userOff">
+        <a href="/api/regist" id="regist">注册</a>
+        <br>
+        <br>
+        <a href="/api/login" id="login">登陆</a>
+    </main>
+    <br>
+    <main id="registPage">
+        <form id="registForm">
+            账号：<input type="text" name="name" required><br><br>
+            密码：<input type="password" name="password" required><br><br>
+            &emsp; &emsp; &nbsp;<button>注册</button>
+        </form>
+    </main>
+    <br>
+    <main id="loginPage">
+        <form id="loginForm">
+            账号：<input type="text" name="name" required><br><br>
+            密码：<input type="password" name="password" required><br><br>
+            &emsp; &nbsp; &emsp;<button>登陆</button>
+        </form>
+    </main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span>edit by yugu</span>
+    <span>edit by yugu</span>
+    <span>edit by yugu</span>
+    <span>edit by yugu</span>
+    <span>edit by yugu</span>
+    <span>edit by yugu</span>
+</body>
+<script src="/libs/jquery.js"></script>
+<script src="/libs/jquery.cookie.js"></script>
+<script>
+    const user = $.cookie().name;
+    // user存在显示欢迎
+    if (user) {
+        $('#userOn').css('display', 'block')
+        $('#userOff').css('display', 'none')
+        $('#registPage').css('display', 'none')
+        $('#loginPage').css('display', 'none')
+        $('h1').html(`欢迎    ${user}`)
+    }
+    else {
+        // user不存在显示登陆注册
+        $('#userOn').css('display', 'none')
+        $('#userOff').css('display', 'block')
+        $('#registPage').css('display', 'none')
+        $('#loginPage').css('display', 'none')
+    }
+    // 点击注册时
+    $('#regist').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'get',
+            url: '/api/regist',
+            success(data) {
+                if (data.error == 0) {
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'block')
+                    $('#loginPage').css('display', 'none')
+                }
+            }
+        })
+    })
+    $('#login').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'get',
+            url: '/api/login',
+            success(data) {
+                if (data.error == 0) {
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'none')
+                    $('#loginPage').css('display', 'block')
+                }
+            }
+        })
+    })
+    // 提交注册
+    $('#registForm').submit(function (e) {
+        e.preventDefault();
+        let obj = $(this).serialize();
+        $.ajax({
+            type: 'post',
+            data:obj,
+            url: '/api/zhuce',
+            success(data) {
+                console.log(data);
+                if (data.error == 0) {
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'none')
+                    $('#loginPage').css('display', 'block')
+                }
+                if (data.error == 1) {
+                    alert(data.msg)
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'block')
+                    $('#registPage').css('display', 'none')
+                    $('#loginPage').css('display', 'none')
+                }
+                if (data.error == 2) {
+                    alert(data.msg)
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'block')
+                    $('#loginPage').css('display', 'none')
+                }
+                if (data.error == 3) {
+                    alter(data.msg)
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'block')
+                    $('#loginPage').css('display', 'none')
+                }
+            },
+            beforeSend:function(){
+                console.log('开始注册');
+            }
+        })
+    })
+    // 提交登陆
+    $('#loginForm').submit(function (e) {
+        e.preventDefault();
+        let obj = $(this).serialize();
+        $.ajax({
+            type: 'post',
+            data:obj,
+            url: '/api/login',
+            success(data) {
+                console.log(data);
+                if (data.error == 4||data.error == 5) {
+                    $('#userOn').css('display', 'none')
+                    $('#userOff').css('display', 'none')
+                    $('#registPage').css('display', 'none')
+                    $('#loginPage').css('display', 'block')
+                }
+                if (data.error == 0) {
+                    location.href = '/'
+                }
+            },
+            beforeSend:function(){
+                console.log('开始登陆');
+            }
+        })
+    })
+</script>
+
+</html>

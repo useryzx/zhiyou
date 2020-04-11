@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单的属性和事件</title>
+</head>
+<body>
+    <input type="text" id="textField">
+    <span id="tip" style="display: none; color: red;">
+        长度不要超过10</span>
+    <br>
+    <p>请选择你的特长</p>
+    <label for="">懒</label>
+    <input type="checkbox">
+    <label for="">菜</label>
+    <input type="checkbox" id="cai">
+    <hr>
+    <label for="sel">请选择你的专业</label>
+    <select id="sel">
+        <option>计算机</option>
+        <option>医学</option>
+        <option>物理学</option>
+        <option value="13">机械制造</option>
+        <option value="14">生物制造</option>
+    </select>
+</body>
+<script>
+    var textFiled =document.getElementById("textField");
+    var tip =document.getElementById("tip");
+    // oninput事件，内容发生变化时候触发
+    textFiled.oninput =function(e){
+          if (textFiled.value.length > 10) {
+            tip.style.display ='inline';
+
+          } else {
+            tip.style.display ='none';
+          }
+    }
+    // 关于复选框的事件
+    var cai =document.querySelector("#cai");
+    // 捕获复选框的状态
+    cai.onchange =function(e){
+        console.log(this.checked?"选中":"取消");
+        
+    }
+    // 关于select的事件
+    var sel =document.querySelector("#sel");
+    sel.onchange =function(){
+        // value代表option的值 如果当前option的value
+        // 属性没有写  那么value的值和内容的值相同
+        console.log(this.value);
+        // option的索引
+        console.log(this.selectedIndex);
+        
+        
+    }
+</script>
+</html>

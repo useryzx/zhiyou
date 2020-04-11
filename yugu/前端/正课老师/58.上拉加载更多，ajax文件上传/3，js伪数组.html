@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p class="line">第1行</p>
+    <p class="line">第2行</p>
+    <p class="line">第3行</p>
+    <p class="line">第4行</p>
+</body>
+
+<script>
+    let arr = ["123","abc"];
+    console.log(arr);
+
+    // 在js中存在一些特殊的对象，有length属性，而且可以像数组一样通过索引访问属性，但是又不是数组类的实例，这些对象可以统称为伪数组或类数组。
+    let lines = document.getElementsByClassName("line");
+
+    // console.log(document.querySelectorAll(".line"));
+    // console.log(lines.length);
+    // console.log(lines[2]);
+
+    // 伪数组不是数组，所以不能调用数组的方法。
+    // lines.forEach(e => {
+    //     console.log(e);
+    // });
+    
+    // 可以通过instanceof判断一个对象是不是数组
+    console.log(lines instanceof Array);
+    
+    //----------------------------------------------------------------------------
+
+    // Array.from方法可以把一个伪数组转为真正的数组。
+    let linesArr = Array.from(lines);
+    console.log(linesArr);
+
+
+    
+
+</script>
+
+</html>

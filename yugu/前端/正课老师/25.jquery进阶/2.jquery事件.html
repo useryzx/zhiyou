@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery事件</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <button class="num">1</button>
+    <button class="num">2</button>
+    <button class="num">3</button>
+    <button class="num">4</button>
+    <button class="num">5</button>
+    <hr>
+    <button id="btn2">一次性按钮</button>
+    <hr>
+    <button id="btn3">页面中不存在的按钮</button>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // 函数的封装不区分原生还是jquery
+    function btnClick(e) {
+        /*
+        e:如果函数被监听调用，代表本次事件
+        e.target:调用事件的对象
+        jq监听也会得到一个对象e,但是这个对象e不再是原生的对象
+        而是jq封装之后的对象 
+        */
+        console.log("按钮的点击:" + e.originalEvent);
+    }
+    // 使用jq对象绑定函数的时候，on代表直接监听
+    // 函数里面传两个参数  1.事件名称  2.监听到之后调用的函数
+    $("#btn").on("click", btnClick);
+    // 解除事件的绑定
+    $("#btn").off("click", btnClick);
+
+    $(".num").on("click", function () {
+        /* 打印出来的是事件监听者的内容
+          this默认指当前对象，因为该函数的回调是btn的回调
+          所以在这里面this指的就是调用该函数的对象(btn)
+            */
+        console.log($(this).text());
+    });
+    //   一次性事件
+    $("#btn2").one("click", function () {
+          console.log("这个按钮只能点一下");
+    })
+    // 给body绑定的事件，委托给了btn3
+    // 代理:
+    $("body").delegate("#btn3","click",function(){
+        console.log("事件被btn3代理了");
+    })
+</script>
+
+</html>

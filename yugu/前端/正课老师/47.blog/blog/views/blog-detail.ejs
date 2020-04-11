@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帖子详情</title>
+</head>
+<body>
+    <%-include('./header.ejs')%>
+    <main>
+        <h1><%=data.title%></h1>
+        <p class="info"><%=data.time%></p>
+        <p class="info"><a href="#"><%=data.author.username%></a></p>
+        <p class="content">
+            <%=data.content%>
+        </p>
+        <%if(user&&user._id==data.author._id){%>
+            <a href="/api/blog/delete?_id=<%=data._id%>">删除帖子</a>
+        <%}%>
+        <hr>
+        <%for(var i=0;i<data.reply.length;i++){%>
+            <div class="reply-box">
+                <h5>回复者:<%=data.reply[i].author%></h5>
+                <p><%=data.reply[i].content%></p>
+            </div>
+        <%}%>
+        <hr>
+        <form action="/api/blog/reply" method="post">
+             <input type="text" name="blogId" value="<%=data._id%>" style="display: none;">
+             <%if(!user){%>
+             <label for="">昵称:</label>
+             <input type="text" name="nickname" required>
+             <%}%>
+             <br>
+             <textarea name="reply"required></textarea>
+             <br>
+             <button>回帖</button>
+        </form>
+    </main>
+</body>
+</html>

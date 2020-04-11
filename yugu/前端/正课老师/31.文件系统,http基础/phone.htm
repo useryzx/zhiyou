@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no, minimum-scale=1, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+<link rel="shortcut icon" href="http://www.0371xuanhao.cn/public/static/img/favicon_font.ico" type="image/x-icon">
+<link rel="stylesheet" href="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/layui.css">
+<link rel="stylesheet" href="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/front.css">
+<link rel="stylesheet" href="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/front_tpl_1.css">
+<title>郑州移动靓号，移动号码选号，电信选号码网上选号，手机号码大全，郑州手机号码选号网，移动手机号码选号</title>
+<meta name="keywords" content="郑州手机靓号郑州靓号|郑州移动靓号|郑州电信靓号|郑州联通连号|郑州靓号回收|郑州高价收号|郑州手机号码网|郑州吉祥手机号|郑州移动靓号| 郑州选号网|高价回收郑州手机靓号">
+<meta name="description" content="郑州移动手机号码、郑州联通手机号码、郑州电信手机号码，郑州手机靓号、吉祥号、情侣号、炸弹号、0371靓号，网上选号，免费送卡上门，当面营业厅过户安全放心！">
+<script src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/hm.js"></script><script type="text/javascript" src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/jquery.js"></script>
+<script type="text/javascript" src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/clipboard.js"></script>
+<script type="text/javascript" src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/favor.js"></script>
+<script src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/layui.js"></script>
+<script>
+
+    function copyWeiXin() {
+
+    }
+
+    Date.prototype.format = function (fmt) { //author: meizz
+        if (!fmt) {
+            fmt = 'yyyy-MM-dd HH:mm:ss';
+        }
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+
+    (function ($) {
+        $.isWeiXin = function () {
+            return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1;
+        };
+
+        $.fn.onlyInteger = function (limit, callback) {
+            $(this).keyup(function (event) {
+                if (event.keyCode == 8 && typeof callback === 'function') {
+                    callback.call(this, '', -1);
+                }
+            });
+            return $(this).on('input', function () {
+                var inputValue = $(this).val();
+                var inputLength = inputValue.length;
+                var finalValue = "";
+                for (var index = 0; index < inputLength; index++) {
+                    if (!isNaN(parseInt(inputValue.charAt(index)))) {
+                        finalValue += inputValue.charAt(index);
+                    }
+                }
+                if (limit && finalValue.length > limit) {
+                    finalValue = finalValue.substr(0, limit);
+                }
+                if (finalValue.length !== inputLength) {
+                    $(this).val(finalValue);
+                }
+                if (finalValue !== '' && typeof callback === 'function') {
+                    callback.call(this, finalValue);
+                }
+
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            });
+        };
+        $.fn.serializeJson = function (allowNull) {
+            var serializeObj = {};
+            var array = this.serializeArray();
+            $(array).each(function () {
+                if (serializeObj[this.name]) {
+                    if ($.isArray(serializeObj[this.name])) {
+                        if (allowNull || this.value) {
+                            serializeObj[this.name].push(this.value);
+                        }
+                    } else {
+                        if (allowNull || this.value) {
+                            serializeObj[this.name] = [serializeObj[this.name], this.value];
+                        }
+                    }
+                } else {
+                    if (allowNull || this.value) {
+                        serializeObj[this.name] = this.value;
+                    }
+                }
+            });
+            return serializeObj;
+        };
+
+        $.formatCategory = function (flag, cate) {
+            if (flag == 0) {
+                if (cate == 1) {
+                    return '移动';
+                } else if (cate == 2) {
+                    return '联通';
+                } else if (cate == 3) {
+                    return '电信'
+                } else {
+                    return '其它';
+                }
+            } else {
+                if (cate == 1) {
+                    return '联通';
+                } else if (cate == 2) {
+                    return '移动';
+                } else if (cate == 3) {
+                    return '电信'
+                } else if (cate == 4) {
+                    return '铁通';
+                } else {
+                    return '其它';
+                }
+            }
+        };
+
+        $.getUrlParam = function (name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r !== null) return decodeURIComponent(r[2]);
+            return null;
+        };
+        $.getUrlHashParam = function (name) {
+            var reg = new RegExp("(^|&|#)" + name + "=([^&]*)(&|$)");
+            var r = window.location.hash.substr(1).match(reg);
+            if (r !== null) return decodeURIComponent(r[2]);
+            return null;
+        };
+
+    })(jQuery);
+
+</script>
+<link id="layuicss-layer" rel="stylesheet" href="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/layer.css" media="all"></head>
+<body>
+
+
+<div class="top-banner">
+    <div class="top-banner-left">
+        <a href="http://www.0371xuanhao.cn/public/index/index/index.html">
+            <img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/e02b3e657ae5fd5fc4796fdd2cc43d1d.jpg" alt="image/20180727/e02b3e657ae5fd5fc4796fdd2cc43d1d.jpg">
+            <!--<span>郑州选号网  郑州最专业的手机靓号直销平台</span>-->
+        </a>
+    </div>
+    <div class="top-banner-right">
+        <img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/e012d6d5eda3b8aed32f958fc7898a7f.jpg" href="http://www.0371xuanhao.cn/public/index/index/index.html" alt="image/20180727/e012d6d5eda3b8aed32f958fc7898a7f.jpg">
+    </div>
+</div>
+<div style="height: 42px;"><div class="top-navi">
+    <a href="http://www.0371xuanhao.cn/public/index/index/index.html" class="cur">首页</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/pick.html?navi=yd#operate=1" class="">移动选号</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/pick.html?navi=lth#operate=2" class="">联通选号</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/pick.html?navi=dx#operate=3" class="">电信选号</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/pick2.html?navi=gh" class="">固话选号</a>
+    <!--<a href="/public/index/index/pick3.html?navi=ql" class="">情侣专区</a>-->
+    <!--<a href="/public/index/index/article.html?id=6" class="">400电话</a>-->
+    <a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=2" class="">购号流程</a>
+    <!--<a href="/public/index/index/article.html?cate=7" class="">套餐资费</a>-->
+    <a href="http://www.0371xuanhao.cn/public/index/index/sale.html" class="">靓号回收</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/favor.html" class="">我的候选</a>
+    <a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=1" class="">关于我们</a>
+</div></div>
+<div class="content-container">
+                <marquee class="marquee">
+                                    <a target="_self" href="#">全市最高价回收手机靓号！ 承接郑州手机号码空号定制</a>
+                            </marquee>
+            <div class="left-container layui-hide-xs">
+
+        <div class="left-qr-code">
+        <div><span>微信扫一扫咨询</span></div>
+        <img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/ddde03debf20abf24efff4b648f48589.png" alt="微信扫一扫咨询">
+    </div>
+            <div class="left-news">
+            <h3>特价专区</h3>
+            <ul>
+                                    <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=39"> 13949115500</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=38">18838292766 秒杀价199元</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=37">13938595858 13903825858特价5888元一个</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=36">19913853888，19913815666特价3500元一个</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=35">13838310388特价299元！</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=34">18339823588 18339827188 特价88元一个</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=33">17788151118特价800元！！</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=32">19937751118特价800元！！</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=31">19937685558特价800元！！</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=30">推荐</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=29">19937658999超级秒杀价3999元，另存1500话费！</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=28">182-3712-1666￥11800</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=27">移动特价靓号18838278877仅售1099元</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=26">新到郑州移动吉祥号码</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=25">郑州电信371最美四带一</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=24">新到移动特价777</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=20">移动发财号</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=19">⊙联通99冰激凌AA*AA</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=18">十年经典老郑州能量组合399一枚</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=17">电信经典十五年老号86组合</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=16">郑州电信0371“年份号”纪念特殊的你</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=15">★移动稀有古董靓号</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=14">电信经典号码稀有特价“789”</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=13">最便宜的9999A，￥699元</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=12">霸气的7多号码</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=11">福利AABAAA</a></li>
+                                        <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=10">特价了 特价了</a></li>
+                                </ul>
+        </div>
+    <div class="clear"></div>
+
+    <div class="left-news">
+        <h3>最新资费</h3>
+        <ul>
+                            <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=7">电信固话资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=9">电信固话资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=4">移动资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=5">电信资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=3">联通资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=23">移动取消28元套餐通知</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=22">电信王中王卡资费</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=21">2018移动68元不限量套餐，活动价48元每月</a></li>
+                                <li><a href="http://www.0371xuanhao.cn/public/index/index/article.html?id=8">电信固话资费</a></li>
+                        </ul>
+    </div>
+
+</div>
+    <div class="right-container">
+                <div class="search-container">
+
+                        <div class="search-item-group" style="flex-wrap: wrap;">
+    <div class="search-item-label text-search-label">精确搜索</div>
+    <div class="search-item-content">
+        <input class="first inputMarchSearch" readonly="readonly" title="" type="tel" value="1"><input class="left inputMarchSearch" title="" type="tel"><input class="right inputMarchSearch" title="" type="tel">
+        -
+        <input class="left inputMarchSearch" title="" type="tel"><input class="left inputMarchSearch" title="" type="tel"><input class="left inputMarchSearch" title="" type="tel"><input class="right inputMarchSearch" title="" type="tel">
+        -
+        <input class="left inputMarchSearch" title="" type="tel"><input class="left inputMarchSearch" title="" type="tel"><input class="left inputMarchSearch" title="" type="tel"><input class="last inputMarchSearch" title="" type="tel">
+        <!--<a class="action-btn-clear" href="javascript:;">清空</a>-->
+        <a id="btnMarchSearch" class="action-btn-search" href="javascript:;">搜索</a>
+        <!--<span class="search-tip">无法确定，则留空！</span>-->
+    </div>
+
+    <div class="search-item-group search-item-group-inner">
+        <div class="search-item-label text-search-label">模糊搜索</div>
+        <div class="search-item-content">
+            <input id="inputLikeSearch" placeholder="" class="number" title="" type="tel">
+            <!--<a class="action-btn-clear" href="javascript:;">清空</a>-->
+            <a id="btnLikeSearch" class="action-btn-search" href="javascript:;">搜索</a>
+            <!--<span class="search-tip">输入1-11位数字</span>-->
+        </div>
+    </div>
+
+</div>
+
+                        <div class="search-item-group" data-name="operate" relation-name="preNum" relation-options="{&quot;1&quot;:{&quot;\u4e0d\u9650&quot;:&quot;&quot;,&quot;139 &quot;:&quot;139&quot;,&quot;198 &quot;:&quot;198&quot;,&quot;138 &quot;:&quot;138&quot;,&quot;137 &quot;:&quot;137&quot;,&quot;136 &quot;:&quot;136&quot;,&quot;135 &quot;:&quot;135&quot;,&quot;134 &quot;:&quot;134&quot;,&quot;159 &quot;:&quot;159&quot;,&quot;158 &quot;:&quot;158&quot;,&quot;157 &quot;:&quot;157&quot;,&quot;152 &quot;:&quot;152&quot;,&quot;151 &quot;:&quot;151&quot;,&quot;150 &quot;:&quot;150&quot;,&quot;147 &quot;:&quot;147&quot;,&quot;178 &quot;:&quot;178&quot;,&quot;182 &quot;:&quot;182&quot;,&quot;183 &quot;:&quot;183&quot;,&quot;184 &quot;:&quot;184&quot;,&quot;187 &quot;:&quot;187&quot;,&quot;188 &quot;:&quot;188&quot;},&quot;2&quot;:{&quot;\u4e0d\u9650&quot;:&quot;&quot;,&quot;166 &quot;:&quot;166&quot;,&quot;130 &quot;:&quot;130&quot;,&quot;131 &quot;:&quot;131&quot;,&quot;132 &quot;:&quot;132&quot;,&quot;156 &quot;:&quot;156&quot;,&quot;155 &quot;:&quot;155&quot;,&quot;186 &quot;:&quot;186&quot;,&quot;185 &quot;:&quot;185&quot;,&quot;176 &quot;:&quot;176&quot;,&quot;145 &quot;:&quot;145&quot;,&quot;175 &quot;:&quot;175&quot;},&quot;3&quot;:{&quot;\u4e0d\u9650&quot;:&quot;&quot;,&quot;133 &quot;:&quot;133&quot;,&quot;153 &quot;:&quot;153&quot;,&quot;177 &quot;:&quot;177&quot;,&quot;180 &quot;:&quot;180&quot;,&quot;181 &quot;:&quot;181&quot;,&quot;189 &quot;:&quot;189&quot;,&quot;173 &quot;:&quot;173&quot;,&quot;199 &quot;:&quot;199&quot;},&quot;4&quot;:{&quot;\u4e0d\u9650&quot;:&quot;&quot;,&quot;170 &quot;:&quot;170&quot;,&quot;171 &quot;:&quot;171&quot;},&quot;&quot;:{&quot;\u4e0d\u9650&quot;:&quot;&quot;,&quot;139 &quot;:&quot;139&quot;,&quot;198 &quot;:&quot;198&quot;,&quot;138 &quot;:&quot;138&quot;,&quot;137 &quot;:&quot;137&quot;,&quot;136 &quot;:&quot;136&quot;,&quot;135 &quot;:&quot;135&quot;,&quot;134 &quot;:&quot;134&quot;,&quot;159 &quot;:&quot;159&quot;,&quot;158 &quot;:&quot;158&quot;,&quot;157 &quot;:&quot;157&quot;,&quot;152 &quot;:&quot;152&quot;,&quot;151 &quot;:&quot;151&quot;,&quot;150 &quot;:&quot;150&quot;,&quot;147 &quot;:&quot;147&quot;,&quot;178 &quot;:&quot;178&quot;,&quot;182 &quot;:&quot;182&quot;,&quot;183 &quot;:&quot;183&quot;,&quot;184 &quot;:&quot;184&quot;,&quot;187 &quot;:&quot;187&quot;,&quot;188 &quot;:&quot;188&quot;,&quot;166 &quot;:&quot;166&quot;,&quot;130 &quot;:&quot;130&quot;,&quot;131 &quot;:&quot;131&quot;,&quot;132 &quot;:&quot;132&quot;,&quot;156 &quot;:&quot;156&quot;,&quot;155 &quot;:&quot;155&quot;,&quot;186 &quot;:&quot;186&quot;,&quot;185 &quot;:&quot;185&quot;,&quot;176 &quot;:&quot;176&quot;,&quot;145 &quot;:&quot;145&quot;,&quot;175 &quot;:&quot;175&quot;,&quot;133 &quot;:&quot;133&quot;,&quot;153 &quot;:&quot;153&quot;,&quot;177 &quot;:&quot;177&quot;,&quot;180 &quot;:&quot;180&quot;,&quot;181 &quot;:&quot;181&quot;,&quot;189 &quot;:&quot;189&quot;,&quot;173 &quot;:&quot;173&quot;,&quot;199 &quot;:&quot;199&quot;,&quot;170 &quot;:&quot;170&quot;,&quot;171 &quot;:&quot;171&quot;}}">
+                <div class="search-item-label">运营商</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">不限</a>
+                                        <a class="option" data-value="1" href="javascript:1;">移动</a>
+                                        <a class="option" data-value="2" href="javascript:2;">联通</a>
+                                        <a class="option" data-value="3" href="javascript:3;">电信</a>
+                                        <a class="option" data-value="4" href="javascript:4;">其它</a>
+                                    </div>
+            </div>
+                        <div class="search-item-group" data-name="preNum" '="">
+                <div class="search-item-label">号段</div>
+                <div class="search-item-content"><a class="option option-cur" data-value="" href="javascript:;">不限</a><a class="option" data-value="139" href="javascript:;">139 </a><a class="option" data-value="198" href="javascript:;">198 </a><a class="option" data-value="138" href="javascript:;">138 </a><a class="option" data-value="137" href="javascript:;">137 </a><a class="option" data-value="136" href="javascript:;">136 </a><a class="option" data-value="135" href="javascript:;">135 </a><a class="option" data-value="134" href="javascript:;">134 </a><a class="option" data-value="159" href="javascript:;">159 </a><a class="option" data-value="158" href="javascript:;">158 </a><a class="option" data-value="157" href="javascript:;">157 </a><a class="option" data-value="152" href="javascript:;">152 </a><a class="option" data-value="151" href="javascript:;">151 </a><a class="option" data-value="150" href="javascript:;">150 </a><a class="option" data-value="147" href="javascript:;">147 </a><a class="option" data-value="178" href="javascript:;">178 </a><a class="option" data-value="182" href="javascript:;">182 </a><a class="option" data-value="183" href="javascript:;">183 </a><a class="option" data-value="184" href="javascript:;">184 </a><a class="option" data-value="187" href="javascript:;">187 </a><a class="option" data-value="188" href="javascript:;">188 </a><a class="option" data-value="166" href="javascript:;">166 </a><a class="option" data-value="130" href="javascript:;">130 </a><a class="option" data-value="131" href="javascript:;">131 </a><a class="option" data-value="132" href="javascript:;">132 </a><a class="option" data-value="156" href="javascript:;">156 </a><a class="option" data-value="155" href="javascript:;">155 </a><a class="option" data-value="186" href="javascript:;">186 </a><a class="option" data-value="185" href="javascript:;">185 </a><a class="option" data-value="176" href="javascript:;">176 </a><a class="option" data-value="145" href="javascript:;">145 </a><a class="option" data-value="175" href="javascript:;">175 </a><a class="option" data-value="133" href="javascript:;">133 </a><a class="option" data-value="153" href="javascript:;">153 </a><a class="option" data-value="177" href="javascript:;">177 </a><a class="option" data-value="180" href="javascript:;">180 </a><a class="option" data-value="181" href="javascript:;">181 </a><a class="option" data-value="189" href="javascript:;">189 </a><a class="option" data-value="173" href="javascript:;">173 </a><a class="option" data-value="199" href="javascript:;">199 </a><a class="option" data-value="170" href="javascript:;">170 </a><a class="option" data-value="171" href="javascript:;">171 </a></div>
+            </div>
+                        <div class="search-item-group" data-name="price" '="">
+                <div class="search-item-label">价格区间</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">不限</a>
+                                        <a class="option" data-value="200" href="javascript:200;">0-200</a>
+                                        <a class="option" data-value="500" href="javascript:500;">200-500</a>
+                                        <a class="option" data-value="1000" href="javascript:1000;">500-1000</a>
+                                        <a class="option" data-value="2000" href="javascript:2000;">1000-2000</a>
+                                        <a class="option" data-value="5000" href="javascript:5000;">2000-5000</a>
+                                        <a class="option" data-value="10000" href="javascript:10000;">5000-1万</a>
+                                        <a class="option" data-value="30000" href="javascript:30000;">1万-3万</a>
+                                        <a class="option" data-value="30001" href="javascript:30001;">3万以上</a>
+                                    </div>
+            </div>
+                        <div class="search-item-group" data-name="rule" '="">
+                <div class="search-item-label">号码规律</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">不限</a>
+                                        <a class="option" data-value="1" href="javascript:1;">AA</a>
+                                        <a class="option" data-value="2" href="javascript:2;">AAA</a>
+                                        <a class="option" data-value="4" href="javascript:4;">AAAA</a>
+                                        <a class="option" data-value="8" href="javascript:8;">*AAAA*</a>
+                                        <a class="option" data-value="16" href="javascript:16;">ABAB</a>
+                                        <a class="option" data-value="32" href="javascript:32;">AABBCC</a>
+                                        <a class="option" data-value="64" href="javascript:64;">AABBCCDD</a>
+                                        <a class="option" data-value="128" href="javascript:128;">ABABAB</a>
+                                        <a class="option" data-value="256" href="javascript:256;">AAAB</a>
+                                        <a class="option" data-value="512" href="javascript:512;">AAAAB</a>
+                                        <a class="option" data-value="1024" href="javascript:1024;">AAAAAB</a>
+                                        <a class="option" data-value="2048" href="javascript:2048;">AAAAA</a>
+                                        <a class="option" data-value="4096" href="javascript:4096;">AAAAAA</a>
+                                        <a class="option" data-value="8192" href="javascript:8192;">AABBBB</a>
+                                        <a class="option" data-value="16384" href="javascript:16384;">AABBB</a>
+                                        <a class="option" data-value="32768" href="javascript:32768;">ABC</a>
+                                        <a class="option" data-value="65536" href="javascript:65536;">ABCD</a>
+                                        <a class="option" data-value="131072" href="javascript:131072;">ABCDE</a>
+                                        <a class="option" data-value="262144" href="javascript:262144;">ABCDEF</a>
+                                        <a class="option" data-value="524288" href="javascript:524288;">AABB</a>
+                                        <a class="option" data-value="1048576" href="javascript:1048576;">ABABC</a>
+                                        <a class="option" data-value="2097152" href="javascript:2097152;">ABCABC</a>
+                                        <a class="option" data-value="4194304" href="javascript:4194304;">ABCDABCD</a>
+                                        <a class="option" data-value="8388608" href="javascript:8388608;">*ABCDEABCDE</a>
+                                        <a class="option" data-value="16777216" href="javascript:16777216;">A*A*A*A*</a>
+                                        <a class="option" data-value="33554432" href="javascript:33554432;">*A*A*A*A</a>
+                                        <a class="option" data-value="67108864" href="javascript:67108864;">ABABB</a>
+                                        <a class="option" data-value="134217728" href="javascript:134217728;">000A</a>
+                                        <a class="option" data-value="268435456" href="javascript:268435456;">ABBA</a>
+                                        <a class="option" data-value="536870912" href="javascript:536870912;">AABAA</a>
+                                        <a class="option" data-value="1073741824" href="javascript:1073741824;">**AB**AB</a>
+                                        <a class="option" data-value="2147483648" href="javascript:2147483648;">AB**AB**</a>
+                                        <a class="option" data-value="4294967296" href="javascript:4294967296;">*ABC*ABC</a>
+                                        <a class="option" data-value="8589934592" href="javascript:8589934592;">ABC*ABC*</a>
+                                        <a class="option" data-value="17179869184" href="javascript:17179869184;">ABABAB*</a>
+                                        <a class="option" data-value="34359738368" href="javascript:34359738368;">AABBCC*</a>
+                                    </div>
+            </div>
+                        <div class="search-item-group" data-name="moreNum" '="">
+                <div class="search-item-label">含数多</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">不限</a>
+                                        <a class="option" data-value="999" href="javascript:999;">9多</a>
+                                        <a class="option" data-value="888" href="javascript:888;">8多</a>
+                                        <a class="option" data-value="777" href="javascript:777;">7多</a>
+                                        <a class="option" data-value="666" href="javascript:666;">6多</a>
+                                        <a class="option" data-value="555" href="javascript:555;">5多</a>
+                                        <a class="option" data-value="444" href="javascript:444;">4多</a>
+                                        <a class="option" data-value="333" href="javascript:333;">3多</a>
+                                        <a class="option" data-value="222" href="javascript:222;">2多</a>
+                                        <a class="option" data-value="111" href="javascript:111;">1多</a>
+                                        <a class="option" data-value="000" href="javascript:000;">0多</a>
+                                    </div>
+            </div>
+                        <div class="search-item-group" data-name="has4" '="">
+                <div class="search-item-label">包含数字</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">不限</a>
+                                        <a class="option" data-value="1" href="javascript:1;">包含4</a>
+                                        <a class="option" data-value="2" href="javascript:2;">不包含4</a>
+                                        <a class="option" data-value="3" href="javascript:3;">不含7</a>
+                                        <a class="option" data-value="4" href="javascript:4;">不含4和7</a>
+                                        <a class="option" data-value="5" href="javascript:5;">能量号全吉号(仅含1,3,4,9)</a>
+                                    </div>
+            </div>
+                        <div class="search-item-group" data-name="orderByPrice" '="">
+                <div class="search-item-label">价格排序</div>
+                <div class="search-item-content">
+                                        <a class="option option-cur" data-value="" href="javascript:;">默认</a>
+                                        <a class="option" data-value="1" href="javascript:1;">从低到高</a>
+                                        <a class="option" data-value="2" href="javascript:2;">从高到低</a>
+                                    </div>
+            </div>
+            
+            <div class="search-item-group search-item-group-prop">
+                <div class="search-item-label">已选条件</div>
+                <div class="search-item-content">
+                    
+                    <a id="btnResetSearch" class="option" href="javascript:;">重置筛选条件</a>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+                    <div class="number-results-headers">
+                <ul class="header-first">
+                    <li class="header-number">号码</li>
+                    <li class="header-price">售价</li>
+                    <li class="header-huafei">话费</li>
+                </ul>
+                <ul>
+                    <li class="header-number">号码</li>
+                    <li class="header-price">售价</li>
+                    <li class="header-huafei">话费</li>
+                </ul>
+            </div>
+        
+        <div class="number-results"><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>188</span><span class="number-match">6036</span><span>6666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥333500</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481477">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481477">加入候选</a>
+                    <span class="number-mask-number">18860366666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">2486</span><span>6666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥97750</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481478">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481478">加入候选</a>
+                    <span class="number-mask-number">15824866666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>176</span><span class="number-match">3712</span><span>3456</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥67850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481479">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481479">加入候选</a>
+                    <span class="number-mask-number">17637123456
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>156</span><span class="number-match">6416</span><span>6666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥97750</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481480">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481480">加入候选</a>
+                    <span class="number-mask-number">15664166666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>151</span><span class="number-match">3890</span><span>0000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥112700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481481">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481481">加入候选</a>
+                    <span class="number-mask-number">15138900000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>153</span><span class="number-match">3380</span><span>1111</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥40250</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481482">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481482">加入候选</a>
+                    <span class="number-mask-number">15333801111
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>153</span><span class="number-match">7875</span><span>6666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥65550</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481483">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481483">加入候选</a>
+                    <span class="number-mask-number">15378756666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>135</span><span class="number-match">2345</span><span>2222</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥92000</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481484">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481484">加入候选</a>
+                    <span class="number-mask-number">13523452222
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>182</span><span class="number-match">3699</span><span>3333</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥49450</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481485">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481485">加入候选</a>
+                    <span class="number-mask-number">18236993333
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>187</span><span class="number-match">0384</span><span>0000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥20700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481486">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481486">加入候选</a>
+                    <span class="number-mask-number">18703840000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>139</span><span class="number-match">4904</span><span>0000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥26450</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481487">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481487">加入候选</a>
+                    <span class="number-mask-number">13949040000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>131</span><span class="number-match">6435</span><span>6789</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥29900</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481488">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481488">加入候选</a>
+                    <span class="number-mask-number">13164356789
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>188</span><span class="number-match">3811</span><span>2345</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥46000</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481489">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481489">加入候选</a>
+                    <span class="number-mask-number">18838112345
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>152</span><span class="number-match">3711</span><span>2345</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥36800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481490">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481490">加入候选</a>
+                    <span class="number-mask-number">15237112345
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>150</span><span class="number-match">9311</span><span>2345</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥31050</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481491">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481491">加入候选</a>
+                    <span class="number-mask-number">15093112345
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>134</span><span class="number-match">6022</span><span>3456</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥14950</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481492">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481492">加入候选</a>
+                    <span class="number-mask-number">13460223456
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>183</span><span class="number-match">3993</span><span>4567</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥34500</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481493">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481493">加入候选</a>
+                    <span class="number-mask-number">18339934567
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>137</span><span class="number-match">8353</span><span>4567</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥46000</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481494">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481494">加入候选</a>
+                    <span class="number-mask-number">13783534567
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>150</span><span class="number-match">9320</span><span>1234</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥7700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481495">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481495">加入候选</a>
+                    <span class="number-mask-number">15093201234
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>152</span><span class="number-match">3860</span><span>1234</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥7700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481496">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481496">加入候选</a>
+                    <span class="number-mask-number">15238601234
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">3993</span><span>3888</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥24150</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481497">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481497">加入候选</a>
+                    <span class="number-mask-number">17839933888
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>181</span><span class="number-match">3737</span><span>5777</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥11270</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481498">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481498">加入候选</a>
+                    <span class="number-mask-number">18137375777
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>151</span><span class="number-match">3642</span><span>5777</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4300</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481499">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481499">加入候选</a>
+                    <span class="number-mask-number">15136425777
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>151</span><span class="number-match">3712</span><span>3666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥20700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481500">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481500">加入候选</a>
+                    <span class="number-mask-number">15137123666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>150</span><span class="number-match">9322</span><span>0666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥11270</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481501">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481501">加入候选</a>
+                    <span class="number-mask-number">15093220666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>137</span><span class="number-match">2142</span><span>5666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481502">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481502">加入候选</a>
+                    <span class="number-mask-number">13721425666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>187</span><span class="number-match">3812</span><span>2666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥16100</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481503">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481503">加入候选</a>
+                    <span class="number-mask-number">18738122666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>180</span><span class="number-match">3929</span><span>1666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥10350</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481504">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481504">加入候选</a>
+                    <span class="number-mask-number">18039291666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>133</span><span class="number-match">7391</span><span>2999</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥11270</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481505">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481505">加入候选</a>
+                    <span class="number-mask-number">13373912999
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>152</span><span class="number-match">2507</span><span>2666</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥9775</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481506">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481506">加入候选</a>
+                    <span class="number-mask-number">15225072666
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9003</span><span>3222</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥10925</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481507">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481507">加入候选</a>
+                    <span class="number-mask-number">15890033222
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>189</span><span class="number-match">3951</span><span>0555</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥5800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州电信</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481508">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481508">加入候选</a>
+                    <span class="number-mask-number">18939510555
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>156</span><span class="number-match">3828</span><span>0555</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481509">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481509">加入候选</a>
+                    <span class="number-mask-number">15638280555
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>156</span><span class="number-match">3853</span><span>7555</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥6700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481510">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481510">加入候选</a>
+                    <span class="number-mask-number">15638537555
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>139</span><span class="number-match">3827</span><span>9555</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥14950</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481511">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481511">加入候选</a>
+                    <span class="number-mask-number">13938279555
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>139</span><span class="number-match">3844</span><span>8000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥3500</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481512">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481512">加入候选</a>
+                    <span class="number-mask-number">13938448000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>187</span><span class="number-match">3602</span><span>5000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481513">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481513">加入候选</a>
+                    <span class="number-mask-number">18736025000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>156</span><span class="number-match">1763</span><span>3111</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥6700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州联通</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481514">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481514">加入候选</a>
+                    <span class="number-mask-number">15617633111
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>136</span><span class="number-match">7697</span><span>8789</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4300</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481515">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481515">加入候选</a>
+                    <span class="number-mask-number">13676978789
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>184</span><span class="number-match">3982</span><span>0111</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥2350</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481516">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481516">加入候选</a>
+                    <span class="number-mask-number">18439820111
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>187</span><span class="number-match">0382</span><span>2111</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥7700</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481517">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481517">加入候选</a>
+                    <span class="number-mask-number">18703822111
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>187</span><span class="number-match">6885</span><span>7000</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥5600</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481518">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481518">加入候选</a>
+                    <span class="number-mask-number">18768857000
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>137</span><span class="number-match">8360</span><span>1119</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥2350</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481519">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481519">加入候选</a>
+                    <span class="number-mask-number">13783601119
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>138</span><span class="number-match">3826</span><span>2567</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥3300</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481520">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481520">加入候选</a>
+                    <span class="number-mask-number">13838262567
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>182</span><span class="number-match">3999</span><span>9910</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥4800</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481521">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481521">加入候选</a>
+                    <span class="number-mask-number">18239999910
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3673</span><span>7773</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481376">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481376">加入候选</a>
+                    <span class="number-mask-number">15736737773
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3833</span><span>7773</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481377">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481377">加入候选</a>
+                    <span class="number-mask-number">15738337773
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3833</span><span>8883</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481378">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481378">加入候选</a>
+                    <span class="number-mask-number">15738338883
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3836</span><span>2226</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481379">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481379">加入候选</a>
+                    <span class="number-mask-number">15738362226
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3836</span><span>7771</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481380">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481380">加入候选</a>
+                    <span class="number-mask-number">15738367771
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>157</span><span class="number-match">3885</span><span>2229</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481381">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481381">加入候选</a>
+                    <span class="number-mask-number">15738852229
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3805</span><span>6663</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481382">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481382">加入候选</a>
+                    <span class="number-mask-number">15838056663
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3810</span><span>5550</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481383">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481383">加入候选</a>
+                    <span class="number-mask-number">15838105550
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3812</span><span>7779</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481384">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481384">加入候选</a>
+                    <span class="number-mask-number">15838127779
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3813</span><span>2229</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481385">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481385">加入候选</a>
+                    <span class="number-mask-number">15838132229
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3816</span><span>9997</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481386">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481386">加入候选</a>
+                    <span class="number-mask-number">15838169997
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3825</span><span>1117</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481387">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481387">加入候选</a>
+                    <span class="number-mask-number">15838251117
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3830</span><span>1110</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481388">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481388">加入候选</a>
+                    <span class="number-mask-number">15838301110
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">3839</span><span>6662</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481389">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481389">加入候选</a>
+                    <span class="number-mask-number">15838396662
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9015</span><span>7772</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481390">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481390">加入候选</a>
+                    <span class="number-mask-number">15890157772
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9063</span><span>6663</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481391">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481391">加入候选</a>
+                    <span class="number-mask-number">15890636663
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9063</span><span>8883</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481392">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481392">加入候选</a>
+                    <span class="number-mask-number">15890638883
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9068</span><span>3335</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481393">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481393">加入候选</a>
+                    <span class="number-mask-number">15890683335
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>158</span><span class="number-match">9068</span><span>3337</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481394">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481394">加入候选</a>
+                    <span class="number-mask-number">15890683337
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">3627</span><span>2228</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481395">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481395">加入候选</a>
+                    <span class="number-mask-number">15936272228
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">3629</span><span>5552</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481396">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481396">加入候选</a>
+                    <span class="number-mask-number">15936295552
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">3629</span><span>7771</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481397">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481397">加入候选</a>
+                    <span class="number-mask-number">15936297771
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">3871</span><span>2227</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481398">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481398">加入候选</a>
+                    <span class="number-mask-number">15938712227
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">3903</span><span>6665</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481399">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481399">加入候选</a>
+                    <span class="number-mask-number">15939036665
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">8187</span><span>1116</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481400">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481400">加入候选</a>
+                    <span class="number-mask-number">15981871116
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">8190</span><span>3337</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481401">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481401">加入候选</a>
+                    <span class="number-mask-number">15981903337
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>159</span><span class="number-match">8193</span><span>7770</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481402">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481402">加入候选</a>
+                    <span class="number-mask-number">15981937770
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">0382</span><span>9997</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481403">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481403">加入候选</a>
+                    <span class="number-mask-number">17803829997
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">0386</span><span>3338</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481404">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481404">加入候选</a>
+                    <span class="number-mask-number">17803863338
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">0386</span><span>7779</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481405">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481405">加入候选</a>
+                    <span class="number-mask-number">17803867779
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">0386</span><span>9992</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481406">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481406">加入候选</a>
+                    <span class="number-mask-number">17803869992
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">3995</span><span>3338</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481407">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481407">加入候选</a>
+                    <span class="number-mask-number">17839953338
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>178</span><span class="number-match">3995</span><span>7771</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481408">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481408">加入候选</a>
+                    <span class="number-mask-number">17839957771
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>182</span><span class="number-match">3677</span><span>6660</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481409">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481409">加入候选</a>
+                    <span class="number-mask-number">18236776660
+</span>
+                </div>
+            </div>
+        </li><li class="number-container number-container-line">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            <span>182</span><span class="number-match">3677</span><span>9997</span></div>
+            <div class="number-price">
+                <span class="number-price-now">￥1850</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf"> </span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="http://www.0371xuanhao.cn/public/index/index/buy.html?flag=0&amp;id=1481410">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;" data-id="1481410">加入候选</a>
+                    <span class="number-mask-number">18236779997
+</span>
+                </div>
+            </div>
+        </li><div class="clear"></div></div>
+        <li class="number-container number-container-line number-tpl">
+            <span class="number-sale-out"></span>
+            <div class="number">
+            </div>
+            <div class="number-price">
+                <span class="number-price-now">￥9000</span>
+                <!--<span class="number-price-pre">￥9999</span>-->
+                <span class="number-locate">郑州移动</span>
+            </div>
+            <div class="number-location">
+                <span class="number-price-hf">话费:100元</span>
+            </div>
+            <div class="number-mask">
+                <div class="number-actions">
+                    <a class="action-btn-buy" href="">立即抢购</a>
+                    <a class="action-btn-favor" href="javascript:;">对比</a>
+                    <span class="number-mask-number"></span>
+                </div>
+            </div>
+        </li>
+
+        <div id="pageContent"><div class="layui-box layui-laypage layui-laypage-molv" id="layui-laypage-1"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em" style="background-color:#c00;"></em><em>1</em></span><a href="javascript:;" data-page="2">2</a><a href="javascript:;" data-page="3">3</a><a href="javascript:;" data-page="4">4</a><a href="javascript:;" data-page="5">5</a><span class="layui-laypage-spr">…</span><a href="javascript:;" class="layui-laypage-last" title="尾页" data-page="500">500</a><a href="javascript:;" class="layui-laypage-next" data-page="2">下一页</a><span class="layui-laypage-count">共 39923 条</span></div></div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<footer>
+    <div class="bottom-special">
+        <div><span>多</span><strong> 千万号码 任意选择</strong></div>
+        <div><span>快</span><strong> 天天特价 畅选无忧</strong></div>
+        <div><span>好</span><strong> 正品行货 精致服务</strong></div>
+        <div><span>省</span><strong> 数千店面 就近办理</strong></div>
+    </div>
+    <div class="bottom-links">
+        <span>友情链接</span>
+            </div>
+    <div class="bottom-infos">
+        <a href="http://www.miibeian.gov.cn/"><img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/anquan_01_03.gif" alt=""></a>
+        <a href="http://www.12377.cn/"><img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/anquan_01_05.gif" alt=""></a>
+        <a href="http://xian.cyberpolice.cn/"><img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/bt110.gif" alt=""></a>
+        <a href="https://www.alipay.com/"><img src="%E9%83%91%E5%B7%9E%E7%A7%BB%E5%8A%A8%E9%9D%93%E5%8F%B7%EF%BC%8C%E7%A7%BB%E5%8A%A8%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%EF%BC%8C%E7%94%B5%E4%BF%A1%E9%80%89%E5%8F%B7%E7%A0%81%E7%BD%91%E4%B8%8A%E9%80%89%E5%8F%B7%EF%BC%8C%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E5%A4%A7%E5%85%A8%EF%BC%8C%E9%83%91%E5%B7%9E%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7%E7%BD%91%EF%BC%8C%E7%A7%BB%E5%8A%A8%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%80%89%E5%8F%B7_files/zhifubao.jpg" alt=""></a>
+    </div>
+
+    <div class="bottom-copyright">
+        版权所有:
+郑州手机号|郑州手机号码|郑州手机靓号|郑州吉祥手机号|郑州情侣手机号|手机好号|郑州移动吉祥号|郑州手机好号|郑州移动靓号    </div>
+    <div>
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?18e730aedaf56d13452ca3e999a73c6c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+        <a style="color: white;font-size: 13px;" target="_blank" href="http://www.htor.net/">技术支持QQ :85122279</a>
+    </div>
+</footer>
+<nav class="mobile-bottom-navi">
+    <ul>
+        <li><a href="http://www.0371xuanhao.cn/public/index/index/index.html">首页</a></li>
+        <li><a href="http://www.0371xuanhao.cn/public/index/index/favor.html">候选</a></li>
+        <li><a href="tel:19939900399">热线</a></li>
+        <li><a href="javascript:;" id="btnShowQrCode">微信</a></li>
+    </ul>
+</nav>
+
+<script>
+    $(function () {
+        var topNavi = $(".top-navi").get(0);
+        var rect = topNavi.getBoundingClientRect();//获得页面中导航条相对于浏览器视窗的位置
+        var inser = document.createElement("div");
+        topNavi.parentNode.replaceChild(inser, topNavi);
+        inser.appendChild(topNavi);
+        inser.style.height = rect.height + "px";
+        var titleTop = topNavi.offsetTop;
+        document.onscroll = function () {
+            //获取当前滚动的距离
+            var btop = document.body.scrollTop || document.documentElement.scrollTop;
+            //如果滚动距离大于导航条据顶部的距离
+            if (btop > titleTop) {
+                //为导航条设置fix
+                topNavi.className = "top-navi top-navi-fix";
+            } else {
+                //移除fixed
+                topNavi.className = "top-navi";
+            }
+        };
+
+        layui.use(['layer'], function () {
+            var content = "";
+            var layer = layui.layer;
+            if ($.isWeiXin()) {
+                content = "<div><img style='width: 250px;height: 250px' src='/public/static/img/mobile_qr_code.jpeg'></div><div style='text-align: center;'>长按二维码识别添加微信</div>"
+            } else {
+                content = "<div id='copyQrCode'>" +
+                    "<div>" +
+                    "<img style='width: 250px;height: 250px' src='/public/static/img/mobile_qr_code.jpeg' />" +
+                    "</div>" +
+                    "<div style='text-align: center;font-size: 28px;color: red;font-weight: 800;'>19939900399</div>" +
+                    "<div style='text-align: center;'>点击二维码复制账号添加微信</div>" +
+                    "</div>"
+            }
+            $("#btnShowQrCode").on('click', function () {
+                layui.layer.open({
+                    title: '添加微信联系',
+                    shadeClose: true,
+                    type: 1,
+                    zIndex: 2147483647,
+                    maxWidth: 250,
+                    content: content //这里content是一个普通的String
+                });
+            });
+
+            if (!$.isWeiXin()) {
+                var clipboard = new ClipboardJS('#copyQrCode', {
+                    text: function () {
+                        return 'lianghao8868';
+                    }
+                });
+                clipboard.on('success', function (e) {
+                    layer.msg('复制成功', {zIndex: 2147483647});
+                });
+                clipboard.on('error', function (e) {
+                    console.info("error");
+                    console.error('Action:', e.action);
+                    console.error('Trigger:', e.trigger);
+                });
+            }
+        });
+    });
+</script>
+
+<script>
+    var searchFlag = 0;
+    var bannerRadio = 0.3;
+
+    $(function () {
+        layui.use(['carousel', 'laypage', 'layer'], function () {
+            var carousel = layui.carousel;
+            var laypage = layui.laypage;
+            var layer = layui.layer;
+            var localFavor = parseInt(searchFlag) === 0 ? $.MobileFavor() : $.GuHuaFavor();
+
+            var calculateBannerWidth = function () {
+                var $homeNews = $(".home-news");
+                if ($homeNews.is(':hidden')) {
+                    return $(".home-banner").width();
+                }
+                return $(".home-banner").width() - $homeNews.width() - 2;
+            };
+
+            var resetElementSize = function () {
+                var width = calculateBannerWidth();
+                $("#homeBanner").css('width', width + 'px');
+                $("#homeBanner").css('height', width * bannerRadio + 'px');
+                $(".home-news").css('height', width * bannerRadio + 'px');
+            };
+
+            $(window).resize(resetElementSize);
+
+            var renderPageView = function (pageData) {
+                laypage.render({
+                    elem: 'pageContent'
+                    , count: pageData.count
+                    , limit: pageData.pageSize
+                    , curr: pageData.currentPage
+                    , theme: "#c00"
+                    , layout: ['prev', 'page', 'next', 'count']
+                    , jump: function (obj, first) {
+                        if (first) {
+                            return;
+                        }
+                        $("html").animate({scrollTop: $("#btnResetSearch").offset().top}, 200);
+                        addUrlHash('page', obj.curr, false);
+                    }
+                });
+            };
+
+            var width = calculateBannerWidth();
+            //建造实例
+            carousel.render({
+                elem: '#homeBanner'
+                , width: width + 'px' //设置容器宽度
+                , height: width * bannerRadio + 'px'
+                , arrow: 'always' //始终显示箭头
+            });
+
+
+            var getQueryOptions = function () {
+
+                $(".search-item-group-prop .option-prop").remove();
+                var $optionPropContent = $(".search-item-group-prop .search-item-content");
+
+                var queryOptions = {};
+                //情侣号专区，如果没有输入基准号码，则展示group
+                queryOptions.groupSimilar = 0;
+                var marchSearch = $.getUrlHashParam('marchSearch') || '';
+                var likeSearch = $.getUrlHashParam('likeSearch') || '';
+                var similarSearch = $.getUrlHashParam('similarSearch') || '';
+                if (marchSearch !== '') {
+                    queryOptions.marchSearch = marchSearch;
+                    $optionPropContent.prepend($("<a href='javascript:;' class='option-prop'>" + marchSearch + "</a>"));
+                } else if (likeSearch !== '') {
+                    queryOptions.likeSearch = likeSearch;
+                    $optionPropContent.prepend($("<a href='javascript:;' class='option-prop'>" + likeSearch + "</a>"));
+                } else if (similarSearch !== '') {
+                    queryOptions.similarSearch = similarSearch;
+                    $optionPropContent.prepend($("<a href='javascript:;' class='option-prop'>" + similarSearch + "</a>"));
+                }
+                $(".search-item-group .option-cur").each(function () {
+                    $this = $(this);
+                    var dataValue = $this.attr('data-value');
+                    if (dataValue && dataValue !== '') {
+                        var dataName = $this.parent().parent().attr('data-name');
+                        queryOptions[dataName] = dataValue;
+                        $optionPropContent.prepend($("<a href='javascript:;' class='option-prop'>" + $this.text() + "</a>"));
+                    }
+                });
+                queryOptions.page = $.getUrlHashParam('page') || '1';
+
+                queryOptions.flag = 0;
+
+                return queryOptions;
+            };
+
+
+            var clickToAddFavor = function () {
+                var $this = $(this);
+                localFavor.addLocalFavor($(this).attr('data-id'));
+                $this.text('取消候选').on('click', clickToRemoveFavor);
+                $this.parent().parent().parent().addClass('number-container-favor');
+            };
+
+            var clickToRemoveFavor = function () {
+                var $this = $(this);
+                localFavor.removeLocalFavor($(this).attr('data-id'));
+                $this.text('加入候选').on('click', clickToAddFavor);
+                $this.parent().parent().parent().removeClass('number-container-favor');
+            };
+
+            $(".number-container").on('click', function () {
+                //nothing 仅为兼容移动设备hover事件
+            });
+
+//            var onFocusNumber = function () {
+//                console.info("onFocusNumber");
+//                $(this).show();
+//            };
+//
+//            var onUnFocusNumber = function () {
+//                console.info("onUnFocusNumber");
+//                $(this).hide();
+//            };
+//            $(".number-tpl").find('.number-mask').on('mouseover',onFocusNumber).on('mouseout',onUnFocusNumber);
+
+            var renderSearchResult = function (pageData) {
+                renderPageView(pageData);
+                var $numberResults = $(".number-results");
+                $numberResults.empty();
+                var $tpl = $(".number-tpl");
+                var favor_mobile = ',' + localFavor.getLocalFavor().join() + ',';
+                if (pageData.data && pageData.data.length > 0) {
+                    pageData.data.forEach(function (item) {
+                        var $tplClone = $tpl.clone(true);
+
+                        $tplClone.find('.number-price-now').text("￥" + ((item.p_price === '' || item.p_price === null || item.p_price === undefined) ? '面议' : item.p_price));
+                        $tplClone.find('.number-price-pre').text("￥" + (parseInt(item.p_price * 1.2)));
+
+
+                        if (item.p_huafei && item.p_huafei !== null && item.p_huafei !== '') {
+                            if (searchFlag == 0) {
+                                $tplClone.find('.number-price-hf').text("话费:" + item.p_huafei + "元");
+                            } else {
+                                $tplClone.find('.number-price-hf').text("含话费:" + item.p_huafei + "元");
+                            }
+                        } else {
+                            $tplClone.find('.number-price-hf').text(" ");
+                        }
+
+                        if (item.sale_out == 1) {
+                            $tplClone.addClass('number-container-sale-out');
+                        }
+
+                        var locate = '';
+                        if (item.p_city) {
+                            locate = item.p_city;
+                        }
+                        locate = locate + $.formatCategory(searchFlag, item.p_cate);
+
+                        $tplClone.find('.number-locate').text(locate);
+                        $tplClone.find(".action-btn-buy").attr('href', "/public/index/index/buy.html?flag=0&id=" + (item.numbers_detail || item.id));
+
+                        //相似号码不支持加入候选
+                        if (item.numbers_simple) {
+                            $tplClone.find(".action-btn-favor").hide();
+                        } else {
+                            var isFavor = favor_mobile.indexOf(',' + item.id + ',') >= 0;
+                            if (isFavor) {
+                                $tplClone.addClass('number-container-favor');
+                                $tplClone.find(".action-btn-favor").text('取消候选').attr('data-id', item.id).on('click', clickToRemoveFavor);
+                            } else {
+                                $tplClone.find(".action-btn-favor").text('加入候选').attr('data-id', item.id).on('click', clickToAddFavor);
+                            }
+                        }
+
+                        var $number = $tplClone.find('.number');
+
+
+                        if (searchFlag == 0) {
+                            //手机号
+                            var subStart = 3;
+                            var subEnd = 7;
+                            var items = [];
+
+                            //处理相似号码
+                            if (item.numbers_simple && item.numbers_simple.length > 0) {
+                                items = item.numbers_simple.split(';');
+                                subStart = parseInt(item.diff_start);
+                                subEnd = subStart + 1;
+                            } else {
+                                items.push(item.p_number);
+                            }
+
+                            //组号码展示
+                            var $span1 = null;
+                            var $span2 = null;
+                            var $span3 = null;
+                            var $numbers ="";
+                            items.forEach(function (p_number) {
+                                $numbers = $numbers + p_number + '\r\n';
+
+                                var text0 = p_number.substring(0, subStart);
+                                var text1 = p_number.substring(subStart, subEnd);
+                                var text2 = p_number.substring(subEnd, 11);
+
+                                if ($span1 === null) {
+                                    $span1 = $('<span></span>').text(text0);
+                                    $span2 = $('<span class="number-match"></span>').text(text1);
+                                    $span3 = $('<span></span>').text(text2);
+                                    $number.append($span1).append($span2).append($span3);
+                                } else {
+                                    var $cloneNumber = $number.clone();
+                                    var spans = $cloneNumber.find('span');
+                                    $(spans[0]).text(text0);
+                                    $(spans[1]).text(text1);
+                                    $(spans[2]).text(text2);
+                                    $number.after($cloneNumber);
+                                    $number = $cloneNumber;
+                                }
+                            });
+
+                            $tplClone.find('.number-mask-number').html($numbers);
+
+                        } else {
+                            var $span1 = $('<span class="number-match"></span>').text(item.p_belong);
+                            var $span2 = $('<span ></span>').text(item.p_number);
+                            $tplClone.find('.number-mask-number').text(item.p_belong+item.p_number);
+                            $number.append($span1).append($span2);
+                        }
+
+                        $numberResults.append($tplClone);
+                        $tplClone.removeClass('number-tpl');
+                        $tplClone.show();
+                    });
+                } else {
+                    //empty
+                }
+                $numberResults.append("<div class='clear'></div>")
+            };
+
+            var addUrlHash = function (name, newValue, clear, page) {
+                if (clear === undefined) {
+                    clear = true;
+                }
+                newValue = newValue || '';
+
+                var oldHash = window.location.hash;
+                var newHash = window.location.hash;
+                if (clear) {
+                    newHash = window.location.hash.replace(/(&|^|#)marchSearch=([^&]*)(&|$)/, '$3').replace(/(&|^)likeSearch=([^&]*)(&|$)/, '$3');
+                }
+                if (page !== undefined) {
+                    newHash = newHash.replace(/(&|^|#)page=([^&]*)(&|$)/, '$3');
+                    newHash = newHash + '&page=' + page;
+                }
+                newHash = newHash.replace(new RegExp("(^|&|#)" + name + "=([^&]*)(&|$)"), '$3');
+                if (newValue && newValue !== '') {
+                    newHash = newHash + '&' + name + '=' + newValue;
+                }
+                newHash = ( newHash === '#' || newHash === '' ? '1=1' : newHash);
+                if (newHash !== oldHash) {
+                    window.location.hash = newHash;
+                }
+            };
+
+
+            var loadSearchResult = function () {
+                var queryOption = getQueryOptions();
+                var load = layer.load();
+                $.ajax({
+                    url: '/public/index/index/search.html',
+                    method: 'post',
+                    data: JSON.stringify(queryOption),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function (response) {
+                        layer.close(load);
+                        renderSearchResult(response);
+                    },
+                    failed: function () {
+                        layer.close(load);
+                    }
+                });
+            };
+
+            $(".action-btn-clear").on('click',function () {
+                var $this = $(this);
+                $this.parent().find("input").each(function () {
+                    if(!$(this).attr('readonly')){
+                        $(this).val('');
+                    }
+                });
+            });
+
+            $("#btnMarchSearch").on('click', function () {
+                var marchValue = '';
+                $(".inputMarchSearch").each(function () {
+                    var $this = $(this);
+                    marchValue += ($this.val() || '-');
+                });
+                var hash = window.location.hash;
+                addUrlHash('marchSearch', marchValue, true, 1);
+                if (hash === window.location.hash) {
+                    window.onhashchange();
+                }
+            });
+
+            $("#inputSimilarSearch").onlyInteger(11);
+
+            $("#btnSimilarSearch").on('click', function () {
+                var value = $("#inputSimilarSearch").val() || '';
+                if (value === '' || value.length !== 11) {
+                    layer.msg('请输入正确的手机号码');
+                    return;
+                }
+                var hash = window.location.hash;
+                addUrlHash('similarSearch', value, true, 1);
+                if (hash === window.location.hash) {
+                    window.onhashchange();
+                }
+            });
+
+            $("#btnLikeSearch").on('click', function () {
+                var value = $("#inputLikeSearch").val() || '';
+                if (value === '') {
+                    layer.msg('请输入模糊搜索条件');
+                    return;
+                }
+                var hash = window.location.hash;
+                addUrlHash('likeSearch', value, true, 1);
+                if (hash === window.location.hash) {
+                    window.onhashchange();
+                }
+            });
+
+            $("#btnResetSearch").on('click', function () {
+                $(".search-item-group-prop .option-prop").remove();
+                var oldHash = window.location.hash;
+                window.location.hash = "1=1";
+                if (oldHash === window.location.hash) {
+                    window.onhashchange();
+                }
+                readOptionFromUrl();
+            });
+
+            var onClickOption = function () {
+                var $options = $(this);
+                if (!$options.hasClass('option-cur')) {
+                    $this.find('.option-cur').removeClass('option-cur');
+                    $options.addClass('option-cur');
+                    var optionGroup = $options.parent().parent();
+
+                    //有关联项目
+                    if (optionGroup.attr('relation-name')) {
+                        resetRelativeOptions($options.parent().parent(), $options.attr('data-value'));
+                    }
+
+                    addUrlHash(optionGroup.attr('data-name'), $options.attr('data-value'), false, 1);
+                }
+            };
+
+            //重置关联选项
+            var resetRelativeOptions = function ($baseOption, newValue) {
+                newValue = newValue || '';
+                var allOptions = JSON.parse($baseOption.attr('relation-options'));
+                var newOptions = allOptions[newValue];
+                var relationOption = $(".search-container [data-name='" + $baseOption.attr('relation-name') + "']");
+                var relationOptionContent = relationOption.find('.search-item-content');
+                relationOptionContent.empty();
+                for (var itemKey in newOptions) {
+                    var a = $("<a class='option' data-value='" + newOptions[itemKey] + "' href='javascript:;'>" + itemKey + "</a>");
+                    a.on('click', onClickOption);
+                    relationOptionContent.append(a);
+                }
+            };
+
+            $(".search-container [data-name]").each(function () {
+                var $this = $(this);
+                var $options = $this.find('[data-value]');
+                $options.on('click', onClickOption);
+            });
+
+            $(".inputMarchSearch").onlyInteger(1, function (finalValue, forward) {
+                if (forward == -1) {
+                    $(this).prev().focus().select();
+                    return;
+                }
+                $(this).next().focus().select();
+
+            }).on('focus', function () {
+                if (!$(this).attr('readonly')) {
+                    $(this).select();
+                } else {
+                    $(this).next().focus().select();
+                }
+            }).focus(function () {
+                //禁用输入法
+                this.style.imeMode = 'disabled';
+            });
+
+            $("#inputLikeSearch").onlyInteger(11);
+
+            var readOptionFromUrl = function (reset) {
+
+                var marchSearch = $.getUrlHashParam('marchSearch') || '';
+                var likeSearch = $.getUrlHashParam('likeSearch') || '';
+                var similarSearch = $.getUrlHashParam('similarSearch') || '';
+                if (marchSearch !== '') {
+                    var index = 0;
+                    $(".inputMarchSearch").each(function () {
+                        var $this = $(this);
+                        var value = marchSearch.substr(index++, 1) || '';
+                        $this.val(value === '-' ? '' : value);
+                    });
+                } else if (likeSearch !== '') {
+                    $("#inputLikeSearch").val(likeSearch);
+                } else if (similarSearch !== '') {
+                    $("#inputSimilarSearch").val(similarSearch);
+                }
+
+                $(".search-container [data-name]").each(function () {
+                    var $this = $(this);
+                    var dataName = $this.attr('data-name');
+
+                    var $options = $this.find('[data-value]');
+                    $this.find('.option-cur').removeClass('option-cur');
+
+                    var targetOption = null;
+                    if (!reset) {
+                        var defaultValue = $.getUrlHashParam(dataName);
+                        if (defaultValue !== null && defaultValue !== '') {
+                            targetOption = $this.find('[data-value="' + defaultValue + '"]');
+                            if (targetOption !== null && targetOption.length > 0) {
+                                targetOption.addClass('option-cur');
+                            }
+                        }
+                    }
+                    if (targetOption === null || targetOption.length === 0) {
+                        $options.each(function () {
+                            if (!$(this).attr('data-value')) {
+                                $(this).addClass('option-cur');
+                            }
+                        });
+                    }
+                });
+            };
+            window.onhashchange = function () {
+                readOptionFromUrl();
+                loadSearchResult();
+            };
+            resetElementSize();
+
+
+            //处理关联选项
+            $(".search-container [relation-name]").each(function () {
+                var $this = $(this);
+                var dataName = $this.attr('data-name');
+                resetRelativeOptions($this, $.getUrlHashParam(dataName) || '');
+            });
+
+            window.onhashchange();
+        });
+    });
+</script>
+
+<div class="layui-layer-move"></div></body></html>

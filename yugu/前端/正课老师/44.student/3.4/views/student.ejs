@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>添加学生</h1>
+    <form action="/api/add" method="GET">
+        <input type="text" name="name" placeholder="请输入学生姓名">
+        <br>
+        <input type="text" name="age" placeholder="请输入年龄">
+        <br>
+        <label for="">男</label>
+        <input type="radio" name="sex" value="男">
+        <label for="">女</label>
+        <input type="radio" name="sex" value="女">
+        <br>
+        <select name="class" required>
+            <%for(var i=0;i<data.length;i++){%>
+                <%var s=data[i]%>
+                <option value="<%= s._id%>"><%= s.classname%></option>
+            <%}%>
+        </select>
+        <br>
+        <button>添加</button>
+    </form>
+</body>
+
+</html>

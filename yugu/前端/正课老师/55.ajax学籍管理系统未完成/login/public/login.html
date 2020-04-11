@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录界面</title>
+</head>
+
+<body>
+    <div>
+        <h1>登录</h1>
+        账号：<input type="text"><br>
+        密码：<input type="text"><br>
+        <button>登录</button>
+    </div>
+    <span style="display: none;"></span>
+</body>
+<script src="./libs/jquery.js"></script>
+<script>   
+    $('button').on('click', function () {
+        let obj = {
+            name: $('input')[0].value,
+            psw: $('input')[1].value
+        }
+        $.get('/api/login', obj).then(data => {
+            if (data.err == 0) {
+                $('div')[0].style.display='none';
+                $('span')[0].style.display='block';
+                $('span')[0].innerHTML='欢迎'+data.msg.name;
+            }
+            if (data.err == 1) {
+              alert('账号或密码错误')
+            }
+        }).fail(err => {
+            console.log(err);
+        })
+    })
+</script>
+
+</html>

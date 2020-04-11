@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转</title>
+</head>
+
+<body>
+    <h1>
+        删除成功
+    </h1>
+    <div>
+        <p id="first">3s后跳转到首页</p>
+        <form action="/api/stus" method="post">
+            <button type="submit">查看信息</button>
+        </form>
+    </div>
+</body>
+<script>
+    var p = document.getElementById('first');
+    var num = 3;
+    var timer = setInterval(function (e) {
+        num -= 1;
+        p.textContent = num + 's后跳转到首页';
+    }, 1000);
+    function jumurl() {
+        clearInterval(timer);
+        timer = null;
+        window.location.href = 'index.html';
+    }
+    setTimeout(jumurl, 3000);
+
+
+
+</script>
+
+</html>

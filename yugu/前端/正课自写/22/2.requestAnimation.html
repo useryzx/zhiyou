@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>requestAnimation</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+<script>
+    // 1.基础动画 优先使用 （关键帧动画）
+    // 2.关键帧动画js提供的动画函数，比基础动画功能强大
+    var box = document.querySelector("#box");
+    var aniCode = null;
+    // 角度
+    var angle = 0;
+    function update() {
+        angle += 1;
+        box.style.transform = "rotate(" + angle + "deg)";
+        aniCode=requestAnimationFrame(update);
+    }
+    // setInterval(update,1000);
+    // 从h5以后新引入的新动画api，原理就是利用浏览器每秒的刷新率。
+    // 可以像定时器一样进行关闭
+    aniCode=requestAnimationFrame(update);
+    setTimeout(function() {
+        cancelAnimationFrame(aniCode);
+    }, 5000);
+</script>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品筛选</title>
+    <style>
+        main {
+            width: 80%;
+            margin: 0 auto;
+            /* border: gray solid 1px; */
+            box-shadow: 0 0 2px 2px gray;
+            padding: 40px;
+        }
+
+        span {
+            font-weight: bold;
+            display: inline-block;
+            font-size: 20px;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            cursor: pointer;
+            display: inline-block;
+            color: blue;
+            padding: 15px 0 15px 15px;
+            font-size: 18px;
+        }
+
+        div {
+            /* height: 80px; */
+            line-height: 60px;
+            border-bottom: 1px dotted gray;
+        }
+
+        #selected li {
+            padding: 0 0 0 20px;
+            border: solid 1px orangered;
+            margin-right: 40px;
+            color: black;
+        }
+
+        #selected li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #selected li span {
+            padding: 0;
+            font-weight: normal;
+            color: red;
+            width: 50px;
+            text-align: center;
+            box-shadow: 0 0 0 15px white inset, 0 0 0 16px red inset;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        section {
+            display: inline-block;
+            cursor: pointer;
+            border: 1px solid gray;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <span>品&emsp;&emsp;牌</span>
+            <ul id="brand" class="content">
+                <li class="sign">苹果</li>
+                <li class="sign">小米</li>
+                <li class="sign">华为</li>
+                <li class="sign">联想</li>
+                <li class="sign">中兴</li>
+                <li class="sign">海信</li>
+                <li class="sign">苹果</li>
+                <li class="sign">小米</li>
+                <li class="sign">华为</li>
+                <li class="sign">联想</li>
+                <li class="sign">中兴</li>
+                <li class="sign">海信</li>
+                <li class="sign">苹果</li>
+                <li class="sign">小米</li>
+                <li class="sign">华为</li>
+                <li class="sign">联想</li>
+                <li class="sign">中兴</li>
+                <li class="sign">海信</li>
+            </ul>
+        </div>
+        <div>
+            <span>价格范围</span>
+            <ul id="price" class="content">
+                <li class="sign">1-499</li>
+                <li class="sign">499-799</li>
+                <li class="sign">799-1099</li>
+                <li class="sign">1099-1799</li>
+            </ul>
+        </div>
+        <div>
+            <span>操作系统</span>
+            <ul id="system" class="content">
+                <li class="sign">IOS</li>
+                <li class="sign">安卓</li>
+                <li class="sign">塞班</li>
+            </ul>
+        </div>
+        <div>
+            <span>优惠活动</span>
+            <ul id="activity" class="content">
+                <li class="sign">存话费送手机</li>
+                <li class="sign">买手机送话费</li>
+                <li class="sign">老用户优惠购机（支持合约到期提前预约）</li>
+                <li class="sign">只买手机</li>
+            </ul>
+        </div>
+        <div>
+            <span>特&emsp;&emsp;点</span>
+            <ul id="trait" class="content">
+                <li class="sign">双卡双待</li>
+                <li class="sign">千元智能机</li>
+                <li class="sign">大屏（4.0寸以上）</li>
+            </ul>
+        </div>
+        <div>
+            <span>您已选择</span>
+            <ul id="selected">
+                <li class="hide"><a href="#">苹果</a><span>X</span></li>
+                <li class="hide"><a href="#">1-499</a><span>X</span></li>
+                <li class="hide"><a href="#">IOS</a><span>X</span></li>
+                <li class="hide"><a href="#">只买手机</a><span>X</span></li>
+                <li class="hide"><a href="#">双卡双待</a><span>X</span></li>
+                <section class="hide">一键清空</section>
+            </ul>
+        </div>
+    </main>
+</body>
+<script>
+    // 获取所有的ul
+    var ulList = document.querySelectorAll("ul.content");
+    // 获取所有的a，选择的内容
+    var liList = document.querySelectorAll("#selected li a");
+    // 获取所有的X
+    var spanList = document.querySelectorAll("#selected li span");
+    // 获取选中的ul
+    var selected = document.querySelector("#selected");
+    var clearAll = document.querySelector("section");
+    var allLiList = document.querySelectorAll("li.sign");
+    var isShow = 0;
+    for (var i = 0; i < ulList.length; i++) {
+        ulList[i].index = i;
+        ulList[i].onclick = function (e) {
+            // this指的是ul，e.target指的是li
+            if (e.target.classList.contains("sign")) {
+                liList[this.index].innerHTML = e.target.textContent;
+                if (spanList[this.index].parentElement.classList.contains("hide")) {
+                    spanList[this.index].parentElement.classList.remove("hide");
+                    isShow++;
+                    spanShow(isShow);
+                }
+                for (var j = 0; j < this.children.length; j++) {
+                    this.children[j].style.color = "";
+                }
+                e.target.style.color = "red";
+            }
+        }
+        spanList[i].index = i;
+        spanList[i].onclick = function () {
+            this.parentElement.classList.add("hide");
+            console.log(this.index);
+            for (var j = 0; j < ulList[this.index].children.length; j++) {
+                ulList[this.index].children[j].style.color = "";
+            }
+            isShow--;
+            spanShow(isShow);
+            console.log(isShow);
+        }
+    }
+    function spanShow(num) {
+        if (num >= 2) {
+            clearAll.classList.remove("hide");
+        }
+        else {
+            clearAll.classList.add("hide");
+        }
+    }
+
+    clearAll.onclick = function () {
+        isShow = 0;
+        spanShow(isShow);
+        for (var i = 0; i < spanList.length; i++) {
+            spanList[i].parentElement.classList.add("hide");
+        }
+        for(var j = 0;j<allLiList.length;j++){
+            allLiList[j].style.color = "";
+        }
+    }
+</script>
+
+</html>

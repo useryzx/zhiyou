@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #link {
+            /* 去掉文本的线
+             */
+            /* text-decoration: none; */
+        }
+
+        /* 伪类 hover当鼠标指针放到元素上悬停的时候触发
+        hover就是伪类(通过一定的条件才会触发的样式)*/
+        #link:hover {
+            text-decoration: underline;
+            background-color: yellow;
+        }
+
+        /* 获取焦点当元素成为焦点的时候才会触发 */
+        #field:focus {
+            width: 300px;
+        }
+
+        #txt:active {
+            font-size: 20px;
+            background-color: cyan;
+        }
+
+        /* a标签专属的伪类 表示访问过，如果浏览器访问过该网址
+       则标签会提示 当访问过之后服务器会给客户端发一个cookie
+       客户端会存储，当前visited找的就是对应的存储信息*/
+        #link:visited {
+            color: red;
+        }
+
+        /* 伪类:只有满足条件之后才会调用对应的样式 */
+
+        /* 伪元素 */
+        #p1::first-line
+        {
+            color: red;
+        }
+        /* 第一个字 */
+        #p1::first-letter
+        {
+            font-size: 40px;
+        }
+        /* 文本前缀 前缀的内容无法被鼠标选中*/
+        #s1::before
+        {
+           content: "想";
+           color: yellow;
+           font-size: 18px;
+        }
+        /* 文本后缀 */
+        #s1::after
+        {
+           content: "真好";
+           color: red;
+           font-size: 18px;
+        }
+        /* 某一种样式选择过之后满足了样式本身设置的条件
+        这种样式选择器叫做伪元素选择器 */
+        
+    </style>
+</head>
+
+<body>
+    <a href="http://www.4399.com" id="link">百度一下</a>
+    <!-- <span id="link">testtest</span> -->
+    <!-- 输入框 -->
+    <input type="text" id="field">
+    <span id="txt">按下会变大</span>
+    <p id="p1">请大家打起精神，第一天讲课，搞不懂你们的真实水平
+        请大家打起精神，第一天讲课，搞不懂你们的真实水平
+        请大家打起精神，第一天讲课，搞不懂你们的真实水平
+        请大家打起精神，第一天讲课，搞不懂你们的真实水平
+        请大家打起精神，第一天讲课，搞不懂你们的真实水平
+    </p>
+    <br>
+    <span id="s1">有钱</span>
+    <br>
+    <span id="s2">请大家打起精神，第一天讲课，搞不懂你们的真实水平
+            请大家打起精神，第一天讲课，搞不懂你们的真实水平
+            请大家打起精神，第一天讲课，搞不懂你们的真实水平
+            请大家打起精神，第一天讲课，搞不懂你们的真实水平
+            请大家打起精神，第一天讲课，搞不懂你们的真实水平</span>
+</body>
+
+</html>

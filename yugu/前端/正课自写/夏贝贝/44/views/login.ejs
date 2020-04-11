@@ -1,0 +1,36 @@
+<%-include('./header.ejs')%>
+<body>
+   <form>
+      <input type="text" placeholder="输入用户名"
+      name="username" required>
+      <br>
+      <input type="password" placeholder="输入密码"
+      name="password" required>
+      <br>
+       <button type="submit">登录</button>
+   </form>
+</body>
+<script>
+     $('form').submit(function(ev)
+     {
+          // 先阻止默认行为
+        ev.preventDefault();
+        // 拿到当前form表单的数据进行数据初始化
+        // 把form表单数据>>>data
+        var data =$(this).serialize();
+        // 思路和注册接口一样  
+        $.post('/user/login',data,function(res){
+            if (res.error ==0) {
+                alert(res.msg);
+                // 回调(该地址之前已经渲染过了)
+                // 确保/这个界面之前一定出现过才可以使用回调
+                location.href ='/';
+                
+            } else {
+                alert(res.msg);
+            }
+        });
+
+     });
+</script>
+</html>

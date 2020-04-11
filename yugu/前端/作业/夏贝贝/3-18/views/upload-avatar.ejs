@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #choose{
+        display:block;
+        width: 200px;
+        height: 200px;
+        border: 2px solid black;
+        font-size: 200px;
+        text-align: center;
+        line-height: 200px;
+        background-size: 100% 100%;
+    }
+    </style>
+</head>
+<body>
+    <h1>头像上传</h1>
+    <form action="/user/upload-avatar" method="post" enctype="multipart/form-data">
+    <label for="avatar" id="choose">+</label>
+    <input type="file" id="avatar" style="display: none;" accept="img/*" required name="avatar">
+    <br>
+    <button>提交</button>
+</form>
+</body>
+<script>
+    // 当选择图片的时候把label换成图片
+    var chooseLabel = document.getElementById('choose')
+    var avatarFile = document.getElementById('avatar')
+    avatarFile.onchange = function(e){
+        var file = avatarFile.files[0]
+        var fileUrl = URL.createObjectURL(file)
+        chooseLabel.style.backgroundImage = 'url('+fileUrl+')';
+        chooseLabel.textContent = ''
+    }
+</script>
+</html>

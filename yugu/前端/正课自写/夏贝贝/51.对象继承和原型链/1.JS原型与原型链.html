@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    js是弱类型，动态的，基于原型的脚本语言
+    js没有类的概念，通过构造函数来实现对象的创建
+    构造函数：等价于类，描述对象的相关属性和方法信息
+    通过构造函数生成实例化对象
+    对象的特点：封装、继承、多态（聚集）
+    */
+    // 在js中一切皆是对象
+    let str = new String('str')
+    let num = new Number(12)
+    let bol = new Boolean(true)
+    let arr = new Array(1,2,3,4,5)
+    let obj = new Object()
+    // 每一个对象都有一个属于自己的原型
+    // __proto__获取该对象的原型
+    // 原型：也是一个对象，原型对象有属于自己的原型，知道object
+    // object的原型为null
+    // console.log(str.__proto__);
+    // console.log(str.__proto__.__proto__);
+    // console.log(str.__proto__.__proto__.__proto__);
+    // console.log('-----------------------------------');
+    // console.log(num.__proto__);
+    // console.log(num.__proto__.__proto__);
+    // console.log(num.__proto__.__proto__.__proto__);
+    // console.log('-----------------------------------');
+    // console.log(bol.__proto__);
+    // console.log(bol.__proto__.__proto__);
+    // console.log(bol.__proto__.__proto__.__proto__);
+    // console.log('-----------------------------------');
+    // console.log(arr.__proto__);
+    // console.log(arr.__proto__.__proto__);
+    // console.log(arr.__proto__.__proto__.__proto__);
+    // console.log('-----------------------------------');
+    // console.log(obj.__proto__);
+    // console.log(obj.__proto__.__proto__);
+    // console.log(obj.__proto__.__proto__.__proto__);
+    // console.log('-----------------------------------');
+    // let show = function(){}
+    // console.log(show.__proto__);
+    // console.log(show.__proto__.__proto__);
+    // 获取某个对象的原型
+    console.log(Object.getPrototypeOf(str));
+    // setPrototypeOf设置某个对象的属性
+    // Object.hasOwnPrototypeOf()判断是否含有某属性
+    // console.log(Object.setPrototypeOf(str));
+    
+
+</script>
+</html>

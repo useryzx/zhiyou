@@ -1,0 +1,38 @@
+数据库:专门用来批量存储数据，查询数据，为其他应用程序提供数据服务的软件。
+主流的数据库分为两类"
+sqlite数据库和nosql数据库
+
+sqlite:传统的关系型数据库(mysql,sqlServer,oracle)这些都是sqlite数据库,使用sql（structure query language）重点突出语言结构
+
+nosql:(not only sql):不仅仅是数据库  mongodb属于这一种  文档型数据，可以存对象，使用js来进行操作
+
+数据库唯一进行数据交互的方式就是数据库语句
+
+三种方式来操作mongodb：
+1.使用mongodb安装包自带的mongo.exe软件来操作
+
+2.把mongodb配置成windows服务使用nodejs来操作数据库
+
+3.使用诸如:MongoDBCompass软件来操作数据库
+
+数据库目录下面的db文件夹:
+存放数据库---mongodb的数据存放在db目录下 所以需要创建
+
+log:存放日志
+
+数据库的安装主要考验大家对于计算机运行环境的理解,耐心一点一般都能装成功
+mongodb在nodejs中属于第三方 需要npm install mongoose这个包
+
+
+使用nodejs连接mongodb数据库步骤:
+1.先要连接数据库
+2.如果没有表结构，需要创建表结构(表结构至关重要，因为数据是依赖于表结构的)
+3.根据表结构构建表对象
+4.根据对象去进行对应的增删改查
+
+
+
+
+
+
+

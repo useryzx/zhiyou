@@ -1,0 +1,38 @@
+<!-- 条件查询使用的 -->
+<%if(name){%>
+<div class="btn-group">
+    <button type="button" class="btn btn-danger">姓名:<%=name%></button>
+    <button type="button" class="btn btn-danger condition-btn" con="name">
+        <span>X</span>
+    </button>
+</div>
+<%}%>
+
+<%if(age){%>
+<div class="btn-group">
+    <button type="button" class="btn btn-danger">年龄:<%=age%></button>
+    <button type="button" class="btn btn-danger condition-btn" con="age">
+        <span>X</span>
+    </button>
+</div>
+<%}%>
+
+
+    <%if(sex){%>
+<div class="btn-group">
+    <button type="button" class="btn btn-danger">性别:<%=sex%></button>
+    <button type="button" class="btn btn-danger condition-btn" con="sex">
+        <span>X</span>
+    </button>
+</div>
+<%}%>
+
+
+<%if(tel){%>
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger">电话:<%=tel%></button>
+        <button type="button" class="btn btn-danger condition-btn" con="tel">
+            <span>X</span>
+        </button>
+    </div>
+    <%}%>

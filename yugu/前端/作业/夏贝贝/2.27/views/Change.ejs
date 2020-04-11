@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑页面</title>
+</head>
+<body>
+    <h1>更新信息</h1>
+    <form action="/api/student/update" method="post">
+        <label for="name">姓名</label>
+        <input type="text" name="stuName" id="name" value="<%=data[0].stuName%>"  readonly="readonly"><br>
+        <label for="age">年龄</label>
+        <input type="text" name="stuAge" id="age"  value="<%=data[0].stuAge%>"><br>
+        <label for="sex">姓名</label>
+        男<input type="radio" name="stuSex" id="sex" value="男" <%=data[0].stuSex=='男'?'checked':''%>>
+        女<input type="radio" name="stuSex" id="sex" value="女" <%=data[0].stuSex=='女'?'checked':''%>><br>
+        <label for="sel-major">专业</label>
+        <select name="stuMajor" id="sel-major">
+            <option value="web前端" <%=data[0].stuMajor=='web前端'?'selected':''%>>web前端</option>
+            <option value="Python" <%=data[0].stuMajor=='Python'?'selected':''%>>Python</option>
+            <option value="Java" <%=data[0].stuMajor=='Java'?'selected':''%>>Java</option>
+        </select><br>
+        <label for="hobby">兴趣爱好</label>
+        体育<input type="checkbox" name="stuHobby" id="hobby" value="体育" 
+        <%for(var i=0;i<data[0].stuHobby.length;i++){%>
+            <%if(data[0].stuHobby[i]=="体育"){%>
+                <%='checked'%>
+            <%}%>
+        <%}%>
+        >
+        音乐<input type="checkbox" name="stuHobby" id="hobby" value="音乐" 
+        <%for(var i=0;i<data[0].stuHobby.length;i++){%>
+            <%if(data[0].stuHobby[i]=="音乐"){%>
+                <%='checked'%>
+            <%}%>
+        <%}%>>
+        美术<input type="checkbox" name="stuHobby" id="hobby" value="美术" 
+        <%for(var i=0;i<data[0].stuHobby.length;i++){%>
+            <%if(data[0].stuHobby[i]=="美术"){%>
+                <%='checked'%>
+            <%}%>
+        <%}%>><br>
+        <button type="submit">提交</button>
+    </form>
+</body>
+
+</html>

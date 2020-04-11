@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目换行</title>
+    <style>
+        #container{
+            display: flex;
+            height: 400px;
+            border: solid 1px red;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: stretch;
+        }
+        #select{
+            align-self: flex-end;
+        }
+        .box{
+            border: solid 1px black;
+            background-color: red;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box" id="select">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div>
+        <div class="box">11</div>
+        <div class="box">12</div>
+        <div class="box">13</div>
+        <div class="box">14</div>
+        <div class="box">15</div>
+        <div class="box">16</div>
+        <div class="box">17</div>
+        <div class="box">18</div>
+        <div class="box">19</div>
+        <div class="box">20</div>
+    </div>
+</body>
+</html>
+<!-- 阮一峰教程 -->
+<!-- http://www.ruanyifeng.com/blog/2019/11/weekly-issue-84.html#comments -->
+<!-- 30分钟彻底弄懂弹性布局 -->
+<!-- https://www.cnblogs.com/qcloud1001/p/9848619.html -->

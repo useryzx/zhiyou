@@ -1,0 +1,21 @@
+<%-include('./header.ejs')%>
+<body>
+    <table>
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>班级</td>
+            <td>性别</td>
+        </tr>
+
+        <tr>
+            <td><%=students.stuName%></td>
+            <td><%=students.age%></td>
+            <td><%=students.banji.className%></td>
+            <td><%=students.isMale?'男':'女'%></td>
+        </tr>
+
+    </table>
+</body>
+
+</html>

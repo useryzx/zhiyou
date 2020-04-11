@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>这三本书推荐给大家</h1>
+    <table id="tb">
+        <!-- 固定内容 -->
+        <tr>
+            <td>序号</td>
+            <td>书名</td>
+            <td>价格</td>
+            <td>作者</td>
+            <td>是否售罄</td>
+        </tr>
+     
+        <%for(var i=0; i<books.length;i++) {%>
+        <%var b =books[i]%>
+        <!-- <%if(!b.sellout){%> -->
+        <tr>
+            <td><%= i+1%></td>
+            <td><%= b.name%></td>
+            <td><%= b.price.toFixed(2)%></td>
+            <td><%= b.author%></td>
+            <td><%= b.sellout?"售完":"有货"%></td>
+        </tr>
+        <%}%>
+     <!-- <%}%> -->
+    </table>
+</body>
+
+</html>

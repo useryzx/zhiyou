@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <button id="b1">隐藏</button>
+    <button id="b2">出现</button>
+    <button id="b3">开始动画</button>
+    <div id="box">注意身体，多喝水，教室多通风!!!</div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    // 隐藏元素  原理:display:none
+    // $("#box").hide();
+    //渐渐消失  使用透明度来实现  第一个参数是动画时间 第二个是
+    // 回调
+    // $("#box").fadeOut(1000,function(){
+    //     console.log("动画结束了...");
+    // });
+    $("#b1").on("click",function(){
+        // 隐藏动画，原理是通过修改元素的高度，来实现隐藏效果
+        $("#box").slideUp();
+    });
+    $("#b2").on("click",function(){
+        // 显示动画，原理是通过修改元素的高度，来实现隐藏效果
+        $("#box").slideDown();
+    });
+    // jq当中封装了很多动画块供给开发者使用
+    $("#b3").on("click",function(){
+        /*
+        animate方法进行的是动画配置，多选参数，可以设置动画，
+        时间，以及回调，会返回当前调用的jq对象
+        */ 
+        $("#box").animate({
+            width:"300px",
+            height:"300px",
+        },3000,function(){
+            console.log("动画结束"); 
+            // 可以进行animate的动画嵌套
+        }).animate({
+            opacity:"0.5"
+        });
+    });
+</script>
+</html>

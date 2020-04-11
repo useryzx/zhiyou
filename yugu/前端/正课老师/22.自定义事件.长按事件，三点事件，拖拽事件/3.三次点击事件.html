@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 一秒以内，三次点击必须点完，然后派发事件 -->
+
+</body>
+<script>
+    document.body.addEventListener("tripleClick", function () {
+        alert("三次监听");
+    });
+    var clickCount = 0;
+    var timeOut=null;
+
+    document.body.addEventListener("click", function () {
+        clickCount++;
+        console.log(clickCount);
+        //只有第一次的时候才打开
+        if (clickCount == 1) {
+            console.log(clickCount);
+            setTimeout(function () {
+                clickCount = 0;
+            }, 1000);
+        }
+        else if (clickCount >= 3) {
+            console.log(clickCount);
+            var tip = new CustomEvent("tip", {});
+            document.body.dispatchEvent(tip);
+            clickCount = 0;
+        }
+    })
+
+    // document.body.addEventListener("click", function () {
+    //     clickCount++;
+    //     // 
+    //     if (timeOut) {
+    //         clearTimeout(timeOut);
+    //     }
+    //     else
+    //     {
+    //         timeOut = setTimeout(function () {
+    //             // 查过一秒就是0
+    //             clickCount = 0;
+    //         }, 1000);
+    //     }
+       
+    //     //必须够8次
+    //     if (clickCount == 8) {
+    //         // 派发事件
+    //         var triple = new CustomEvent("tripleClick", {});
+    //         document.body.dispatchEvent(triple);
+    //     }
+    //     console.log(clickCount);
+
+    // });
+</script>
+
+</html>

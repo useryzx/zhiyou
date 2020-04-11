@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #avatar-field {
+            display: none;
+        }
+
+        #avatar-label {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            font-size: 160px;
+            text-align: center;
+            line-height: 200px;
+            user-select: none;
+            background-size: 100% 100%;
+            box-sizing: border-box;
+        }
+        #avatar-label::before{
+            display: inline-block;
+            content:'+';
+        }
+        #avatar-label.highlighted{
+            filter: brightness(0.7);
+            border: 4px solid seagreen;
+        }
+    </style>
+</head>
+
+<body>
+    <form id='fm'>
+        <label for="">姓名</label>
+        <input type="text" name="name" id="name-field" required>
+        <br>
+        <span>请选择头像</span>
+        <br>
+        <label id="avatar-label" for="avatar-field"></label>
+        <input type="file" name="avatar" accept="image/*" id="avatar-field">
+        <br>
+    </form>
+    <br>
+    <button id="commit-btn">提交</button>
+</body>
+<script src="jquery.js"></script>
+<script>
+    let file = null;
+    $("#avatar-field").on('change', function (e) {
+        file = e.target.files[0]
+        let url = URL.createObjectURL(file)
+        $("#avatar-label").css('backgroundImage', `url(${url})`).text('')
+    })
+    $("#commit-btn").on('click', function () {
+        if (!file) {
+            alert('请先选择文件');
+            return;
+        }
+        let data = new FormData();
+        data.append("name", $("#name-field").val())
+        data.append("avatar", file)
+        
+        $.ajax({
+            type: "post",
+            url: "/upload",
+            data,
+            // 不让jquery添加请求体和处理数据
+            processData: false,
+            contentType:false
+        })
+        .then(res=>{
+            console.log(res);
+        })
+    })
+    $("#avatar-label").on('dragenter',function(e){
+        console.log(1);
+        $("#avatar-label").addClass('highlighted');
+    })
+    $("#avatar-label").on('dragleave',function(e){
+        console.log(2);
+        $("#avatar-label").removeClass('highlighted');
+    })
+    $("body").on("dragover",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+    })
+    $("#avatar-label").on("drop",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $("#avatar-label").removeClass('highlighted');
+        file = e.originalEvent.dataTransfer.files[0];
+        let url = URL.createObjectURL(file)
+        $("#avatar-label").css('backgroundImage', `url(${url})`).text('')
+    })
+</script>
+
+</html>

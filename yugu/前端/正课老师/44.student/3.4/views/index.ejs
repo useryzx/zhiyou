@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #list {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #list th,
+        #list td {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">
+        <a href="login.html">登录</a>
+        <a href="register.html">注册</a>
+    </div>
+    <div id="d2">
+        <a href="class.html">添加班级</a>
+        <a href="/api/student">添加学生</a>
+        <a href="/api/out">退出</a>
+    </div>
+    <form action="">
+        <input type="text" placeholder="请按照姓名查找" name="name">
+        <button>查询</button>
+    </form>
+    <table id="list">
+        <thead>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>班级</th>
+            <th>性别</th>
+            <th>操作</th>
+        </thead>
+        <%for(var i=0;i<data.length;i++){%>
+        <%var s=data[i]%>
+        <tr>
+            <td><%=s.name%></td>
+            <td><%=s.age%></td>
+            <td><%=s.classname%></td>
+            <td><%=s.sex%></td>
+            <td>
+                <a href="/api/stu/remove?id=<%=s._id%>" class="del">删除</a>
+                <a href="/api/stu/edit?id=<%=s._id%>">编辑</a>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+    <%if(page>0){%>
+        <a href="/?page=<%=page-1%>">首页</a>
+    <%}%>
+    <span>第<%=page+1%>页</span>
+    <%if(page<total-1){%>
+        <a href="/?page=<%=page+1%>">末页</a>
+    <%}%>
+</body>
+</html>

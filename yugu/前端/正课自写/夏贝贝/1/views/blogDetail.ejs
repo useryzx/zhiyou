@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/nav.css">
+    <style>
+        html,
+        body {
+            height: 200%;
+        }
+
+        section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .blogDetail {
+            width: 500px;
+        }
+
+        h1 {
+            margin: 10px 0;
+
+        }
+
+        p {
+            margin: 10px 0
+        }
+
+        .author {
+            color: blue;
+        }
+
+        p a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .current {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <%if(user){%>
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="">标签</a></li>
+            <li><a href="/blog-commit">发帖</a></li>
+            <li><a href="/loginOut">退出登录</a></li>
+            <li><a href="" class="username"><%=user.username%></a></li>
+        </ul>
+    </nav>
+    <%}else{%>
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/label">标签</a></li>
+            <li><a href="/user/login">登录</a></li>
+            <li><a href="/register">注册</a></li>
+        </ul>
+
+    </nav>
+    <%}%>
+    <section>
+        <div class="blogDetail">
+       <h1><%=title%></h1>
+    <p>作者:<span class="author"><%=author%></span></p>
+    <p>
+        <span><%=msg%></span>
+    </p>
+    <p>
+        <%if(user){%>
+
+        <a href="/delete?id=<%=_id%>" class="delete current">删除帖子</a>
+
+        <%}%>
+       </p>
+       <hr>
+       <br>
+        <div class='replyBox'> 
+            <%for(var i=0;i<reply.length;i++){%>
+        <div>
+
+            <p>回复者：<span><%=reply[i].name%></span></p>
+            <p><%=reply[i].content%></p>
+
+        </div>
+
+        <%}%>
+        </div>
+        
+        <hr>
+        <form action="/blog/detail" method="post">
+            <br>
+           <%if(user){%>
+        <input type="text" style="display: none;" name="name" value="<%=user.username%>">
+        <%}else{%>
+        <label for="">昵称：</label><input type="text" name="name">
+        <%}%>
+           <br>
+            <input type="text" style="display: none;" 
+            name="id" value="<%=_id%>">
+        <br>
+        <textarea name="content"></textarea>
+        <br>
+        <button>回帖</button>
+        </form>
+        </div>
+        </section>
+</body>
+<script src="/jquery.js"></script>
+<script>
+
+
+    var name = $('.username').text();
+    var author = '<%=author%>';
+    if (name == author) {
+        $('.delete').removeClass('current')
+    }
+
+
+
+
+
+</script>
+
+</html>

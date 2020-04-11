@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数之间的继承</title>
+</head>
+<body>
+</body>
+<script>
+    // 改变this指向的方法有call() apply() bind()
+    function Person(name,age,isMale,minzu)
+    {
+        this.name =name;
+        this.age =age;
+        this.isMale =isMale;
+        this.minzu =minzu;
+    }
+    // 对于继承来说,共享的属性和方法需要挂载在原型上
+    Person.prototype ={
+        guoji:'中国',
+        run:function(){
+            console.log(this.name+'短跑很快');
+            
+        }
+    }
+
+    // 男人
+    function Man(name,age,minzu){
+        // this指向的是当前构造函数的Man
+        console.log(this);
+        // 通过call方法,调用person的构造函数,函数在执行时
+        // 其内部原有的this指向会被替换成传入的this指向
+        // 调用了person的构造方法但是相当于方法内的this
+        // 是man的所以this.....都会是往man对象赋值
+        // fuc.call(thisArg,arg1,arg2....)thisArg
+        // 指最新的this指向,即当前fuc函数运行的环境this
+        // arg1...这些是参数列表
+        // Person.call(this,name,age,null,minzu);
+        // apply要求参数放到列表中
+        // Person.apply(this,[name,age,null,minzu]);
+        // bind方法是创建一个新函数(保持代码一直,在新函数执行
+        // 过程中改变this的指向)
+        Person.bind(this,name,age,null,minzu)();
+    }
+    let m1 =new Man('阿达',23,'汉族');
+    console.log(m1);
+    // 只解决了构造函数模板的内容继承,放置在原型中的数据，
+    // 没办法被继承
+    // m1.guoji;
+    // m1.run();
+    // 创建了一个person实例,--person的原型--function原型--Object
+    // m1 ---Man原型--function原型---Object
+    //m2 ---Man原型 ----person的实例化数据---Object
+    /*
+    构造函数之间的继承
+    1.模板数据之间的继承可以使用call apply bind
+    2.原型中的数据继承需要改变原型的指向
+    */ 
+    Man.prototype =new Person();
+    var m2 =new Man('阿欢',21,'汉族');
+    m2.run();
+</script>
+</html>

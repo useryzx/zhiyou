@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>访问元素的尺寸和位置</title>
+    <style>
+        #out{
+            width: 500px;
+            height: 500px;
+            background-color: yellow;
+            position: relative;
+        }
+        #box{
+            width: 200px;
+            height: 100px;
+            border: solid 10px black;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="out">
+         <div id="box">
+         </div>
+    </div>
+</body>
+<script>
+    var box =document.getElementById("box");
+    // 如果元素的样式是通过css设置的，那么没有办法通过style
+    // 属性来获取
+    // console.log(box.style.width);
+    // console.log(box.style.height);
+    // 获取到元素展示的时候的宽高(包含边框)
+    console.log(box.offsetWidth);
+    console.log(box.offsetHeight);
+    // 不包含边框的宽高
+    console.log(box.clientWidth);
+    console.log(box.clientHeight);
+    // 获取元素相对于离自己最近的position(必须是非static)
+    // left父元素的横坐标
+    console.log(box.offsetLeft);
+    // 纵坐标
+    console.log(box.offsetTop);
+    // 到内容区域的距离
+    console.log(box.clientLeft);
+    console.log(box.clientTop);
+    // 获取浏览器工作区域的宽高
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    // 获取浏览器窗口的宽高
+    console.log(window.outerWidth);
+    console.log(window.outerHeight);
+</script>
+</html>

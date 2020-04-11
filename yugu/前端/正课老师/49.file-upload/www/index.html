@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>文件上传</h1>
+    <form action="/api/upload" method="post" enctype="multipart/form-data">
+           <input type="text" name="name" placeholder="请输入上传者名称" required>
+           <br>
+           <!-- accept竖向可以选择设置上传文件的类型 */*任意文件
+        image/*是任意格式的图片 上传的时候一定要设置该属性
+    默认是单个文件上传如果要多个文件 需要设置multiple -->
+           <input type="file" accept="*/*" name="ff">
+           <br>
+           <button>提交</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+</head>
+
+<body>
+    <a href="/">回到首页</a>
+    <!-- 之前的请求都是借助于form的action来完成的,
+    思考如果不借助action应该怎么做 -->
+    <form action="">
+        <input type="text" placeholder="请输入学生姓名" name="stuName"><br>
+        <input type="text" placeholder="请输入密码" name="psw"><br>
+        <br>
+        <button type="submit">注册</button>
+    </form>
+    <script src="jquery.js"></script>
+    <script>
+        // 先停止form表单的默认行为 (触发action)
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            $.post('/student/signUp', data, function (res) {
+                if (res.error == 0) {
+                    alert(res.msg);
+                    //    location对象 可以修改网址栏的路径
+                    location.href = '/';
+                }
+                else {
+                    console.log(res);
+                    alert(res.msg);
+                    // 重置form表单
+                    $('form').get(0).reset();
+                }
+
+            });
+        })
+    </script>
+</body>
+
+</html>

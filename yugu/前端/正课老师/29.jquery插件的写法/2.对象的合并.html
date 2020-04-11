@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    var info ={
+        location:'105',
+        doorNum:2,
+        direction:'North',
+        teacher:'xia'
+    }
+    var stu1 ={
+        name:'阿欢',
+        age :20,
+        isMale:true,
+        teacher:'bei'
+    }
+    var stu2 ={
+        name:'阿达',
+        age :20,
+        isMale:true,
+        teacher:'xia'
+    }
+    var aa ={
+        email:'123@qq.com'
+    }
+    function show(obj,newObj){
+       for(var key in newObj)
+       {
+        //    用的是newObj的key如果obj里面有这个key那就覆盖
+        // 没有就新创建
+           obj[key] =newObj[key];
+       }
+       return obj;
+    }
+     var allObj2= show(info,stu2);
+     console.log(allObj2);
+     
+
+    // 合并 assign 对象的合并
+    // 1.合并的对象 2.被合并的对象 合并过程中如果出现同属性
+    // 会被覆盖，
+    var allObj =Object.assign(info,stu1,aa);
+    console.log(allObj);
+    // 合并之后参数一的对象会变成合并后的数据
+    console.log(info);
+
+
+    
+    
+</script>
+</html>

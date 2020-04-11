@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>信息采集表</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .infoBox {
+            margin: 5px;
+        }
+
+        #education,
+        #major {
+            width: 150px;
+        }
+
+        #majorLabel {
+            vertical-align: top;
+        }
+
+        #feel {
+            width: 100%;
+            /* 不支持拖拽 */
+            resize: none;
+            font-size: 3vw;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>智游信息采集表</h1>
+    <form action="/users/inform " method="post">
+        <!-- fieldset表单区域 可以将一个表单分为多个区域 -->
+        <fieldset>
+            <!-- 区域标题 -->
+            <legend>基本信息</legend>
+            <div class="infoBox">
+                <label for="name">姓名:</label>
+                <!-- checked必填 -->
+                <input type="text" placeholder="请输入全名" id="name" name="username" checked>
+            </div>
+            <!-- 性别 -->
+            <div class="infoBox">
+                <span>性别:</span>
+                <!-- name是供给服务器用的 id样式选择 -->
+                <input type="radio" name="sex" checked id="male" value="男">
+                <label for="male">男</label>
+                <input type="radio" name="sex" checked id="female" value="女">
+                <label for="female">女</label>
+            </div>
+            <!-- 爱好 -->
+            <div class="infoBox">
+                <label for="userId">身份证号:</label>
+                <input type="text" name="userId" id="userId" checked placeholder="请输入身份证号">
+                <hr>
+                <span>爱好</span>
+                <input type="checkbox" name="hoby" id="basketball" value="篮球">
+                <label for="basketball">篮球</label>
+                <input type="checkbox" name="hoby" id="sing" value="唱歌">
+                <label for="sing">唱歌</label>
+                <input type="checkbox" name="hoby" id="game" value="游戏">
+                <label for="sing">游戏</label>
+            </div>
+        </fieldset>
+        <!-- 学历和专业课程 -->
+        <fieldset>
+            <div class="infoBox">
+                <label for="education">学历</label>
+                <select name="userxueli" id="education">
+                    <!-- 项目分组 optgroup分组-->
+                    <optgroup label="本科以下">
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="大专">大专</option>
+                    </optgroup>
+                    <optgroup label="本科以上">
+                        <option value="专科">本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                    </optgroup>
+                </select>
+            </div>
+            <!-- 专业 -->
+            <div class="infoBox">
+                <label for="major" id="majorLabel">专业课程:</label>
+                <!-- multiple设置滚动展示 -->
+                <select name="major" id="major" multiple>
+                    <option value="1">html</option>
+                    <option value="2">ios</option>
+                    <option value="3">android</option>
+                    <option value="4">windows</option>
+                    <option value="5">bigData</option>
+                </select>
+            </div>
+        </fieldset>
+        <!-- 分区 -->
+        <fieldset>
+            <legend>学习感言</legend>
+            <!-- 留言板 cols允许的列数 rows允许的行数-->
+            <input name="ganwu" id="feel" placeholder="不能少于15个字">
+            </input>
+            <!-- submit提交 属性会自动连接form表单的action地址 -->
+            <input type="submit" value="提交信息">
+            <!-- reset重置 会把当前表单重置 -->
+            <input type="reset" id="reset">
+        </fieldset>
+    </form>
+</body>
+
+</html>

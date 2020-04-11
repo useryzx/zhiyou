@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #big{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #small{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        #new{
+            width: 300px;
+            height: 300px;
+            border: solid 20px black;
+        }
+    </style>
+</head>
+<body>
+    <div id="big">
+        <div id="small"></div>
+    </div>
+    <div id="new"></div>
+</body>
+<script>
+    var big =document.getElementById("big");
+    var small =document.getElementById("small"); 
+    // big.onclick =function(e){
+    //     console.log("big点击了");  
+    // }
+    // 子元素的事件触发的时候会带动父元素的事件触发
+    // small.onclick =function(e){
+    //     console.log("small点击了");  
+    //     // 停止事件的进一步传播
+    //     e.stopPropagation();
+    // }
+    /*
+    大部分的事件都是直接在元素之间进行传播的,事件的传播分为
+    两个过程，先是从上层到下层的捕获过程，然后是从下层到上层
+    的冒泡过程
+    */
+    //   第一种事件绑定方式:系统带有的事件,鼠标,键盘...
+//    第二种事件绑定方式:添加监听
+     function f1(e){
+         console.log("这是一个监听的函数:"+e);
+     }
+    var newBtn =document.getElementById("new");
+    // addEventListener 添加一个监听
+    // 该方法可以传入三个参数:1.监听的事件类型
+    // f1,代表监听事件的函数,当监听成功之后会调用
+    // 第三个参数是一个布尔值，代表的是事件在xx阶段触发
+    // 默认是false表示冒泡阶段触发，true表示该事件在捕获阶段触发
+    newBtn.addEventListener("click",f1);
+    // newBtn.addEventListener("click",function(){
+    //     console.log("这是捕获阶段就触发的事件");
+    // },true);
+    newBtn.addEventListener("click",f1,true);
+    // 删除:如果该事件是在捕获阶段进行监听的,那么删除是没有效果的
+    newBtn.removeEventListener("click",f1);
+    // 每一个事件对应的都是一个独立的事件链
+    big.addEventListener("click",function(e){
+          console.log("big是在冒泡阶段监听的函数");
+          e.stopPropagation();
+    },false);
+    small.addEventListener("click",function(e){
+          console.log("small是在捕获阶段监听的函数");
+          
+    },true);
+    // 逐层传递
+    document.body.addEventListener("click",function(){
+        console.log("body也会冒泡");
+    });
+   /*
+     在整个的事件传播过程中，任何一个环节都可以阻止事件继续传播
+     但是有一些特殊的事件没办法阻止，比如a标签，a标签的跳转
+     功能是浏览器功能用事件的阻止方式阻止不了
+   */
+</script>
+</html>

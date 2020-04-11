@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>上传头像</title>
+    <style>
+        #choose{
+            display: block;
+            width: 200px;
+            height: 200px;
+            border: solid 1px black;
+            font-size: 200px;
+            text-align: center;
+            line-height: 200px;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>头像上传</h1>
+    <form action="/user/upload-avatar" method="post" enctype="multipart/form-data">
+        <label for="avatar" id="choose">+</label>
+        <input type="file" id="avatar" style="display: none;"
+        accept="image/*" name="avatar" required>
+        <br>
+        <button>上传</button>
+    </form>
+</body>
+<script>
+    var chooseLabel =document.getElementById("choose");
+    var avatarField =document.getElementById("avatar");
+    // 添加事件
+    avatarField.onchange =function(){
+        // 选择对应的文件对象
+        // files 是一个文件类的数组，其中存放着所选择的文件对象
+        var file =avatarField.files[0];
+        // 把文件对象转成本地url
+        var fileUrl =URL.createObjectURL(file);
+        // 把图片加载到label上
+        chooseLabel.style.backgroundImage ="url("+fileUrl+")";
+        chooseLabel.textContent ="";
+    }
+</script>
+</html>

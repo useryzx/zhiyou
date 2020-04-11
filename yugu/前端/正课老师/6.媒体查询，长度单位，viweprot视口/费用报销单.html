@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width: 1000px;
+            height: 600px;
+            border: 1px solid black;
+            box-shadow: 0 0 10px gray;
+        }
+        table {
+            border: 2px solid black;
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        td {
+            border: 2px solid black;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+        }
+
+        #d1 {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #d1,.d2 {
+            border-top: none;
+        }
+        #d1 .d2{
+            width: 16.6%;
+        }
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        #d3 {
+            float: right;
+        }
+
+        hr {
+            width: 60%;
+            margin: 0 auto;
+        }
+        #p td:nth-child(1){
+            width: 30%;
+        }
+        #p td:nth-child(2),td:nth-child(3){
+            width: 15%;
+        }
+        #p td:nth-child(4),td:nth-child(5){
+            width: 20%;
+        }
+        .rmb{
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <table>
+            <thead>
+                <caption>
+                    <h1>费&emsp;用&emsp;报&emsp;销&emsp;单</h1>
+                    <hr>
+                    <span>报销日期&emsp;&emsp; 年&emsp;月&emsp;日&emsp;&emsp;</span>
+                    <span id="d3">附件&emsp;&emsp;张</span>
+
+                </caption>
+            </thead>
+            <tbody>
+                <tr id="p">
+                    <td>费用项目</td>
+                    <td>类别</td>
+                    <td>金额</td>
+                    <td rowspan="2">负责人（签名）</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">审查意见</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td rowspan="2">报销人（签章）</td>
+                    <td rowspan="2"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="rmb">￥</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="rmb">核实金额（大写）&emsp;佰&emsp;拾&emsp;万&emsp;千&emsp;佰&emsp;拾&emsp;元&emsp;角&emsp;分</td>
+
+                </tr>
+                <table id="d1">
+                    <tr>
+                        <td class="d2">借款额</td>
+                        <td class="d2"></td>
+                        <td class="d2">应退金额</td>
+                        <td class="d2"></td>
+                        <td class="d2">应补金额</td>
+                        <td class="d2"></td>
+                    </tr>
+                </table>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

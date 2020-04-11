@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+
+</head>
+
+<body>
+    <!-- 可以跳连接 -->
+    <a href="signUp.html">注册</a>
+    <h1>登录</h1>
+    <form action="">
+        <input type="text" placeholder="请输入学生姓名" name="stuName"><br>
+        <input type="text" placeholder="请输入密码" name="psw"><br>
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <script src="jquery.js"></script>
+    <script>
+        $('form').submit(function (e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            $.post('/student/logIn', data, function (res) {
+                if (res.error == 0) {
+                    alert(res.msg);
+                    location.href = '/';
+                }
+                else {
+                    alert(res.msg);
+                    // 重置form表单
+                    $('form').get(0).reset();
+                }
+
+            });
+        })
+    </script>
+</body>
+
+</html>

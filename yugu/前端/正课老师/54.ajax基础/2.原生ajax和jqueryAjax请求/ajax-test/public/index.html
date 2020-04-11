@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客户端</title>
+</head>
+<body>
+    <h1>ajax请求</h1>
+    <select>
+        <option value="">123</option>
+        <option value="">456</option>
+    </select>
+     <br>
+    <button onclick="ajaxClick()">发送ajax请求</button>
+    <br>
+    <button id="jqGetBtn">jquery发起get ajax请求</button>
+    <br>
+    <button id="jqPostBtn">jquery发起post ajax请求</button>
+    <br>
+    <button id="jqAjaxBtn">jquery发起可以自定义的 ajax请求</button>
+</body>
+<script src="./libs/jquery.js"></script>
+<script>
+    function ajaxClick() {
+        console.log("请求");
+        // ajax请求分为两种方式{1.原生的ajax请求  2.jquery的方式}
+        // 1.创一个用来处理xml通信的请求对象
+        let xhr =new XMLHttpRequest();
+        // 2.设置xhr对象的状态变化时间回调
+        /*
+        xhr有就绪，准备接受数据，失败，完成等多种状态， 每当xhr从一个状态切换到另一个状态时，就会触发onreadystatechange事件
+        */
+        xhr.onreadystatechange=function(e){
+            //   状态码为4的时候说明成功
+            if (xhr.readyState==4) {
+            // console.log("服务器那边返回数据了");
+            // responseText响应的内容
+            let obj=JSON.parse(xhr.responseText);
+            console.log(obj);
+            
+            }
+        } 
+        //3.设置请求方式和请求url地址
+        xhr.open("GET","/api/get?name=xia&age=30");
+        // 4.发送请求  参数是请求体，如果是post请求需要先准备好请求体，然后传递
+        xhr.send();
+    }
+
+    $('#jqGetBtn').on('click',function(){
+        // $.get方法 发起一个请求方式为get得ajax请求
+        // 第一个参数是接口地址，第二个参数是请求成功的回调
+        // 这种方法如果不写回调函数则会返回一个deffered（相当于jq中的promise对象，比promise出现的早） 可以当作promise使用 
+        // $.get('/api/get',function(data){
+        //     console.log(data);
+        // })
+
+        let param='name=xia&age=30';
+        // 没有回调 会返回一个jq中的promise
+        $.get('/api/get',param).then(data=>{
+            console.log(data);  
+        })
+        .catch(err=>{
+            console.log(err); 
+        })
+    })
+
+
+    /*------------------------*/
+    $("#jqPostBtn").on("click",function () { 
+        let obj ={name:"夏贝",age:30};
+        // $.post发送请求的方式就是ajax类型的post请求
+        $.post("/api/post",obj)
+        .then(data=>{
+        console.log(data);
+       })
+       .catch(err=>{
+        console.log(err);
+       });
+     })
+     
+
+     /*-------------------------*/
+    // 自定义
+    $("#jqAjaxBtn").on("click",function () { 
+        let obj ={name:"夏贝",age:30};
+        // $.ajax()方法，作用是发起一个可以高度自定义的ajax请求，参数是一个对象，对象中可以设置此次请求得到具体配置
+        $.ajax({
+            url:'/api/post',
+            method:'POST',
+            success(data){
+                console.log(data);
+            },
+            // 设置请求超时时间(毫秒)，此设置将覆盖全局设置，有可能受困于网络等外部原因导致请求一直在连接
+            timeout:5000,
+        });
+     })
+</script>
+</html>

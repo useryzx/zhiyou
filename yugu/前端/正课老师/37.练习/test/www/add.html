@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加</title>
+</head>
+<body>
+    <a href="/">回到首页</a>
+    <!-- 之前的请求都是借助于form的action来完成的,
+    思考如果不借助action应该怎么做 -->
+    <form action="">
+       <input type="text" placeholder="请输入学生姓名"
+       name="stuName"><br>
+       <input type="number" placeholder="请输入年龄"
+       name="age"><br>
+       <input type="radio" checked name="isMale" 
+       value="true">男
+       <input type="radio"  name="isMale" 
+       value="false">女<br>
+       <select name="class">
+           <option value="h5-60期">h5-60期</option>
+           <option value="java-60期">java-60期</option>
+           <option value="ios-60期">ios-60期</option>
+           <option value="python-60期">python-60期</option>
+       </select><br>
+       <button type="submit">添加</button>
+    </form>
+    <script src="jquery.js"></script>
+    <script>
+        // 先停止form表单的默认行为 (触发action)
+        $('form').submit(function(e){
+            e.preventDefault();
+            // 拿到数据   进行序列化(实例化)
+            var data =$(this).serialize();
+            // 把数据准备好之后才能链接接口
+            // 没有使用action就需要自己准备数据把数据整理到一块
+            // 1.接口 2.数据  3.接口的回调【服务器返回的数据】
+            $.post('/student/add',data,function(res){
+            //    发请求 
+            //    成功
+               if (res.error ==0) {
+                   alert(res.msg);
+                //    location对象 可以修改网址栏的路径
+                   location.href ='/';
+               }
+               else
+               {
+                console.log(res);
+                alert(res.msg);
+                // 重置for表单
+                $('form').get(0).reset();
+               }
+                
+            });
+        })
+    </script>
+</body>
+</html>

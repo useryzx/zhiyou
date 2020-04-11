@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+    
+    function f1(n){
+        console.log(n);
+    }
+
+
+    // 将f1封装改造为防抖函数
+    // let timer = null;
+    // function f2(){
+    //     if(timer){
+    //         clearTimeout(timer);
+    //     }
+    //     timer = setTimeout(() => {
+    //         clearTimeout(timer);
+    //         f1();
+    //     }, 1000);
+    // }
+
+    // 可以使用闭包隐藏掉定时器变量。
+    // 末次执行的防抖
+    let f2 = (function(){
+        let timer = null;
+        function fn(n){
+            if(timer){
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                timer = null;
+                f1(n);
+            }, 1000);
+        }
+        return fn;
+    })();
+
+    // 首次执行的防抖
+    let f3 = (function(){
+        let timer = null;
+        return function(n){
+            if(!timer){
+                f1(n);
+            }else{
+                clearTimeout(timer);
+            }
+            timer = setTimeout(() => {
+                timer = null;
+            }, 1000);
+        }
+    })()
+
+
+
+    setTimeout(() => {
+        f2(1);
+    }, 500);
+    setTimeout(() => {
+        f2(2);
+    }, 1000);
+    setTimeout(() => {
+        f2(3);
+    }, 1500);
+    setTimeout(() => {
+        f2(4);
+    }, 2000);
+
+
+    //------------------------------------------------------------------
+
+    // 函数节流
+    let f4 = (function(){
+        let timer = null;
+        return function(n){
+            if(timer){
+                return;
+            }
+            f1(n);
+            timer = setTimeout(() => {
+                timer = null;
+            }, 500);
+        }
+    })()
+
+
+    setInterval(() => {
+        f4(Date.now());
+    }, 100);
+
+
+</script>
+
+
+</html>

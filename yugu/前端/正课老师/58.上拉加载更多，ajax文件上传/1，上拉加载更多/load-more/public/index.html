@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 800px;
+            height: 600px;
+            border: solid 10px black;
+            overflow-y: scroll;
+        }
+
+        .list-item{
+            border-bottom: solid 1px black;
+        }
+        #indicator-line{
+            height: 100px;
+            text-align: center;
+        }
+
+        #indicator{
+            display: inline-block;
+            font-size: 40px;
+            color: green;
+            font-weight: bold;
+            animation-name: spin;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes spin{
+            0%{
+                transform: rotate(0);
+            }
+
+            100%{
+                transform: rotate(359deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="indicator-line">
+            <span id="indicator">+</span>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/html" id="tpl">
+    <% for(var i = 0;i<jokeList.length;i++){ %>
+    <div class="list-item">
+        <h3><%=jokeList[i].updatetime%></h3>
+        <p><%=jokeList[i].content%></p>
+    </div>
+    <%}%>
+
+    <div id="indicator-line">
+        <span id="indicator">+</span>
+    </div>
+</script>
+
+
+<script src="jquery.min.js"></script>
+<script src="ejs.js"></script>
+
+<script>
+    // 存储列表数据
+    let jokeList = [];
+
+    // 记录当前是否正在请求数据
+    let isLoading = false;
+
+    function loadData(){
+        isLoading = true;
+        $.get("/proxy/joke/content/text.php",{
+            key:"c5c0bd0e10a4ff41739664ea2ba68ca0",
+            page:jokeList.length/10+1,
+            pagesize:10
+        })
+        .then(res=>{
+            // console.log(res);
+            isLoading = false;
+            jokeList = jokeList.concat(res.result.data);
+            render();
+        })
+        .catch(err=>{
+            isLoading = false;
+        })
+    }
+
+    function render(){
+        let htmlStr = ejs.render($("#tpl").html(),{jokeList});
+        $("#container").html(htmlStr);
+    }
+
+    loadData();
+
+    $("#container").on("scroll",function(e){
+        // scrollTop属性，表示元素的纵向滚动偏移量。
+        // console.log(e.target.scrollTop);
+
+        // clientHeight，元素本身的高度（不带边框）
+        // console.log(e.target.clientHeight);
+
+        // scrollHeight，元素内容的高度
+        // console.log(e.target.scrollHeight);
+
+
+        // 最大滚动偏移量=元素内容高度-元素自身高度。
+        if(e.target.scrollTop >= e.target.scrollHeight - e.target.clientHeight-100){
+            console.log("快到底部了");
+            // 滚动事件是出发频繁的事件，所以在离底部100像素的距离内滚动式会多次触发，那么就需要使用一个变量记录当前是否正在请求，以防止重复发出请求。
+            if(!isLoading){
+                loadData();
+            }
+        }
+    })
+
+    
+
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+<%-include('./header.ejs')%>
+<body>
+    <form>
+        <input type="text" name="className" placeholder="班级名称"><br>
+        <input type="text" name="location" placeholder="班级位置"><br>
+        <input type="text" name="teacher" placeholder="授课老师"><br>
+        <button type="submit">添加班级</button>
+    </form>
+</body>
+<script>
+    $('form').submit(function(e){
+        e.preventDefault();
+        var data =$(this).serialize();
+        $.post('/banji/add',data,function(res){
+            if(res.error==0){
+                alert(res.msg)
+                location.href = '/student/add'
+            }
+            else{
+                alert(res.msg)
+            }
+        })
+    })
+</script>
+</html>

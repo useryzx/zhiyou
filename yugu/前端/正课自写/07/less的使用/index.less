@@ -1,0 +1,76 @@
+// 声明了一个变量
+// 变量：使用了一个具体的名称代表了某一套具体的数据
+@textColor:red;
+#tit234{
+    color: @textColor;
+}
+#list{
+    padding: 0;
+    background-color: @textColor;
+    li{
+        color: aquamarine;
+    }
+}
+#t3{
+    text-align: center;
+    .line;
+
+}
+.line{
+    color: grey;
+    font-family: 仿宋;
+}
+@baseColor:yellow;
+#p1{
+    background-color: @baseColor;
+}
+#p2{
+    background-color: lighten(@baseColor,-20%);
+}
+#pic{
+    width: 300px;
+    height: 300px;
+    background-image: url(photo.jpg);
+    background-size: 100% 100%;
+}
+@myselector:#wrap;
+@wrap:wrap;
+@{myselector}{
+    color: @textColor;
+    width: 50%;
+}
+.@{wrap}{
+    color: #ccc;
+}
+#@{wrap}{
+    background-color: green;
+}
+
+@idselector:#box;
+@border:border;
+
+@{idselector}{
+    @{border}:solid 2px @textColor
+}
+@bgs:background-size;
+@bgr:background-repeat;
+@norepeat:no-repeat;
+@wallpaper:"../../../../wallpaper";
+body{
+    background-image: url("@{wallpaper}/1.jpg");
+    @{bgs}:contain;
+    @{bgr}:@norepeat;
+}
+@background:{
+    background: linear-gradient(red,green),
+    linear-gradient(90deg,yellow,blue);
+}
+@rules:{
+    width: 500px;
+    height: 500px;
+    @{border}:2px solid @baseColor;
+}
+main{
+    @rules();
+    @background();
+}

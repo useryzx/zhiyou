@@ -1,0 +1,17 @@
+extends layout
+//- jade其实是变体html
+block content
+  h1  welcome to jade
+  //- #container.col 相当于创建了一个id为container class为col的容器
+  #container.col
+    p this is div
+  div
+    a hello
+    //- div下有a内容为hello
+  div
+    a(href='http://www.baidu.com')百度
+    //- =设置元素的包含内容
+  div="if you think you can,<b>you can</b>."
+  //- jade可以嵌套js代码
+  if !youLoveMe
+    p i do not love u

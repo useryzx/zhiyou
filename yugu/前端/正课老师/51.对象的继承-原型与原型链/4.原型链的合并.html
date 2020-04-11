@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+      function Person(name,age,isMale,minzu)
+    {
+        this.name =name;
+        this.age =age;
+        this.isMale =isMale;
+        this.minzu =minzu;
+    }
+    Person.prototype ={
+        guoji:'中国',
+        run:function(){
+            console.log(this.name+'短跑很快');
+            
+        }
+    }
+    function Man(name,age,minzu){
+        Person.call(this,name,age,true,minzu);
+    }
+    console.log(Person._proto_);//function对象
+    console.log(Man._proto_);//function对象
+    
+    var Func=function(){};
+    console.log(Func._proto_);//function对象
+    // 相当于两个原型链合并
+    Func.prototype=Person.prototype;//函数对象
+    Man.prototype=new Func();
+    var m2=new Man('小王',18,'汉族');
+    m2.run();
+    
+    
+</script>
+</html>

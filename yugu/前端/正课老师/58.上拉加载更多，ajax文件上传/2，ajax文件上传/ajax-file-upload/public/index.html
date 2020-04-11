@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #avatar-field{
+            display: none;
+        }
+
+        #avatar-label{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border: solid 1px black;
+            font-size: 160px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            user-select: none;
+            background-size: 100% 100%;
+            background-image: url(timg.jfif);
+            box-sizing: border-box;
+        }
+        #avatar-label.highlighted{
+            filter: brightness(0.7);
+            border: solid 4px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <form id="fm">
+        <label for="">姓名</label>
+        <input type="text" name="name" id="name-field">
+        <br>
+
+        <span>请选择头像</span>
+        <br>
+        <label id="avatar-label" for="avatar-field"></label>
+
+        <input id="avatar-field" type="file" name="avatar" accept="image/*">
+
+        <br>
+    </form>
+
+    <button id="commit-btn">提交</button>
+
+</body>
+
+<script src="jquery.min.js"></script>
+
+<script>
+
+    let file = null;
+
+    $("#avatar-field").on("change",function(e){
+        // console.log(e.target.files[0]);
+        file = e.target.files[0];
+
+        let url = URL.createObjectURL(file);
+        $("#avatar-label")
+        .css("backgroundImage",`url(${url})`);
+    });
+
+    $("#commit-btn").on("click",function(){
+        if(!file){
+            alert("请先选择文件");
+            return;
+        }
+
+        if(!$("#name-field").val()){
+            alert("名字不能为空");
+            return;
+        }
+
+
+        // ajax请求上传文件时，需要手动创建表单数据。
+        let data = new FormData();
+        // 向表单数据中追加内容
+        data.append("name",$("#name-field").val());
+        data.append("avatar",file);
+
+
+        $.ajax({
+            url:"/upload",
+            method:"POST",
+            data,
+            // 不再让jquery自动添加请求体类型和处理请求体数据
+            contentType:false,
+            processData:false,
+            
+        })
+        .then(res=>{
+            console.log(res);
+        })
+
+
+    });
+
+
+    $("#avatar-label").on("dragenter",function(){
+        // console.log(1);
+        $("#avatar-label").addClass("highlighted");
+    });
+
+    $("#avatar-label").on("dragleave",function(){
+        // console.log(2);
+        $("#avatar-label").removeClass("highlighted");
+    });
+
+
+    // 当把文件拖拽到浏览器窗口中时，阻止文件在页面中打开
+    $("body").on("dragover",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+    });
+
+    $("#avatar-label").on("drop",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        $("#avatar-label").removeClass("highlighted");
+
+        // dataTransfer，事件附带的数据
+        // console.log(e.originalEvent.dataTransfer);
+        file = e.originalEvent.dataTransfer.files[0];
+        if(!file){
+            return;
+        }
+
+        let url = URL.createObjectURL(file);
+        $("#avatar-label")
+        .css("backgroundImage",`url(${url})`);
+
+        
+    });
+
+</script>
+
+</html>

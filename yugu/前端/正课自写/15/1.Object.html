@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var obj;
+    // obj = new Object();
+    // obj.name = "yuguaa";
+    // obj.age = 24;
+    // obj.sex = "male";
+    // console.log(obj.name);
+    // var obj2 = new Object();
+    // obj2.eat = function () {
+    //     console.log("eat 5 male");
+
+    // }
+    // obj2.eat();
+
+    // var obj3 = {
+    //     name: "vae",
+    //     major: "student",
+    //     speak: function () {
+    //         return ("eat meal");
+    //     }
+    // };
+
+    // console.log("一个叫" + obj3.name + "的" + obj3.major + "的专业的人该" + obj3.speak());
+
+
+    // var phone = {
+    //     brand: "HUAWEI",
+    //     size: 6.1,
+    //     RGM: "2.0"
+    // }
+    // delete phone.RGM;
+    // console.log(phone);
+
+    // var superMan = new Object();
+    // superMan.name = "张倩倩";
+    // superMan.car = new Object();
+    // superMan.car.brand = "老爷车";
+    // superMan.car.color = "酸菜绿";
+    // console.log("一个叫做" + superMan.name + "的人，开着" + superMan.car.color + "颜色的" + superMan.car.brand);
+
+    // function male(name) {
+    //     console.log(name.age);
+
+    //     if (name.age >= 0 && name.age < 3) {
+    //         return "幼年";
+    //     }
+    //     else if (name.age >= 3 && name.age < 16) {
+    //         return "青少年";
+    //     }
+    //     else if (name.age >= 16 && name.age < 30) {
+    //         return "壮年";
+    //     }
+    //     else {
+    //         return "老年";
+    //     }
+    // }
+    // var sname = new Object();
+    // sname.age = 10;
+    // console.log(male(sname));
+
+
+    var smale = new Object();
+    smale.name = "张倩倩";
+    smale.age = 70;
+    smale.money = 12;
+    function xq(male) {
+        if (male.money < 10) {
+            return "不同意";
+        }
+        else {
+            if (male.age < 30) {
+                return "小姐姐，爱你"
+            }
+            else if (male.age < 50) {
+                return "大姐姐，爱你"
+            }
+            else if (male.age < 80) {
+                var female = {
+                    age: 20,
+                    height: 1.8,
+                    type: "美女"
+                }
+                return female;
+            }
+        }
+    }
+    console.log("今天相亲感受：\n碰见了一个有" + smale.money + "万的人，名叫" + smale.name + ",结果是：" + xq(smale));
+
+
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .green {
+            color: green;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 title="web-60" id="name">河南省通信产业园110号</h1>
+    <p class="hold" id="first-line" xiabei="123">打起精神来</p>
+    <div></div>
+</body>
+<script>
+    // var h1 = document.getElementById("name");
+    // console.log(h1.title);
+    // h1.title = "不要瞌睡";
+    // h1.style.color = "red";
+    // h1.style.border = "red solid 2px";
+    // h1.style = "border-right:black solid 2px";
+    // h1.style.fontSize="50px";
+
+    var p1=document.getElementById("first-line");
+    console.log(p1.getAttribute("xiabei"));
+    // p1.className="green bold";
+    // console.log(p1.className);
+    // p1.classList.remove("bold");
+    // p1.classList.toggle("bold");
+    // console.log( p1.classList.contains("bold"));
+    // var v1=p1.getAttribute("xiabei");
+    // p1.setAttribute("state","ready");
+    // console.log(p1.hasAttribute("state"));
+    var div1 = document.getElementsByTagName("div")[0];
+    div1.style.border = "red 40px solid";
+    div1.style.borderRadius = "50%";
+</script>
+
+</html>

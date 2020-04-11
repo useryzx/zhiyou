@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index2.html">进入第二个页面</a>
+    <!-- 在导入的过程中一定要先导入jquery再带入cookie -->
+    <script src="jquery.js"></script>
+    <!-- jquery.cookie是浏览器端用来对cookie进行处理的插件  可以进行增删改查 -->
+    <script src="jquery.cookie.js"></script>
+    <script>
+        // 查看浏览器端的cookie数据
+        // console.log($.cookie());
+        // 设置(属性名，属性值)
+        $.cookie("name","张三");
+        $.cookie("age",30);
+        $.cookie("Sex",true);
+        // console.log($.cookie());
+        // 默认情况下，设置的cookie有效期是用户关闭这次请求的浏览器，这种cookie也叫做会话cookie
+        // expires属性设置时间期限，单位为1天
+        $.cookie("lao","tie",{expires:1})
+        // 获取cookie
+        // console.log($.cookie("lao"));
+        // 修改>>>重新赋值
+        // $.cookie("name","张斌");
+        console.log($.cookie());
+        // 删除
+        $.removeCookie("name");
+        console.log($.cookie());
+    </script>
+</body>
+</html>

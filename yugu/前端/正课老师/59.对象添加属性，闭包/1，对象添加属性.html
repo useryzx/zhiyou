@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let obj = {};
+    obj.name = "sun";
+
+    // js中的对象可以通过打点直接添加一个属性，这种方式添加的属性是普通属性，没有任何特殊效果。
+
+    //----------------------------------------------------------------------------------------------------
+
+    let o = {
+        property:"value"
+    };
+
+    // Object.defineProperty方法，为一个对象定义一个属性。
+    // 方法有3个参数。
+    // 第1个参数表示添加属性的对象。
+    // 第2个参数是添加的属性名
+    // 第3个参数是属性的配置对象
+    Object.defineProperty(o,"p1",{
+        // 属性的初始值
+        value:"v1",
+
+        // 属性是否可读写，默认为false，如果是false则为只读属性
+        writable:true,
+
+        // 属性是否可枚举(可遍历)，默认为false
+        enumerable:true
+
+    });
+
+    // defineProperty添加的属性，默认是只读的。
+    o.property = "c1";
+    o.p1 = "c2";
+
+    console.log(o);
+
+    for(k in o){
+        console.log(k);
+    }
+
+
+    // 数组的length属性就是不可枚举的
+    // let arr = ["a","b","c"];
+    // for(k in arr){
+    //     console.log(k);
+    // }
+
+    //------------------------------------------------------------------------
+
+    let o2 = {
+        pro:"va"
+    }
+
+    // Object.defineProperty方法可以为对象添加set/get属性，
+    // 当为这个属性赋值时，本质上是执行了这个属性的set方法，所赋的值会作为参数传入set方法
+    // 获取这个属性时，本质上是调用了get方法，并获取它的返回值。
+    Object.defineProperty(o2,"age",{
+        get(){
+            // console.log("get方法被调用了");
+            return this._age;
+        },
+        set(v){
+            // console.log("set方法被调用了");
+            // console.log(v);
+            // 对象属性的set/get方法中的this就是对象本身。
+            if(v>=0){
+                this._age = v;
+            }else{
+                // throw new RangeError("年龄不能是负数");
+            }
+        }
+    });
+
+    // set/get属性，相比普通的属性：
+    // 1，可监听。
+    // 2，可限制。
+
+    o2.age = 3;
+    o2._age = -10;
+    console.log(o2.age);
+    console.log(o2);
+
+
+
+</script>
+
+</html>

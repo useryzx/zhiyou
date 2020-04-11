@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person(name,age,ismale,minzu){
+        this.name = name;
+        this.age = age;
+        this.ismale = ismale;
+        this.minzu = minzu;
+    }
+    Person.prototype = {
+        guoji:'中国',
+        run:function(){
+            console.log(`${this.name}短跑很快`);
+        }
+    }
+    function Man(name,age,minzu){
+        Person.call(this,name,age,true,minzu)
+    }
+    console.log(Person.__proto__);
+    console.log(Man.__proto__);
+    
+    let Func = function(){
+    }
+    console.log(Func.__proto__);
+    Func.prototype = Person.prototype;
+    Man.prototype = new Func()
+    let m2 = new Man('yugu',12,'han')
+    console.log(m2);
+    m2.sp()
+    m2.run()
+</script>
+</html>

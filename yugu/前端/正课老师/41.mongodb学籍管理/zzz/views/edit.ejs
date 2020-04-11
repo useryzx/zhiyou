@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>编辑学生信息</h1>
+    <form action="/api/stu/editSubmit" method="post">
+        <input type="text" name="_id" value="<%=_id%>" style="display: none;">
+        <label for="">姓名</label>
+        <input type="text" name="name" value="<%=name%>">
+        <br>
+        <label for="">年龄</label>
+        <input type="text" name="age" value="<%=age%>">
+        <br>
+        <span>性别</span>
+        <br>
+        <label for="nan">男</label> 
+        <input type="radio" name="sex" value="男" id="male" disabled <%=sex=="男"?"checked":""%>>
+        <label for="nv">女</label>
+        <input type="radio" name="sex" value="女" id="female" disabled <%=sex=="女"?"checked":""%>>
+        <br>
+        <label for="major">专业</label>
+        <select name="major" id="major">
+            <option <%=major=="前端WEB"?selected:""%>>前端WEB</option>
+            <option <%=major=="JAVA"?selected:""%>>JAVA</option>
+            <option <%=major=="UI"?selected:""%>>UI</option>
+            <option <%=major=="VR"?selected:""%>>VR</option>
+        </select>
+        <br>
+        <span>兴趣爱好</span>
+        <label for="tiyu">体育</label>
+        <input type="checkbox" name="hobby" value="体育" id="sport" <%=hobby.indexOf("体育")==-1?"":"checked"%>>
+        <label for="yinyue">音乐</label>
+        <input type="checkbox" name="hobby" value="音乐" id="music" <%=hobby.indexOf("音乐")==-1?"":"checked"%>>
+        <label for="meishu">美术</label>
+        <input type="checkbox" name="hobby" value="唱歌" id="sing" <%=hobby.indexOf("唱歌")==-1?"":"checked"%>>
+        <br>
+        <button>提交</button>
+    </form>
+</body>
+</html>

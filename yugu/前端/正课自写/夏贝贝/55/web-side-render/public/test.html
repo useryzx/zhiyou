@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="./jquery.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+    <p>
+        <button id="change" type="button">点击事件</button>
+    </p>
+    <script type="text/javascript">
+        
+            setTimeout(function() {
+                var buy = document.getElementById('change'); 
+                buy.click();
+            }, 200); 
+        
+        
+        $("#change").click(function(){
+            console.log("八戒你瘦了！")
+        })
+    </script>
+    </body>
+</html>

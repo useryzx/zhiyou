@@ -1,0 +1,73 @@
+<style>
+    body {
+        margin: 0;
+    }
+    a{
+        text-decoration: none;
+        color: blue;
+    }
+    main{
+        margin: 0 auto;
+        width: 1000px;
+    }
+    header{
+        background-color: aqua;
+    }
+    #nav-bar{
+        width: 1000px;
+        margin: 0 auto;
+    }
+    ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    #nav-list{
+        display: flex;
+    }
+    .nav-item{
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: 仿宋;
+    }
+    .nav-item a:hover
+    {
+        background-color: red;
+    }
+    .active{
+        background-color: red;
+    }
+</style>
+<header>
+    <nav id="nav-bar">
+        <ul id="nav-list">
+            <li class="nav-item">
+                <a href="/" class="<%=location=='home'?'active':''%>">首页</a>
+            </li>
+            <li class="nav-item">
+                <a href="/tag">标签</a>
+            </li>
+            <%if(!user){%>
+            <li class="nav-item">
+                <a href="/login" class="<%=location=='login'?'active':''%>">登录</a>
+            </li>
+            <li class="nav-item">
+                <a href="/regist" class="<%=location=='regist'?'active':''%>">注册</a>
+            </li>
+            <%}else{%>
+                <li class="nav-item">
+                    <a href="/blog-commit" class="<%=location=='blog-commit'?'active':''%>">发帖</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/api/user/logout" class="<%=location=='regist'?'active':''%>">退出登录</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/#"><%=user.username%></a>
+                </li>
+            <%}%>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #top-btn{
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            background-color: pink;
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            border-radius: 20%;
+            text-align: center;
+        }
+        .hide{
+            display: none;
+        }
+        body{
+            margin: 0;
+        }
+        #nav-bar{
+            width: 1200px;
+            margin: 0 auto;
+            background-color:black;
+        }
+        #nav-list{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            position: relative;
+        }
+        #nav-list a{
+            display: inline-block;
+            padding: 10px;
+            text-decoration: none;
+            color: pink;
+        }
+        .hightLighted{
+            background-color: black;
+        }
+        #move-item{
+            height: 41px;
+            width: 44px;
+            background-color:white;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition:  all 0.5s;
+        }
+        .nav-item{
+            z-index: 10;
+        }
+        #page img{
+            width: 100%;
+            height: 500px;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <div id="nav-bar">
+            <ul id="nav-list"> 
+                <li class="nav-item"><a href="" class="hightLighted">首页</a></li>
+                <li class="nav-item"><a href="">国内</a></li>
+                <li class="nav-item"><a href="">国际</a></li>
+                <li class="nav-item"><a href="">军事</a></li>
+                <li class="nav-item"><a href="">财经</a></li>
+                <li class="nav-item"><a href="">互联网</a></li>
+                <li class="nav-item"><a href="">房产</a></li>
+                <li id="move-item"></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="top-btn" class="hide">回到顶部</div>
+    <div id="page">
+       <img src="1998.jpeg" alt="">
+    </div>
+    <p>第1行</p>
+    <p>第2行</p>
+    <p>第3行</p>
+    <p>第4行</p>
+    <p>第5行</p>
+    <p>第6行</p>
+    <p>第7行</p>
+    <p>第8行</p>
+    <p>第9行</p>
+    <p>第10行</p>
+    <p>第11行</p>
+    <p>第12行</p>
+    <p>第13行</p>
+    <p>第14行</p>
+    <p>第15行</p>
+    <p>第16行</p>
+    <p>第17行</p>
+    <p>第18行</p>
+    <p>第19行</p>
+    <p>第20行</p>
+    <p>第9行</p>
+    <p>第10行</p>
+    <p>第11行</p>
+    <p>第12行</p>
+    <p>第13行</p>
+    <p>第14行</p>
+    <p>第15行</p>
+    <p>第16行</p>
+    <p>第17行</p>
+    <p>第18行</p>
+    <p>第19行</p>
+    <p>第20行</p>
+</body>
+<script>
+    // 导航条
+    var lis=document.getElementsByClassName("nav-item");
+    var moveItem=document.getElementById("move-item");
+    for (var i=0;i<lis.length;i++) {
+       lis[i].onmouseenter=mouseIn;
+       lis[i].onmouseleave=mouseOut;
+    }
+    function mouseIn(e) {
+        moveItem.style.width=e.target.offsetWidth+"px";
+        moveItem.style.left=e.target.offsetLeft+"px";
+    }
+    function mouseOut(e) {
+        moveItem.style.width=44+"px";
+        moveItem.style.left=0+"px";
+    }
+
+
+    var page=document.getElementById("page");
+    page.onscroll=function(e){
+        if (e.target.scrollTop==e.target.scrollHeight-e.target.clientHeight) { 
+        }  
+    }
+   var body=document.querySelector("body");
+   var b=document.getElementById("top-btn");
+   document.body.onscroll=function(e){
+       if (document.documentElement.scrollTop>=100) {
+           b.style.display="block";
+       }
+       b.onmousedown=function(){
+        document.documentElement.scrollTop=0;
+        b.style.display="none";
+       }
+   }
+
+</script>
+</html>
