@@ -8,7 +8,7 @@ getJokes(page);
 document.body.onscroll = function () {
   // 判断网页的纵向偏移，到底后传参访问
   if (document.documentElement.scrollTop >= document.documentElement.scrollHeight - document.documentElement.clientHeight - 100) {
-    
+
     // 到底了翻页
     if (!flag) {
       console.log('kuai到底了');
