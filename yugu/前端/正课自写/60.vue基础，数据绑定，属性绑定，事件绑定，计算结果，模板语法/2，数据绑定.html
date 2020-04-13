@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-model指令用于普通input绑定的是字符串类型 -->
+        <input type="text" v-model="txt">
+        <p>{{txt}}</p>
+        <!-- input type =checkbox时，单个复选框可以绑定一个布尔值 -->
+        <input type="checkbox" v-model="isAgree">
+        <span>以阅读并同意<a href="">用户协议</a></span>
+        <p>{{isAgree}}</p>
+
+        <!-- 属于同一组的多个checkbox，可以绑定一个数组 -->
+        <p>您的爱好</p>
+        <label for="sing">唱</label>
+        <input type="checkbox" id="sing" name="hobby" v-model="hobbies" value="sing">
+        <label for="jump">跳</label>
+        <input type="checkbox" id="jump" name="hobby" v-model="hobbies" value="jump">
+        <label for="rap">rap</label>
+        <input type="checkbox" id="rap" name="hobby" v-model="hobbies" value="rap">
+        <label for="basketball">篮球</label>
+        <input type="checkbox" id="basketball" name="hobby" v-model="hobbies" value="basketball">
+        <p>{{hobbies}}</p>
+
+        <!-- 同一组单选框可以绑定一个字符串，绑定的值就是选中的值 -->
+        <p>请选择您的专业</p>
+        <label for="computer">计算机与科学技术</label>
+        <input type="radio" id="computer" name="major" v-model="isMajor" value="computer">
+        <label for="math">数学</label>
+        <input type="radio" id="math" name="major" v-model="isMajor" value="math">
+        <label for="english">英语</label>
+        <input type="radio" id="english" name="major" v-model="isMajor" value="english">
+        <label for="civil Engineering">土木工程</label>
+        <input type="radio" id="civil Engineering" name="major" v-model="isMajor" value="civil Engineering">
+        <p>{{isMajor}}</p>
+
+        <input type="date" name="" id="" v-model="date">
+        <p>{{date}}</p>
+
+        <input type="datetime-local" name="" id="">
+
+        <br>
+        <!-- 下拉列表可以绑定一个字符串 -->
+        <label for="">请选择你的偶像</label>
+        <select v-model="idol">
+            <option value="周杰伦">周杰伦</option>
+            <option value="林俊杰">林俊杰</option>
+            <option value="蔡徐坤">蔡徐坤</option>
+        </select>
+        <p>{{idol}}</p>
+        <p>请添加个人简介</p>
+        <!-- textarea可以绑定一个字符串 -->
+        <textarea name="" id="" cols="30" rows="10" v-model="introduce"></textarea>
+        <!-- v-html可以将一段字符串作为html绑定 -->
+        <p v-html="introduce"></p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            txt: "hello world",
+            isAgree: false,
+            // 指定默认选择
+            hobbies: ["rap"],
+            isMajor: "math",
+            date: "",
+            idol: "",
+            introduce: ""
+        }
+    })
+
+</script>
+
+</html>

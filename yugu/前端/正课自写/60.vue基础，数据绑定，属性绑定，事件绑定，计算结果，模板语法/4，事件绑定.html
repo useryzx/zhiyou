@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 在vue中，使用v-on:xxxx="yyyy"进行元素事件绑定 -->
+        <!-- xxxx是绑定的事件类型，yyyy是绑定的方法，v-on绑定的方法必须时组件methods中的方法 -->
+        <button v-on:click="btnClick">按钮</button>
+        <!-- v-on:指令可以缩写为@ -->
+        <button @click="btnClick">按钮</button>
+        <!-- ------------------------------------ -->
+        <p>{{num}}</p>
+        <button @click="abc">增加</button>
+        <!-- ------------------------------------ -->
+        <hr>
+        <!-- 使用v-on进行事件绑定 -->
+        <button @click="changeClick('minus',$event)">-</button>
+        <span>{{n2}}</span>
+        <button @click="changeClick('add',$event)">+</button>
+        <hr>
+
+
+
+
+        <!-- ------------------------------------ -->
+        <button @click="delayChange">延迟输出</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            num: 10,
+            // abc:10
+            n2: 0
+        },
+        // methods组件中的方法，这个对象中的方法都是组件中的方法
+        methods: {
+            btnClick() {
+                // 在组件的方法中this就是组件对象
+                // 组件对象实例化时，会将数据和方法都添加到组件对象实例上，所以，在组件的方法中可以通过this访问组件自己的数据
+                this.num++;
+            },
+            // 由于组件中的数据和方法都会添加到组件对象上，所以数据和方法不能重名
+            abc() {
+                this.num++;
+            },
+            changeClick(c,e) {
+                if (c== "minus") {
+                    this.n2--;
+                }
+                if (c == "add") {
+                    this.n2++;
+                }
+            },
+            delayChange(){
+                // 在组件的方法中this是组建对象，那么如果要在组件方法中进行异步调用，且在异步任务的回调函数中需要使用组件对象，那么必须使用箭头函数（或者bind等方法改变this的指向）才能保证回调函数中的this是组件的对象
+                let _this = this;
+                setTimeout(function(){
+                    console.log(_this.n2);
+                },1000)
+            }
+        },
+    })
+</script>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .pic{
+            width: 100px;
+            height: 100px;
+        }
+
+        .red{
+            color: red;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+
+        .del{
+            text-decoration: line-through;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <select v-model="imgsrc">
+            <option value="img1.jpg">图片1</option>
+            <option value="img2.jpg">图片2</option>
+            <option value="img3.jpg">图片3</option>
+        </select>
+        <p>{{imgsrc}}</p>
+
+
+        <!-- {{}}模板插值只能用于标签内容，不能用于标签的属性 -->
+
+        <!-- 对于标签属性的数据绑定，需要使用v-bind指令 -->
+        <!-- 格式：  v-bind:xxxx="yyyy" -->
+        <!-- xxxx是要绑定的属性名，yyyy是要绑定的组件中的数据 -->
+        <!-- <img v-bind:src="imgsrc" class="pic"> -->
+
+        <!-- v-bind:  可以缩写为    :   -->
+        <img :src="imgsrc" class="pic">
+
+
+        <!-- 对于大部分的html标签属性，绑定的值都是字符串 -->
+        <!-- ------------------------------------------- -->
+
+        <!-- 对于class属性，虽然值也是一个字符串，但是class可以包含多个值，它的结构更像是数组形式，如果绑定字符串的话处理起来非常麻烦，所以在vue中，class属性可以绑定一个数组 -->
+        <p :class="classArr">class属性可以绑定数组</p>
+
+        <label for="">颜色</label>
+        <input type="checkbox" value="red" v-model="classArr">
+        <label for="">加粗</label>
+        <input type="checkbox" value="bold" v-model="classArr">
+        <label for="">删除线</label>
+        <input type="checkbox" value="del" v-model="classArr">
+
+        <!-- ---------------------------------------------- -->
+
+        <!-- vue中class除了可以绑定数组之外，还可以绑定对象， -->
+        <hr>
+
+        <p :class="classObj">class也可以绑定一个对象</p>
+        <label for="">颜色</label>
+        <input type="checkbox" v-model="classObj.red">
+        <label for="">加粗</label>
+        <input type="checkbox" v-model="classObj.bold">
+        <label for="">删除线</label>
+        <input type="checkbox" v-model="classObj.del">
+
+        <!-- ------------------------------------------------ -->
+
+        <!-- style属性用于写行内样式，其结构很像对象的键值对结构，所以在vue中style可以绑定一个对象，对象中的键值对，就是这个style属性中的样式名和样式值。 -->
+        <hr>
+        <p :style="styleObj">标签的style属性可以绑定一个对象</p>
+
+
+        <!-- ----------------------------------------------- -->
+        <hr>
+
+        <!-- 对于html中只写属性名不用写属性值的属性，在vue中可以绑定一个布尔值，为true时表示拥有这个属性，为false表示删除这个属性 -->
+        <label for="">禁用</label>
+        <input type="checkbox" v-model="forbidden">
+        <br>
+        <input type="text" :disabled="forbidden">
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            imgsrc:"",
+            classArr:[],
+            classObj:{
+                red:true,
+                bold:true,
+                del:true
+            },
+            styleObj:{
+                fontSize:"20px",
+                "font-weight":"bold"
+            },
+
+            forbidden:true
+        }
+    });
+
+    
+
+</script>
+
+</html>

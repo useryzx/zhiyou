@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- v-model指令，用于普通input绑定的是字符串类型 -->
+        <input type="text" v-model="txt">
+        <p>{{txt}}</p>
+
+
+        <!-- input，type=checkbox时，单个复选框可以绑定一个布尔值 -->
+        <input type="checkbox" v-model="isAgree">
+        <span>已阅读并同意<a href="">用户协议</a></span> 
+        <p>{{isAgree}}</p>
+
+
+
+        <!-- 属于同一组的多个checkbox，可以绑定一个数组 -->
+        <p>您的爱好：</p>
+        <label for="sing">唱歌</label>
+        <input type="checkbox" id="sing" name="hobby" v-model="hobbies" value="sing">
+        <label for="basketball">篮球</label>
+        <input type="checkbox" id="basketball" name="hobby" v-model="hobbies" value="basketball">
+        <label for="football">足球</label>
+        <input type="checkbox" id="football" name="hobby" v-model="hobbies" value="football">
+        <p>{{hobbies}}</p>
+
+
+
+        <!-- 同一组的单选框可以绑定一个字符串。绑定的值就是选中的值 -->
+        <p>请选择您的专业：</p>
+        <label>计算机</label>
+        <input type="radio" name="major" v-model="major" value="计算机">
+        <label>数学</label>
+        <input type="radio" name="major" v-model="major" value="数学">
+        <label>机械</label>
+        <input type="radio" name="major" v-model="major" value="机械">
+        <p>{{major}}</p>
+
+
+        <!-- 下拉列表可以绑定一个字符串 -->
+        <label for="">请选择您的偶像：</label>
+        <select v-model="idol">
+            <option value="周杰伦">周杰伦</option>
+            <option value="林俊杰">林俊杰</option>
+            <option value="蔡徐坤">蔡徐坤</option>
+        </select>
+        <p>{{idol}}</p>
+
+
+        <!-- textarea绑定字符串 -->
+        <p>请添加您的个人简介</p>
+        <textarea v-model="introduce"></textarea>
+
+        <!-- v-html可以将一段字符串作为html绑定到标签中 -->
+        <p v-html="introduce"></p>
+        
+
+    </div>
+
+    
+
+</body>
+
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            txt:"hello world",
+            isAgree:false,
+            hobbies:["basketball"],
+            major:"数学",
+            idol:"",
+            introduce:"<b>你好</b>"
+        },
+        
+    })
+</script>
+
+</html>

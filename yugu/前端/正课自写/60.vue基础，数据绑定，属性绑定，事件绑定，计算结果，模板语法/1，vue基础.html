@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 使用vue框架，需要为页面的根组件提供一个挂载点 -->
+    <!-- 不能使用body作为根组件的挂载点 -->
+    <div id="app">
+        <!-- 在组件的模板中（或者挂载元素中），可以使用{{}}进行模板插值，将组件数据绑定到页面中 -->
+        <h1>{{txt}}</h1>
+        <!-- v-xxxx叫做vue指定 -->
+        <!-- .number是指令的修饰符，用于修饰v-model指令，作用是把input的value转为数字之后再绑定到组件数据上 -->
+        <!-- v-model：双向绑定指令，可以将组件的数据绑定到模板中，也可以将页面对数据的修改绑定到组件数据中。 -->
+        <input type="text" v-model="txt">
+        <br>
+        <input type="text" v-model.number="n1">
+        +
+        <input type="text" v-model.number="n2">
+        =
+        <!-- {{}}中除了可以绑定组件数据，还可以绑定表达式 -->
+        <span>{{n1+n2}}</span>
+    </div>
+
+</body>
+<!-- MVC -->
+<!-- MVVM:model-view-view-model是一种响应式的架构模式 ，相对于MVC没有了控制器，model中的数据发生变化时直接同步到view，view中对数据的操作也会直接同步到model上-->
+<!-- vue就是一种MVVM的框架 -->
+
+<script src="vue.js"></script>
+<script>
+    // 创建根组件对象。在Vue页面中整个页面的内容都在根组件中
+    // Vue是组件对象的构造函数，参数是组建的配置对象
+    new Vue({
+        // el表示组件的挂载点的元素选择器
+        el: "#app",
+        // data,组件的数据，值是一个对象，在对象中通过键值对的方式为组件添加数据
+        data: {
+            txt: "hello world",
+            n1: 0,
+            n2: 0
+        }
+    })
+</script>
+
+</html>

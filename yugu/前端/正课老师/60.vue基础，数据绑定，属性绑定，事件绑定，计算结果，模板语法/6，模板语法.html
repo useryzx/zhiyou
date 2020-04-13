@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>书名</th>
+                <th>价格</th>
+            </tr>
+            
+            <!-- v-for指令，格式： -->
+            <!-- v-for="x[,i] in y" -->
+            <!-- x是当前遍历到的数组元素，i是当前遍历到的索引，y是要遍历的组件中的数据 -->
+            <tr v-for="b,i in books">
+                <!-- 在v-for指令的标签内容中，可以使用遍历对象和遍历索引 -->
+                <td>{{i+1}}</td>
+                <td>{{b.name}}</td>
+                <td>{{b.price}}</td>
+            </tr>
+
+        </table>
+
+        <!-- ------------------------------------------------- -->
+
+        <div>
+            <!-- v-for的in 之后也可以跟一个数字，用于单纯的循环 -->
+            <button v-for="b in 5">{{b}}</button>
+        </div>
+
+        <!-- ------------------------------------------------ -->
+
+        <!-- template标签在组件渲染时会被删除掉，可以用于多标签的循环。 -->
+        <template v-for="n in 3">
+            <label>第{{n}}行</label>
+            <input type="text">
+        </template>
+        
+
+        <!-- -------------------------------------------------- -->
+        <hr>
+        <label for="">显示</label>
+        <input type="checkbox" v-model="isShow">
+
+        <!-- v-show用于标签的条件渲染，绑定一个布尔值，为true时显示，false不显示 -->
+        <div v-show="isShow">v-show指令用于条件渲染</div>
+        <!-- v-if也可用于条件渲染 -->
+        <div v-if="isShow">v-if指令亦可以用于条件渲染</div>
+        <div v-else>v-else</div>
+
+        <!-- v-show和v-if，隐藏元素的机制不同，v-show是使用display:none隐藏元素，而v-if是直接从DOM中删除元素 -->
+        <!-- 所以，对于在页面中需要在显示与隐藏之间切换的情况，使用v-show，对于页面初次渲染完毕之后不再改变的情况，使用v-if -->
+
+        <!-- v-if可以配套v-else -->
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            books:[
+                {name:"三国演义",price:30},
+                {name:"西游记",price:25},
+                {name:"水浒传",price:10}
+            ],
+            isShow:true
+        },
+
+    });
+
+</script>
+
+</html>

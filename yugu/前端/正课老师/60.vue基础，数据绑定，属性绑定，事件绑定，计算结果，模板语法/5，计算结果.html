@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <span>n1:</span>
+        <input type="text" v-model.number="n1">
+        <br>
+        <span>n2:</span>
+        <input type="text" v-model.number="n2">
+        <br>
+
+        <!-- 有时候页面中需要绑定的不是组件的某个数据，而是组件数据的衍生值，对于计算规则简单的衍生之，可以直接在页面中绑定一个表达式，但是对于计算过程复杂的衍生值，不适合使用表达式 -->
+        <p>{{n1+n2}}</p>
+
+        <!-- {{}}中除了可以绑定组件数据、表达式之外，还可以绑定组件方法调用，显示的是方法的返回值。可以用这种方法实现衍生数据的绑定。 -->
+        <!-- 但是这种方法有一个缺点，如果组件模板中出现了多次绑定，方法的调用也要执行多次 -->
+        <p>{{n1Andn2()}}</p>
+        <p>{{n1Andn2()}}</p>
+
+
+        <!-- 在vue组件模板中，绑定衍生数据，可以使用计算结果 -->
+        <!-- 使用计算结果时，不需要加() -->
+        <!-- 相比方法调用，计算结果会把第一次计算的值缓存起来，以后再次使用时就不再进行计算，直接使用缓存之，直到计算结果所使用到的数据方法变化为止。 -->
+        <hr>
+        <p>{{sum}}</p>
+        <p>{{sum}}</p>
+
+        <hr>
+        <p>{{average}}</p>
+
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script>
+    let root = new Vue({
+        el:"#app",
+        data:{
+            n1:1,
+            n2:2
+        },
+        methods:{
+            n1Andn2(){
+                // console.log("n1Andn2执行了");
+                return this.n1+this.n2;
+            }
+        },
+        // 计算结果，是一个对象，对象中添加方法，用于对组件的数据进行计算，返回值就是这个计算结果的值。
+        computed:{
+            sum(){
+                // 计算结果方法中也可以通过this使用组件对象
+                // console.log("sum调用了");
+                return this.n1+this.n2;
+            },
+            average(){
+                // 在计算结果函数中，可以使用其他计算结果，不需要加()
+                return this.sum/2;
+            }
+        }
+        
+    });
+
+    // 计算结果在组件对象创建完毕之后也被添加到组件对象上，所以不能和数据以及方法重名。
+    console.log(root);
+</script>
+
+</html>

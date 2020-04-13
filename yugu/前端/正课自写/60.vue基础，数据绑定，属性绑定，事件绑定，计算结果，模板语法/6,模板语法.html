@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>书名</th>
+                <th>价格</th>
+            </tr>
+            <!-- v-for指令，  v-for="item[,index] in y" -->
+            <tr v-for="b,i in books">
+                <!-- 在v-for指令的标签内容中，可以使用遍历对象和遍历索引 -->
+                <td>{{i}}</td>
+                <td>{{b.name}}</td>
+                <td>{{b.price}}</td>
+            </tr>
+        </table>
+        <div>
+            <button v-for="b in 5">{{b}}</button>
+            <!-- ------------------------------------- -->
+            <!-- template标签在组件渲染时会被删除掉，可以用于多标签循环 -->
+            <template v-for="n in 3">
+                <label for="">{{n}}</label>
+                <input type="text">
+            </template>
+        </div>
+        <hr><hr>
+        <!-- v-show和v-if都是条件渲染指令，v-show使用的是displa:none,v-if使用的是dom添加删除操作 -->
+        <input type="checkbox" v-model="isShow">显示
+        <div v-show="isShow">v-show指令用于条件渲染</div>
+        <div v-if="isShow">v-if</div>
+        <div v-else>else指令用于条件渲染</div>
+
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            books: [
+                { name: "三国演义", price: 30 },
+                { name: "西游记", price: 45 },
+                { name: "红楼梦", price: 20 },
+            ],
+            isShow:true
+        }
+    })
+</script>
+
+</html>
