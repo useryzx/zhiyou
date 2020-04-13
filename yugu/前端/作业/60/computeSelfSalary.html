@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            padding: 10px;
+            width: 500px;
+            height: 800px;
+            margin: 0 auto;
+            border: 1px saddlebrown solid;
+        }
+
+        table {
+            user-select: none;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        tr {
+            width: 100%;
+        }
+
+        td {
+            /* border: solid black 1px; */
+            width: 33.33%;
+            border-bottom: 1px solid #000;
+            height: 40px;
+        }
+
+        input {
+            height: 40px;
+            text-align: right;
+            width: 50%;
+            border: none;
+            font-size: 15px;
+            outline: none;
+        }
+
+        th:nth-child(1) {
+            text-align: left;
+        }
+
+        th:nth-child(3) {
+            text-align: right;
+        }
+
+        tr td:nth-child(3) {
+            text-align: right;
+        }
+
+        .head {
+            border: 1px solid black;
+            width: 100%;
+            text-align: left;
+        }
+
+        h2 {
+            user-select: none;
+            text-align: center;
+        }
+        span{
+            color: chocolate;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 创建vue控制元素 -->
+    <div id="app">
+        <div id="container">
+            <h2>个税计算器</h2>
+            <input type="text" placeholder="基本工资" v-model.number="salary" class="head">
+            <br><br>
+            <input type="text" placeholder="奖金" v-model.number="bonus" class="head">
+            <br>
+            <div id="content" v-show="isShow">
+                <table @click="hideSpan">
+                    <tr>
+                        <th>项目</th>
+                        <th>税率</th>
+                        <th>金额</th>
+                    </tr>
+                    <tr>
+                        <td>总工资</td>
+                        <td></td>
+                        <td v-text="allSalary"></td>
+                    </tr>
+                    <tr>
+                        <td>养老保险</td>
+                        <td><input type="text" v-model.number="endowment">%</td>
+                        <td v-text="endowmentInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>医疗保险</td>
+                        <td><input type="text" v-model.number="medical">%</td>
+                        <td v-text="medicalInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>失业保险</td>
+                        <td><input type="text" v-model.number="unemployment">%</td>
+                        <td v-text="unemploymentInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>工伤保险</td>
+                        <td><input type="text" v-model.number="injury">%</td>
+                        <td v-text="injuryInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>生育险</td>
+                        <td><input type="text" v-model.number="maternity">%</td>
+                        <td v-text="maternityInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>公积金</td>
+                        <td><input type="text" v-model.number="mediHousingcal">%</td>
+                        <td v-text="mediHousingcalInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>税前工资</td>
+                        <td></td>
+                        <td v-text="payInsurance"></td>
+                    </tr>
+                    <tr>
+                        <td>个税</td>
+                        <td><input type="text" v-model.number="salaryTax">%</td>
+                        <td v-text="payTax"></td>
+                    </tr>
+                    <tr>
+                        <td>税后工资</td>
+                        <td></td>
+                        <td v-text="salaryTaxed"></td>
+                    </tr>
+                </table>
+                <div @click="taxFault">
+                    <br>
+                    <br>
+                    <br>
+                    <span v-show="strShow">{{str}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    // 创建vue实例对象
+    new Vue({
+        // 指定vue接管区域
+        el: "#app",
+        // vue数据
+        data: {
+            // 五险
+            endowment: 8,
+            medical: 8,
+            unemployment: 8,
+            injury: 8,
+            maternity: 8,
+            // 一金
+            mediHousingcal: 8,
+            // 基本工资
+            salary: "",
+            // 奖金
+            bonus: "",
+            // 税率
+            salaryTax: 0,
+            str: "--------这个--------个税计算器-----做的非常不靠谱-------慎用-------",
+            timer:null,
+            strShow:false
+        },
+        computed: {
+            // 总工资
+            allSalary() {
+                return (this.salary * 1 + this.bonus * 1).toFixed(2);
+            },
+            // 是否显示
+            isShow() {
+                return this.allSalary * 1 > 5000 ? true : false;
+            },
+            // 1、养老保险
+            endowmentInsurance() {
+                return (this.allSalary * this.endowment / 1000).toFixed(2);
+            },
+            // 2、医疗保险
+            medicalInsurance() {
+                return (this.allSalary * this.medical / 1000).toFixed(2)
+            },
+            // // 3、失业保险
+            unemploymentInsurance() {
+                return (this.allSalary * this.unemployment / 1000).toFixed(2)
+            },
+            // // 4、工伤保险
+            injuryInsurance() {
+                return (this.allSalary * this.injury / 1000).toFixed(2)
+            },
+            // // 5、生育保险
+            maternityInsurance() {
+                return (this.allSalary * this.maternity / 1000).toFixed(2)
+            },
+            // // 6.住房公积金
+            mediHousingcalInsurance() {
+                return (this.allSalary * this.mediHousingcal / 1000).toFixed(2);
+            },
+            // // 五险一金总花费
+            allInsurance() {
+                return (this.endowmentInsurance * 1 + this.medicalInsurance * 1 + this.unemploymentInsurance * 1 + this.injuryInsurance * 1 + this.maternityInsurance * 1 + this.mediHousingcalInsurance * 1).toFixed(2)
+            },
+            // 税前工资
+            payInsurance() {
+                return (this.allSalary * 1 - this.allInsurance * 1).toFixed(2)
+            },
+            // 纳税税额
+            // 应纳税额=(工资薪金所得-“五险一金”-扣除数)×适用税率-速算扣除数
+            payTax() {
+                if (this.payInsurance - 5000 > 0) {
+                    if (this.payInsurance - 5000 < 3000) {
+                        this.salaryTax = 3;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100).toFixed(2)
+                    }
+                    if (this.payInsurance - 5000 < 12000) {
+                        this.salaryTax = 10;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 210).toFixed(2)
+                    }
+                    if (this.payInsurance - 5000 < 25000) {
+                        this.salaryTax = 20;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 1410).toFixed(2)
+                    }
+                    if (this.payInsurance - 5000 < 35000) {
+                        this.salaryTax = 25;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 2660).toFixed(2)
+                    }
+                    if (this.payInsurance - 5000 < 55000) {
+                        this.salaryTax = 30;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 4410).toFixed(2)
+                    }
+                    if (this.payInsurance - 5000 < 80000) {
+                        this.salaryTax = 35;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 7160).toFixed(2)
+                    }
+                    else {
+                        this.salaryTax = 45;
+                        return ((this.payInsurance - 5000) * this.salaryTax / 100 - 15160).toFixed(2)
+                    }
+                }
+                else {
+                    return 0;
+                }
+            },
+            // 税后工资
+            salaryTaxed() {
+                return (this.allSalary * 1 - this.payTax).toFixed(2);
+            }
+        },
+        methods: {
+            taxFault() {
+                if (this.timer != null) return;
+                this.timer = setInterval(() => {
+                    this.strShow=true;
+                    let startStr = this.str.substring(0, 1);
+                    let endStr = this.str.substring(1);
+                    this.str = endStr + startStr;
+                }, 200)
+            },
+            hideSpan(){
+                this.strShow=false;
+                clearInterval(this.timer);
+                this.timer=null;
+            }
+        },
+    })
+</script>
+
+</html>
