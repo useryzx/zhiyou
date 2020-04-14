@@ -1,0 +1,54 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:14:15:24 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 多个过滤器可以连续使用 -->
+        <p>{{salary|currency|prefix}}</p>
+        <p>{{salary|cuu("$")}}</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    // 在vue中有时候需要转换格式之后再渲染到页面上，使用computed可以达到相同的效果，但是有更合适的方法--过滤器
+    // 创建过滤器有两种方法
+    // 1.全局注册过滤器,必须写在new Vue()之前
+    // 第一个参数是过滤器的名字，第二个参数是过滤函数
+    Vue.filter("currency", function (v) {
+        if (typeof v == "number") {
+            return v.toFixed(2);
+        }
+        return v;
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            salary: 49999.444
+        },
+        // 2.局部注册过滤器，键是过滤器的名字，值是过滤函数，
+        // 在某个组件内局部注册的过滤器，只能在这个组件的模板中使用
+        filters: {
+            cuu(v, p) {
+                if (typeof v == "number") {
+                    return p + v.toFixed(2);
+                }
+                return v;
+            },
+            prefix(v) {
+                // 在过滤器函数中，不能通过this访问组件
+                return "￥" + v
+            }
+        }
+    })
+    let a = 5;
+</script>
+
+</html>

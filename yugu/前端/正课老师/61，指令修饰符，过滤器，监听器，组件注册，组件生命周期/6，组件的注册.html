@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>根组件</p>
+        <hr>
+
+        <!-- 在组件的模板中(根组件的el挂载元素就相当于根组件的模板)，通过标签名形式使用已注册的组件，组件在注册时可以使用驼峰命名法也可以使用-分割，但是在模板中使用时必须使用-分割(vue打包项目中除外) -->
+        <!-- 页面在进行渲染时，组件标签就会被替换为组件的模板内容 -->
+        <my-com></my-com>
+        <my-com></my-com>
+
+        <second></second>
+
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    // vue框架，使用组件化开发思想，将页面中的某一部分封装为一个组件，整个页面又若干个组件构成，这样有利于代码的封装和复用。
+
+
+    // vue中组件注册有两种方式：
+    // 1，全局注册，全局注册的组件可以在任何组件的模板中使用。
+    // Vue.component()方法，用于全局注册组件，第一个参数是组件名字，第二个参数是组件的配置对象。
+    Vue.component("myCom",{
+        // 对于非根组件，页面中可能多次使用，所以不是提供挂载点，而是提供组件的模板。
+        // 组件的模板只能包含一个根标签
+        template:`
+            <div>
+                <h1>我的第一个组件</h1>
+                <p>非根组件需要提供模板template而不是el</p>
+            </div>
+        `,
+    });
+
+    let second = {
+        template:"<div>second组件</div>"
+    }
+
+    new Vue({
+        el:"#app",
+        data:{
+            t1:"这是根组件中的数据"
+        },
+
+        // 2,局部注册组件：在组件A内部注册组件B，那么B组件只能在A组件的模板中使用。
+        // components局部注册组件，是一个对象，其中键是组件名字，值是组件的配置对象
+        components:{
+            second
+        }
+    });
+</script>
+</html>

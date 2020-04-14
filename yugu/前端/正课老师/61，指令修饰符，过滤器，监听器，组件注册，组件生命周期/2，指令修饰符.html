@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- .number用于修饰v-model指令，作用是将输入框中的内容转为数字之后再绑定 -->
+        <input type="text" v-model.number="n1">
+        <p>{{n1+1}}</p>
+        <hr>
+
+        <!-- .trim修饰符，将输入框中的内容进行trim(去除两端的空格)再绑定 -->
+        <input type="text" v-model.trim="t1">
+        <pre>{{t1}}</pre>
+        <hr>
+
+        <!-- .lazy修饰符，默认情况下v-model指令会在input时间中进行重新渲染，使用.lazy修饰符后则会在按下回车或者失去焦点时进行重新渲染 -->
+        <input type="text" v-model.lazy="t2">
+        <p>{{t2}}</p>
+        <hr>
+
+
+        <!-- prevent修饰符，用于v-on指令，效果是组织所监听的事件的默认行为，相当于e.preventDefault方法。 -->
+        <a @click.prevent="linkClick" href="http://www.baidu.com">百度一下</a>
+        <!-- stop修饰符，相当于e.stopPropergation -->
+        <a @click.stop="linkClick" href="http://www.baidu.com">百度一下</a>
+        <!-- 一个指令可以添加多个修饰符 -->
+        <a @click.stop.prevent="linkClick" href="http://www.baidu.com">百度一下</a>
+
+        <hr>
+
+        <!-- .{keyCode}修饰符，用于修饰键盘按键事件，只有按下keyCode为这个值的按键才会触发事件 -->
+        <input type="text" @keydown.13="keydown" v-model="t3">
+
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            n1:10,
+            t1:"",
+            t2:"",
+            t3:""
+        },
+        methods:{
+            linkClick(){
+
+            },
+
+            keydown(e){
+                alert(this.t3);
+                // console.log(e.keyCode);
+            }
+        }
+    });
+
+
+    
+</script>
+</html>

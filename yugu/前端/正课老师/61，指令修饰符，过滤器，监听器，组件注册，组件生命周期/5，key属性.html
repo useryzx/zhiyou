@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <label for="">登录方式</label>
+        <select v-model="loginType">
+            <option value="tel">手机号</option>
+            <option value="email">邮箱</option>
+        </select>
+        <br>
+
+        <!-- vue在进行条件渲染时，如果有一部分标签是可以重用(标签一样，但是属性或内容不同)，那么vue不会把原来的标签删除再创建新标签，而是直接把原来的标签的内容和属性按照新的内容进行修改，从而提高渲染效率 -->
+
+        <!-- 如果在某些情况下，条件渲染时不需要进行重用，那么需要为条件渲染的标签添加 重用标识符(key属性)，重用标识符不同的元素不能相互重用 -->
+        <input key="1" v-if="loginType=='tel'" type="text" placeholder="请输入您的手机号">
+        <input key="2" v-if="loginType=='email'" type="text" placeholder="请输入您的邮箱">
+        
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            loginType:"tel"
+        }
+    });
+</script>
+</html>

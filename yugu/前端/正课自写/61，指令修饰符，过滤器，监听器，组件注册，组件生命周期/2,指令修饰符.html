@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- .number用于修饰v-model指令，作用是将输入框中的内容转为数字之后再绑定 -->
+        <input type="text" v-model.number="n1">
+        <hr>
+        <hr>
+        <!-- .trim去除字符串两端的空格 -->
+        <input type="text" v-model.trim="t1">
+        <pre>{{t1}}</pre>
+        <hr>
+        <hr>
+        <!-- lazy修饰符，默认情况下v-model会在input时进行重新渲染，使用lazy以后会按下回车或者是去焦点时渲染 -->
+        <input type="text" v-model.lazy="t2">
+        <p>{{t2}}</p>
+        <hr>
+        <!-- prevent修饰符，用于v-on指令，阻止监听事件的默认行为 -->
+        <a href="http:www.baidu.com" @click.prevent="linkClick">百度一下</a>
+        <a href="http:www.baidu.com" @click.stop="linkClick">百度一下</a>
+        <a href="http:www.baidu.com" @click.prevent.stop="linkClick">百度一下</a>
+        <hr>
+        <!-- .{keycode}修饰符，用于修饰按键键盘事件，只有按下keycode为这个值的时候才会触发 -->
+        <input type="text" v-on:keydown.enter="keydown">
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            n1: 10,
+            t1: "",
+            t2: ""
+        },
+        methods: {
+            linkClick() {
+                console.log("点击了a");
+
+            },
+            keydown(e) {
+                alert(e.keyCode)
+            }
+        },
+    })
+</script>
+
+</html>

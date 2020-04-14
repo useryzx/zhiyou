@@ -1,0 +1,38 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:14:16:06 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="txt">
+        <p>{{txt}}</p>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    let root = new Vue({
+        el:"#app",
+        data:{
+            txt:""
+        },
+        // 组建的监听器
+        watch: {
+            // 监听器中可以为组件中的数据添加监听函数，每当这个数据发生变化时，监听函数就会被调用
+            // 监听函数被调用时会传递两个参数，分别是改变之后的值和改变之前的值
+            txt(after,before){
+                console.log(arguments);
+                console.log("txt发生变化了");
+            },
+            // 监听器除了可以监听组件的数据，还可以监听组件的计算结果
+            // 组件中凡是通过set/get定义的属性都可以监听
+        },
+    })
+    console.log(root);
+    
+</script>
+</html>

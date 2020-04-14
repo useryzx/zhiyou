@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{txt}}</p>
+        <!-- v-html指令，用于将一段html字符串作为html内容解析显示到某个标签中 -->
+        <p v-html="txt"></p>
+
+
+        <hr>
+
+        <input type="text" v-model="content">
+        <!-- v-once指令，用于一次性数据绑定，当页面加载完毕之后，将数据的初始值渲染到元素内中，当数据发生变化时，不再进行重新渲染。 -->
+        <!-- 当页面存在大量的数据绑定时，会消耗很高的性能，导致页面卡顿，如果数据首次渲染之后不再发生变化，那么可以使用v-once指令进行数据绑定，减少数据监听所消耗的性能 -->
+        <p v-once>{{content}}</p>
+
+
+        
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            txt:"<b>加粗的文本</b>",
+            content:"hello world"
+        }
+    });
+</script>
+
+</html>

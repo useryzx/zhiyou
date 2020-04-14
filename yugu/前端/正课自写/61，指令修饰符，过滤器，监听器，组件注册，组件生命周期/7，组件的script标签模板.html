@@ -1,0 +1,32 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:14:17:33 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com></com>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="com">
+    <div>
+        <h1>组件的模板可以写在一个单独的script标签中</h1>
+        <p>然后将组件的template写成这个script标签的id选择器即可</p>
+    </div>
+</script>
+<script>
+    Vue.component("com",{
+        template:"#com"
+    })
+    new Vue({
+        el:"#app",
+        data:{
+        }
+    })
+</script>
+</html>

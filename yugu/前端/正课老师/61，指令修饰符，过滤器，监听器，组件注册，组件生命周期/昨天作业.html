@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #title{
+            text-align: center;
+            font-size: 30px;
+            color: #6666ff;
+            
+        }
+
+        .field{
+            width: 100%;
+            height: 40px;
+            margin: 5px 0;
+            font-size: 24px;
+            padding-left: 10px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            border: solid 1px #999;
+        }
+
+        .field:focus{
+            border: solid 1px cyan;
+        }
+
+        #result-tb{
+            width: 100%;
+            font-size: 16px;
+            color: #333;
+        }
+
+        #result-tb tr td:nth-of-type(2){
+            text-align: right;
+        }
+
+        #result-tb tr td input{
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 id="title">个税计算器</h1>
+        <input class="field" type="text" placeholder="基本工资" v-model.number="salary">
+        <input class="field" type="text" placeholder="奖金" v-model.number="reward">
+
+
+        <table id="result-tb">
+            <tr>
+                <td>总工资：</td>
+                <td>{{sum}}</td>
+            </tr>
+            <tr>
+                <td>养老保险：<input type="text" v-model="yanglaoRate">%</td>
+                <td>{{sum*yanglaoRate/100}}</td>
+            </tr>
+            <tr>
+                <td>医疗保险：<input type="text" v-model="yiliaoRate">%</td>
+                <td>{{sum*yiliaoRate/100}}</td>
+            </tr>
+            <tr>
+                <td>失业保险：<input type="text" v-model="shiyeRate">%</td>
+                <td>{{sum*shiyeRate/100}}</td>
+            </tr>
+            <tr>
+                <td>工伤保险：<input type="text" v-model="gongshangRate">%</td>
+                <td>{{sum*gongshangRate/100}}</td>
+            </tr>
+            <tr>
+                <td>生育：<input type="text" v-model="shengyuRate">%</td>
+                <td>{{sum*shengyuRate/100}}</td>
+            </tr>
+            <tr>
+                <td>住房公积金：<input type="text" v-model="gongjijinRate">%</td>
+                <td>{{sum*gongjijinRate/100}}</td>
+            </tr>
+            <tr>
+                <td>税前工资：</td>
+                <td>{{beforeTax}}</td>
+            </tr>
+            <tr>
+                <td>个人所得税</td>
+                <td>{{tax}}</td>
+            </tr>
+            <tr>
+                <td>税后工资</td>
+                <td>{{beforeTax-tax}}</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            salary:"",
+            reward:"",
+
+            yanglaoRate:8,
+            yiliaoRate:6,
+            shiyeRate:0.5,
+            gongshangRate:0,
+            shengyuRate:0,
+            gongjijinRate:8
+        },
+
+        computed:{
+            sum(){
+                let sum = (this.salary+this.reward)*1;
+                if(typeof sum == "number"){
+                    return sum.toFixed(2);
+                }
+                
+                return sum;
+            },
+
+            beforeTax(){
+                return this.sum*(100-this.yanglaoRate-this.yiliaoRate-this.shiyeRate-this.gongshangRate-this.shengyuRate-this.gongjijinRate)/100;
+            },
+
+            tax(){
+                if(this.beforeTax<=5000){
+                    return 0;
+                }
+                let jishuigongzi = this.beforeTax - 5000;
+                if(jishuigongzi<=3000){
+                    return jishuigongzi * 0.03;
+                }else if(jishuigongzi<=12000){
+                    return jishuigongzi * 0.1 - 210;
+                }else if(jishuigongzi<=25000){
+                    return jishuigongzi * 0.2 - 1410;
+                }else if(jishuigongzi<=35000){
+                    return jishuigongzi * 0.25 - 2660;
+                }else if(jishuigongzi<=55000){
+                    return jishuigongzi * 0.3 - 4410;
+                }else if(jishuigongzi<=80000){
+                    return jishuigongzi * 0.35 - 7160;
+                }else{
+                    return jishuigongzi * 0.45 - 15160;
+                }
+
+            }
+        }
+    })
+</script>
+
+</html>
