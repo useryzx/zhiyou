@@ -1,19 +1,22 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:15:17:24 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #title{
+        #title {
             text-align: center;
             font-size: 30px;
             color: #6666ff;
-            
+
         }
 
-        .field{
+        .field {
             width: 100%;
             height: 40px;
             margin: 5px 0;
@@ -24,133 +27,213 @@
             border: solid 1px #999;
         }
 
-        .field:focus{
+        .field:focus {
             border: solid 1px cyan;
         }
 
-        #result-tb{
+        #result-tb {
             width: 100%;
             font-size: 16px;
             color: #333;
         }
 
-        #result-tb tr td:nth-of-type(2){
+        #result-tb tr td:nth-of-type(2) {
             text-align: right;
         }
 
-        #result-tb tr td input{
+        #result-tb tr td input {
             width: 20px;
+        }
+        table,input{
+            background: linear-gradient(to right,#fbc2eb,#a6c1ee);
+        }
+        tr:last-of-type{
+            font-size: 5px;
         }
     </style>
 </head>
+
 <body>
+    <!-- 根组件 -->
     <div id="app">
         <h1 id="title">个税计算器</h1>
-        <input class="field" type="text" placeholder="基本工资" v-model.number="salary">
-        <input class="field" type="text" placeholder="奖金" v-model.number="reward">
-
-        <table id="result-tb">
-            <tr>
-                <td>总工资：</td>
-                <td>{{sum}}</td>
-            </tr>
-            <tr>
-                <td>养老保险：<input type="text" v-model="yanglaoRate">%</td>
-                <td>{{sum*yanglaoRate/100}}</td>
-            </tr>
-            <tr>
-                <td>医疗保险：<input type="text" v-model="yiliaoRate">%</td>
-                <td>{{sum*yiliaoRate/100}}</td>
-            </tr>
-            <tr>
-                <td>失业保险：<input type="text" v-model="shiyeRate">%</td>
-                <td>{{sum*shiyeRate/100}}</td>
-            </tr>
-            <tr>
-                <td>工伤保险：<input type="text" v-model="gongshangRate">%</td>
-                <td>{{sum*gongshangRate/100}}</td>
-            </tr>
-            <tr>
-                <td>生育：<input type="text" v-model="shengyuRate">%</td>
-                <td>{{sum*shengyuRate/100}}</td>
-            </tr>
-            <tr>
-                <td>住房公积金：<input type="text" v-model="gongjijinRate">%</td>
-                <td>{{sum*gongjijinRate/100}}</td>
-            </tr>
-            <tr>
-                <td>税前工资：</td>
-                <td>{{beforeTax}}</td>
-            </tr>
-            <tr>
-                <td>个人所得税</td>
-                <td>{{tax}}</td>
-            </tr>
-            <tr>
-                <td>税后工资</td>
-                <td>{{beforeTax-tax}}</td>
-            </tr>
-
-        </table>
-
-
+        <!-- 监听事件发射 -->
+        <input-cell @input-parent="changeInput"></input-cell>
+        <!-- 将数据传递给子组件 -->
+        <table-cell :salary="salary" :reward="reward"></table-cell>
     </div>
 </body>
 
 <script src="vue.js"></script>
-
+<!-- input输入组件模板 -->
+<script type="text/html" id="input-cell">
+    <div>
+        <input class="field" type="text" placeholder="基本工资" v-model.number="salary" @input="inputIng">
+        <input class="field" type="text" placeholder="奖金" v-model.number="reward" @input="inputIng">
+    </div>
+</script>
+<script type="text/html" id="table-cell">
+    <table id="result-tb" v-show="sum>=1900">
+        <tr @click="taxFault">
+            <td>总工资：</td>
+            <td>{{sum|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>养老保险：<input type="text" v-model="yanglaoRate">%</td>
+            <td>{{sum*yanglaoRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>医疗保险：<input type="text" v-model="yiliaoRate">%</td>
+            <td>{{sum*yiliaoRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>失业保险：<input type="text" v-model="shiyeRate">%</td>
+            <td>{{sum*shiyeRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>工伤保险：<input type="text" v-model="gongshangRate">%</td>
+            <td>{{sum*gongshangRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>生育：<input type="text" v-model="shengyuRate">%</td>
+            <td>{{sum*shengyuRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>住房公积金：<input type="text" v-model="gongjijinRate">%</td>
+            <td>{{sum*gongjijinRate/100|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>税前工资：</td>
+            <td>{{beforeTax|behfix|prefix}}</td>
+        </tr>
+        <tr>
+            <td>个人所得税</td>
+            <td>{{tax|behfix|prefix}}</td>
+        </tr>
+        <tr @click="hideSpan">
+            <td>税后工资</td>
+            <td>{{beforeTax-tax|behfix|prefix}}</td>
+        </tr>
+        <tr><span v-show="strShow">{{str}}</span></tr>
+    </table>
+</script>
 <script>
-    new Vue({
-        el:"#app",
-        data:{
-            salary:"",
-            reward:"",
-
-            yanglaoRate:8,
-            yiliaoRate:6,
-            shiyeRate:0.5,
-            gongshangRate:0,
-            shengyuRate:0,
-            gongjijinRate:8
+    // 输入框组件
+    Vue.component("input-cell", {
+        template: "#input-cell",
+        data() {
+            // 组件内部数据
+            return {
+                salary: "",
+                reward: "",
+            }
         },
+        methods: {
+            inputIng() {
+                // 通过事件发射将数据传递给父组件
+                this.$emit("input-parent", this.salary, this.reward)
+            }
+        },
+    });
 
-        computed:{
-            sum(){
-                let sum = (this.salary+this.reward)*1;
-                if(typeof sum == "number"){
+    // 表格内容展示组件
+    Vue.component("table-cell", {
+        template: "#table-cell",
+        data() {
+            return {
+                // 定义组件自己的数据
+                yanglaoRate: 8,
+                yiliaoRate: 6,
+                shiyeRate: 0.5,
+                gongshangRate: 0,
+                shengyuRate: 0,
+                gongjijinRate: 8,
+                str: "-----这个-----个税计算器-----做的不靠谱------",
+                strShow:false,
+            }
+        },
+        // 获取父组件传递的数据
+        props: ["salary", "reward"],
+        computed: {
+            sum() {
+                // 总薪水
+                let sum = (this.salary*1 + this.reward*1) * 1;
+                if (typeof sum == "number") {
                     return sum.toFixed(2);
                 }
-                
                 return sum;
             },
-
-            beforeTax(){
-                return this.sum*(100-this.yanglaoRate-this.yiliaoRate-this.shiyeRate-this.gongshangRate-this.shengyuRate-this.gongjijinRate)/100;
+            beforeTax() {
+                // 税前薪资
+                return this.sum * (100 - this.yanglaoRate - this.yiliaoRate - this.shiyeRate - this
+                    .gongshangRate - this.shengyuRate - this.gongjijinRate) / 100;
             },
-
-            tax(){
-                if(this.beforeTax<=5000){
+            tax() {
+                // 个税计算
+                if (this.beforeTax <= 5000) {
                     return 0;
                 }
                 let jishuigongzi = this.beforeTax - 5000;
-                if(jishuigongzi<=3000){
+                if (jishuigongzi <= 3000) {
                     return jishuigongzi * 0.03;
-                }else if(jishuigongzi<=12000){
+                } else if (jishuigongzi <= 12000) {
                     return jishuigongzi * 0.1 - 210;
-                }else if(jishuigongzi<=25000){
+                } else if (jishuigongzi <= 25000) {
                     return jishuigongzi * 0.2 - 1410;
-                }else if(jishuigongzi<=35000){
+                } else if (jishuigongzi <= 35000) {
                     return jishuigongzi * 0.25 - 2660;
-                }else if(jishuigongzi<=55000){
+                } else if (jishuigongzi <= 55000) {
                     return jishuigongzi * 0.3 - 4410;
-                }else if(jishuigongzi<=80000){
+                } else if (jishuigongzi <= 80000) {
                     return jishuigongzi * 0.35 - 7160;
-                }else{
+                } else {
                     return jishuigongzi * 0.45 - 15160;
                 }
-
             }
-        }
+        },
+        filters:{
+            // 添加人民币符号过滤器
+            prefix(v){
+                return "￥"+v;
+            },
+            // 保留两位小数过滤器
+            behfix(v){
+                return (v*1).toFixed(2);
+            }
+        },
+        methods: {
+            taxFault() {
+                if (this.timer != null) return;
+                this.timer = setInterval(() => {
+                    this.strShow=true;
+                    let startStr = this.str.substring(0, 1);
+                    let endStr = this.str.substring(1);
+                    this.str = endStr + startStr;
+                }, 200)
+            },
+            hideSpan(){
+                this.strShow=false;
+                clearInterval(this.timer);
+                this.timer=null;
+            }
+        },
+    });
+    // 根组件
+    new Vue({
+        el: "#app",
+        data: {
+            // 预先设置变量接收子组件中的薪资和奖金
+            salary: "",
+            reward: "",
+        },
+        methods: {
+            changeInput(salary, reward) {
+                // 将子组件传递过来的值存储以便传递给另一个子组件
+                this.salary = salary;
+                this.reward = reward;
+            }
+        },
+
     })
 </script>
 
