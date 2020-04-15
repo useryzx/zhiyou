@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .rest-cell-root{
+            border: solid 1px black;
+            background-color: #f6f6f6;
+            width: 300px;
+            padding: 0 10px;
+        }
+
+        .rest-cell-head{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rest-cell-name{
+            margin: 10px 0;
+        }
+
+        .rest-cell-rec{
+            font-size: 10px;
+            background-color: lightgreen;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .rest-cell-add{
+            font-size: 14px;
+            color: #666;
+        }
+
+        .rest-cell-distance{
+            font-size: 12px;
+            color: #999;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <rest-cell 
+                v-for="r in restList"
+                :rest="r"
+            ></rest-cell>
+        </div>
+        
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script type="text/html" id="rest-cell">
+    <div class="rest-cell-root">
+        <div class="rest-cell-head">
+            <h3 
+                class="rest-cell-name"
+                :style="{color:rest.rate>4?'red':'black'}"
+            >{{rest.name}}</h3>
+            <div 
+                v-if="rest.rate>4" 
+                class="rest-cell-rec"
+            >推荐</div>
+        </div>
+        <div class="rest-cell-add">{{rest.addr}}</div>
+        <div class="rest-cell-distance">{{rest.distance|distanceFilter}}</div>
+    </div>
+</script>
+
+<script>
+
+    function distanceFilter(v){
+        if(v*1<1000){
+            return v+"m";
+        }
+        return Math.floor(v/10)/100+"km";
+    }
+
+    Vue.component("restCell",{
+        template:"#rest-cell",
+        props:["rest"],
+        filters:{
+            distanceFilter
+        }
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            restList:[
+                {name:"黄焖鸡米饭",addr:"经开第五大街经北三路",distance:1300,rate:4.7},
+                {name:"兰州牛肉拉面",addr:"航海路经开第三大街",distance:1567,rate:4.3},
+                {name:"沙县小吃",addr:"黄河路",distance:600,rate:3.8}
+            ]
+        }
+    });
+
+
+</script>
+</html>

@@ -1,0 +1,144 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:15:14:05 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .border {
+            width: 100%;
+            border: 1px slateblue solid;
+            margin-top: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .rest-cell-root {
+            border: solid 1px black;
+            background-color: #f6f6f6;
+            width: 300px;
+            padding: 0 10px;
+        }
+
+        .rest-cell-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .rest-cell-head {
+            margin: 10px 0;
+        }
+
+        .rest-cell-rec {
+            font-size: 10px;
+            background-color: lightgreen;
+            padding: 2px 4px;
+            color: white;
+            border-radius: 2px;
+        }
+
+        .rest-cell-add {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .rest-cell-distance {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <cell :msg='restList'></cell> -->
+        <div>
+            <rest-cell 
+            v-for="r in restList"
+            :rest="r"
+            ></rest-cell>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<!-- <script type="text/html" id="cell">
+    <div>
+        <div v-for="item in msg">
+            <div class="border">
+                <h1>名称：{{item.name}}</h1>
+                <p>地址：{{item.addr}}</p>
+                <span>{{item.distance|male}}</span>
+            </div>
+        </div>
+    </div>
+</script> -->
+<script type="text/html" id="rest-cell">
+    <div class="rest-cell-root">
+        <div class="rest-cell-head">
+            <h3 
+            class="rest-cell-name"
+            :style="{color:rest.rate>4?'red':'black'}"
+            >{{rest.name}}</h3>
+            <div v-if="rest.rate>4" class="rest-cell-rec">推荐</div>
+        </div>
+        <div class="rest-cell-add">{{rest.addr}}</div>
+        <div class="rest-cell-distance">{{rest.distance|distanceFilter}}</div>
+    </div>
+</script>
+<script>
+    // Vue.filter("male", function (v) {
+    //     if (v >= 1000) {
+    //         return v / 1000 + "km";
+    //     } else {
+    //         return v + "m";
+    //     }
+    // });
+    // Vue.component("cell", {
+    //     template: "#cell",
+    //     props: ["msg"],
+    // })
+    function distanceFilter(v){
+        if(v*1<1000){
+            return v+"m";
+        }
+        return Math.floor(v/10)/100+"km"
+    }
+    Vue.component("rest-cell", {
+        template: "#rest-cell",
+        props: ["rest"],
+        filters:{
+            distanceFilter,
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            restList: [{
+                    name: "黄焖鸡米饭",
+                    addr: "经开第三大街经北三路",
+                    distance: 1000,
+                    rate:4
+                },
+                {
+                    name: "沙县小吃",
+                    addr: "航海路经开第三大街",
+                    distance: 1500,
+                    rate:5
+                },
+                {
+                    name: "兰州牛肉拉面",
+                    addr: "经开第五大街经北三路",
+                    distance: 600,
+                    rate:3.5
+                },
+            ],
+        }
+    })
+</script>
+
+</html>

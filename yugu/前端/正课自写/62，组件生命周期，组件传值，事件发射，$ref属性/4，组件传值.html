@@ -1,0 +1,81 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:15:11:04 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <button @click="num++">+</button>
+        <!-- 组件传值的两个条件：1子组件生命接受传值名字。2父组件使用子组件时通过属性进行传递 -->
+        <!-- 通过属性进行传值时默认传递的是一个写死的字符串 -->
+        <!-- 传值的属性就是子组件中声明接收传值的名字，如果需要传递父组件的数据，那么需要使用v-bind指令进行绑定 -->
+        <!-- 父组件给子组件的传值也是绑定的，当父组件的数据发生变化，使用这个数据的子组件也会更新 -->
+        <!-- <com n1="num"></com> -->
+        <com :n1="num"></com>
+        <second :p1="num" p2="传递值" :age="20"></second>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="com">
+    <div>
+        <!-- 模板中可以使用data和computed一样，绑定props中的数据 -->
+        <p>根组件中的num:{{n1}}</p>
+    </div>
+</script>
+<script id="second" type="text/html">
+    <div>
+        <h1>second组件</h1>
+        <p>second传值p1:{{p1}}</p>
+        <p>second传值p2:{{p2}}</p>
+        <p>second传值age:{{age}}</p>
+    </div>
+</script>
+<script>
+    Vue.component("com", {
+        template: "#com",
+        data() {
+            return {
+
+            }
+        },
+        // props 组件需要从父组件中接收传值时，需要在组件配置对像中的props字段中声明接收传值的名字，可以和父组件中数据的名字相同，也可以不同。
+        // props的值是一个数组，可以声明多个接收的传值
+        // props中的名字也不能和data等字段中的名字重复
+        props: ["n1"]
+    })
+
+    Vue.component("second",{
+        template:"#second",
+        // 组件接收传值的props也可以是一个对象，写成对象可以为传值添加约束
+        props:{
+            p1:{
+                required:true,
+                type:[String,Number]
+            },
+            p2:{
+                default:"默认值",
+            },
+            age:{
+                // 添加自定义校验规则
+                validator(v){
+                    return v>0;
+                }
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            num: 99,
+        }
+    })
+</script>
+
+</html>

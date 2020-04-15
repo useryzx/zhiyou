@@ -1,0 +1,43 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:15:09:09 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 有些特殊的html标签中只能固定添加某些子标签，不能随便添加子标签，例如table中只能添加tbody  thead tr等，如果添加了其他标签，如果添加了其他标签，那么浏览器会在解析html时，会把这些标签移动到标签之外 ，所以这些标签中使用组件会出现问题-->
+        <!-- 浏览器对html解析在vue之前 ，所以在vue解析DOM时，mytr标签就已经被转移到table之外了，所以渲染出来的界面也会存在问题-->
+        <!-- <table>
+            <mytr></mytr>
+        </table> -->
+        <table>
+            <!-- 在特殊标签中使用组件时，组件标签不能直接写组件名，而是写成特殊标签中可以存在的标签名，设置is属性为组件名 -->
+            <tr is="mytr"></tr>
+        </table>
+        <div>
+            <component is="mytr"></component>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component("mytr", {
+        template: `<tr>
+        <td>这是自定义tr</td>
+        </tr>`
+    })
+    new Vue({
+        el: "#app",
+        data: {
+
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:15:10:11 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <com></com>
+        <com></com>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/heml" id="com">
+    <div>
+        <p>com组件</p>
+        <p>num:{{num}}</p>
+        <button @click="num++">+</button>
+        <!-- 在组件a的模板中使用组件b，那么组件b就是组件a的子组件，组件a是组件b的父组件 -->
+        <!-- 模板的标签中只能使用自己的数据（也只能绑定自己的方法），子组件不能使用父组件的数据，父组件也不能使用子组件的数据 -->
+        <!-- <p>{{a1}}</p> -->
+    </div>
+
+</script>
+<script>
+    Vue.component("com", {
+        template: "#com",
+        // 对于非根组件的data，不能是对象， 必须是一个函数，函数中返回组件的数据对象
+        // 同一种类的多个组件之间，数据应该是相互独立的，所以给非根组件data要求提供一个工厂函数，用于创建并返回组件的数据对象，每当vue需要创建这种组件时，就会调用data的工厂函数获取data对象作为组建的数据，也就是说data函数返回的数据对象都需要是一个新创建的对象。
+        data(){
+            return {
+                num:10
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            a1:1,
+        }
+    })
+</script>
+
+</html>

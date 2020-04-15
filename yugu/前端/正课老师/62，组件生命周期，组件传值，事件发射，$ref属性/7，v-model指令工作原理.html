@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .num-editor-root{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <p>{{num}}</p>
+
+        <!-- <num-editor 
+            :value="num"
+            @input="setNum"
+        ></num-editor> -->
+
+        <br>
+
+        <!-- 对于数据编辑型的组件，负责从父组件接收一个数据，并能够修改这个数据。 -->
+        <!-- 普遍需要使用双向绑定，所以一般都设计为支持v-model的组件 -->
+        <!-- v-model指令的本质就是一个v-bind指令+一个v-on指令，它会将绑定的数据通过value属性向下传递，并监听子组件发射的input事件，并当事件触发时，把事件附带的数据赋值给绑定的数据 -->
+        <num-editor v-model="num"></num-editor>
+
+        <!-- 所以，自己设计的组件如果要支持v-model指令，就必须接受一个value传值，并在需要改变数据时发射input事件，把修改之后的值作为事件附带数据传递 -->
+        
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script type="text/html" id="num-editor">
+    <div class="num-editor-root">
+        <button @click="minusClick">-</button>
+        <span>{{value}}</span>
+        <button @click="addClick">+</button>
+    </div>
+</script>
+
+<script>
+
+    Vue.component("numEditor",{
+        template:"#num-editor",
+        props:["value"],
+        methods:{
+            addClick(){
+                this.$emit("input",this.value+1);
+            },
+            minusClick(){
+                this.$emit("input",this.value-1);
+            }
+        }
+    });
+
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            num:1
+        },
+        methods:{
+            setNum(v){
+                // console.log(v);
+                this.num = v;
+            }
+        }
+    });
+
+    
+
+
+</script>
+</html>

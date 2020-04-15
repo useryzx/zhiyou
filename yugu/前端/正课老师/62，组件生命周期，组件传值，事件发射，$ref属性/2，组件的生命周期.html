@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <input type="checkbox" v-model="isShow">
+        <com v-if="isShow"></com>
+
+        <!-- <com></com>
+        <com></com> -->
+
+
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script type="text/html" id="com">
+    <div>
+        <p>这是com组件</p>
+    </div>
+</script>
+
+<script>
+
+    Vue.component("com",{
+        template:"#com",
+
+        // 渲染完毕，这是一个组件生命周期钩子方法，当组件首次渲染完毕时调用。
+        mounted(){
+            console.log("com组件渲染完毕了");
+            
+            // 组件生命周期钩子函数中的this，就是组件对象。
+            console.log(this);
+        },
+
+        // 创建完毕，当组件被创建完毕时调用。
+        created(){
+            console.log("com组件创建完毕了");
+        },
+
+
+        // 当组件被销毁时调用
+        destroyed(){
+            console.log("com组件被销毁了");
+        },
+
+        // 组件刷新后调用，当组件由于数据发生变化等原因重新渲染时调用。
+        updated(){
+
+        }
+    });
+
+    new Vue({
+        el:"#app",
+        data:{
+            isShow:false
+        },
+
+        mounted(){
+            // console.log("根组件渲染完毕了");
+        },
+
+        updated(){
+            console.log("根组件更新了");
+        }
+    });
+
+
+</script>
+</html>
