@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <com1></com1>
+        <com2></com2>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+
+    // 对于页面中关系比较远的两个组件，可以使用总线进行传值。
+
+    // 在vue中，可以创建一个空组件作为总线使用。
+    // 由于总线需要在其他组件内部使用，所以记录总线的变量必须是全局变量。
+    const bus = new Vue({});
+
+
+    Vue.component("com1",{
+        template:`<div>
+            com1组件num:{{num}}
+            <button @click="passValue">传值给com2</button>
+        </div>`,
+        methods:{
+            passValue(){
+                // 任何组件都可以在总线上发射事件，从而进行传值。
+                bus.$emit("pass",this.num);
+            }
+        },
+        data(){
+            return {
+                num:99
+            }
+        }
+    });
+
+    Vue.component("com2",{
+        template:`<div>
+            com2组件{{p1}}
+        </div>`,
+        data(){
+            return {
+                p1:10
+            }
+        },
+        mounted(){
+
+            // 任何组件中都可以用过总线对象的$on监听总线上的事件，就可以接受其他组件的传值。
+            bus.$on("pass",v=>{
+                this.p1 = v;
+            });
+        }
+    });
+
+
+    new Vue({
+        el:"#app",
+
+    });
+</script>
+
+
+
+</html>

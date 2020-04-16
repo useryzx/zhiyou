@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* body{
+            text-align: center;
+        } */
+        .toggle-root{
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            border: solid 1px black;
+            background-color: #ccc;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-bg{
+            height: 50px;
+            width: 75px;
+            background-color: aquamarine;
+            position: absolute;
+            top: 0;
+            transition: all 0.5s;
+            /* left: -52px; */
+            /* left: 0; */
+            
+        }
+
+        .toggle-ball{
+            width: 40px;
+            height: 40px;
+            border: solid 5px #ccc;
+            /* border: solid 5px aquamarine; */
+            position: absolute;
+            top: 0;
+            right: -25px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+        <br>
+        <br>
+        <toggle 
+            v-model="flag"
+
+        ></toggle>
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script type="text/html" id="toggle">
+    <div class="toggle-root" @click="toggleValue">
+        <div 
+            class="toggle-bg"
+            :style="{left:value?'0':'-52px'}"
+        >
+            <div 
+                class="toggle-ball"
+                :style="{'border-color':value?'aquamarine':'#ccc'}"
+            ></div>
+        </div>
+    </div>
+</script>
+
+<script>
+    const toggle = {
+        template:"#toggle",
+        props:["value"],
+        methods:{
+            toggleValue(){
+                this.$emit("input",!this.value);
+            }
+        }
+    }
+
+    Vue.component("toggle",toggle);
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            flag:false
+        }
+    });
+
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:16:15:30 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <audio src=""></audio>
+        <h1 ref="title">这是根组件的标题</h1>
+        <ul>
+            <li v-for="n in 5" ref="item">{{n}}</li>
+        </ul>
+        <com ref="c"></com>
+        <button @click="btn">按钮</button>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    // 在vue框架中，大部分页面逻辑都可以通过数据绑定实现，所以不需要再进行DOM操作
+    // 但是某些特殊的html标签具有一些特殊的方法，必须直接调用，例如audio的play方法，不能通过数据绑定进行，所以在vue的也买呢中有时也需要进行DOM操作
+    // vue也提供了在组件中访问组件模板中原生DOM元素的方法，但是这种方法不要滥用。能用数据绑定解决的问题就不要使用$ref
+    Vue.component("com",{
+        template:"<div>这是模板标签</div>"
+    })
+    new Vue({
+        el: "#app",
+        data: {
+
+        },
+        methods: {
+            btn(){
+                // 如果组件需要访问模板中的某个标签对象，则要给这个标签添加ref="xxxx"属性，将来就能通过$refs.xxxx拿到标签对象的原生对象
+                console.log(this.$refs.title);
+                // 组件对象的$el属性就是组件模板的根标签原生对象
+                console.log(this.$el);
+                // 如果ref属性用在v-for渲染的标签上，那么$refs.xxxx获得的是一个数组
+                console.log(this.$refs.item);
+                // ref属性也可以用于组件标签，用于组件标签时，在$refs.xx中得到的是这个组件的组件对象
+                console.log(this.$refs.c);
+            }
+        },
+    })
+</script>
+
+</html>

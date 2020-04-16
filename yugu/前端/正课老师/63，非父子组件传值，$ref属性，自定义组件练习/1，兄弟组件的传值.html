@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <!-- 兄弟组件之间的传值，可以通过父组件进行中转 -->
+        
+        <salary-input @s-change="total=arguments[0]"></salary-input>
+        <calc-result :total="total"></calc-result>
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script type="text/html" id="salary-input">
+    <div>
+        <input 
+            type="text" 
+            v-model.number="salary" 
+            placeholder="工资" 
+            @focus="salaryFocus"
+            @blur="salaryBlur"
+            @input="salaryChange"
+        >
+        <br>
+        <input 
+            type="text" 
+            v-model.number="reward" 
+            placeholder="奖金"
+            @focus="rewardFocus"
+            @blur="rewardBlur"
+            @input="salaryChange"
+        >
+    </div>
+</script>
+
+<script>
+
+    Vue.component("salaryInput",{
+        template:"#salary-input",
+        data(){
+            return {
+                salary:0,
+                reward:0
+            }
+        },
+        methods:{
+            salaryFocus(){
+                if(!this.salary){
+                    this.salary = "";
+                }
+            },
+            salaryBlur(){
+                if(!this.salary||typeof this.salary!="number"){
+                    this.salary = 0;
+                }
+            },
+            rewardFocus(){
+                if(!this.reward){
+                    this.reward = "";
+                }
+            },
+            rewardBlur(){
+                if(!this.reward||typeof this.reward!="number"){
+                    this.reward = 0;
+                }
+            },
+            salaryChange(){
+                this.$emit("s-change",this.salary+this.reward);
+            }
+        }
+    });
+
+    Vue.component("calc-result",{
+        template:"<div>总工资：{{total}}</div>",
+        props:["total"]
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            total:0
+        }
+    });
+
+
+
+
+
+</script>
+
+</html>

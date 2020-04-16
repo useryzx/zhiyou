@@ -1,0 +1,76 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:16:17:19 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .toggle-root{
+            display: inline-block;
+            height: 50px;
+            width: 100px;
+            border: 1px solid black;
+            border-radius: 25px;
+            /* background-color: #ccc; */
+            /* background-color: aquamarine; */
+            position: relative;
+            /* transition: all 0.3s; */
+        }
+        .toggle-ball{
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: left 0.3s;
+        }
+        .toggle-ball-open{
+            left: 55px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag"><br><br>
+        <toggle v-model="flag"></toggle>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="toggle">
+    <div 
+    class=toggle-root 
+    :style="{background:value?'aquamarine':'#ccc'}"
+    @click="toggleValue"
+    >
+        <div 
+        class="toggle-ball"
+        :style="{left:value?'55px':'5px'}"
+        ></div>
+    </div>
+</script>
+<script>
+    const toggle = {
+        template:"#toggle",
+        props:["value"],
+        methods: {
+            toggleValue(){
+                this.$emit("input",!this.value)
+            }
+        },
+    }
+    Vue.component("toggle",toggle)
+    new Vue({
+        el: "#app",
+        data: {
+            flag: false,
+        },
+    })
+</script>
+
+</html>

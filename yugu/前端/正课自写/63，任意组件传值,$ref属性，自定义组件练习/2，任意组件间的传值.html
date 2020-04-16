@@ -1,0 +1,64 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:16:15:14 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <com1></com1>
+        <com2></com2>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    // 由于总线需要在其他组件内部使用，所以记录总线的变量必须是全局变量
+    const bus = new Vue({});
+    Vue.component("com1", {
+        template: `
+        <div>
+            <p>com1组件：{{num}}</p>
+            <button @click="passValue">传值给com2</button>
+        </div>
+        `,
+        data() {
+            return {
+                num: 99,
+            }
+        },
+        methods: {
+            passValue() {
+                // 任何组件都可以在组件上发射事件，从而进行传值
+                bus.$emit("pass",this.num);
+            }
+        },
+    })
+    Vue.component("com2", {
+        template: `
+        <div>
+            <p>com2组件：{{p1}}</p>
+        </div>
+        `,
+        data() {
+            return {
+                p1:10,
+            }
+        },
+        mounted() {
+            bus.$on("pass",v=>{
+                console.log(v);
+                this.p1=v;
+            })
+        },
+    });
+    new Vue({
+        el:"#app",
+    })
+</script>
+
+</html>
