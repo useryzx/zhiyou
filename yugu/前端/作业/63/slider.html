@@ -1,0 +1,136 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:16:21:35 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .slider-raw {
+            display: inline-block;
+            width: 200px;
+            height: 4px;
+            box-sizing: border-box;
+            background: linear-gradient(to right, #ff8177, #b12a5b);
+            position: relative;
+        }
+
+        .slider-ball {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+            /* border: 1px solid black; */
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: absolute;
+            top: -8px;
+        }
+
+        .slider-box {
+            box-sizing: border-box;
+            display: inline-block;
+            position: relative;
+        }
+
+        .slider-root {
+            width: 200px;
+            display: inline-block;
+            /* border: solid 1px black; */
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="scale" @focus="focus" @blur="blur">
+        <br>
+        <br>
+        <slider v-model.number="scale"></slider>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="slider">
+    <div class="slider-root" @mouseup.self="flagDefault" @mousemove.self="ballMove"
+        @mouseleave="flagDefault">
+        <div class="slider-raw" @mousedown.self="changeScale" @mousemove.self="ballMove">
+            <div class="slider-ball" :style="ballObj" @mousedown.self="changeScale" @mouseup.self="flagDefault"></div>
+        </div>
+    </div>
+</script>
+<script>
+    // 不跟手是因为必须脱离小球的范围才能触发事件，可以在弄一个透明的div进行判断,暂时未优化
+    const slider = {
+        template: "#slider",
+        data() {
+            return {
+                // 判断是否点击了的参数
+                flag: false
+            }
+        },
+        methods: {
+            changeScale(e) {
+                // 触发事件对象是小球是阻止点击事件的修改参数进行
+                if (e.target.classList.contains("slider-ball")) {
+                    // 点击了小球并且拖动的时候改变值
+                    // 此处加上判断点击的标志flag
+                    return this.flag = true;
+                    console.log(this.flag + "点击小球");
+                };
+                // 双向绑定确定百分比
+                this.$emit("input", (e.offsetX / 200).toFixed(1));
+            },
+            // 当鼠标抬起时，将flag恢复成false
+            flagDefault() {
+                return this.flag = false;
+            },
+            // 拖动小球时候
+            ballMove(e) {
+                // 只有当flag为true的时候才能触发
+                if (this.flag) {
+                    console.log(e.target);
+                    this.$emit("input", (e.offsetX / 200).toFixed(1));
+                }
+            }
+        },
+        computed: {
+            // 球位置的绑定参数
+            ballObj() {
+                return {
+                    left: this.value ? this.value * 200 - 20 + "px" : 0
+                }
+            }
+        },
+        props: ["value"],
+    }
+    // slider组件
+    Vue.component("slider", slider);
+
+    // 根组件，控制区域app
+    new Vue({
+        el: "#app",
+        data: {
+            scale: 0,
+        },
+        methods: {
+            focus() {
+                console.log("input获得焦点");
+                if (!this.scale) this.scale = ""
+            },
+            blur() {
+                console.log("input失去焦点");
+                if (!this.scale || typeof this.scale != "number") {
+                    this.scale = 0;
+                }
+            },
+        },
+    });
+</script>
+
+</html>

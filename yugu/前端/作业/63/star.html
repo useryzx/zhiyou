@@ -1,0 +1,135 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:17:00:07 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .star-root {
+            display: inline-block;
+            position: relative;
+        }
+
+        span {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .star-condition {
+            position: absolute;
+            display: inline-block;
+            width: 200px;
+            height: 60px;
+            top: 0;
+        }
+
+        .star-item-solid {
+            height: 60px;
+            overflow: hidden;
+            position: absolute;
+            /* border: springgreen 1px solid; */
+        }
+
+        .star-item-empty {
+            height: 60px;
+            /* border: 1px solid springgreen; */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="score" @focus="focus" @blur="blur" @change="limitNum">
+        <br><br>
+        <star v-model="score"></star>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="star">
+    <!-- ★☆ 这俩字符竟然大小不一样t_t-->
+<div class="star-root">
+    <div class="star-item-empty">
+        <span v-for="(v, i) in 5" :key="i">☆</span>
+    </div>
+    <div class="star-item-solid" :style="starSolidObj">
+        <span v-for="(v, i) in 5" :key="i">★</span>
+    </div>
+    <div class="star-condition" @mousemove="mouseMove" @mousedown.self="mouseDown" @mouseleave.self="mouseLeave"></div>
+</div>
+
+</script>
+<script>
+    // 星星评分组件
+    // 1.使用图片，将星星图片放置好，使用clip-path属性进行切割，最简单
+    // 2.使用遮盖的方式，将星星摆好，对实心的星星设置box的宽度，超出范围hidden，然后绝对定位上去
+    const star = {
+        template: "#star",
+        data() {
+            return {
+                flag:true,
+            }
+        },
+        methods: {
+            // 监听鼠标进入事件进行判断显示长度,鼠标进去空星星的时候改变数据
+            mouseMove(e) {
+                // 将鼠标坐标转化为分数传出去,一大串恶臭的布尔表达式，裂开QAQ
+                if(this.flag){
+                    this.$emit("input",(e.offsetX/41).toFixed(1)>0.5?((e.offsetX/41).toFixed(1)>1?((e.offsetX/41).toFixed(1)>1.5?((e.offsetX/41).toFixed(1)>2?((e.offsetX/41).toFixed(1)>2.5?(((e.offsetX/41).toFixed(1)>3?((e.offsetX/41).toFixed(1)>3.5?((e.offsetX/41).toFixed(1)>4?((e.offsetX/41).toFixed(1)>4.5?5:4.5):4):3.5):3)):2.5):2):1.5):1):0.5);
+                }
+            },
+            mouseDown(){
+                console.log("点击了");
+                this.flag = false;
+            },
+            mouseLeave(){
+                console.log("离开了");
+                this.flag = true;
+                
+            }
+        },
+        computed: {
+            starSolidObj(){
+                return {
+                    width:this.value ? this.value*40.8+'px' : "0",
+                    top:0
+                }
+            }
+        },
+        props:["value"]
+    }
+    Vue.component("star", star)
+    // 根组件，放置打分分数，限定在0-5，先这样吧
+    new Vue({
+        el: "#app",
+        data: {
+            score: 0,
+        },
+        methods: {
+            focus() {
+                console.log("input获得焦点");
+                if (!this.score) this.score = ""
+            },
+            blur() {
+                console.log("input失去焦点");
+                if (!this.score || typeof this.score != "number") {
+                    this.score = 0;
+                }
+            },
+            limitNum(){
+                console.log("数字限制");
+                if(this.score<0){
+                    return this.score=0.0;
+                }
+                if(this.score>5){
+                    return this.score=5.0
+                }
+            }
+        },
+    });
+</script>
+
+</html>

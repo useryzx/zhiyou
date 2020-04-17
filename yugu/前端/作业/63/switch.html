@@ -1,0 +1,119 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:16:19:04 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* body{
+            text-align: center;
+        } */
+        .toggle-root {
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+            border: solid 1px black;
+            background-color: #ccc;
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .toggle-bg {
+            height: 50px;
+            /* width: 75px; */
+            /* background-color: aquamarine; */
+            position: absolute;
+            top: 0;
+            transition: all 0.5s;
+            /* left: -52px; */
+            /* left: 0; */
+        }
+        .toggle-ball {
+            width: 40px;
+            height: 40px;
+            border: solid 5px #ccc;
+            /* border: solid 5px aquamarine; */
+            position: absolute;
+            top: 0;
+            right: -25px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+        <br>
+        <br>
+        <!-- ------------------------------------- -->
+        <!-- --------------------------- -->
+        <span><b>width</b> (Number)</span>
+        <br>
+        <span><b>color</b> (String)</span>
+        <!-- --------------------------- -->
+        <!-- ------------------------------------- -->
+        <br>
+        <br>
+        <toggle v-model="flag" width="" color=""></toggle>
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script type="text/html" id="toggle">
+    <div class="toggle-root" @click="toggleValue" :style="rootObj">
+        <div class="toggle-bg" :style="bgObj">
+            <div class="toggle-ball" :style="ballObj"></div>
+        </div>
+    </div>
+</script>
+
+<script>
+    const toggle = {
+        template: "#toggle",
+        props: ["value", "width", "color"],
+        methods: {
+            toggleValue() {
+                this.$emit("input", !this.value);
+            }
+        },
+        computed: {
+            rootObj(){
+                return{
+                    width:this.width ? this.width+'px' : "100px"
+                }
+            },
+            bgObj() {
+                return {
+                    width:this.width ? (this.width-25)+'px' : "75px",
+                    left: this.value ? '0' : (this.width ? '-'+(this.width-48)+'px' : "-52px"),
+                    "background-color": this.color ? this.color : "aquamarine",
+                }
+            },
+            ballObj() {
+                return {
+                    "border-color": this.value ? (this.color ? this.color : "aquamarine") : '#ccc',
+                }
+            }
+        },
+    }
+
+    Vue.component("toggle", toggle);
+
+
+    new Vue({
+        el: "#app",
+        data: {
+            flag: false,
+        }
+    });
+</script>
+
+</html>
