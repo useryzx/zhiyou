@@ -1,0 +1,82 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:17:14:39 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .star-root {
+            height: 50px;
+            width: 250px;
+            display: inline-block;
+            /* border: 1px solid red; */
+            user-select: none;
+            position: relative;
+        }
+
+        .star-empty,
+        .star-full {
+            width: 50px;
+            height: 50px;
+        }
+
+        .star-full-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="score">
+        <br><br>
+        <star v-model="score"></star>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="star">
+    <div class="star-root">
+        <img src="star-empty.png" v-for=" i in 5" :key="i" class="star-empty" ondragstart=" return false"
+            @click="starClick(i)">
+        <div class="star-full-bar" :style="starFullBarStyleObj">
+            <img src="star.png" v-for=" i in 5" :key="i" class="star-full" ondragstart=" return false" @click="starClick(i)">
+        </div>
+    </div>
+</script>
+<script>
+    const star = {
+        template: "#star",
+        props: ["value"],
+        computed: {
+            starFullBarStyleObj() {
+                let w = this.value * 50;
+                w = w < 0 ? 0 : w;
+                w = w > 50 * 5 ? 50 * 5 : w;
+                return {
+                    width: w + 'px'
+                }
+            },
+        },
+        methods: {
+            starClick(i) {
+                this.$emit("input",i)
+            }
+        },
+    }
+    Vue.component("star", star)
+    new Vue({
+        el: "#app",
+        data: {
+            score: 0
+        }
+    });
+</script>
+
+</html>

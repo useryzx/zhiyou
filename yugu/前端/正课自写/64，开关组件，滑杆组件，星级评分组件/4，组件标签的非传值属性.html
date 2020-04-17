@@ -1,0 +1,39 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:17:15:35 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            color: green;
+        }
+        .red{
+            color: red;
+            background-color: yellow;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        组件标签的非传值属性，在组件渲染时会被转移到组件的根标签上
+        <com class="red" sun="qwe" qqq="aaa"></com>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component("com",{
+        template:"<div class='green'><p>hello word</p></div>",
+        props:["qqq"]
+    })
+    new Vue({
+        el:"#app",
+        data:{
+
+        }
+    });
+</script>
+</html>

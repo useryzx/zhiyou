@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 组件标签的非传值属性在组件渲染时会被转移到组件的根标签上。 -->
+        <com class="red" sun="qwe" qqq="aaa"></com>
+
+
+        <!-- urls是一个数字，数组中存放若干张图片的url -->
+        <!-- autoplay自动轮播 -->
+        <!-- loop循环轮播 -->
+        <!-- indicator是否显示指示符 -->
+        <!-- v-model绑定的是当前轮播图播放的图片索引 -->
+        <swiper
+            :images="urls"
+            :autoplay="true"
+            :loop="true"
+            :indicator="true"
+            v-model="index"
+        ></swiper>
+
+
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script>
+
+    Vue.component("com",{
+        template:`<div class="blue">
+            <p>hello world</p>
+        </div>`,
+        props:["qqq"]
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+
+        }
+    });
+
+</script>
+
+
+</html>
