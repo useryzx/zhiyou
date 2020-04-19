@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider-ball {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            background-image: radial-gradient(white, #8fd3f4);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .slider-root {
+            position: relative;
+            /* border: 1px solid black; */
+        }
+        .slider-bar {
+            height: 6px;
+            background:linear-gradient(to right,#84fab0,#8fd3f4);
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="num">
+        <br>
+        <br>
+        <br>
+        <slider v-model="num" range="100" width="300px"></slider>
+    </div>
+
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="slider">
+    <div class="slider-root" @mousedown="md" :style="rootStyleObj">
+        <div class="slider-bar" :style="barStyleObj"></div>
+        <div class="slider-ball" :style="ballStyleObj"></div>
+    </div>
+</script>
+<script>
+    const slider = {
+        template: "#slider",
+        props: ["value", "width", "range"],
+        data() {
+            return {
+                myWidth: '300px',
+                myHeight: '60px',
+                myRange: 1,
+            }
+        },
+        mounted() {
+            this.myWidth = this.width || this.myWidth;
+            this.myRange = this.range || this.myRange;
+        },
+        computed: {
+            rootStyleObj() {
+                return {
+                    width: this.myWidth,
+                    height: this.myHeight,
+                };
+                
+            },
+            barStyleObj() {
+                return {
+                    width: parseInt(this.myWidth) - 40 + 'px',
+                    height: "6px",
+                    top: "27px",
+                    left: "20px"
+                };
+            },
+            ballStyleObj() {
+                let maxLeft = parseInt(this.myWidth) - 40;
+                let w = this.value * (maxLeft / parseInt(this.myRange));
+                w = w < 0 ? 0 : w;
+                w = w > maxLeft ? maxLeft : w;
+                return {
+                    left: w + 'px',
+                    top: "10px"
+                };
+            }
+        },
+        methods: {
+            calcValue(e) {
+                let maxLeft = parseInt(this.myWidth) - 40;
+                let w = e.clientX - this.$el.offsetLeft;
+                w = w < 20 ? 20 : w;
+                w = w > parseInt(this.myWidth) - 20 ? parseInt(this.myWidth) - 20 : w;
+                w -= 20;
+                let scale = (w / maxLeft) * parseInt(this.myRange);
+                this.$emit("input", (scale).toFixed(2) * 1);
+            },
+            md(e) {
+                this.calcValue(e);
+                window.addEventListener("mousemove", this.mv)
+                window.addEventListener("mouseup", this.mu)
+            },
+            mv(e) {
+                this.calcValue(e);
+            },
+            mu(e) {
+                window.removeEventListener("mousemove", this.mv)
+                window.removeEventListener("mouseup", this.mu)
+            }
+        }
+
+    }
+    Vue.component("slider", slider)
+    new Vue({
+        el: "#app",
+        data: {
+            num: 0
+        }
+    })
+</script>
+
+</html>

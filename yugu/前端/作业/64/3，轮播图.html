@@ -1,0 +1,253 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:19:09:09 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            margin: 0;
+        }
+
+        .swiper-root {
+            overflow: hidden;
+            /* border: 1px solid black; */
+            box-shadow: 0 0 2px 2px rgb(83, 235, 235);
+            width: 300px;
+            height: 200px;
+            position: relative;
+            user-select: none;
+        }
+
+        .swiper-box {
+            width: 999999px;
+            height: 200px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            left: -300px;
+            top: 0;
+        }
+
+        .swiper-li {
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+        }
+
+        .swiper-img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-indicator-bar {
+            position: absolute;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 300px;
+            bottom: 0;
+            text-align: center;
+            /* background-color:green; */
+        }
+
+        .swiper-indicator {
+            background-color: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            font-size: 10px;
+            color: rgb(188, 220, 238);
+            text-align: center;
+            line-height: 15px;
+        }
+
+        .swiper-prev,
+        .swiper-next {
+            position: absolute;
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            top: 50%;
+            width: 25px;
+            height: 25px;
+        }
+
+        .swiper-prev {
+            left: 0;
+            transform: translate(0, -50%);
+        }
+
+        .swiper-next {
+            right: 0;
+            transform: translate(0, -50%);
+        }
+
+        /* 高亮 */
+        .light {
+            background-color: rgba(93, 197, 107, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>loop:true的时候往前翻有问题,往后翻点击时间小于500ms也有问题</p>
+        <br><br>
+        <swiper :urls="urls" autoplay="true" indicator="true" loop="true"></swiper>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="swiper">
+    <div class="swiper-root">
+        <!-- 轮播图片 -->
+        <ul class="swiper-box" :style="swiperBoxStyle">
+            <li v-for="(v, i) in urlsObj" :key="i" class="swiper-li">
+                <img :src="v" class="swiper-img" ondragstart="return false">
+            </li>
+        </ul>
+        <!-- 轮播索引 -->
+        <ul class="swiper-indicator-bar" v-if="myIndicator">
+            <li class="swiper-indicator" v-for="i in myLoop?urlsObj.length-1:urlsObj.length" :key="i-1"
+                @click="indexClick(i-1)" :class="{light:i-1==(myLoop?(index==urlsObj.length-1?0:index):index)}">{{i}}
+            </li>
+        </ul>
+        <!-- 上下页 -->
+        <div class="swiper-page">
+            <span class="swiper-prev" @click="prevIndex"></span>
+            <span class="swiper-next" @click="nextIndex"></span>
+        </div>
+    </div>
+</script>
+<script>
+    // 轮播图的实现，使用left属性比较简单
+    // 组件定制需求
+    // urls传递进来的图片是数组
+    // autoplay自动轮播
+    // loop循环
+    // indicator是否显示指示符
+    const swiper = {
+        template: "#swiper",
+        props: ["urls", "autoplay", "loop", "indicator"],
+        data() {
+            return {
+                myLoop: this.loop ? this.loop : false,
+                myAutoPlay: this.autoplay ? this.autoplay : false,
+                myIndicator: this.indicator ? this.indicator : false,
+                index: 0,
+                timer: null,
+                timeout: null,
+                indexTip: null,
+            }
+        },
+        computed: {
+            // 对传递过来的urls进行改造，循环的时候末尾加上第一张图片
+            urlsObj() {
+                // 此时注意数组是引用数据类型，一变全变，使用concat不会改变原数组的
+                let urlArr = this.urls;
+                let urlArrLast = new Array(urlArr[0]);
+                return this.myLoop ? urlArr.concat(urlArrLast) : urlArr;
+            },
+            swiperBoxStyle() {
+                if (this.myLoop && this.index == 0 && !this.indexTip) {
+                    return {
+                        left: 0
+                    }
+                }
+                return {
+                    left: this.index * (-300) + "px",
+                    transition: "all 500ms",
+                }
+            },
+        },
+        methods: {
+            // 定义方法改变left，通过绑定索引的方式
+            addIndex() {
+                this.index >= (this.urlsObj.length - 1) ? this.index = 0 : this.index++;
+                if (this.index == this.urlsObj.length - 1) {
+                    let indexTime=setTimeout(() => {
+                        this.addIndex();
+                        clearTimeout(indexTime);
+                        indexTime=null
+                    }, 500)
+                }
+            },
+            // 上一张// 下一张
+            prevIndex() {
+                this.indexTip = false;
+                this.index <= 0 ? this.index = (this.urlsObj.length - 1) : this.index--;
+                if (this.autoplay) {
+                    this.autoplayGo();
+                }
+            },
+            nextIndex() {
+                this.indexTip = false;
+                this.index >= (this.urlsObj.length - 1) ? this.index = 0 : this.index++;
+                if (this.myLoop) {
+                    if (this.index == this.urlsObj.length - 1) {
+                        let indexTime=setTimeout(() => {
+                        this.addIndex();
+                        clearTimeout(indexTime);
+                        indexTime=null
+                    }, 500)
+                    }
+                }
+                if (this.autoplay) {
+                    this.autoplayGo();
+                }
+            },
+            // 点击索引
+            indexClick(i) {
+                this.indexTip = true;
+                this.index = i;
+                if (this.autoplay) {
+                    this.autoplayGo();
+                }
+            },
+            autoplayGo() {
+                if (this.timer) {
+                    clearInterval(this.timer);
+                    this.timer = null;
+                }
+                if (this.timeout) {
+                    clearTimeout(this.timeout);
+                    return this.timeout = null;
+                }
+                this.timeout = setTimeout(() => {
+                    this.timer = setInterval(() => {
+                        this.addIndex();
+                    }, 1000);
+                    clearTimeout(this.timeout);
+                    this.timeout = null;
+                }, 3000)
+            },
+        },
+        mounted() {
+            // 渲染后，定义了自动播放则触发自动播放的方法
+            if (this.autoplay) {
+                this.autoplayGo();
+            }
+        },
+    }
+    Vue.component("swiper", swiper)
+    new Vue({
+        el: "#app",
+        data: {
+            urls: [
+                "http://img.netbian.com/file/newc/5b25484de6c5c67900b5d430b1c3aade.jpg",
+                "http://img.netbian.com/file/newc/58d7cfaddbf958c45b41c2439045859c.jpg",
+                "http://img.netbian.com/file/newc/dc6b576686de793f4ba13f5e9191af57.jpg",
+                "http://img.netbian.com/file/newc/f4ec88c970de1786e9799134a5a142f2.jpg",
+            ],
+        },
+
+    })
+</script>
+
+</html>
