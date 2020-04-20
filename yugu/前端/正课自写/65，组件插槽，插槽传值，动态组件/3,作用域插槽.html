@@ -1,0 +1,70 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:20:11:42 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com>
+            <!-- 如果组件内部提供了slot传值，那么使用这个数组时就可以在组件标签内部使用v-slot：xxx=yyy的形式使用这个值，其中xxx是slot内部的name，yyy是传值的对象，slot标签所传的值包含在yyy对象中 -->
+            <template v-slot:info="userInfo">
+                <p>
+                    {{userInfo.userObj.name}}
+                </p>
+            </template>
+            <!-- v-slot:可以缩写为# -->
+        </com>
+        <com>
+            <!-- 如果组件内部提供了slot传值，那么使用这个数组时就可以在组件标签内部使用v-slot：xxx=yyy的形式使用这个值，其中xxx是slot内部的name，yyy是传值的对象，slot标签所传的值包含在yyy对象中 -->
+            <!-- v-slot:可以缩写为# -->
+            <template #info="userInfo">
+                <p>
+                    {{userInfo.userObj.name}}
+                </p>
+            </template>
+            
+        </com>
+        <com>
+            <!-- v-slot:可以缩写为# -->
+            <template #info="{userObj}">
+                <p>
+                    {{userObj.name}}
+                </p>
+            </template>
+            
+        </com>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="com">
+    <div>
+        <p>
+            <!-- slot标签可以通过v-bind属性绑定，所绑定的数据可以在父组件中的本组件标签的内容中使用 -->
+            <slot name="info" :userObj="user"></slot>
+        </p>
+    </div>
+</script>
+<script>
+    Vue.component("com",{
+        template:"#com",
+        data() {
+            return {
+                user:{
+                name:"yugu",
+                nickname:"是鱼骨啊"
+            }
+            }
+        },
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            
+        }
+    });
+</script>
+</html>

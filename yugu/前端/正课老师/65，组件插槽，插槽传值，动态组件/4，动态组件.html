@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="showCom='comA'">组件A</button>
+            <button @click="showCom='comB'">组件B</button>
+        </div>
+
+        <!-- <div>
+            <com-a v-show="showCom=='a'"></com-a>
+            <com-b v-show="showCom=='b'"></com-b>
+        </div> -->
+
+        <!-- component标签是动态组件标签，通过is属性设置具体显示为哪个组件，值是某个组件的名字 -->
+        <!-- 当is属性绑定了某个数据，当这个数据在多个组件名之间切换时，就能实现组件的切换 -->
+
+
+        <div>
+            <!-- 动态组件默认切换时每次都是销毁旧的创建新的，使用keep-alive标签包裹之后，可以实现切出的组件不销毁，再次切入时还显示原来的组件 -->
+            <keep-alive>
+                <component :is="showCom"></component>
+            </keep-alive>
+        </div>
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+
+<script>
+
+    Vue.component("comA",{
+        template:"<div>组件A<input></div>",
+        created(){
+            console.log("组件A创建了");
+        },
+        destroyed(){
+            console.log("组件A销毁了");
+        }
+    });
+
+    Vue.component("comB",{
+        template:"<div>组件B</div>",
+        created(){
+            console.log("组件B创建了");
+        },
+        destroyed(){
+            console.log("组件B销毁了");
+        }
+    });
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            showCom:"comA"
+        }
+    })
+</script>
+
+</html>

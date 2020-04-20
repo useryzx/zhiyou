@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <com>
+            <!-- 如果插槽传递的数据是多部分的，在子组件的模板中需要显示在不同的地方，那么就要把每一部分内容单独放到一个标签中，并为这个标签设置slot属性slot=xxx，然后在子组件模板中要显示这个内容的slot标签设置name=xxx -->
+            <span slot="title">{{t1}}</span>
+
+            <!-- 如果某个插槽内容仅仅需要传递数据，不需要传递包裹数据的标签，那么可以使用template标签，在插槽数据渲染时template标签会被删除，在template标签中 slot="xxx" 可以写为v-slot:xxx -->
+            <template v-slot:subtitle>{{t2}}</template>
+
+            <!-- 未设置slot属性的内容，会被显示在匿名插槽中 -->
+            <span>{{content}}</span>
+        </com>
+    </div>
+
+
+</body>
+
+<script src="vue.js"></script>
+
+<script type="text/html" id="com">
+    <div>
+        <h1>
+            <slot name="title"></slot>
+        </h1>
+        <h3>
+            <slot name="subtitle"></slot>
+        </h3>
+        <p>
+            <slot></slot>
+        </p>
+    </div>
+</script>
+
+<script>
+
+    Vue.component("com",{
+        template:"#com",
+        mounted(){
+            console.log(this);
+        }
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            t1:"大标题",
+            t2:"子标题",
+            content:"这里是正文"
+        }
+    });
+
+
+</script>
+
+</html>

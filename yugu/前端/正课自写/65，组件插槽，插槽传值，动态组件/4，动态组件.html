@@ -1,0 +1,57 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:20:14:31 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button @click="showCom='comA'">组件A</button>
+            <button @click="showCom='comB'">组件B</button>
+        </div>
+        <!-- <div>
+            <com-a v-if="showCom=='a'"></com-a>
+            <com-b v-if="showCom=='b'"></com-b>
+        </div> -->
+        <div>
+            <!-- component标签是动态的，通过is属性设置具体的显示为哪个组件，值是某个组件的名字 -->
+            <!-- 当is属性绑定了某个数据，当这个数据在多个组件名之间切换时，就能实现组件的切换 -->
+            <!-- 动态组建默认切换时每次都是销毁旧的创建新的，使用keepalive标签包裹以后可以实现切出的组件不销毁，再次切入是还显示原来的组件-->
+            <keep-alive>
+                <component :is="showCom"></component>
+            </keep-alive>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component("comA",{
+        template:"<div>组件A</div>",
+        mounted() {
+            console.log("aaaaaaa")
+        },
+        destroyed() {
+            console.log(111)
+        },
+    })
+    Vue.component("comB",{
+        template:"<div>组件B</div>",
+        mounted() {
+            console.log("bbb")
+        },
+        destroyed() {
+            console.log(222)
+        },
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            showCom:"comA",
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 组件标签中的内容默认情况下会被忽略，不会自动显示在组件的模板中。 -->
+        <!-- 如果需要在组件的模板中显示组件标签的内容，则必须在模板中使用slot标签指定显示的位置。 -->
+        <com>
+            <b>组件标签的内容</b>
+        </com>
+
+        <com>
+            这种向子组件传递html数据的方式叫做插槽传值
+        </com>
+
+        <!-- 标签插槽的传值也可以绑定父组件中的数据 -->
+        <com>
+            {{t1}}
+        </com>
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script type="text/html" id="com">
+    <div>
+        <h1>com组件</h1>
+        <p>
+            <slot></slot>
+        </p>
+    </div>
+
+</script>
+
+<script>
+
+    Vue.component("com",{
+        template:"#com",
+        mounted(){
+            // 在组件的方法中，可以通过this.$slots访问组件的插槽数据。
+            console.log(this.$slots);
+        },
+        data(){
+            return {
+                t2:"com组件的数据"
+            }
+        }
+    });
+
+    new Vue({
+        el:"#app",
+        data:{
+            t1:"根组件数据"
+        }
+    });
+</script>
+</html>

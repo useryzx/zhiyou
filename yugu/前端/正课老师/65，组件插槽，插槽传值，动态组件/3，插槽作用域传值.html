@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+        <com>
+            <!-- 如果组件内部提供了slot传值，那么使用这个组件时就可以在组件标签内部使用v-lost:xxx="yyy"的形式使用这个传值，其中xxx是slot的name,yyy是传值的对象，slot标签所传的值都包含在yyy对象中 -->
+            <template v-slot:text="o">
+                <p>{{o.t1}}</p>
+                <p>{{o.n1}}</p>
+            </template>
+        </com>
+
+        <com>
+            <!-- v-slot:指令可以缩写为# -->
+            <!-- v-slot指令的值本质上是一个形参名字，所以可以进行解构 -->
+            <template #text="{t1,n1}">
+                <p>{{t1}}</p>
+                <p>{{n1}}</p>
+            </template>
+        </com>
+
+
+
+    </div>
+</body>
+<script src="vue.js"></script>
+
+<script type="text/html" id="com">
+    <div>
+        <!-- slot标签可以通过v-bind指令进行数据绑定，所绑定的数据可以在父组件中的本组件标签的内容中使用 -->
+        <slot name="text" :t1="txt" :n1="num"></slot>
+    </div>
+</script>
+
+<script>
+    Vue.component("com",{
+        template:"#com",
+
+        data(){
+            return {
+                txt:"hello",
+                num:10
+            }
+        },
+        mounted(){
+            console.log(this);
+        }
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            
+        }
+
+    })
+</script>
+</html>

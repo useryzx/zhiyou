@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addBtnClick()">+</button>
+    <h1>{{num}}</h1>
+    <p>{{num}}</p>
+
+
+</body>
+
+<script>
+    console.log(document);
+    // 使用vue框架的页面在启动时，vue会对根组件的模板进行扫描，从而创建出虚拟DOM，页面首次渲染之后，当页面数据发生更新，vue就会现在虚拟DOM中进行数据修改导致的渲染，然后将重新渲染之后的虚拟DOM一次性同步到浏览器的真实DOM中。
+
+
+    // vue组件对象在创建时，会把data(props,computed)对象中的每一条数据都改造为setget属性添加到组件对象上，从而监视这个数据的变化，一旦数据变化这个属性的set方法就会调用，在set方法中vue添加了重新渲染页面的代码（仅仅是重新渲染页面中使用这个数据的部分，不是全部重新渲染）。
+
+
+    // var num = 99;
+
+    (function(){
+        var n = 99;
+        Object.defineProperty(window,"num",{
+            set(v){
+                n = v;
+                render();
+            },
+            get(){
+                return n;
+            }
+        })
+    })();
+
+    var template = document.body.innerHTML;
+
+    function render(){
+        var htmlStr = template.replace(/\{\{num\}\}/g,num);
+
+        document.body.innerHTML = htmlStr;
+    }
+
+
+    render();
+
+    function addBtnClick(){
+        num++;
+    }
+
+
+</script>
+
+</html>

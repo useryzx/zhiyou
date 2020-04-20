@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+
+        <!-- 如果某个自定义指令名字为xxx，那么使用时要写成 v-xxx -->
+        <h1 v-myif="flag" style="color: red">根组件1</h1>
+        <h1 v-show="flag" style="display: inline-block">根组件2</h1>
+
+        <!-- 如果在组件标签上使用自定义指令，指令会被转移到组件的根标签上 -->
+        <!-- <com v-myif></com> -->
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script>
+
+    Vue.component("com",{
+        template:"<div>com组件</div>"
+    })
+
+    // Vue.directive全局注册一个自定义指令，第一个参数是指令名字，第二个参数是指令的配置对象。
+    Vue.directive("myif",{
+        // 配置对象中的inserted方法，当本指令被插入到某个标签上时调用
+        inserted(el,dir){
+            // console.log("检测到myif指令出现");
+            // console.log(arguments);
+            if(dir.value){
+
+            }else{
+                el.style.display = "none";
+            }
+        },
+        update(el,dir){
+            console.log(arguments);
+            if(dir.value!=dir.oldValue){
+                if(dir.value){
+                    // el.style.display = "block";
+                    // el.style = null;
+                    // delete el.style.display;
+                    console.log(el.style.cssText);
+                    let cssArr = el.style.cssText.split(";");
+                    let ind = cssArr.findIndex(e=>{
+                        return e.indexOf("display")>0;
+                    });
+                    cssArr.splice(ind,1);
+                    console.log(cssArr.join(";"));
+                    el.style.cssText = cssArr.join(";");
+                    
+                }else{
+                    el.style.display = "none";
+                }
+            }
+        }
+    })
+
+    new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    });
+
+</script>
+
+
+</html>
