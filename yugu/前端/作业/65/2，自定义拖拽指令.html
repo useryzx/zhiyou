@@ -1,0 +1,94 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:21:19:22 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            background: linear-gradient(to right, #a8edea, #fed6e3);
+            width: 120px;
+            height: 120px;
+            user-select: none;
+        }
+
+        span {
+            display: inline-block;
+            user-select: none;
+            border: 1px saddlebrown solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="box" v-drag="456"></div>
+        <span v-drag="123">自定义vue拖拽指令</span>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    // 注册自定义指令
+    const drag = {
+        inserted(el, dir) {
+            el.style.position = "relative";
+            el.draggable = "true";
+            let ofL = null;
+            let ofT = null;
+            let elx = null;
+            let ely = null;
+            let i = 1;
+            // 计算坐标
+            function calc(e) {
+                el.style.left = e.clientX - ofL - elx + "px";
+                el.style.top = e.clientY - ofT - ely + "px";
+            }
+            el.ondragenter = e => {
+                e.preventDefault();
+            }
+            el.ondragover = e => {
+                e.preventDefault();
+            }
+            el.ondragstart = e => {
+                if (i == 1) {
+                    // 记录el的相对于非static的属性
+                    elx = el.offsetLeft;
+                    ely = el.offsetTop;
+                    // 记录鼠标相对与元素边缘的值
+
+                }
+                ofL = e.offsetX;
+                ofT = e.offsetY;
+                // 记录点击次数
+                i++;
+            }
+            el.ondrag = function (e) {
+                // 计算得出元素的相对位置
+                calc(e);
+            };
+            el.ondragend = function (e) {
+                // 计算得出元素的相对位置
+                calc(e);
+            };
+            el.ondrop = e => {
+                // 放下事件
+                console.log("drop事件");
+                // 计算得出元素的相对位置
+                calc(e);
+            }
+        }
+    }
+
+    Vue.directive("drag", drag)
+    new Vue({
+        el: "#app",
+        data: {
+
+        }
+    });
+</script>
+
+</html>

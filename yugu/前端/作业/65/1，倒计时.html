@@ -1,0 +1,102 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:20:17:34 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .timer-root {
+            display: inline-block;
+            background: linear-gradient(to right, #a8edea, #fed6e3);
+        }
+
+        .timer-time,
+        span {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="isShow">
+        <br><br><br>
+        <timer @time-up="timeUp" v-if="isShow" :target="target"></timer>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="timer">
+    <div class="timer-root">
+        <span class="timer-time">{{hour}}</span>
+        <span>:</span>
+        <span class="timer-time">{{minute}}</span>
+        <span>:</span>
+        <span class="timer-time">{{second}}</span>
+
+    </div>
+</script>
+<script>
+    Vue.component("timer", {
+        template: "#timer",
+        data() {
+            return {
+                timerIterval: null,
+                remainTime: null,
+            }
+        },
+        props: ["target"],
+        mounted() {
+            // 获得当前时间1587377511667
+            let nowTime = Date.now();
+            console.log(nowTime);
+            // 获取剩余的时间
+            this.remainTime =  this.target - nowTime;
+            // 重复
+            this.timerIterval = setInterval(() => {
+                this.remainTime -= 1000;
+                // 时间到清除定时器
+                if (this.remainTime <= 0) {
+                    // 发射时间到的事件
+                    this.$emit("time-up");
+                    clearInterval(this.timerIterval);
+                    this.timerIterval = null;
+                }
+            }, 1000)
+        },
+        computed: {
+            hour() {
+                // 60分*60秒*1000变成毫秒
+                let differHour = Math.floor(this.remainTime / 3600000);
+                return differHour >= 10 ? differHour : "0" + differHour;
+            },
+            minute() {
+                // 先进行取余找到相差的分钟数，在将分钟数拿到
+                let differMinute = Math.floor(this.remainTime % 3600000 / 60000);
+                return differMinute >= 10 ? differMinute : "0" + differMinute;
+            },
+            second() {
+                // 先进行取余找到相差的毫秒数，
+                let differSecond = Math.floor(this.remainTime % 60000 / 1000);
+                return differSecond >= 10 ? differSecond : "0" + differSecond;
+            },
+        },
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            target: new Date(2020, 3, 21, 11, 0, 0).getTime(),
+            isShow: true,
+        },
+        methods: {
+            timeUp() {
+                this.isShow = false;
+                alert("倒计时结束了")
+            }
+        },
+    });
+</script>
+
+</html>
