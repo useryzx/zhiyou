@@ -1,0 +1,108 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:21:09:29 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        /*离场动画开始瞬间的元素样式*/
+        .v-leave {
+            opacity: 1;
+        }
+
+        /* 离场动画过程中元素的样式 */
+        .v-leave-active {
+            transition: all 1s ease;
+        }
+
+        /* 离场动画结束的样式 */
+        .v-leave-to {
+            opacity: 0;
+        }
+
+        /*入场动画开始瞬间的元素样式*/
+        .v-enter {
+            opacity: 0;
+        }
+
+        /* 入场动画过程中元素的样式 */
+        .v-enter-active {
+            transition: all 1s ease;
+        }
+
+        /* 入场动画结束的样式 */
+        .v-enter-to {
+            opacity: 1;
+        }
+
+        .item {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .item2 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        /* v-前缀的class是为默认transition标签设置动画样式，有name属性的transition标签设置不同的name */
+        .slide-leave,
+        .slide-enter-to {
+            height: 100px;
+        }
+
+        .slide-leave-active,
+        .slide-enter-active {
+            transition: all 1s;
+        }
+
+        .slide-leave-to,
+        .slide-enter {
+            height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+        <br>
+        <br>
+        <!-- <transition>
+            <div id="box" v-if="flag"></div>
+        </transition> -->
+        <!-- 如果页面中多个transition标签执行不同的动画，那么需要为这些不同的transition标签设置不同的name -->
+        <!-- <transition name="slide">
+            <div class="item" v-show="flag"></div>
+        </transition>
+        <hr> -->
+
+        <!-- ---------------------------------------- -->
+
+
+        <transition-group>
+            <div v-show="flag" class="item" key="1">1111</div>
+            <div v-show="!flag" class="item2" key="2">2222</div>
+        </transition-group>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            flag: true,
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            overflow: hidden;
+        }
+
+        .item2{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+
+        /* 离场动画开始时(开始的瞬间)元素的样式 */
+        .v-leave{
+            opacity: 1;
+        }
+
+        /* 离场动画过程中元素的样式 */
+        .v-leave-active{
+            transition: all 2s;
+            position: absolute;
+        }
+
+        /* 离场动画结束时元素的样式 */
+        .v-leave-to{
+            opacity: 0;
+        }
+
+
+        /* 入场动画开始时的样式 */
+        .v-enter{
+            opacity: 0;
+        }
+
+        /* 入场动画过程中的样式 */
+        .v-enter-active{
+            transition: opacity 2s;
+            position: absolute;
+        }
+
+        /* 入场动画结束时元素的样式 */
+        .v-enter-to{
+            opacity: 1;
+        }
+
+        /* v-前缀的class是为默认transition标签设置动画样式 */
+        /* 有name属性的transtion标签需要使用name属性值作为前缀 */
+        .slide-leave,.slide-enter-to{
+            height: 100px;
+        }
+        .slide-leave-active,.slide-enter-active{
+            transition: all 1s;
+            
+        }
+        .slide-leave-to,.slide-enter{
+            height: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+
+        <!-- transition标签可以为条件渲染的标签执行切换时添加动画 -->
+        <!-- transition标签必须配合6个class使用，用于指定动画的方式 -->
+        <transition>
+            <!-- <div v-show="flag" id="box"></div> -->
+        </transition>
+        
+        
+        <!-- 如果页面中多个trnasition标签要执行不同的动画方式，那么需要为这些transition标签设置不同的name属性 -->
+        <transition name="slide">
+            <!-- <div v-show="flag" class="item">asd asdr wrtg dsfg sdfg dfger gsg sdfg sdfgewr gdfg dsfg ds</div> -->
+        </transition>
+
+
+        <hr>
+
+
+        <!-- transition标签中只能包含一个子元素，如果是多个子元素需要使用transition-group标签，transition-group标签的子元素必须包含key属性 -->
+        <transition-group>
+            <div key="1" v-show="flag" class="item">11111</div>
+            <div key="2" v-show="!flag" class="item2">22222</div>
+        </transition-group>
+
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        }
+    });
+</script>
+
+</html>

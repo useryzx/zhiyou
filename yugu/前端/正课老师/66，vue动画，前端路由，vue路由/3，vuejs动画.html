@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="flag">
+
+
+        <!-- transition标签还可以使用js动画，需要绑定leave和enter事件，在leave事件函数中执行离场动画，在enter事件函数中执行入场动画 -->
+        <transition
+            @leave="boxLeave"
+            @enter="boxEnter"
+        >
+            <div id="box" v-show="flag"></div>
+        </transition>
+        
+
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            flag:true
+        },
+        methods:{
+            boxLeave(el,cb){
+                let opacity = 1;
+                // 动画事件函数中会传递两个参数，分别是要做动画的元素和动画结束时需要调用的回调函数。
+                function update(){
+                    opacity-=0.03;
+                    el.style.opacity = opacity;
+
+                    if(opacity>=0){
+                        requestAnimationFrame(update);
+                    }else{
+                        cb();
+                    }
+                }
+                update();
+
+            },
+            boxEnter(el,cb){
+                let opacity = 0;
+                // 动画事件函数中会传递两个参数，分别是要做动画的元素和动画结束时需要调用的回调函数。
+                function update(){
+                    opacity+=0.03;
+                    el.style.opacity = opacity;
+
+                    if(opacity<=1){
+                        requestAnimationFrame(update);
+                    }else{
+                        cb();
+                    }
+                }
+                update();
+            }
+        }
+    });
+
+
+</script>
+</html>

@@ -1,0 +1,217 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:21:23:31 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>好友列表</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            text-align: center;
+            background-color: aqua;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .friend-list-header {
+            width: 100%;
+            padding: 10px 10px;
+            box-sizing: border-box;
+            background-color: #ccc;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .friend-list-header-left,
+        .friend-list-header-right {
+            font-size: 20px;
+        }
+
+        .friend-list-content {
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #fff;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 class="title">好友列表</h1>
+        <friend-list v-for="(v, i) in friend" :frdlist="v" :key="i"></friend-list>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script type="text/html" id="friend-list">
+    <div class="friend-list-root">
+        <div class="friend-list-header" @click="listShow">
+            <div class="friend-list-header-left">
+                <span :style="arrowRotate">&gt;</span>
+                <span>{{frdlist.name}}</span>
+            </div>
+            <div class="friend-list-header-right">
+                <span>{{onlineCount}}/{{categoryShow.length}}</span>
+            </div>
+        </div>
+        <!-- 使用v-show会出现display:none的问题导致不能找到元素内容的高度 -->
+        <div class="friend-list-content" ref="content" :style="contentStyle">
+            <template v-for="(v, i) in categoryShow">
+                <h3 :style="{color: v.online?'orange' : 'gray'}">{{v.name}}</h3>
+                <p :style="{color: v.online?'orange' : 'gray'}">{{v.sign}}</p>
+            </template>
+        </div>
+    </div>
+</script>
+<script src="vue.js"></script>
+<script>
+    const friendList = {
+        template: "#friend-list",
+        props: ["frdlist"],
+        data() {
+            return {
+                flag: false,
+                // 元素的初始高度
+                height: null,
+                times: true,
+            }
+        },
+        methods: {
+            listShow() {
+                this.flag = !this.flag;
+            }
+        },
+        computed: {
+            // 在线在前
+            categoryShow() {
+                let showType = [];
+                this.frdlist.list.forEach(v => {
+                    if (v.online) {
+                        showType.push(v);
+                    }
+                })
+                this.frdlist.list.forEach(v => {
+                    if (!v.online) {
+                        showType.push(v);
+                    }
+                })
+                return showType;
+            },
+            // 在线人数
+            onlineCount() {
+                let count = 0;
+                this.categoryShow.forEach((el) => {
+                    if (el.online == true) {
+                        count++;
+                    }
+                });
+                return count;
+            },
+            // 箭头旋转
+            arrowRotate() {
+                let num = null;
+                this.flag ? num = 90 : num = 0;
+                return {
+                    display: "inline-block",
+                    transition: "transform 0.3s ease",
+                    transform: "rotate(" + num + "deg)"
+                }
+            },
+            // 内容的动画
+            contentStyle() {
+                // 渲染完成先隐藏
+                if (!this.times) {
+                    if (!this.flag) {
+                        return {
+                            transition: "all 0.3s",
+                            height: 0
+                        }
+                    }
+                    return {
+                        transition: "all 0.3s",
+                        height: this.height+"px"
+                    }
+                }
+            }
+        },
+        mounted() {
+            if (this.times) {
+                this.height = this.$refs.content.clientHeight;
+                this.times = false;
+            }
+        },
+
+    };
+    Vue.component("friend-list", friendList);
+    new Vue({
+        el: "#app",
+        data: {
+            friend: [{
+                name: "同学",
+                list: [{
+                    name: "小明",
+                    sign: "个性签名",
+                    online: true
+                }, {
+                    name: "李磊",
+                    sign: "what`s your name?",
+                    online: true
+                }, {
+                    name: "韩梅梅",
+                    sign: "how are you",
+                    online: true
+                }, ]
+            }, {
+                name: "家人",
+                list: [{
+                    name: "爸爸",
+                    sign: "个性签名",
+                    online: true
+                }, {
+                    name: "妈妈",
+                    sign: "what`s your name?",
+                    online: false
+                }, {
+                    name: "爷爷",
+                    sign: "how are you",
+                    online: false
+                }, {
+                    name: "奶奶",
+                    sign: "how are you",
+                    online: true
+                }, ]
+            }, {
+                name: "朋友",
+                list: [{
+                    name: "马云",
+                    sign: "买买买",
+                    online: true
+                }, {
+                    name: "马化腾",
+                    sign: "what`s your name?",
+                    online: true
+                }, {
+                    name: "李彦宏",
+                    sign: "how are you",
+                    online: true
+                }, {
+                    name: "习近平",
+                    sign: "how are you",
+                    online: false
+                }, ]
+            }, ],
+        }
+    });
+</script>
+
+</html>

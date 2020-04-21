@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#user">用户中心</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+
+    </div>
+</body>
+
+<script type="text/html" id="home">
+    <h1>首页</h1>
+    <p>欢迎来到。。。。。。</p>
+</script>
+
+<script type="text/html" id="user">
+    <h1>用户中心</h1>
+    <p>注册和登录</p>
+</script>
+
+<script>
+    // 路由：寻找路径，在网站开发中，指的是根据一个url地址找到与之对应的资源。
+    // 在传统的网站开发中，路由是由后端进行的，前端将请求的url发送到服务器，服务器根据url地址找到这个地址对应的资源并返回。
+
+
+    // url中可以分为6部分：协议名，域名(IP)，端口号，路径，参数，哈希值。
+    // 当前端向服务器发送请求时，url中的hash不会向服务器发送。因为hash值是在前端页面使用的，它用于标记前端页面的路由。
+
+    // hash最初可以用作页面的页内滚动跳转，跳转到某个元素的位置。
+    // H5之后，浏览器对hash做了更高级的支持，能够监听hash变化，从而实现前端根据url的hasj值进行路由的功能。
+
+    
+    // 当浏览器页面的url仅有hash变化时，页面不会发生跳转。仅仅用于匹配前端路由。
+
+
+
+    const main = document.getElementById("main");
+
+    // window.onhashchange事件，当页面hash值发生变化时触发，用于监听页面hash值，实现前端路由。
+    window.onhashchange = route;
+
+    function route(){
+        if(location.hash=="#home"){
+            main.innerHTML = document.getElementById("home").innerHTML;
+        }else if(location.hash=="#user"){
+            main.innerHTML = document.getElementById("user").innerHTML;
+        }
+    }
+
+    route();
+
+</script>
+
+
+</html>

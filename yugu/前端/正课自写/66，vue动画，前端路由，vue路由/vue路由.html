@@ -1,0 +1,116 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:21:20:20 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="btnClick">首页</button>
+        <ul>
+            <li>
+                <router-link to="/home">首页</router-link>
+            </li>
+            <li>
+                <router-link to="/user">用户中心</router-link>
+            </li>
+        </ul>
+        <!-- router-view是路由器视图容器，与当前页面地址匹配的组件会显示在这个容器中 -->
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<script>
+    let home = {
+        template: "<div><h1>首页</h1></div>"
+    }
+    let user = {
+        template: "<div><h2>用户中心</h2></div>"
+    }
+    let notFound = {
+        template: "<div><h2>404</h2></div>"
+    }
+    // vue-router提供了页面地址和组件的对应关系，可以实现当页面地址变化时显示不同的组件
+    // 这种在路由规则中使用的组件，整个组件就是一个页面，这种组件叫做页面级组件。
+    // 创建路由配置对象；
+    const router = new VueRouter({
+        // routes用于声明路由规则列表
+        routes: [
+            // 每条规则是一个对象，path表示路径，component是与这个路径对应的组件
+            {
+                path: "/home",
+                component: home
+            },
+            {
+                path: "/user",
+                component: user
+            },
+            {
+                path: "/",
+                // 路由规则中除了可以指定路径对应的组件，还可以指定重定向
+                redirect: "/home"
+            },
+            {
+                // *可以匹配所有路径，可用于设置404页面，但是要写在最后
+                path: "*",
+                component: notFound
+            }
+        ],
+        // vue路由支持两种路由模式，hash和history，默认是hash
+        // hash模式依赖的是hashchange事件，在事件函数中根据hash值找到对应的组件显示
+        // history模式是在请求事件中，获取url地址的路径，如果是路由规则中存在的路径就显示与之匹配的组件
+        mode: "hash"
+    })
+
+    // // 可以给路由配置对像添加全局路由守卫（监听跳转事件）
+    // router.beforeEach((to, from, next) => {
+    //     console.log(from);
+    //     console.log(to);
+        
+    //     next();
+    //     // to and from are both route objects. must call `next`.
+    // })
+    new Vue({
+        el: "#app",
+        data: {
+
+        },
+        
+        // 将路由配置对像注册到根组件中
+        router,
+        methods: {
+            btnClick(){
+                // 路由对象的push方法可以设置跳转到某个路径
+                this.$router.push("/home")
+            }
+        },
+        // mounted() {
+        //     // 页面使用了vue路由之后，在任何组件方法中，都可以this.$router访问路由对象
+        //     console.log(this.$router)
+        //     // 也可以在某个组件的方法中添加路由守卫
+        //     this.$router.beforeEach((to,from,next)=>{
+
+        //     })
+        //     // this.$route是当前页面地址所匹配到的路由规则
+        //     console.log(this.$route)
+        // },
+        // watch: {
+        //     // 组件凡是set/get属性，都可以使用监听器监听
+        //     $route(after,before){
+        //         console.log(after);
+        //         console.log(before);
+                
+        //     }
+        // },
+    });
+</script>
+
+</html>
