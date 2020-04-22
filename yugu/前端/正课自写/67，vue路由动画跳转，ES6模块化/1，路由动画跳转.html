@@ -1,0 +1,218 @@
+<!-- # __author__: yuguaa  -->
+<!-- # __time__: 2020:04:22:14:21 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #tabbar {
+            /* padding-top: 4px; */
+            display: flex;
+            justify-content: space-between;
+            background-color: #eeeeee;
+            border-top: 1px solid #999;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            height: 60px;
+        }
+
+        .tabbar-item-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .tabbar-item-title {
+            margin: 4px 0;
+            font-size: 12px;
+            color: #bfbfbf;
+        }
+
+        .tabbar-item {
+            text-align: center;
+            flex-grow: 1;
+            text-decoration: none;
+        }
+
+        .home-header {
+            margin: 0;
+            height: 44px;
+            background-color: #1296db;
+            text-align: center;
+            line-height: 44px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .home-friend-item {
+            padding: 20px 8px;
+            border-bottom: 1px solid #bfbfbf;
+        }
+
+        /* 解决最后一个数据被tabbar盖住的问题 */
+        /* .bottom-padding{
+            padding-bottom: 60px;
+        } */
+        /* 让div滚动而不是让整个页面滚动 */
+        .r-view {
+            height: calc(100vh - 60px);
+            overflow-y: scroll;
+        }
+
+        .chat-navbar {
+            height: 44px;
+            background-color: #1296db;
+            text-align: center;
+            line-height: 44px;
+            font-size: 22px;
+            color: #fff;
+            position: relative;
+        }
+
+        .chat-back-btn {
+            font-size: 30px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 匹配到的路由组件会显示在上面 -->
+        <!-- 添加到router上的非传值属性，会被转移到所匹配的页面组件根标签上 -->
+        <transition :name="animateStyle" ref="transition">
+            <router-view class="r-view"></router-view>
+        </transition>
+        <div id="tabbar">
+            <router-link to="/home" class="tabbar-item">
+                <img src="home-h.png" class="tabbar-item-icon" v-if="currentPage=='/home'">
+                <img src="home.png" class="tabbar-item-icon" v-else>
+                <p class="tabbar-item-title" :style="{color:currentPage=='/home'?'#1296db':''}">首页</p>
+            </router-link>
+            <router-link to="/find" class="tabbar-item">
+                <img :src="currentPage=='/find'?'find-h.png':'find.png'" class="tabbar-item-icon">
+                <p class="tabbar-item-title" :style="{color:currentPage=='/find'?'#1296db':''}">发现</p>
+            </router-link>
+            <router-link to="/setting" class="tabbar-item">
+                <img :src="currentPage=='/setting'?'setting-h.png':'setting.png'" class="tabbar-item-icon">
+                <p class="tabbar-item-title" :style="{color:currentPage=='/setting'?'#1296db':''}">设置</p>
+            </router-link>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<script type="text/html" id="home">
+    <div>
+        <h1 class="home-header">首页</h1>
+        <div>
+            <div class="home-friend-item" v-for="(f, i) in friends" :key="i" @click="itemClick(f)">{{f}}</div>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="chat">
+    <div>
+        <div class="chat-navbar">
+            <div class="chat-back-btn" @click="back">&lt;</div>
+            与{{fname}}聊天中
+        </div>
+    </div>
+</script>
+<script>
+    const home = {
+        template: "#home",
+        data() {
+            return {
+                friends: ["张三", "李四", "王二", "麻子", "张三", "李四", "王二", "麻子", "张三", "李四", "王二", "麻子", "张三", "李四", "王二",
+                    "麻子"
+                ],
+            }
+        },
+        methods: {
+            itemClick(f) {
+                // 当使用vue路由进行页面组件切换时，可以在path之后添加query参数，然后在跳转目标页面可以通过this.$route.query获取跳转时所传递的参数
+                this.$router.push("/home/chat?name=" + f)
+            }
+        },
+    }
+    const find = {
+        template: "<div>发现</div>"
+    }
+    const setting = {
+        template: "<div>设置</div>"
+    }
+    const chat = {
+        template: "#chat",
+        mounted() {
+            this.fname = this.$route.query.name
+        },
+        data() {
+            return {
+                fname: ""
+            }
+        },
+        methods: {
+            back() {
+                this.$router.back();
+            }
+        },
+    }
+    const router = new VueRouter({
+        routes: [{
+                path: "/home",
+                component: home
+            },
+            {
+                path: "/find",
+                component: find
+            },
+            {
+                path: "/setting",
+                component: setting
+            },
+            {
+                path: "/home/chat",
+                name: "chat",
+                component: chat
+            },
+            {
+                path: "/",
+                redirect: "/home"
+            },
+        ]
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            currentPage: "",
+            animateStyle: ""
+        },
+        router,
+        mounted() {
+            this.currentPage = this.$route.path;
+            this.$router.afterEach((to, from) => {
+                // to and from are both route objects.
+                this.currentPage = to.path
+            })
+        },
+
+    });
+</script>
+
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+
+        #page-nav{
+            background-color: cyan;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 26px
+        }
+
+        .group-open-btn{
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 8px;
+            background-color: #cccccc;
+            border: solid 1px #999;
+            user-select: none;
+        }
+        .group-open-btn:hover{
+            background-color: #eeeeee;
+        }
+
+        .group-item{
+            border-bottom: solid 1px #666666;
+            padding: 0 8px;
+            /* height: 90px; */
+            box-sizing: border-box;
+        }
+
+        .group-list{
+            overflow: hidden;
+        }
+
+        .group-f-name{
+            display: inline-block;
+            margin: 10px 0 0 0;
+        }
+
+        /* .group-sign{
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        } */
+        .group-arrow{
+            display: inline-block;
+        }
+
+
+        /* .slide-leave,.slide-enter-to{
+            
+        } */
+        .slide-leave-active,.slide-enter-active{
+            transition: all 1s;
+        }
+        .slide-leave-to,.slide-enter{
+            height: 0 !important;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="page-nav">好友列表</div>
+
+        <group 
+            v-for="g,i in friends"
+            :data="g"
+            :key="i"
+        ></group>
+
+    </div>
+</body>
+
+<script src="vue.js"></script>
+
+<script type="text/html" id="group">
+    <div class="group-root">
+        <div class="group-open-btn" @click="isOpen = !isOpen">
+            <div>
+                
+                <span class="group-arrow" :style="arrowStyleObj">&gt;</span>
+
+                <span>{{data.name}}</span>
+            </div>
+            <div>{{onlineNum}}/{{data.list.length}}</div>
+        </div>
+
+        <transition :name="aniType">
+            <div 
+                class="group-list" 
+                v-show="isOpen"
+                ref="list"
+                :style="listHeight>0?{height:listHeight+'px'}:{}"
+            >
+                <div 
+                    class="group-item" 
+                    v-for="f in sortedList"
+                    :style="{color:f.online?'blcck':'grey'}"
+                >
+                    <h3 class="group-f-name">{{f.name}}</h3>
+                    <p class="group-sign">{{f.sign}}</p>
+                </div>
+            </div>
+        </transition>
+
+    </div>
+</script>
+
+<script>
+
+    let group = {
+        template:"#group",
+        props:["data"],
+        data(){
+            return {
+                isOpen:true,
+                listHeight:0,
+                aniType:""
+            }
+        },
+        mounted(){
+            // console.log(this.$refs.list.clientHeight);
+            // this.$refs.list.style.height = this.$refs.list.clientHeight+"px";
+            this.listHeight = this.$refs.list.clientHeight;
+
+            this.isOpen = false;
+
+            setTimeout(() => {
+                this.aniType = "slide";
+            }, 20);
+
+        },
+        computed:{
+            arrowStyleObj(){
+                if(this.isOpen){
+                    return {transform:"rotate(90deg)"}
+                }else{
+                    return {}
+                }
+            },
+            onlineNum(){
+                // let num = 0;
+                // for(let i = 0;i<this.data.list.length;i++){
+                //     if(this.data.list[i].online){
+                //         num++;
+                //     }
+                // }
+                // return num;
+                return this.data.list.filter(el=>{
+                    return el.online;
+                }).length;
+            },
+            sortedList(){
+                let arr = this.data.list.slice();
+                
+                arr.sort(el=>{
+                    return !el.online;
+                });
+
+                return arr;
+            }
+        }
+    }
+
+    new Vue({
+        el:"#app",
+        components:{
+            group
+        },
+        data:{
+            friends:[
+                {
+                    name:"同学",
+                    list:[
+                        {name:"小明",sign:"个性签名",online:true},
+                        {name:"李磊",sign:"what`s your name?",online:true},
+                        {name:"韩梅梅",sign:"how are you",online:true}
+                    ]
+                },
+                {
+                    name:"家人",
+                    list:[
+                        {name:"爸爸",sign:"个性签名",online:true},
+                        {name:"妈妈",sign:"what`s your name?",online:false},
+                        {name:"爷爷",sign:"how are you",online:false},
+                        {name:"奶奶",sign:"how are you",online:true}
+                    ]
+                },
+                {
+                    name:"朋友",
+                    list:[
+                        {name:"马云",sign:"买买买",online:true},
+                        {name:"马化腾",sign:"what`s your name?what`s your name?what`s your name?what`s your name?what`s your name?what`s your name?what`s your name?",online:true},
+                        {name:"李彦宏",sign:"how are you",online:true},
+                        {name:"习近平",sign:"how are you",online:false}
+                    ]
+                },
+            ]
+        }
+    });
+
+
+</script>
+
+</html>

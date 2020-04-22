@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #tabbar{
+            display: flex;
+            justify-content: space-between;
+            background-color: #f6f6f6;
+            border-top: solid 1px #999;
+
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding-top: 4px;
+            height: 60px;
+            box-sizing: border-box;
+        }
+
+        .tabbar-item{
+            flex-grow: 1;
+            text-align: center;
+            font-size: 0;
+            text-decoration: none;
+        }
+
+        .tabbar-item-icon{
+            width: 32px;
+            height: 32px;
+        }
+
+        .tabbar-item-title{
+            margin: 4px 0 8px 0;
+            font-size: 12px;
+            color: #cccccc;
+        }
+
+        .home-header{
+            margin: 0;
+            height: 44px;
+            background-color: aqua;
+            text-align: center;
+            line-height: 44px;
+            font-size: 22px;
+            color: white;
+        }
+
+        .home-friend-item{
+            padding: 20px 8px;
+            border-bottom: solid 1px #999;
+        }
+
+        /* .bottom-padding{
+            padding-bottom: 60px;
+        } */
+
+        .r-view{
+            height: calc(100vh - 60px);
+            overflow-y: scroll;
+        }
+
+        .chat-nav-bar{
+            height: 44px;
+            background-color: aqua;
+            color: white;
+            text-align: center;
+            line-height: 44px;
+            position: relative;
+        }
+
+        .chat-back-btn{
+            font-size: 30px;
+            width: 40;
+            height: 40;
+            text-align: center;
+            line-height: 40px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 添加到router上的属性，会被转移到所匹配到的页面组件的根标签上 -->
+        
+        <router-view class="r-view"></router-view>
+
+        <div id="tabbar">
+            <router-link to="/home" class="tabbar-item">
+                <img v-if="currentPage=='/home'" class="tabbar-item-icon" src="home-h.png">
+                <img v-else class="tabbar-item-icon" src="home.png">
+                <p class="tabbar-item-title">首页</p>
+            </router-link>
+            <router-link to="/find" class="tabbar-item">
+                <img 
+                    class="tabbar-item-icon" 
+                    :src="currentPage=='/find'?'find-h.png':'find.png'"
+                >
+                <p class="tabbar-item-title">发现</p>
+            </router-link>
+            <router-link to="/setting" class="tabbar-item">
+                <img 
+                    class="tabbar-item-icon" 
+                    :src="currentPage=='/setting'?'setting-h.png':'setting.png'"
+                >
+                <p class="tabbar-item-title">设置</p>
+            </router-link>
+        </div>
+        <!-- #1296db -->
+    </div>
+</body>
+<script src="vue.js"></script>
+<script src="vue-router.js"></script>
+
+<script type="text/html" id="home">
+    <div>
+        <h1 class="home-header">首页</h1>
+        <div>
+            <div 
+                class="home-friend-item" 
+                v-for="f in friends"
+                @click="itemClick(f)"
+            >
+                {{f}}
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="chat">
+    <div>
+        <div class="chat-nav-bar">
+            <div class="chat-back-btn" @click="back">◀</div>
+            与{{fname}}聊天
+        </div>
+    </div>
+</script>
+
+<script>
+    const home = {
+        template:"#home",
+        data(){
+            return {
+                friends:["张三","小明","大壮","张三","小明","大壮","张三","小明","大壮","张三","小明","大壮","张三","小明","大壮"]
+            }
+        },
+        methods:{
+            itemClick(f){
+                // 当使用vue路由进行页面组件切换时，可以在path之后添加query参数。
+                // 然后在跳转目标页面可以通过this.$route.query获取跳转时所传递的参数。
+                this.$router.push("/home/chat?name="+f);
+
+                // this.$router.push({
+                //     name:"chat",
+                //     params:{abc:123}
+                // });
+            }
+        }
+        
+    }
+
+    const find = {
+        template:"<div>发现</div>"
+    }
+
+    const setting = {
+        template:"<div>设置</div>"
+    }
+
+    const chat = {
+        template:"#chat",
+        data(){
+            return {
+                fname:""
+            }
+        },
+        mounted(){
+            // console.log(this.$route);
+            this.fname = this.$route.query.name
+        },
+        methods:{
+            back(){
+                this.$router.back();
+            }
+        }
+    }
+
+    
+    let router = new VueRouter({
+        routes:[
+            {path:"/home",component:home},
+            {path:"/find",component:find},
+            {path:"/setting",component:setting},
+            {path:"/",redirect:"/home"},
+            {path:"/home/chat",component:chat,name:"chat"}
+        ]
+    })
+
+
+    new Vue({
+        el:"#app",
+        data:{
+            currentPage:null
+        },
+        router,
+        mounted(){
+            // console.log(this.$route);
+            this.currentPage = this.$route.path;
+
+            this.$router.afterEach((to,from)=>{
+                this.currentPage = to.path;
+            });
+        }
+    });
+</script>
+
+</html>

@@ -15,20 +15,20 @@
 
         .title {
             text-align: center;
-            background-color: aqua;
+            background: linear-gradient(to right,#93a5cf, #e4efe9);
             margin: 0;
             padding: 10px 0;
         }
 
         .friend-list-header {
             width: 100%;
-            padding: 10px 10px;
+            padding: 10px 15px;
             box-sizing: border-box;
-            background-color: #ccc;
-            border-top: 1px solid white;
+            background-color: #e4efe9;
             border-bottom: 1px solid white;
             display: flex;
             justify-content: space-between;
+
         }
 
         .friend-list-header-left,
@@ -40,16 +40,19 @@
             overflow: hidden;
             width: 100%;
             box-sizing: border-box;
-            background-color: #fff;
-
+            background: #fff;
+            padding: 0 15px;
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <h1 class="title">好友列表</h1>
-        <friend-list v-for="(v, i) in friend" :frdlist="v" :key="i"></friend-list>
+        <main>
+            <h1 class="title">好友列表</h1>
+            <friend-list v-for="(v, i) in friend" :frdlist="v" :key="i"></friend-list>
+        </main>
+
     </div>
 </body>
 <script src="vue.js"></script>
@@ -69,6 +72,7 @@
             <template v-for="(v, i) in categoryShow">
                 <h3 :style="{color: v.online?'orange' : 'gray'}">{{v.name}}</h3>
                 <p :style="{color: v.online?'orange' : 'gray'}">{{v.sign}}</p>
+                <hr>
             </template>
         </div>
     </div>
@@ -139,7 +143,7 @@
                     }
                     return {
                         transition: "all 0.3s",
-                        height: this.height+"px"
+                        height: this.height + "px"
                     }
                 }
             }
