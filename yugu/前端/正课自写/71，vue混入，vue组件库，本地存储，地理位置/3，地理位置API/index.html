@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地理位置API</title>
+</head>
+
+<body>
+    <button onclick="getPositionClick()">点击获取地理位置</button>
+</body>
+<script>
+    function getPositionClick() {
+        // navigator.geolocation.getCurrentPosition获取用户的地理位置，第一个参数是成功的回调函数，第二个参数是获取失败的回调函数，第三个是配置对象。
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log(position);
+            // 经度
+            console.log(position.coords.longitude);
+            // 纬度
+            console.log(position.coords.latitude);
+        }, function (err) {
+            console.log(err);
+        });
+    }
+</script>
+
+</html>
