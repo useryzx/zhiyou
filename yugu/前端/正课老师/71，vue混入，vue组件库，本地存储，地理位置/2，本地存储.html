@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <label>num:</label>
+    <input type="text" id="num-field">
+    <br>
+    <button onclick="saveBtnClick()">存储num</button>
+    <br>
+
+    <button onclick="readBtnClick()">读取本地存储中的num</button>
+</body>
+
+<script>
+    let numField = document.getElementById("num-field");
+
+    function saveBtnClick(){
+        // localStorage，本地存储对象，h5新增的webAPI。
+        //本地存储中的数据是按照同源策略分别存储的，每个域下存储数据的容量一般为5MB左右。
+        // localStorage.setItem方法，向本地存储中存入一个数据，第一个参数是数据的key，第二个参数是数据的value。存储的值只能是字符串，如果参数不是字符串，则会强制转为字符串并存储。
+        localStorage.setItem("num",numField.value);
+
+        // 如果要存储一个对象，则需要转为JSON字符串之后再存储。
+        let obj = {name:"sun"};
+        localStorage.setItem("obj",JSON.stringify(obj));
+    }
+
+    function readBtnClick(){
+        let n = localStorage.getItem("num");
+        let oStr = localStorage.getItem("obj");
+        let o = JSON.parse(oStr);
+        console.log(n);
+        console.log(o);
+    }
+
+    // localStorage.setItem("num",undefined);
+
+    // 删除本地缓存中的某个数据。
+    // localStorage.removeItem("num");
+
+    // 清除本域下的所有缓存数据。
+    // localStorage.clear();
+
+    // 本地缓存中数据条数
+    // console.log(localStorage.length);
+
+    for(let i = 0;i<localStorage.length;i++){
+        // localStorage.key获取本地存储中第n个键的名字
+        console.log(localStorage.key(i));
+    }
+
+    //----------------------------------------------------------------------
+
+    //sessionStorage，提供的方法和属性与localStorage相同。
+    // 唯一的区别是存储时间和访问域不同。
+    // localStorage是持久化存储，直到主动删除为止，sessionStorage只存储到浏览器或页面关闭为止
+    // localStorage能够访问页面本域下的数据，sessionStorage只能够访问本session的数据，一个页面和通过本页面打开的其他页面都处于同一session。
+
+
+    //-----------------------------------------------------------------
+    // localStorage和cookie都能实现在浏览器端存储一些数据，都遵循同源策略，但是区别很大：
+    // 1，localStrorage是前端js代码控制的，而cookie主要由服务端控制。
+    // 2，cookie中主要存储用户的身份识别信息，所以cookie会附带在请求头中发送。localStorage中主要存储前端代码的业务逻辑数据。
+
+
+
+</script>
+
+</html>

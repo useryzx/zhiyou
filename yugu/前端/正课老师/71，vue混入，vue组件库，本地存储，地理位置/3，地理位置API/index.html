@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="getPositionClick()">点击获取地理位置</button>
+    
+</body>
+
+<script>
+    function getPositionClick(){
+        // navigator.geolocation.getCurrentPosition获取用于的地理位置，第一个参数是获取成功的回调函数，第二个参数是获取失败的回调函数，第三个是配置对象。
+        navigator.geolocation.getCurrentPosition(function(e){
+            console.log(e);
+            console.log(e.coords.longitude);//经度
+            console.log(e.coords.latitude);//纬度
+
+            alert(e.coords.longitude);//经度
+            alert(e.coords.latitude);//纬度
+        },function(err){
+            console.log(err);
+        })
+    }
+</script>
+
+</html>
