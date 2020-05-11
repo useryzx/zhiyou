@@ -118,7 +118,6 @@
                     name: add.name,
                     geohash: add.geohash
                 });
-
                 this.$router.back();
 
             }

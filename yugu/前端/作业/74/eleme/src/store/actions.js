@@ -38,11 +38,11 @@ const myRequest = {
 export default {
     // 获取用户信息
     queryIsLogin(store){
-        axios.get("/elepro/restapi/eus/v3/users/"+localStorage.getItem("userId"))
+        return axios.get("/elepro/restapi/eus/v3/users/"+localStorage.getItem("userId"))
         .then(res=>{
             store.commit("setIsLogin",true);
             store.commit("setUserInfo",res.data);
-            
+            return Promise.resolve();
         })
         .catch(err=>{
             // this.isLogin = false;
