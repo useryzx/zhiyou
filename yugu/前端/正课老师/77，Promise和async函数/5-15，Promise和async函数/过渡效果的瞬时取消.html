@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 300px;
+            height: 300px;
+            border: solid 1px black;
+            overflow: hidden;
+            position: relative;
+        }
+        #bg-container{
+            position: absolute;
+            left: 0;
+            top: -300px;
+            transition: top 3s linear;
+        }
+        .bg{
+            width: 300px;
+            height: 300px;
+            /* border: solid 1px black; */
+            background-image: url(timg.jpg);
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" onclick="btnClick()">
+        <div id="bg-container">
+            <div class="bg"></div>
+            <div class="bg"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let bgc = document.getElementById("bg-container");
+
+    bgc.ontransitionend = ()=>{
+        console.log("动画结束了");
+        bgc.style.transition = "none";
+        bgc.style.top = "-300px";
+
+        setTimeout(() => {
+            bgc.style.transition = "top 3s linear";
+            bgc.style.top = 0;
+        }, 20);
+
+        
+    }
+
+    function btnClick(){
+        // console.log(123);
+        
+        bgc.style.transition = "top 3s linear";
+        bgc.style.top = 0;
+    }
+
+
+    let data = {
+        name:"xxx公司",
+        departments:[
+            {
+                name:"人事部",
+                members:["小明","小红","李磊"]
+            },
+            {
+                name:"技术部",
+                departments:[
+                    {
+                        name:"项目一部",
+                        members:["小明","小红","李磊"]
+                    },
+                    {
+                        name:"项目二部",
+                        members:["小明","小红","李磊"]
+                    },
+                ]
+            },
+        ]
+    }
+</script>
+
+
+</html>
