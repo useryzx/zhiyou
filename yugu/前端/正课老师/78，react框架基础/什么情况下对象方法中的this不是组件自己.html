@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    "use strict";
+
+    let obj = {
+        name:"wang",
+        say(){
+            console.log(this);
+        }
+    }
+    // obj.say();
+    // let f1 = obj.say;
+    // f1();
+
+
+
+    class Person extends Object{
+        constructor(name){
+            super();
+            this.name = name;
+        }
+
+        say(){
+            console.log(this);
+        }
+    }
+
+    let p1 = new Person("张三");
+    let p2 = new Person("李四");
+
+    // p1.say();
+    // p2.say();
+
+    // let f2 = p1.say;
+    // f2();
+
+
+</script>
+
+</html>
