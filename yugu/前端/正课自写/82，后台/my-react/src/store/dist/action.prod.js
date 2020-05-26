@@ -1,0 +1,1 @@
+"use strict";function setIsLoading(e){return{type:"SET_IS_LOADING",value:e}}function setUserInfo(e){return{type:"SET_USER_INFO",value:e}}Object.defineProperty(exports,"__esModule",{value:!0}),exports.setIsLoading=setIsLoading,exports.setUserInfo=setUserInfo;
