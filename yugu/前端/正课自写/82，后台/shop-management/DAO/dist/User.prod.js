@@ -1,0 +1,1 @@
+"use strict";var mongoose=require("./connect.js"),schema=new mongoose.Schema({account:String,psw:String,role:Number}),model=mongoose.model("user",schema);module.exports=model;
