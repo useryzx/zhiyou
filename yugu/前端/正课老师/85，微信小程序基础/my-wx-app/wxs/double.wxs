@@ -1,0 +1,10 @@
+function double(v){
+    
+    // wxs基本上是js语法，但是只有部分js的功能。
+    // console.log(Object.keys({k1:"v1",k2:"v2"}));
+    
+    return v*2;
+}
+
+
+module.exports = double;

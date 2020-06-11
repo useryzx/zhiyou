@@ -1,0 +1,61 @@
+<!--index.wxml-->
+
+<!-- view标签，块元素，相当于html中的div -->
+<!-- text标签，行元素，相当于html中的span -->
+<view id="root">
+	<view class="title-1">
+		小程序启动页面
+	</view>
+	<view class="sep-line">
+	</view>
+	<!-- 以{{}}进行模板中的数据绑定 -->
+	<view>{{txt}}</view>
+
+	<view class="field-box">
+		<!-- 微信小程序中标签内容和标签属性都通过{{}}绑定 -->
+		<input placeholder="{{txt}}">
+		</input>
+	</view>
+	<view class="line">
+		<text>{{num}}</text>
+		<text>{{double(num)}}</text>
+		<!-- 微信小程序的事件不能直接绑定代码，必须绑定方法 -->
+		<!-- 绑定方法名时不能加（） -->
+		<button type="primary" class="btn" size="mini" bindtap="addBtnTapped">+</button>
+		<!-- catchtap，使用catchxxx监听事件时，捕获时触发 -->
+		<button type="primary" class="btn" size="mini" catchtap="minusBtnTapped">-</button>
+	</view>
+	<view class="line">
+		<!-- 微信小程序中没有双向绑定指令，必须手动实现双向绑定 -->
+		<switch checked="{{show}}" bindchange="showChange"></switch>
+		<view>
+			<text wx:if="{{show}}">可以隐藏的文本</text>
+			<text wx:else>已经隐藏了</text>
+		</view>
+	</view>
+	<view style="padding:20rpx">
+		<!-- 微信小程序，使用wx:for进行列表渲染，默认列表项为item，索引为index -->
+		<!-- 可以使用wx:for-item和wx:for-index指定列表项名称和索引名称 -->
+		<!-- 由于微信小程序不能传参，只能通过自定义属性data-xxxx进行数据传递 -->
+		<view data-good="" wx:for="{{list}}" class="line" wx:key="name" bindtap="itemTapped" style="padding:20rpx;border-bottom:solid 2rpx #666">
+			<text>{{item.name}}</text>
+			<text>{{item.price}}</text>
+			<text>{{item.onSell}}</text>
+		</view>
+	</view>
+	<!-- 微信小程序中没有computed，也不能在{{}}绑定页面方法调用 -->
+
+	<!-- 使用代码跳转 -->
+	<button bindtap="gotoFind"></button>
+	<!-- 使用导航标签跳转 -->
+	<navigator url="/pages/logs/logs" open-type="switchTab">日志</navigator>
+</view>
+<!-- 微信脚本 -->
+<wxs module="s1">
+	module.exports = {}
+</wxs>
+<!-- 使用wxs实现类似computed和filter的想效果 -->
+<wxs src="../../wxs/double.wxs" module="double">
+</wxs>
+<!-- class属性可以绑定一个数组 -->
+<!-- style只能绑定字符串，不能绑定对象 -->

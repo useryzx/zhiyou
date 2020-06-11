@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="file-field">
+    <button onclick="sendRequest()">请求</button>
+    <button onclick="querySecond()">请求2</button>
+</body>
+
+<script src="axios.min.js"></script>
+
+<script>
+    let fileInput = document.getElementById("file-field");
+
+    function sendRequest(){
+        axios.post("/user/login",{
+            account:"admin",
+            psw:"123456"
+        }).then(res=>{
+            console.log(res);
+        });
+    }
+
+
+    function querySecond(){
+        axios.get("/user/islogin")
+        .then(res=>{
+            console.log(res);
+        });
+    }
+</script>
+
+</html>

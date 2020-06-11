@@ -1,0 +1,8 @@
+<!--components/play-btn/aply-btn.wxml-->
+<image 
+    class="root{{isPlaying?'':' paused'}}" 
+    src="{{currentSong?currentSong.al.picUrl:'../../images/cd.png'}}"
+    catchtap="btnTapped"
+></image> 
+
+

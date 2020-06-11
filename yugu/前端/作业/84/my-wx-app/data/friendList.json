@@ -1,0 +1,14 @@
+[{
+  "err":0,
+  "msg":"正常",
+  "friends":[
+    {"name":"小李","online":true,"vip":false},
+    {"name":"小明","online":false,"vip":false},
+    {"name":"小周","online":true,"vip":false},
+    {"name":"小张","online":true,"vip":true},
+    {"name":"小王","online":false,"vip":true},
+    {"name":"小孙","online":true,"vip":false},
+    {"name":"小吴","online":true,"vip":true},
+    {"name":"小郑","online":true,"vip":false}
+  ]
+}]

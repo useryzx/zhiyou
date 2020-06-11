@@ -1,0 +1,5 @@
+<!--pages/chat/chat.wxml-->
+<view>
+    <view>聊天页面</view>
+    <view>和{{name}}聊天</view>
+</view>

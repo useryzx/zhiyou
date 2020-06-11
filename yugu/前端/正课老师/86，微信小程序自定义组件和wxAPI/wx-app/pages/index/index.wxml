@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<view>
+    <navigator url="/pages/logs/logs">
+        <button class="btn">自定义组件</button>
+    </navigator>
+
+    <navigator url="/pages/second/second">
+        <button class="btn">界面API</button>
+    </navigator>
+
+    <navigator url="/pages/third/third">
+        <button class="btn">网络请求和下拉刷新上拉加载</button>
+    </navigator>
+
+    <button class="btn" bindtap="selectImage">选取图片</button>
+
+    <view>
+        <image 
+            wx:for="{{imageArray}}" 
+            src="{{item}}" 
+            wx:key="index"
+            style="width:200rpx;height:200rpx"
+        ></image>
+    </view>
+
+    <button open-type="share" class="btn">分享</button>
+
+    <button bindtap="startRecord" class="btn">录音</button>
+    
+
+    <image 
+        wx:if="{{userInfo}}" 
+        src="{{userInfo.avatarUrl}}"
+        style="width:200rpx;height:200rpx"
+    ></image>
+    <button 
+        wx:if="{{!hasUserScope}}" 
+        class="btn"
+        open-type="getUserInfo"
+        bindgetuserinfo="getUserInfo"
+    >申请用户信息授权</button>
+
+    <button class="btn" bindtap="scanCode">扫描二维码</button>
+</view>

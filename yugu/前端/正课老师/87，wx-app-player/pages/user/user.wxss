@@ -1,0 +1,7 @@
+/* pages/user/user.wxss */
+
+.text-field{
+    margin: 40rpx 40rpx;
+    border-bottom: solid 2rpx #999;
+    padding: 20rpx;
+}

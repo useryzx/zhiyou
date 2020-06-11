@@ -1,0 +1,30 @@
+/* components/play-btn/aply-btn.wxss */
+
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+
+.root{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    position: fixed;
+    right: 30rpx;
+    bottom: 30rpx;
+    background-color: white;
+    border: solid 10rpx white;
+
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.paused{
+    animation-play-state: paused;
+}

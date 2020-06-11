@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+}
+
+.page-root{
+    /* background-color: #eeeeee; */
+    padding: 10px;
+}
+
+.image-in-table{
+    width: 80px;
+    height: 80px;
+}

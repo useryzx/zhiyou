@@ -1,0 +1,60 @@
+
+<view>
+    <view>
+        <view class="title-line">我创建的歌单</view>
+        <view>
+            <navigator 
+                wx:for="{{myPlayList}}" 
+                url="/pages/playListDetail/playListDetail?id={{item.id}}"
+                wx:key="id"
+            >
+                <view class="sheet-list-item">
+                    <image src="{{item.coverImgUrl}}?param=200y200" class="sheet-list-item-pic"></image>
+                    <view>
+                        <view class="sheet-list-item-name">{{item.name}}</view>   
+                        <view class="sheet-list-item-editor">
+                            播放：{{wanFilter(item.playCount)}}|
+                            收藏：{{wanFilter(item.subscribedCount)}}|
+                            歌曲：{{item.trackCount}}
+                        </view>           
+                    </view>
+                </view>
+            </navigator>
+            
+        </view>
+    </view>
+
+    <view>
+        <view class="title-line">我收藏的歌单</view>
+        <view>
+            <navigator 
+                wx:for="{{favPlayList}}" 
+                url="/pages/playListDetail/playListDetail?id={{item.id}}"
+                wx:key="id"
+            >
+                <view class="sheet-list-item">
+                    <image src="{{item.coverImgUrl}}?param=200y200" class="sheet-list-item-pic"></image>
+                    <view>
+                        <view class="sheet-list-item-name">{{item.name}}</view>   
+                        <view class="sheet-list-item-editor">
+                            播放：{{wanFilter(item.playCount)}}|
+                            收藏：{{wanFilter(item.subscribedCount)}}|
+                            歌曲：{{item.trackCount}}
+                        </view>           
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+
+    <view wx:if="{{!isLogin}}">
+        <view>请先登录</view>
+        <navigator url="/pages/user/user" open-type="switchTab">
+            <button type="primary" size="mini">登录</button>
+        </navigator>
+    </view>
+</view>
+
+<play-btn></play-btn>
+
+<wxs src="../../wxs/wanFilter.wxs" module="wanFilter"></wxs>

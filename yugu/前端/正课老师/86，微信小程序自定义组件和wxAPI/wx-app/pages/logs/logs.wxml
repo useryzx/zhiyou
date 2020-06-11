@@ -1,0 +1,7 @@
+<!--logs.wxml-->
+<view>
+    <num-ctrl 
+        value="{{score}}"
+        bindchange="scoreChange"
+    ></num-ctrl>
+</view>

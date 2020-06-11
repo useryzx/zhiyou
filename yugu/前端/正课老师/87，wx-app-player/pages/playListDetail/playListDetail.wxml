@@ -1,0 +1,56 @@
+<view>
+    <view class="playlist-info">
+        <image class="pl-img" src="{{playList.coverImgUrl}}"></image>
+        <view>
+            <view style="font-weight:bold;font-size:32rpx;">{{playList.name}}</view>
+            <view style="font-size:26rpx;color:#999;margin-top: 10rpx;">{{playList.description}}</view>
+            <view style="font-size:26rpx;color:#999;margin-top: 10rpx;">作者：{{playList.creator.nickname}}</view>
+            <view style="font-size:26rpx;color:#999;display:flex;justify-content: space-between;align-items: center;margin-top: 10rpx;">
+                收藏：
+                <image class="fav-btn" src="/images/heart.png"></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="playlist-info-2">
+        <text>歌曲:{{playList.trackCount}}</text>
+        <text>播放：{{wanFilter(playList.playCount)}}</text>
+        <text>收藏：{{wanFilter(playList.subscribedCount)}}</text>
+    </view>
+
+
+    <view class="songs-list">
+        <view class="song-item" wx:for="{{loadedSongs}}" wx:key="id">
+            <view style="display:flex">
+                <image 
+                    src="/images/cd.png" 
+                    class="ctrl-btn cd{{isPlaying?'':' paused'}}"
+                    wx:if="{{isCurrentPlaylist&&currentPlaylistIndex==index}}"
+                ></image>
+                <view>
+                    <view class="s-name">{{item.name}}</view>
+                    <view class="s-ar">演唱:{{artistsFilter(item.ar)}}</view>
+                </view>
+            </view>
+            <image 
+                src="/images/pause-c.png" 
+                class="ctrl-btn"
+                data-index="{{index}}"
+                bindtap="pauseBtnTapped"
+                wx:if="{{isPlaying&&isCurrentPlaylist&&currentPlaylistIndex==index}}"
+            ></image>
+            <image 
+                src="/images/play-c.png" 
+                class="ctrl-btn"
+                data-index="{{index}}"
+                bindtap="ctrlBtnTapped"
+                wx:else
+            ></image>
+        </view>
+    </view>
+</view>
+
+<play-btn></play-btn>
+
+<wxs src="../../wxs/artistsFilter.wxs" module="artistsFilter"></wxs>
+<wxs src="../../wxs/wanFilter.wxs" module="wanFilter"></wxs>

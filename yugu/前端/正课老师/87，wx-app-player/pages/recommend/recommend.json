@@ -1,0 +1,6 @@
+{
+	"usingComponents": {
+		"play-btn":"../../components/play-btn/play-btn"
+	},
+	"enablePullDownRefresh": true
+}

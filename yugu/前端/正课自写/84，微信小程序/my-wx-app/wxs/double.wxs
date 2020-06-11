@@ -1,0 +1,5 @@
+// wxs使用的是js的语法，但是是阉割版
+function double(v){
+  return v*2;
+}
+module.exports = double;

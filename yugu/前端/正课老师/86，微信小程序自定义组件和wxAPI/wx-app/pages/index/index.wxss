@@ -1,0 +1,4 @@
+.btn{
+    width: 80% !important;
+    margin: 20rpx auto !important;
+}

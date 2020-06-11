@@ -1,0 +1,6 @@
+<!--components/num-ctrl/num-ctrl.wxml-->
+<view class="root">
+    <button size="mini" class="btn" bindtap="minusTapped">-</button>
+    <text class="value-tag">{{value}}</text>
+    <button size="mini" class="btn" bindtap="addTapped">+</button>
+</view>

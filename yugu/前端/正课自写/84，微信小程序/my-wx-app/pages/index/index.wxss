@@ -1,0 +1,29 @@
+/**index.wxss**/
+.title-1 {
+  font-size: 40rpx;
+  color: #333;
+  padding: 16rpx;
+}
+
+.sep-line {
+  height: 40rpx;
+  background-color: antiquewhite;
+  width: 750rpx;
+}
+
+.field-box {
+  border: solid 1px #f999;
+  padding: 10rpx;
+}
+
+.line {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn {
+  margin: 0rpx;
+  display: inline-block;
+  width: 100rpx;
+}

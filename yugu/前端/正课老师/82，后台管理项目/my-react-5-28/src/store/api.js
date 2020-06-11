@@ -1,0 +1,14 @@
+const rootUrl = "";
+
+export default {
+    
+    login:rootUrl+"/user/login",                // 登录接口
+    isLogin:rootUrl+"/user/islogin",            // 判断是否登录接口
+    addCategory:rootUrl+"/category/add",        //新增分类
+    categoryList:rootUrl+"/category/list",      //分类列表
+    editCategory:rootUrl+"/category/update",    //修改分类
+    getCategory:rootUrl+"/category/query",      //获取某个分类
+    uploadOne:rootUrl+"/upload/single",         //上传单个文件
+    uploadMany:rootUrl+"/upload/multiple",      //上传多个文件
+    addGood:rootUrl+"/good/add",                //新增商品
+}

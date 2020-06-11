@@ -1,0 +1,8 @@
+<!--logs.wxml-->
+<view class="container log-list">
+<!-- 通过url传参，只能穿字符串 -->
+  <navigator url="/pages/chat/chat" open-type="redirect">
+    <button>前往聊天页面</button>
+  </navigator>
+  
+</view>

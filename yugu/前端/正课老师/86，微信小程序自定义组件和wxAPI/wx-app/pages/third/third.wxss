@@ -1,0 +1,6 @@
+/* pages/third/third.wxss */
+
+.line{
+    border-bottom: solid 1px #999;
+    padding: 30rpx;
+}

@@ -1,0 +1,12 @@
+function timeFilter(seconds){
+    seconds = Math.floor(seconds);
+
+    var m = Math.floor(seconds/60);
+    var s = seconds%60;
+    m = m<10?"0"+m:m;
+    s = s<10?"0"+s:s;
+
+    return m+":"+s;
+}
+
+module.exports = timeFilter;

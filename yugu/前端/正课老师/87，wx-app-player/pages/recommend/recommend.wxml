@@ -1,0 +1,44 @@
+
+<view>
+    <view class="title-line">推荐歌曲</view>
+    <view>
+        <view 
+            wx:for="{{songsList}}" 
+            class="songs-list-item" 
+            wx:key="id"
+            catchtap="songsItemTapped"
+            data-song="{{item}}"
+        >
+            <image src="{{item.album.picUrl}}?param=200y200" class="songs-list-item-pic"></image>
+            <view>
+                <view class="songs-list-item-name">{{item.name}}</view>   
+                <view class="songs-list-item-editor">{{artistsFilter(item.artists)}}</view>           
+            </view>
+        </view>
+    </view>
+</view>
+
+<view>
+    <view class="title-line">推荐歌单</view>
+    <view>
+        <navigator
+            wx:for="{{sheetList}}"
+            url="/pages/playListDetail/playListDetail?id={{item.id}}"
+            wx:key="id"
+        >
+            <view class="sheet-list-item" wx:key="id">
+                <image src="{{item.picUrl}}?param=200y200" class="sheet-list-item-pic"></image>
+                <view>
+                    <view class="sheet-list-item-name">{{item.name}}</view>   
+                    <view class="sheet-list-item-editor">{{item.copywriter}}</view>           
+                </view>
+            </view>
+        </navigator>
+        
+    </view>
+</view>
+
+<play-btn></play-btn>
+
+
+<wxs src="../../wxs/artistsFilter.wxs" module="artistsFilter"></wxs>

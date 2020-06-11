@@ -1,0 +1,44 @@
+<view class="keyword-box">
+    <input 
+        class="keyword-field" 
+        placeholder="请输入歌曲或歌手名"
+        bindinput="keywordInput"
+        value="{{keyword}}"
+        
+    ></input>
+
+    <icon 
+        type="cancel" 
+        class="icon-small icon" 
+        size="50rpx" 
+        wx:if="{{keyword}}"
+        bindtap="clearBtnTapped"
+    ></icon>
+
+</view>
+
+<view class="search-result-box" wx:if="{{result.length>0}}">
+    <view 
+        class="result-list-item" 
+        wx:for="{{result}}" 
+        wx:key="id"
+        data-id="{{item.id}}"
+        bindtap="itemTapped"
+    >
+        <view>{{item.name}}</view>
+        <view class="result-list-item-album">{{item.album.name}}</view>
+    </view>
+    
+</view>
+
+<view class="hot-search-box" wx:else>
+    <text 
+        wx:for="{{hotSearch}}" 
+        wx:key="first"
+        class="hot-search-item"
+        data-name="{{item.first}}"
+        bindtap="searchItemTapped"
+    >{{item.first}}</text>
+</view>
+
+<play-btn></play-btn>

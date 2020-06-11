@@ -1,0 +1,9 @@
+.GoodAdd-pic{
+    width: 90px;
+    height: 90px;
+}
+
+.GoodAdd-delete-btn{
+    cursor: pointer;
+    font-size: 30px;
+}

@@ -1,0 +1,95 @@
+<!-- view标签，块元素，相当于html的div -->
+<!-- text标签，行元素，相当于html的span -->
+
+<view id="root">
+	<view class="title-1">小程序启动页面</view>
+
+	<view class="sep-line"></view>
+
+	<!-- 以 {{}} 进行模板中的数据绑定 -->
+	<view>{{txt}}</view>
+
+	<view class="field-box">
+		<!-- 标签内容和标签属性都通过{{}}进行绑定 -->
+		<input placeholder="{{txt}}"></input>
+	</view>
+
+	<view class="line">
+		<text>{{num}}</text>
+
+        <!-- 微信小程序的事件绑定不能直接绑代码，必须绑定方法 -->
+        <!-- 绑定方法名时不能加() -->
+		<button 
+            type="primary" 
+            class="btn" 
+            size="mini"
+            bindtap="addBtnTapped"
+        >+</button>
+
+        <!-- catchtap，使用catchxxx监听事件时，捕获事件之后事件将不再传播 -->
+		<button 
+            type="primary" 
+            class="btn" 
+            size="mini"
+            catchtap="minusBtnTapped"
+        >-</button>
+	</view>
+
+    <view class="line">
+        <!-- 微信小程序中没有双向绑定指令，必须手动实现双向绑定 -->
+        <switch checked="{{show}}" bindchange="showChange"></switch>
+        <view>
+            <!-- 使用wx:if实现条件渲染 -->
+            <text wx:if="{{show}}">可以隐藏的文本</text>
+            <text wx:else>已经隐藏了</text>
+        </view>
+    </view>
+
+    <view style="padding:20rpx">
+        <!-- 微信小程序，使用wx:for进行列表渲染，默认列表项为item，索引为index -->
+        <!-- 可以使用wx:for-item和wx:for-index指定列表项名称和索引名称 -->
+        <!-- 微信小程序事件绑定不能传参，所以只能通过自定义属性data-xxxx进行数据传递 -->
+        <view 
+            wx:for="{{list}}" 
+            class="line"
+            wx:for-item="g"
+            wx:for-index="i"
+            wx:key="name"
+            style="padding:20rpx;border-bottom:solid 2rpx #666"
+            bindtap="itemTapped"
+            data-good="{{g}}"
+        >
+            <text>{{i}}</text>
+            <text>{{g.name}}</text>
+            <text>{{g.price}}</text>
+        </view>
+    </view>
+    
+    <!-- 微信小程序中没有computed，也不能在{{}}绑定页面方法调用 -->
+    <!-- <view class="line">{{calcNum()}}</view> -->
+
+    <!-- 使用wxs实现类似computed和过滤器的效果 -->
+    <view class="line">{{double(num)}}</view>
+
+    <view>
+        <checkbox-group bindchange="classArrChange">
+            <checkbox value="red"></checkbox>
+            <text>红色</text>
+            <checkbox value="bold"></checkbox>
+            <text>加粗</text>
+        </checkbox-group>
+    </view>
+    <!-- class属性可以绑定一个数组 -->
+    <view class="{{classArr}}">style和class的绑定</view>
+    <!-- style只能绑定字符串，不能绑对象 -->
+    <view style="{{styleObj}}">style和class的绑定</view>
+    <view style="color:{{color}}">style和class的绑定</view>
+
+    <button bindtap="gotoLog">日志</button>
+
+    <!-- 使用导航标签跳转 -->
+    <navigator url="/pages/logs/logs" open-type="switchTab">日志</navigator>
+
+</view>
+
+<wxs src="../../wxs/double.wxs" module="double"></wxs>

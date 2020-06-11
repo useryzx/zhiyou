@@ -1,0 +1,28 @@
+<view>
+    <view wx:if="{{isLogin}}">
+        <!-- 头像 -->
+        <!-- 用户名 -->
+        <image src="{{userInfo.avatarUrl}}" style="width:200rpx;height:200rpx"></image>
+        <text>{{userInfo.nickname}}</text>
+
+    </view>
+
+    <view wx:else>
+        <form bindsubmit="loginSubmit">
+            <radio-group style="margin:40rpx 40rpx" name="loginType">
+                <label class="radio">
+                    <radio value="loginByTel" checked="{{true}}"/>手机号登录
+                </label>
+                <label class="radio">
+                    <radio value="loginByEmail" checked="{{false}}"/>邮箱登录
+                </label>
+            </radio-group>
+
+            <input class="text-field" placeholder="用户名" name="account"></input>
+            <input class="text-field" placeholder="密码" name="psw" password="{{true}}"></input>
+
+            <button class="btn" type="primary" form-type="submit">登录</button>
+        </form>
+        
+    </view>
+</view>

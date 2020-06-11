@@ -1,0 +1,8 @@
+1，调用wx.login()，(小程序向微信服务器发送一个请求，申请登录code)获取code。
+2，小程序把获取的code发送到小程序服务端（服务端需要准备一个登录接口，接收code）。
+3，小程序服务端调用微信服务器的登录接口(https://api.weixin.qq.com/sns/jscode2session),参数中包含appid,appsecret,code,grant_type，
+调用成功之后会获得该用户的openId(用户在本小程序中的唯一标识符)和sessionKey(登录凭证)。 
+4，小程序服务端将openId和sessionKey返回给小程序端。
+5，小程序获取用户资料(wx.getUserInfo)，将用户资料和openid发送给小程序服务端，服务端进行对比，如果是新用户则进行注册。sessionKey作为登录凭
+证，当需要调用登录之后才能调用的接口时，需要传递sessionKey。
+

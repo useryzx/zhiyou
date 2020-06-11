@@ -1,0 +1,11 @@
+.root{
+    display: inline-block;
+}
+
+.btn{
+    vertical-align: middle;
+}
+
+.value-tag{
+    vertical-align: middle;
+}

@@ -1,0 +1,7 @@
+<!--pages/second/second.wxml-->
+<view>
+  <button bindtap="showToast">弹出toast</button>
+  <button bindtap="sheetTapped">弹出sheet</button>
+  <button bindtap="starAnimation">执行动画</button>
+  <view class="red-box" animation="{{aniData}}"></view>
+</view>

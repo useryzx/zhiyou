@@ -1,0 +1,12 @@
+/* pages/setting/setting.wxss */
+.item-box{
+  height: 150rpx;
+  border-bottom: 2rpx solid beige;
+  line-height: 150rpx;
+}
+.online{
+  color: aquamarine;
+}
+.vip{
+  background: linear-gradient(to right,transparent,#e9caca);
+}

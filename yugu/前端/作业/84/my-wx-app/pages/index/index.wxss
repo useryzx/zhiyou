@@ -1,0 +1,44 @@
+
+/* rpx是微信小程序wxss中的相对长度单位，1rpx总是等于屏幕宽度的1/750 */
+/* 屏幕宽度总是为750rpx */
+
+/* 相比css，选择器只有部分可以使用 */
+
+.title-1{
+  font-size: 40rpx;
+  color: #333333;
+  padding: 16rpx;
+}
+
+
+.sep-line{
+  height: 40rpx;
+  background-color: aqua;
+  width: 750rpx;
+}
+
+.field-box{
+  border: solid 1px #666;
+  padding: 10px;
+}
+
+.line{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.btn{
+  margin: 0rpx;
+  display: inline-block;
+  width: 50rpx;
+}
+
+.red{
+  color: red;
+}
+
+.bold{
+  font-weight: bold;
+}

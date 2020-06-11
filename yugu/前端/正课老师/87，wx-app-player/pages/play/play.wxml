@@ -1,0 +1,98 @@
+
+<view wx:if="{{currentSong}}" class="root">
+
+    <view class="bg" style="background-image:url({{currentSong.al.picUrl}}?param=750y1334)"></view>
+
+    <view>
+        <view class="cd-lyric" bindtap="toggleShowLyric">
+            <scroll-view 
+                wx:if="{{showLyric}}" 
+                class="lyric-box"
+                scroll-y="{{true}}"
+                scroll-top="{{(currentLyricIndex*80-200)+'rpx'}}"
+                scroll-with-animation="{{true}}"
+            >
+                <!-- 歌词 -->
+                
+                <view 
+                    wx:for="{{currentSongLyric}}" 
+                    wx:key="time"
+                    class="lyric-line{{index==currentLyricIndex?' highlighted':''}}"
+                >{{item.txt}}</view>
+            </scroll-view>
+            <view wx:else class="cd-box">
+                <!-- 光盘 -->
+                <image 
+                    class="cd{{isPlaying?'':' paused'}}" 
+                    src="{{currentSong.al.picUrl}}?param=500y500"
+                ></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="s-name">{{currentSong.name}}</view>
+    <view class="s-artists">演唱：{{artistsFilter(currentSong.ar)}}</view>
+    <slider
+        min="{{0}}"
+        max="{{1}}"
+        step="{{0.01}}"
+        value="{{progress}}"
+        bindchange="onProgressChange"
+        bindchanging="onProgressChanging"
+    ></slider>
+    <view>{{timeFilter(currentTime)}}/{{timeFilter(duration)}}</view>
+
+    <view class="play-ctrl-box">
+        <image 
+            src="/images/prev.png" 
+            class="play-ctrl-btn"
+            bindtap="prevBtnTapped"
+        ></image>
+        <image 
+            wx:if="{{isPlaying}}" 
+            src="/images/pause.png" 
+            class="play-ctrl-btn"
+            bindtap="pauseBtnTapped"
+        ></image>
+        <image 
+            wx:else 
+            src="/images/play.png" 
+            class="play-ctrl-btn"
+            bindtap="playBtnTapped"
+        ></image>
+        <image 
+            src="/images/next.png" 
+            class="play-ctrl-btn"
+            bindtap="nextBtnTapped"
+        ></image>
+    </view>
+
+    <view class="play-mode-box">
+        <image 
+            src="/images/loop.png" 
+            class="mode-btn{{playMode=='loop'?' mode-btn-h':''}}"
+            data-mode="loop"
+            bindtap="modeBtnTapped"
+        ></image>
+        <image 
+            src="/images/random.png" 
+            class="mode-btn{{playMode=='random'?' mode-btn-h':''}}"
+            data-mode="random"
+            bindtap="modeBtnTapped"
+        ></image>
+        <image 
+            src="/images/single-loop.png" 
+            class="mode-btn{{playMode=='single'?' mode-btn-h':''}}"
+            data-mode="single"
+            bindtap="modeBtnTapped"
+        ></image>
+
+        <image src="/images/star.png" class="mode-btn"></image>
+        <image src="/images/download.png" class="mode-btn"></image>
+    </view>
+    
+</view>
+
+
+<wxs src="../../wxs/artistsFilter.wxs" module="artistsFilter"></wxs>
+<wxs src="../../wxs/timeFilter.wxs" module="timeFilter"></wxs>

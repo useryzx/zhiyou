@@ -1,0 +1,7 @@
+<!--pages/third/third.wxml-->
+<view>
+    <view wx:for="{{list}}" class="line" wx:key="_id">
+        <view>{{item._id}}</view>
+        <view>{{item.name}}</view>
+    </view>
+</view>

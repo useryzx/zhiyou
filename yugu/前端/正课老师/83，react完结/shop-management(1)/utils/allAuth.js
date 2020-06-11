@@ -1,0 +1,1 @@
+module.exports = ["admin","user","good","category","swiper","order"];

@@ -1,0 +1,147 @@
+{ 
+    "_id" : ObjectId("5ece0c6c7eb8bf3104b9c6c4"), 
+    "name" : "电子产品", 
+    "introduce" : "手机，笔记本，平板电脑。", 
+    "available" : false, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ece0fa37eb8bf3104b9c6c5"), 
+    "name" : "男装", 
+    "introduce" : "鞋帽衣裤（男）", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ece178e7eb8bf3104b9c6c6"), 
+    "name" : "零食", 
+    "introduce" : "方便面，饼干，饮料", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf84378405561a96208340"), 
+    "name" : "电脑配件", 
+    "introduce" : "CPU 主板 硬盘 内存 散热 机箱", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf847d8405561a96208341"), 
+    "name" : "电子产品", 
+    "introduce" : "手机品牌—王少欢", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf85598405561a96208342"), 
+    "name" : "家用电器", 
+    "introduce" : "电视、空调、洗衣机、冰箱", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf86258405561a96208345"), 
+    "name" : "手机", 
+    "introduce" : "5G手机，游戏手机，拍照手机，长续航，全面屏。刘权锐", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf86578405561a96208346"), 
+    "name" : "动漫手办", 
+    "introduce" : "假面骑士DK腰带  ZIO  Fate      张斌", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf86ab8405561a96208347"), 
+    "name" : "厨房/饮食用品", 
+    "introduce" : "锅碗瓢盆，筷子。", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf87a78405561a9620834a"), 
+    "name" : "服装", 
+    "introduce" : "T恤，外套，裤子  董青雨", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf87bd8405561a9620834b"), 
+    "name" : "美妆/口红", 
+    "introduce" : "豆沙色，姨妈色，西柚色等", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf88618405561a9620834d"), 
+    "name" : "图书", 
+    "introduce" : "儿童读物、畅销小说、文学，社科、考试·教辅、金融管理、杂志", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf8ab48405561a96208353"), 
+    "name" : "生鲜水果", 
+    "introduce" : "鲜奶 冰激凌 五花肉 车厘子 三文鱼 牛排", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf8d3b8405561a9620835a"), 
+    "name" : "农资绿植", 
+    "introduce" : "农用物资，畜牧养殖，种子，农药,肥料，农用机械，饲料，兽药，养殖器械", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf92408405561a9620835e"), 
+    "name" : "珠宝配饰", 
+    "introduce" : "手链、发饰、吊坠、手镯、DIY饰品", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecf95138405561a9620835f"), 
+    "name" : "家具家装", 
+    "introduce" : "家装主材，灯具灯饰，家纺布艺，五金电料.", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecfb87e8405561a96208361"), 
+    "name" : "宠物", 
+    "introduce" : "乌龟，老鼠，猫，狗，蛇。", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecfb8978405561a96208362"), 
+    "name" : "宠物用品", 
+    "introduce" : "猫粮/狗粮  宠物沐浴露  宠物罐头", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ecfed588405561a96208365"), 
+    "name" : "电子产品", 
+    "introduce" : "手机，相机啥的彭江涛", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ed05dd18405561a96208367"), 
+    "name" : "饰品类", 
+    "introduce" : "戒指、耳环、项链、手链、脚链", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ed05ec68405561a96208368"), 
+    "name" : "家纺百货", 
+    "introduce" : "家纺织品,凉席,枕头等", 
+    "available" : true, 
+    "__v" : NumberInt(0)
+}

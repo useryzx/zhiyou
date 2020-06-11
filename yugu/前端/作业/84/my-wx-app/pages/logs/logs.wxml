@@ -1,0 +1,10 @@
+<!--logs.wxml-->
+<view>
+
+    <!-- 通过url参数进行传参，只能传字符串 -->
+    <navigator url="/pages/chat/chat?name={{friend.name}}">
+        <button>前往聊天页面</button>
+    </navigator>
+
+    <button bindtap="gotoChat">前往聊天页面</button>
+</view>

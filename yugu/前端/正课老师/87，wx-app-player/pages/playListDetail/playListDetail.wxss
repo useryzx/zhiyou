@@ -1,0 +1,77 @@
+/* pages/playListDetail/playListDetail.wxss */
+
+.playlist-info{
+    display: flex;
+    padding: 20rpx;
+    
+}
+
+.playlist-info-2{
+    padding: 20rpx;
+    border-bottom: solid 2rpx #dddddd;
+    font-size: 26rpx;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pl-img{
+    width: 260rpx;
+    height: 260rpx;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+
+.fav-btn{
+    width: 60rpx;
+    height: 60rpx;
+    
+}
+
+.song-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    border-bottom: solid 2rpx #eeeeee;
+    align-items: center;
+}
+
+.ctrl-btn{
+    width: 100rpx;
+    height: 100rpx;
+    flex-shrink: 0;
+}
+
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+
+.cd{
+    margin-right: 20rpx;
+    flex-shrink: 0;
+
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.paused{
+    animation-play-state: paused;
+}
+
+.s-name{
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+
+.s-ar{
+    font-size: 26rpx;
+    color: #999999;
+}

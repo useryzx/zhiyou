@@ -1,0 +1,40 @@
+/* pages/search/search.wxss */
+
+.keyword-box{
+    padding: 20rpx;
+    border-bottom: solid 10rpx #333;
+
+    display: flex;
+    align-items: center;
+}
+
+.keyword-field{
+    width: 90%;
+}
+
+.result-list-item{
+    border-bottom: solid 2rpx #999;
+    padding: 20rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+
+}
+
+.result-list-item-album{
+    font-size: 28rpx;
+    color: #aaa;
+}
+
+.hot-search-item{
+    background-color: #dddddd;
+    font-size: 30rpx;
+    border-radius: 8rpx;
+    padding: 10rpx 20rpx;
+    display: inline-block;
+    margin: 10rpx 20rpx;
+    font-weight: bold;
+}
+
+.icon{
+    filter: grayscale(100%);
+}

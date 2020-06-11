@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view>
+
+	<navigator url="/pages/logs/logs">
+		<button id="btn">自定义组件</button>
+	</navigator>
+
+	<navigator url="/pages/second/second">
+		<button id="btn">界面API</button>
+	</navigator>
+
+	<navigator url="/pages/third/third">
+		<button id="btn">网络请求和下拉刷新上拉加载</button>
+	</navigator>
+  <button id="btn" bindtap="selImg">图片选择</button>
+	<view>
+		<image wx:for="{{imgArr}}" src="{{item}}" wx:key="index"></image>
+	</view>
+	<button id="btn" bindtap="scanCode">扫描二维码</button>
+</view>

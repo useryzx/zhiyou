@@ -1,0 +1,21 @@
+{ 
+    "_id" : ObjectId("5ec5f7743ae20b14240a6c26"), 
+    "account" : "admin", 
+    "psw" : "123456", 
+    "__v" : NumberInt(0), 
+    "role" : NumberInt(63)
+}
+{ 
+    "_id" : ObjectId("5ed0c9192d373e3c60f2182e"), 
+    "account" : "sunhuayu", 
+    "psw" : "123456", 
+    "role" : NumberInt(62), 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5ed0d4892d373e3c60f2182f"), 
+    "account" : "qqq", 
+    "psw" : "123456", 
+    "role" : NumberInt(12), 
+    "__v" : NumberInt(0)
+}

@@ -1,0 +1,8 @@
+<!--logs.wxml-->
+<view>
+	<num-ctrl
+	 value="{{store}}" 
+	 bindchange="storeChange"
+	 >
+	</num-ctrl>
+</view>

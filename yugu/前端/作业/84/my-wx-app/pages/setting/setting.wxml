@@ -1,0 +1,14 @@
+<!--pages/setting/setting.wxml-->
+<view
+wx:for="{{firendList}}"
+wx:for-item="v"
+wx:for-index="i"
+wx:key="name"
+data-name="{{v}}"
+class="{{classAttrComputed(v)}}"
+bindtap="itemTapped"
+>
+  <text>{{v.name}}</text>
+</view>
+
+<wxs src="../../wxs/classAttrComputed.wxs" module="classAttrComputed"></wxs>

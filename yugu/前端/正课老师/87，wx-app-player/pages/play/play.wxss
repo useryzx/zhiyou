@@ -1,0 +1,117 @@
+/* pages/play/play.wxss */
+.root{
+    color: white;
+    text-shadow: 0 0 10rpx black;
+    text-align: center;
+}
+
+.bg{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-size: 100% 100%;
+    filter: blur(20rpx);
+    z-index: -100;
+}
+
+.cd-lyric{
+    width: 750rpx;
+    height: 580rpx;
+}
+
+.cd-box{
+    padding: 40rpx 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+@keyframes spin{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(359deg);
+    }
+}
+.cd{
+    width: 500rpx;
+    height: 500rpx;
+    border-radius: 50%;
+    border: solid 10rpx #dddddd;
+
+    animation-name: spin;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.paused{
+    animation-play-state: paused;
+}
+
+.lyric-box{
+    padding: 40rpx;
+    /* overflow-y: scroll; */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 30rpx;
+    
+    border-bottom: solid 1rpx #cccccc;
+}
+
+.lyric-line{
+    font-size: 34rpx;
+    margin: 40rpx 0;
+    height: 40rpx;
+    transition: font-size 0.5s;
+}
+
+.s-name{
+    font-size: 50rpx;
+    font-weight: bold;
+    margin: 20rpx;
+}
+
+.s-artists{
+    font-size: 30rpx;
+    
+}
+
+.play-ctrl-box{
+    display: flex;
+    justify-content: space-around;
+    margin: 20rpx 0;
+}
+
+.play-ctrl-btn{
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.highlighted{
+    font-size: 50rpx;
+    color: lightgreen;
+    height: auto;
+}
+
+.play-mode-box{
+    display: flex;
+    justify-content: space-around;
+    padding: 20rpx;
+    align-items: center;
+}
+
+.mode-btn{
+    width: 80rpx;
+    height: 80rpx;
+    /* box-shadow: 0 0 40rpx 0rpx #cccccc inset; */
+}
+
+.mode-btn-h{
+    width: 100rpx;
+    height: 100rpx;
+    filter: saturate(500%);
+}

@@ -1,0 +1,11 @@
+function classAttrComputed(v) {
+  var arr = ["item-box"];
+  if (v.online) {
+    arr.push("online");
+  }
+  if (v.vip) {
+    arr.push("vip");
+  }
+  return arr
+}
+module.exports = classAttrComputed;

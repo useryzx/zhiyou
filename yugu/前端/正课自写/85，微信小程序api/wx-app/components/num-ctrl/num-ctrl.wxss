@@ -1,0 +1,7 @@
+/* components/num-ctrl/num-ctrl.wxss */
+.root{
+  display: inline-block;
+}
+.btn{
+  vertical-align: middle;
+}

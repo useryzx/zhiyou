@@ -1,0 +1,14 @@
+<!--pages/user/user.wxml-->
+<view class="user-container">
+		<view>
+			<image class="user-image" src="/images/timg.jpg"></image>
+		</view>
+		<form catchsubmit="formSubmit">
+			<input class="user-input" name="phone" type="text" placeholder="请输入手机号" />
+			<input class="user-input" name="password" password type="text" placeholder="请输入密码" />
+      <button class="btn" formType="submit">登陆</button>
+		</form>
+</view>
+
+
+
