@@ -1,0 +1,1 @@
+"use strict";function calc(){for(var e=0,o=0;o<1e5;o++)for(var s=0;s<1e4;s++)e+=o*s;return e}onmessage=function(e){console.log(123),postMessage(e.data)};

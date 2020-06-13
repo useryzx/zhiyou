@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="btnClick()">计算</button onclick="btnClick()">
+  <select name="" id="">
+    <option value="">d1</option>
+    <option value="">d2</option>
+    <option value="">d3</option>
+  </select>
+</body>
+<script>
+  // h5新增了webWorker，类似分线程机制，可以将一段js代码放在分线程中执行，从而不影响主线程的ui刷新，不会阻塞主线程
+  // 计算太多会导致浏览器卡顿
+  function btnClick() {
+    // console.time('1');
+    // console.timeEnd('1');
+    // 创建worker
+    let worker = new Worker('calc.js');
+    worker.postMessage({type:'calc'})
+    worker.onmessage=function(e){
+      console.log(e.data);
+      // 关闭worker
+      worker.terminate();
+    }
+  }
+</script>
+
+</html>

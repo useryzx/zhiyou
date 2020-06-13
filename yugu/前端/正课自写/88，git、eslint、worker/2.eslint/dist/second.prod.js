@@ -1,0 +1,1 @@
+"use strict";var fs=require("fs");fs.readFile("./index.js",function(e,s){console.log(s.toString())});

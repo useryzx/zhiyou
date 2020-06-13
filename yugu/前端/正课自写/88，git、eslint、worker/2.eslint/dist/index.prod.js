@@ -1,0 +1,1 @@
+"use strict";function f1(s,n){return s+n}var s=f1(1,3);console.log(s);
