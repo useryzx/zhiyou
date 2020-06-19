@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #cv {
+        border: 1px solid black;
+        position: relative;
+        margin-right: 20px;
+      }
+      #container {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="cv" width="1000" height="618"></canvas>
+      <div>
+        <input type="color" onchange="setColor(event)" />
+        <br>
+        <input type="text" oninput="setWidth(event)">
+        <br>
+        <button onclick="saveBtnClick()">保存</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    // 获取canvas上下文
+    let cv = document.getElementById("cv");
+    let context = cv.getContext("2d");
+    context.lineWidth = 4;
+    context.strokeStyle = "black";
+    context.lineCap = "round";
+    
+    // 记录鼠标位置
+    let prevPointX = null;
+    let prevPointY = null;
+
+
+    function setColor(e){
+      console.log(e.target.value);
+      context.strokeStyle = e.target.value;
+    }
+
+    function setWidth(e){
+      context.lineWidth = parseInt(e.target.value);
+    }
+
+    function saveBtnClick(){
+      let url = cv.toDataURL('image/png');
+      window.open(url)
+    }
+
+    // 鼠标点击时才能触发
+    cv.onmousedown = (e) => {
+      // 记录初始位置
+      prevPointX = e.layerX;
+      prevPointY = e.layerY;
+      context.beginPath();
+      context.moveTo(prevPointX, prevPointY);
+      // 鼠标移动
+      cv.onmousemove = (e) => {
+        context.lineTo(e.layerX, e.layerY);
+        context.stroke();
+        prevPointX = e.layerX;
+        prevPointY = e.layerY;
+      };
+    };
+    cv.onmouseup = (e) => {
+      cv.onmousemove = null;
+      prevPointX = null;
+      prevPointY = null;
+    };
+    cv.onmouseleave = (e) => {
+      if(prevPointX!=null&&prevPointY!=null){
+        context.lineTo(e.layerX, e.layerY);
+      context.stroke();
+      }
+      
+      
+    };
+    cv.onmouseenter = (e) => {
+      context.moveTo(e.layerX, e.layerY);
+    };
+    window.onmouseup = (e) => {
+      cv.onmousemove = null;
+      prevPointX = null;
+      prevPointY = null;
+    };
+  </script>
+</html>

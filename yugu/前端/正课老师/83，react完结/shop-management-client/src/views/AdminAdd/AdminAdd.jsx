@@ -92,3 +92,6 @@ function mapAction(dispatch, ownProps) {
 AdminAdd = connect(mapState, mapAction)(AdminAdd);
 
 export default AdminAdd;
+
+
+

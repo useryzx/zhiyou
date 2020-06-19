@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #cv {
+        border: 1px solid black;
+        transform: scale(0.5,0.5);
+        transform-origin: 0 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- canvas是html5新增标签，用于图形绘制 -->
+    <canvas id="cv" width="1600" height="1200">
+      你的浏览器不支持canvas
+    </canvas>
+    <div>
+      <img id="btn" src="../../../MVC&MVVM.jpg" alt="" width="100px" />
+    </div>
+  </body>
+  <script>
+    let cv = document.getElementById("cv");
+    // 获取canvas标签对象的图形绘制上下文
+    let context = cv.getContext("2d");
+    context.scale(2, 2);
+    // 绘制矩形
+    // 填充色
+    context.fillStyle = "red";
+    // 边框色
+    context.strokeStyle = "#000";
+    context.lineWidth = 10;
+    context.strokeRect(10, 10, 100, 60);
+    // 填充矩形
+    context.fillRect(10, 10, 100, 60);
+
+    // 创建一个路径
+    context.beginPath();
+    // 将笔尖移动到某个坐标点
+    context.moveTo(300, 10);
+    context.lineTo(200, 200);
+    context.lineTo(400, 200);
+    // 闭合
+    context.closePath();
+    // 将当前路径中的内容绘制到画布上
+    context.stroke();
+    context.fill();
+    let btn = document.getElementById("btn");
+    context.drawImage(btn, 0, 0);
+    context.lineWidth = "1";
+    context.strokeRect(10, 80, 50, 50);
+  </script>
+</html>
