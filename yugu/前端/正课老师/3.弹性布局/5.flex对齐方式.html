@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>flex对齐方式</title>
     <style>
-        section
-        {
+        section {
             font-size: 30px;
             display: flex;
             height: 400px;
@@ -18,9 +18,9 @@
             flex-end：右对齐
             center： 居中
             space-between：两端对齐，项目之间的间隔都相等。
-space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比
-项目与边框的间隔大一倍*/
-            justify-content:space-around;
+            space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比
+            项目与边框的间隔大一倍*/
+            justify-content: space-around;
             /* 交叉轴的对齐方式 
         flex-start：交叉轴的起点对齐。
         flex-end：交叉轴的终点对齐。
@@ -29,18 +29,19 @@ space-around：每个项目两侧的间隔相等。所以，项目之间的间�
         stretch（默认值）：如果项目未设置高度或设为auto，
         将占满整个容器的高度。
 */
-            align-items:stretch;
+            align-items: stretch;
         }
-        div{
+
+        div {
             border: solid 2px red;
         }
-        div:nth-of-type(1)
-        {
+
+        div:nth-of-type(1) {
             height: 100px;
             flex-basis: 100px;
         }
-        div:nth-of-type(2)
-        {
+
+        div:nth-of-type(2) {
             height: 150px;
             flex-basis: 100px;
             /* 设置项目本身在交叉轴的对齐方式会覆盖alignitems */
@@ -55,19 +56,20 @@ space-around：每个项目两侧的间隔相等。所以，项目之间的间�
                flex:符合属性
             */
         }
-        div:nth-of-type(3)
-        {
+
+        div:nth-of-type(3) {
             height: 300px;
             flex-basis: 200px;
         }
-        div:nth-of-type(4)
-        {
+
+        div:nth-of-type(4) {
             height: 200px;
             flex-basis: 150px;
-           
+
         }
     </style>
 </head>
+
 <body>
     <section>
         <div>1</div>
@@ -76,4 +78,5 @@ space-around：每个项目两侧的间隔相等。所以，项目之间的间�
         <div>4</div>
     </section>
 </body>
+
 </html>

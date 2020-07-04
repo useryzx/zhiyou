@@ -1,74 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
 </head>
 
 <body>
-    <button onclick="btnClick()">Promise控制多异步任务</button>
-    <button onclick="b2Click()">async函数控制多异步任务</button>
+	<button onclick="btnClick()">Promise控制多异步任务</button>
+	<button onclick="b2Click()">async函数控制多异步任务</button>
 </body>
 
 <script src="jquery.min.js"></script>
 
 <script>
-    // Promise的链式调用，一个promise.then之后，会得到一个新的promise，这个promise.then时会传递第一
-    // 个promise .then时所return的数据。
-    // 如果promise的.then函数中返回了一个promise,那么.then方法会直接返回这个promise。
+	// Promise的链式调用，一个promise.then之后，会得到一个新的promise，这个promise.then时会传递第一
+	// 个promise .then时所return的数据。
+	// 如果promise的.then函数中返回了一个promise,那么.then方法会直接返回这个promise。
 
-    function btnClick(){
-        $.get("/api/islogin")
-        .then(r1=>{
-            console.log(r1);
-            if(!r1.err){
-                // 已登录
-                // return $.get("/api/data");
-                return Promise.all([Promise.resolve(r1),$.get("/api/data")]);
-                
-            }else{
-                // 未登录
-                return Promise.reject(new Error("未登录"));
-                // return "未登录";
-            }
-        })
-        .then(ress=>{
-            console.log(ress);
+	function btnClick() {
+		$.get("/api/islogin")
+			.then(r1 => {
+				console.log(r1);
+				if (!r1.err) {
+					// 已登录
+					// return $.get("/api/data");
+					return Promise.all([Promise.resolve(r1), $.get("/api/data")]);
 
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-        
-    }
+				} else {
+					// 未登录
+					return Promise.reject(new Error("未登录"));
+					// return "未登录";
+				}
+			})
+			.then(ress => {
+				console.log(ress);
 
-    // 一个函数声明为async函数之后，这个函数就是一个异步函数，它总是返回一个promise，当函数执行完毕
-    // 时promise触发.then，并且会传递函数return的数据。
-    async function b2Click(){
+			})
+			.catch(err => {
+				console.log(err);
+			})
 
-        // 在async函数中，可以使用await关键字，await之后要跟一个promise，整个表达式会得到这个promise.then
-        // 时所传递的数据。
+	}
 
-        // await从语法上看很像调用同步函数，但是它的本质还是异步任务，只是语法上接近同步函数。
+	// 一个函数声明为async函数之后，这个函数就是一个异步函数，它总是返回一个promise，当函数执行完毕
+	// 时promise触发.then，并且会传递函数return的数据。
+	async function b2Click() {
+		// 在async函数中，可以使用await关键字，await之后要跟一个promise，整个表达式会得到这个promise.then
+		// 时所传递的数据。
+		// await从语法上看很像调用同步函数，但是它的本质还是异步任务，只是语法上接近同步函数。
+		let r1 = await $.get("/api/islogin");
+		console.log(r1);
+		if (!r1.err) {
+			let r2 = await $.get("/api/data");
+			console.log(r2);
+		}
+	}
 
-        let r1 = await $.get("/api/islogin");
-        console.log(r1);
-        if(!r1.err){
-            let r2 = await $.get("/api/data");
-            console.log(r2);
-        }
-    }
-
-    // b2Click()
-    // .then(res=>{
-    //     console.log(res);
-    // })
-
-    
-
-
+	b2Click()
+		.then(res => {
+			console.log(res);
+		})
 </script>
 
 

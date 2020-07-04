@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>外边距重叠</title>
-    <style>
-        body{
-            margin: 0;
-        }
-        #out{
-            height: 100px;
-            background-color: red;
-            margin: 20px;
-        }
-        #in{
-            height: 50px;
-            background-color: green;
-            /* 距离父元素十个外边距 */
-            margin: 0px;
-            /* 块元素与块元素的上下外间距在没有边框的情况下会产生
-            重叠  */
-            /* border-top: 10px solid red;*/
-        }
-        .box{
-            height: 50px;
-            border-color: pink;
-            border: solid 2px red;
-        }
-        .c1{
-            margin: 30px 0;
-        }
-        .c2{
-            margin: 10px 0;
-            border: solid 10px green;
-        }
-        .c3{
-            margin: 50px 0;
-        }
-        /* 产生外边距重叠的条件:1.必须是块元素 2.必须是向下的外边距 
-        3.没有边框 */
-    </style>
-</head>
-<body>
-    <div id="out">
-        <div id="in"></div>
-    </div>
 
-    <div class="box c1"></div>
-    <div class="box c2"></div>
-    <div class="box c3"></div>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>外边距重叠</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		#out {
+			height: 100px;
+			background-color: red;
+			margin: 20px;
+		}
+
+		#in {
+			height: 50px;
+			background-color: green;
+			/* 距离父元素十个外边距 */
+			margin: 0px;
+			/* 块元素与块元素的上下外间距在没有边框的情况下会产生
+            重叠  */
+			/* border-top: 10px solid red;*/
+		}
+
+		.box {
+			height: 50px;
+			border-color: pink;
+			border: solid 2px red;
+		}
+
+		.c1 {
+			margin: 30px 0;
+		}
+
+		.c2 {
+			margin: 10px 0;
+			border: solid 10px green;
+		}
+
+		.c3 {
+			margin: 50px 0;
+		}
+
+		/* 产生外边距重叠的条件:1.必须是块元素 2.必须是向下的外边距 
+        3.没有边框 */
+	</style>
+</head>
+
+<body>
+	<div id="out">
+		<div id="in"></div>
+	</div>
+
+	<div class="box c1"></div>
+	<div class="box c2"></div>
+	<div class="box c3"></div>
 </body>
+
 </html>

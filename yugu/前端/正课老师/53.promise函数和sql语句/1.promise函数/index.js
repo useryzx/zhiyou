@@ -2,9 +2,9 @@
 promise:异步的任务对象
 异步：不阻塞主线程的分线程操作
 同步：在主线程中进行操作
-*/ 
+*/
 // fs
-let  fs =require('fs');
+let fs = require('fs');
 // 把1和2文件中的内容读出来显示到log中
 // 假如文件特别大，那么在读取过程中耗费的、
 // 事件就会比较长,后面的其他事件需要等待 
@@ -21,19 +21,18 @@ let  fs =require('fs');
 // 一个刚刚创建出来的promise对象，处于待定(pending)状态
 // resolve和reject都是回调函数 
 // promise可以封装一个异步任务对象【把代码放到promise方法中】
-let p1 =new Promise(function (resolve,reject) { 
-     fs.readFile('./1.txt',function (err,data) {
-        if (err) {
-            // 调用reject之后，promise对象就会变成失败状态
-            // 传的参数是错误的原因
-            reject(err);
-        }
-        else{
-            // 当异步任务成功时，调用resolve,>>传递数据
-            resolve(data);
-        }
-    });
- });
+let p1 = new Promise(function (resolve, reject) {
+	fs.readFile('./1.txt', function (err, data) {
+		if (err) {
+			// 调用reject之后，promise对象就会变成失败状态
+			// 传的参数是错误的原因
+			reject(err);
+		} else {
+			// 当异步任务成功时，调用resolve,>>传递数据
+			resolve(data);
+		}
+	});
+});
 // promise对象的.then方法，用于为promise对象添加处理函数
 // 1.如果promise处于待定状态,那么处理函数会在promise
 // 对象进入成功状态的时候执行
@@ -70,33 +69,33 @@ let p1 =new Promise(function (resolve,reject) {
 //     // 合并的promise参数得到的是一个数组。数组中存放着每个
 //     // promise返回的成功数据
 //     let str ="";
-    // for(let i=0;i<data.length;i++){
-    //     str +=data[i].toString();
-    // }
-    // console.log(str);
+// for(let i=0;i<data.length;i++){
+//     str +=data[i].toString();
+// }
+// console.log(str);
 // })
 
 // 异步任务函数可以直接封装并返回当前的promise对象
 // 该方法我只负责传递进去文件名，可以返回promise对象让我在外部
 // n拿到当前传递进去的文件内容
-function myReadFile(filePath){
-   return new Promise(function (resolve,reject) {
-       fs.readFile(filePath,function (err,data) {
-           if (err) {
-               reject(reject);
-           } else {
-               resolve(data);
-           }
-         })
-     })
+function myReadFile(filePath) {
+	return new Promise(function (resolve, reject) {
+		fs.readFile(filePath, function (err, data) {
+			if (err) {
+				reject(reject);
+			} else {
+				resolve(data);
+			}
+		})
+	})
 }
 // myReadFile('./1.txt').then(data=>{
 //     console.log(data.toString());
 // })
 
-let p4 =myReadFile('./1.txt');
-let p5 =myReadFile('./2.txt');
-Promise.all([p4,p5])
-.then(data=>{
-    //  console.log(data.toString());
-})
+let p4 = myReadFile('./1.txt');
+let p5 = myReadFile('./2.txt');
+Promise.all([p4, p5])
+	.then(data => {
+		//  console.log(data.toString());
+	})

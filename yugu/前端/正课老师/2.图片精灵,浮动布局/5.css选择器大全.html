@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>css选择器大全</title>
-    <style>
-        /* 选择父元素中的第n个子元素，然后进行比较，比较一致才会执行 */
-        #d1 div:nth-child(1){
-            font-family: "仿宋";
-            color: green;
-        }
-        /* 先筛选出满足类型的子元素 在查找 */
-        #d1 div:nth-of-type(1)
-        {
-            font-family: "仿宋";
-            color: red;
-        }
-        /* 标签名可以直接访问到当前文档中所有对应的标签
-        不建议使用 */
-        h1
-        {
-            color: red;
-        }
-        /* #id选择器 */
-        #p1{
-           background-color: yellowgreen;
-        }
-        /* . class选择器 */
-        .cl{
-            color: green;
-        }
-        /* 两个选择器之间,分割 */
-        #p2,.c2{
-           font-family: "仿宋";
-        }
-        /* 属性选择器，页面中包含haha的属性元素 */
-        [haha]
-        {
-            color: orange;
-        }
-        /* 选择属性为att值为val的标签 */
-        [att=val]{
-           color: brown;
-        }
-        /* 两个选择器a和b用空格连接，表示满足a选择器里面的
-        b选择器才会执行 */
-        #list a{
-           text-decoration: none;
-        }
-         /* 两个选择器a和b用>连接，表示满足a选择器里面的
-        b选择器才会执行 */
-        #list>li{
-           color: red;
-        }
-        /* 在一个元素中满足冒号前面选择器中的倒数第n个元素 */
-        #list li:nth-last-of-type(1)
-        {
-           font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div id="d1">
-        <span>测试的span</span>
-        <span>测试的span</span>
-        <span>测试的span</span>
-        <div>测试的div</div>
-        <div>测试的div</div>
-        <div>测试的div</div>
-    </div>
 
-    <h1>css样式选择器</h1>
-    <p id="p1">id使用#表示的，具有唯一性</p>
-    <p class="cl">class样式是多个标签使用一个效果的时候可以设置</p>
-    <p class="cl">class样式是多个标签使用一个效果的时候可以设置</p>
-    <p id="p2" class="c2">两个选择器可以一起使用，样式表中用,分割</p>
-    <p haha>html标签的属性可以是html属性也可以是自定义属性</p>
-    <p att="val">属性选择器</p>
-    <ul id="list">
-        <li><a href="">123</a></li>
-        <li><a href="">123</a></li>
-        <li><a href="">123</a></li>
-        <li><a href="">123</a></li>
-    </ul>
-    <a href="">hello</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css选择器大全</title>
+  <style>
+    /* 选择父元素中的第n个子元素，然后进行比较，比较一致才会执行 */
+    #d1 div:nth-child(1) {
+      font-family: "仿宋";
+      color: green;
+    }
+
+    /* 先筛选出满足类型的子元素 在查找 */
+    #d1 div:nth-of-type(1) {
+      font-family: "仿宋";
+      color: red;
+    }
+
+    /* 标签名可以直接访问到当前文档中所有对应的标签
+        不建议使用 */
+    h1 {
+      color: red;
+    }
+
+    /* #id选择器 */
+    #p1 {
+      background-color: yellowgreen;
+    }
+
+    /* . class选择器 */
+    .cl {
+      color: green;
+    }
+
+    /* 两个选择器之间,分割 */
+    #p2,
+    .c2 {
+      font-family: "仿宋";
+    }
+
+    /* 属性选择器，页面中包含haha的属性元素 */
+    [haha] {
+      color: orange;
+    }
+
+    /* 选择属性为att值为val的标签 */
+    [att=val] {
+      color: brown;
+    }
+
+    /* 两个选择器a和b用空格连接，表示满足a选择器里面的
+        b选择器才会执行 */
+    #list a {
+      text-decoration: none;
+    }
+
+    /* 两个选择器a和b用>连接，表示满足a选择器里面的
+        b选择器才会执行 */
+    #list>li {
+      color: red;
+    }
+
+    /* 在一个元素中满足冒号前面选择器中的倒数第n个元素 */
+    #list li:nth-last-of-type(1) {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="d1">
+    <span>测试的span</span>
+    <span>测试的span</span>
+    <span>测试的span</span>
+    <div>测试的div</div>
+    <div>测试的div</div>
+    <div>测试的div</div>
+  </div>
+
+  <h1>css样式选择器</h1>
+  <p id="p1">id使用#表示的，具有唯一性</p>
+  <p class="cl">class样式是多个标签使用一个效果的时候可以设置</p>
+  <p class="cl">class样式是多个标签使用一个效果的时候可以设置</p>
+  <p id="p2" class="c2">两个选择器可以一起使用，样式表中用,分割</p>
+  <p haha>html标签的属性可以是html属性也可以是自定义属性</p>
+  <p att="val">属性选择器</p>
+  <ul id="list">
+    <li><a href="">123</a></li>
+    <li><a href="">123</a></li>
+    <li><a href="">123</a></li>
+    <li><a href="">123</a></li>
+  </ul>
+  <a href="">hello</a>
 </body>
+
 </html>

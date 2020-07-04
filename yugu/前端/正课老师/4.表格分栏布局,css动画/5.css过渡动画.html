@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>css过渡动画</title>
-    <style>
-        section
-        {
-            font-size: 30px;
-            /* display: flex; */
-            height: 200px;
-            width: 200px;
-            border: solid 2px black;
-            margin: 100px auto;
-            /* transition过渡 property描述
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>css过渡动画</title>
+	<style>
+		section {
+			font-size: 30px;
+			/* display: flex; */
+			height: 200px;
+			width: 200px;
+			border: solid 2px black;
+			margin: 100px auto;
+			/* transition过渡 property描述
             设置要为哪一个属性进行过渡:设置的属性
             值如果发生变化那么过渡会被触发然后执行过渡效果 */
-            /* transition-property: transform; */
-            /* 设置过渡时间 s秒 以秒为单位*/
-            /* transition-duration: 1s; */
-            /* 设置动画的速率 
+			/* transition-property: transform; */
+			/* 设置过渡时间 s秒 以秒为单位*/
+			/* transition-duration: 1s; */
+			/* 设置动画的速率 
             linear:匀速
             ease:规定慢速开始，然后变快，然后慢速结束的过渡效果
             ease-in:规定以慢速开始过渡效果
             ease-out：规定以慢速结束的过渡效果
             ease-in-out：规定以慢速开始和结束的过渡效果*/
-            /* transition-timing-function: ease; */
-            /* 过渡效果可以用一个属性概括
+			/* transition-timing-function: ease; */
+			/* 过渡效果可以用一个属性概括
             多个过渡样式可以写到一起，每一个中间以,隔开
             并不是每一个都会生效 */
-            transition: transform,
-            background-color, border-radius,border,1s linear;
-        }
-        section:hover
-        {
-            transform: rotate(45deg) scale(1.5,1.5);
-            background-color: red;
-            border-radius: 50%;
-            border: double 2px greenyellow;
-        }
-        section:hover{
-            /* 阴影 1.水平 2.垂直 3.模糊距离 
+			transition: transform,
+				background-color, border-radius, border, 1s linear;
+		}
+
+		section:hover {
+			transform: rotate(45deg) scale(1.5, 1.5);
+			background-color: red;
+			border-radius: 50%;
+			border: double 2px greenyellow;
+		}
+
+		section:hover {
+			/* 阴影 1.水平 2.垂直 3.模糊距离 
             4.阴影大小 5.颜色 6.内外*/
-            box-shadow: 0 0 40px 5px red;
-        }
-    </style>
+			box-shadow: 0 0 40px 5px red;
+		}
+	</style>
 </head>
+
 <body>
-    <section>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-    </section>
+	<section>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+	</section>
 </body>
+
 </html>
